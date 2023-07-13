@@ -38,6 +38,13 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('/assets/js/config.js') }}"></script>
+    <style>
+        .alert-success {
+            color: #506a42;
+        }
+    </style>
+
+    @yield('custom_style')
 </head>
 
 <body>
@@ -57,6 +64,15 @@
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
+                    <div class="container-xxl">
+                        <br/>
+                        @if(flash()->message)
+                            <div class="alert alert-{{ flash()->class }} alert-dismissible">
+                                {{ flash()->message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                    </div>
 
                     <!-- Content -->
                     @yield('content')
