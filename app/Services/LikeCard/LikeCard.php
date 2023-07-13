@@ -15,9 +15,7 @@ class LikeCard {
             'Content-Type' => 'application/json',
         ])->withOptions([
             "verify"=>false
-        ])->$method($this->endpoint.$path,[
-            'query' => $query
-        ]);
+        ])->$method($this->endpoint.$path, $query);
 
         return $response;
     }
