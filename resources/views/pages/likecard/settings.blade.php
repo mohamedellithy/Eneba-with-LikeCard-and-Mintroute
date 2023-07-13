@@ -108,7 +108,29 @@
                 <div class="col-lg-12 col-md-12 col-6 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            last orders
+                            <h6 class="fw-semibold d-block mb-1">last orders</h6>
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Order Name</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            2344o29
+                                        </td>
+                                        <td>
+                                            mohamed ellithy
+                                        </td>
+                                        <td>
+                                            <i class='bx bxs-show'></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
