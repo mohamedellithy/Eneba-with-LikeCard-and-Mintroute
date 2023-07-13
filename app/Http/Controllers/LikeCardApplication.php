@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\ApplicationSetting;
+use App\Models\ApplicationSetting;
 use App\Services\LikeCard\LikeCard;
 class LikeCardApplication extends Controller
 {

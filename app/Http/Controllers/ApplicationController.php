@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\ApplicationSetting;
+use App\Models\ApplicationSetting;
 class ApplicationController extends Controller
 {
     public function index_eneba(){
