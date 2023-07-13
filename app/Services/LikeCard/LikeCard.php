@@ -40,7 +40,7 @@ class LikeCard {
 
         $response = $this->resolve_call('/online/check_balance',$credentail);
         if($response->successful()):
-            return $response->body();
+            return $response->json();
         endif;
         return $response->status();
     }

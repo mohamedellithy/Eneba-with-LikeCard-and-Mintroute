@@ -16,7 +16,6 @@ class ApplicationController extends Controller
         $like_card   = new LikeCard();
         $balance     = $like_card->get_balance();
         $settings    = ApplicationSetting::where('application','likecard')->pluck('value','name')->toArray();
-        dd($balance);
         return view('pages.likecard.settings',compact('settings','balance'));
     }
 
