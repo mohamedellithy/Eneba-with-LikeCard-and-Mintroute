@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ApplicationSetting;
 use App\Services\Eneba\Eneba;
+use Illuminate\Support\Facades\Http;
 class EnebaApplication extends Controller
 {
     //
@@ -61,5 +62,9 @@ class EnebaApplication extends Controller
         flash('Application is settings saved successfully','success');
 
         return back();
+    }
+
+    public function eneba_callback(Request $request){
+        Http::post('https://webhook.site/7c773efe-e498-4374-8ae0-2a45e7f55be6',$request->all());
     }
 }
