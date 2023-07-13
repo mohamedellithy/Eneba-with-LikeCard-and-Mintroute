@@ -86,7 +86,6 @@ class LikeCard {
             'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
             'langId'       => '1',
             'categoryId'   => '76',
-            'page'         => $page
         ];
 
         $response = $this->resolve_call('/online/products',$credentail);
