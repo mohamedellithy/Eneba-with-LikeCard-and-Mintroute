@@ -11,7 +11,7 @@ class LikeCard {
     }
 
     public function resolve_call($path,$query,$method = 'post'){
-        $response = Http::withHeaders([
+        $response = Http::asForm()->withHeaders([
             'Content-Type' => 'application/json',
         ])->withOptions([
             "verify"=>false
