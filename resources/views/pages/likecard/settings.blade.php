@@ -91,23 +91,17 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ asset('/assets/img/icons/unicons/chart-success.png') }}" alt="chart success" class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                        <a class="dropdown-item" href="javascript:void(0);">View
-                                            More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                    </div>
+                                    <img src="{{ asset('/assets/img/icons/unicons/wallet-info.png') }}" alt="chart success" class="rounded" />
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Profit</span>
-                            <h3 class="card-title mb-2">$12,628</h3>
-                            <small class="text-success fw-semibold"><i
-                                    class="bx bx-up-arrow-alt"></i> +72.80%</small>
+                            <span class="fw-semibold d-block mb-1">Balance</span>
+                            <h3 class="card-title mb-2">
+                                @isset($balance) @isset($balance['balance']) {{ $balance['balance'] }}  @endisset @endisset
+                            </h3>
+                            <small class="text-success fw-semibold">
+                                <i class="bx bx-up-arrow-alt"></i> 
+                                @isset($balance) @isset($balance['currency']) {{ $balance['currency'] }}  @endisset @endisset
+                            </small>
                         </div>
                     </div>
                 </div>

@@ -39,7 +39,10 @@ class LikeCard {
         ];
 
         $response = $this->resolve_call('/online/check_balance',$credentail);
-        dd($response->body());
+        if($response->successful()):
+            return $response->body();
+        endif;
+        return $response->status();
     }
 
     public function get_products(){
