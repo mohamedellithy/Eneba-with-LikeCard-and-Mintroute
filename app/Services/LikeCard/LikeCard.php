@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Http;
 class LikeCard {
     protected $sandbox       = false;
     public   $endpoint       = "https://taxes.like4app.com";
-    protected $credentail    = array();
+    public $credentail    = array();
     public function __construct(){
         $this->credentail = $this->fetch_likecard_crediential();
     }
