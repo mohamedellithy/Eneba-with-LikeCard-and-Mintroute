@@ -109,26 +109,39 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="fw-semibold d-block mb-1">last orders</h6>
+                            <br/>
                             <table class="table table-dark">
                                 <thead>
                                     <tr>
                                         <th>Order ID</th>
-                                        <th>Order Name</th>
+                                        <th>Order Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            2344o29
-                                        </td>
-                                        <td>
-                                            mohamed ellithy
-                                        </td>
-                                        <td>
-                                            <i class='bx bxs-show'></i>
-                                        </td>
-                                    </tr>
+                                    @isset($orders)
+                                        @isset($orders['data'])
+                                            @foreach($orders['data'] as $order)
+                                                <tr>
+                                                    <td>
+                                                        {{ $order->orderNumber }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $order->orderCurrentStatus }}
+                                                    </td>
+                                                    <td>
+                                                        <a href="#">
+                                                            <i class='bx bxs-show'></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endisset
+                                    @else
+                                        <tr>
+                                            <td colspan="3">No Orders</td>
+                                        </tr>
+                                    @endisset
                                 </tbody>
                             </table>
                         </div>
@@ -152,6 +165,10 @@
     .btn-generate{
         padding: 11px;
         text-align: right;
+    }
+    .table th , .table td {
+        font-size: 0.65rem;
+        text-align: center;
     }
 </style>
 @endsection

@@ -59,7 +59,6 @@ class LikeCard {
         if($response->successful()):
             return $response->json();
         endif;
-        return $response->status();
     }
 
 
