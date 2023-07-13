@@ -86,9 +86,9 @@
 
         <!-- Cards -->
         <li class="menu-item">
-            <a href="{{ route('application.mintroute') }}" class="menu-link">
+            <a href="{{ route('application.likecard.products') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Mintroute</div>
+                <div data-i18n="Basic">LikeCard Products</div>
             </a>
         </li>
 

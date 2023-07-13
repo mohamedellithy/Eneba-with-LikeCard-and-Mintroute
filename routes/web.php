@@ -38,6 +38,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
     Route::controller(LikeCardApplication::class)->group(function(){
         Route::put('application/likecard/update/{section}','update_credentials')->name('likecard.update');
         Route::put('application/likecard/regenrate-token' ,'generate_token')->name('likecard.regenrate_token');
+        Route::get('application/likecard/products','get_products')->name('likecard.products');
     });
 });
 

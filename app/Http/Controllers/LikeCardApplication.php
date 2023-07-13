@@ -17,7 +17,6 @@ class LikeCardApplication extends Controller
     }
 
     public function update_credentials(Request $request,$section){
-
         $credintal = [
             'prod_email',
             'prod_deviceId',
@@ -60,5 +59,11 @@ class LikeCardApplication extends Controller
         flash('Application is settings saved successfully','success');
 
         return back();
+    }
+
+    public function get_products(){
+        $products = $this->likecard_service->get_products();
+        dd($products);
+        return view('pages.likecard.products.index',compact('products'));
     }
 }

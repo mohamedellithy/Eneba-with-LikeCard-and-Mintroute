@@ -61,6 +61,22 @@ class LikeCard {
         endif;
     }
 
+    public function get_products($page = 1){
+        $credentail =  [
+            'deviceId'     => isset($this->credentail['prod_deviceId']) ? $this->credentail['prod_deviceId'] : null,
+            'email'        => isset($this->credentail['prod_email'])    ? $this->credentail['prod_email'] : null,
+            'password'     => isset($this->credentail['prod_password']) ? $this->credentail['prod_password'] : null,
+            'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
+            'langId'       => '1',
+            'page'         => $page
+        ];
+
+        $response = $this->resolve_call('/online/products',$credentail);
+        if($response->successful()):
+            return $response->json();
+        endif;
+    }
+
 
     public function get_single_product($product_id){
         
