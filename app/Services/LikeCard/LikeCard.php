@@ -68,6 +68,7 @@ class LikeCard {
             'password'     => isset($this->credentail['prod_password']) ? $this->credentail['prod_password'] : null,
             'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
             'langId'       => '1',
+            'ids[]'        => '',
             'page'         => $page
         ];
 
