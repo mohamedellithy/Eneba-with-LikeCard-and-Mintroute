@@ -21,9 +21,12 @@ $rows   = request()->query('rows')   ?: 10;
                     </div> --}}
                     <div class="nav-item d-flex align-items-center m-2" >
                         <select name="status" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
-                            <option>حالة المنتج</option>
-                            <option value="active" @isset($status) @if($status == 'active') selected @endif @endisset>مفعل</option>
-                            <option value="notactive" @isset($status) @if($status == 'notactive') selected @endif @endisset>غير مفعل</option>
+                            <option>تصنيفات المنتجات</option>
+                            @isset(isset($categories))
+                                @foreach($categories as $category)
+                                    <option value="{{ $category['id'] }}">{{ $category['categoryName'] }}</option>
+                                @endforeach
+                            @endisset
                         </select>
                     </div>
                     <div class="nav-item d-flex align-items-center m-2" >
