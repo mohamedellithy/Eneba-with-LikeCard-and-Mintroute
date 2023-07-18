@@ -62,9 +62,20 @@ class LikeCardApplication extends Controller
     }
 
     public function get_products(){
-        $categories = $this->likecard_service->get_categories();
-        $products   = $this->likecard_service->get_products();
-        //dd($products);
+        $categories = $this->likecard_service->get_categories()['data'];
+        $products   = $this->likecard_service->get_products()['data'];
+        if($categories['response'] == 1):
+            $categories = $categories['data'];
+        else:
+            $categories = [];
+        endif;
+
+        if($products['response'] == 1):
+            $products = $products['data'];
+        else:
+            $products = [];
+        endif;
+
         return view('pages.likecard.products.index',compact('products','categories'));
     }
 }
