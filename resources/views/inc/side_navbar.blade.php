@@ -57,7 +57,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item {{ IsActiveOnlyIf(['dashboard']) }}">
             <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -69,7 +69,7 @@
         </li>
 
         <!-- Cards -->
-        <li class="menu-item">
+        <li class="menu-item {{ IsActiveOnlyIf(['application.eneba']) }}">
             <a href="{{ route('application.eneba') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Eneba</div>
@@ -77,7 +77,7 @@
         </li>
 
         <!-- Cards -->
-        <li class="menu-item">
+        <li class="menu-item {{ IsActiveOnlyIf(['application.like_card']) }}">
             <a href="{{ route('application.like_card') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">LikeCard</div>
@@ -85,7 +85,7 @@
         </li>
 
         <!-- Cards -->
-        <li class="menu-item">
+        <li class="menu-item {{ IsActiveOnlyIf(['application.likecard.products']) }}">
             <a href="{{ route('application.likecard.products') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">LikeCard Products</div>

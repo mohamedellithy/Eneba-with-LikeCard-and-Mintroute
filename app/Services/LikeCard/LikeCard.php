@@ -85,7 +85,7 @@ class LikeCard {
             'password'     => isset($this->credentail['prod_password']) ? $this->credentail['prod_password'] : null,
             'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
             'langId'       => '1',
-            'categoryId'   => '76',
+            'categoryId'   => '376',
         ];
 
         $response = $this->resolve_call('/online/products',$credentail);
@@ -96,7 +96,7 @@ class LikeCard {
 
 
     public function get_single_product($product_id){
-        
+
     }
 
 

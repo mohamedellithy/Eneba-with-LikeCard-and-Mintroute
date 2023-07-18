@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap');
+body {
+    font-family: 'Tajawal', sans-serif;
+}
+
+.menu .app-brand.demo {
+    border-bottom: 8px solid #f5f5f9;
+    height: 70px !important;
+}
+
+.bg-menu-theme .menu-link:hover,
+.bg-menu-theme .menu-link:focus,
+.bg-menu-theme .menu-horizontal-prev:hover,
+.bg-menu-theme .menu-horizontal-prev:focus,
+.bg-menu-theme .menu-horizontal-next:hover,
+.bg-menu-theme .menu-horizontal-next:focus {
+    color: #3f86d0 !important;
+}
+
+
+/* rtl */
+
+.ms-auto {
+    margin-right: auto !important;
+    margin-left: 0px !important;
+}
+
+.dropdown-menu-end[data-bs-popper] {
+    left: 0;
+    right: auto;
+    text-align: right;
+}
+
+.layout-wrapper:not(.layout-horizontal) .bg-menu-theme .menu-inner .menu-item>.menu-link.menu-toggle {
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.layout-wrapper:not(.layout-horizontal) .bg-menu-theme .menu-inner>.menu-item>.menu-link {
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.menu-item.open>.menu-sub {
+    padding-right: 10%;
+}
+
+.menu-sub>.menu-item>.menu-link {
+    padding: 12px 30px 12px 10px;
+}
+
+.modal .nav.nav-pills.nav-fill {
+    display: -webkit-inline-box !important;
+}
+
+.modal .list-medias {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.modal .list-medias li {
+    padding: 0px;
+    border: 10px solid #eee;
+    margin: 10px;
+    width: 160px;
+    height: 144px;
+}
+
+.modal .tab-pane {
+    height: 400px;
+    overflow-y: auto;
+}
+
+.modal .list-medias li img {
+    height: 100%;
+    width: 100%;
+}
+
+.container-frame-upload-media {
+    min-height: 300px;
+    border: 2px dashed lightgray;
+    background-color: #f1f1f126;
+}
+
+.upload-icon {
+    text-align: center;
+}
+
+.upload-icon i {
+    font-size: 130px;
+    margin-top: 9%;
+    cursor: pointer;
+    color: lightgray;
+}
+
+.btn-upload {
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.upload-image-inner {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.list-upload-medias {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.list-upload-medias li {
+    width: 156px;
+    height: 156px;
+    background-color: white;
+    padding: 5px;
+    margin: 19px 5px;
+}
+
+.list-upload-medias li img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+.media-item.active {
+    border: 10px solid #696cff !important;
+}
+
+.list-preview-thumbs {
+    list-style: none;
+    padding: 0px;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.preview-media-inner {
+    width: 129px;
+    height: 120px;
+    padding: 14px;
+    border: 10px solid #eee;
+    margin: 14px;
+    border-radius: 13px;
+    position: relative;
+}
+
+.preview-media-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+.preview-media-inner i {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: red;
+    cursor: pointer;
+}
+
+.table-responsive {
+    overflow-x: visible;
+    min-height: 225px;
+}
+
+table.table tr td.width-16 {
+    width: 16%;
+}
+
+table.table tr td.width-25 {
+    width: 25%;
+}
+
+table.table tr td.width-50 {
+    width: 50%;
+}
+
+table.table tr td.width-70 {
+    width: 70%;
+}
+
+table.table tr td img {
+    width: 70px;
+    border: 1px solid #cbc2c2;
+    padding: 6px;
+}
+
+.filters-fields {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.filters-fields .nav-item:first-child {
+    background-color: #eee;
+}
+
+.filters-fields .nav-item .search {
+    background-color: transparent;
+}
+
+.filters-fields .nav-item .bx-search {
+    margin-right: 10px;
+}
+
+@media (min-width: 1200px) {
+    .layout-menu-fixed .layout-menu,
+    .layout-menu-fixed-offcanvas .layout-menu {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0 !important;
+        left: auto !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    .layout-menu-fixed:not(.layout-menu-collapsed) .layout-page,
+    .layout-menu-fixed-offcanvas:not(.layout-menu-collapsed) .layout-page {
+        padding-left: 0px !important;
+        padding-right: 16.25rem;
+    }
+}
