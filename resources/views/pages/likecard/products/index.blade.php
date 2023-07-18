@@ -1,9 +1,6 @@
 @extends('master')
 @php
-$search = request()->query('search') ?: null;
-$status = request()->query('status') ?: null;
-$filter = request()->query('filter') ?: null;
-$rows   = request()->query('rows')   ?: 10;
+$category_id = request()->query('category_id') ?: null;
 @endphp
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -24,10 +21,10 @@ $rows   = request()->query('rows')   ?: 10;
                             <option>تصنيفات المنتجات</option>
                             @isset($categories)
                                 @foreach($categories as $category)
-                                    <option value="{{ $category['id'] }}">{{ $category['categoryName'] }}</option>
+                                    <option value="{{ $category['id'] }}" @isset($category_id) @if($category_id == $category['id']) selected @endif @endisset>{{ $category['categoryName'] }}</option>
                                     @isset($category['childs'])
                                         @foreach($category['childs'] as $child)
-                                            <option value="{{ $child['id'] }}">--{{ $child['categoryName'] }}</option>
+                                            <option value="{{ $child['id'] }}" @isset($category_id) @if($category_id == $child['id']) selected @endif @endisset> -- {{ $child['categoryName'] }}</option>
                                         @endforeach
                                     @endisset
                                 @endforeach
