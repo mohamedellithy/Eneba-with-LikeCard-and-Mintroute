@@ -64,16 +64,16 @@ $rows   = request()->query('rows')   ?: 10;
                             @forelse($products as $product)
                                 <tr>
                                     <td class="">
-                                        <img src="{{ $product->productImage }}" alt="Avatar"
+                                        <img src="{{ $product['productImage'] }}" alt="Avatar"
                                         class="rounded-circle">
                                     </td>
-                                    <td class="width-16">{{ $product->productName }}</td>
+                                    <td class="width-16">{{ $product['productName'] }}</td>
                                     <td>
-                                    {{ $product->productPrice }} {{ $product->productCurrency }}
+                                    {{ $product['productPrice'] }} {{ $product['productCurrency'] }}
                                     </td>
 
                                     <td>
-                                        @if ($product->available == true)
+                                        @if ($product['available'] == true)
                                             <span class="badge bg-label-success me-1">متاح</span>
                                         @else
                                             <span class="badge bg-label-danger me-1">غير متاح</span>
