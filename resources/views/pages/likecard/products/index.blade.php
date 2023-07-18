@@ -20,7 +20,7 @@ $rows   = request()->query('rows')   ?: 10;
                             @isset($search) value="{{ $search }}" @endisset id="search" name="search"/>
                     </div> --}}
                     <div class="nav-item d-flex align-items-center m-2" >
-                        <select name="status" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
+                        <select name="category_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
                             <option>تصنيفات المنتجات</option>
                             @isset($categories)
                                 @foreach($categories as $category)

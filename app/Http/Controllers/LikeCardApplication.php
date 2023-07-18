@@ -61,9 +61,13 @@ class LikeCardApplication extends Controller
         return back();
     }
 
-    public function get_products(){
+    public function get_products(Request $request){
+        $category      = null;
+        if($request->has('category_id')):
+            $category  = $request->query('category_id');
+        endif;
         $categories = $this->likecard_service->get_categories();
-        $products   = $this->likecard_service->get_products();
+        $products   = $this->likecard_service->get_products($category);
         if($categories['response'] == 1):
             $categories = $categories['data'];
         else:
