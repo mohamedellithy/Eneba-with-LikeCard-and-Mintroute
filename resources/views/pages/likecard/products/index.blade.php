@@ -65,7 +65,7 @@ $rows   = request()->query('rows')   ?: 10;
                                 <tr>
                                     <td class="">
                                         <img src="{{ $product['productImage'] }}" alt="Avatar"
-                                        class="rounded-circle">
+                                        class="">
                                     </td>
                                     <td class="width-16">{{ $product['productName'] }}</td>
                                     <td>

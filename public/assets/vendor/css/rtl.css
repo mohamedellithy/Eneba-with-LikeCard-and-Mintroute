@@ -190,7 +190,7 @@ table.table tr td.width-70 {
 table.table tr td img {
     width: 70px;
     border: 1px solid #cbc2c2;
-    padding: 6px;
+    padding: 0px;
 }
 
 .filters-fields {
