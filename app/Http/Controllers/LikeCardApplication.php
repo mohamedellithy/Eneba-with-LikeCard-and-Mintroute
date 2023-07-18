@@ -80,11 +80,11 @@ class LikeCardApplication extends Controller
             $products = [];
         endif;
 
-        dd([
-            "category" => $category,
-            "categories" => $categories,
-            "products" => $products,
-        ]);
+        // dd([
+        //     "category" => $category,
+        //     "categories" => $categories,
+        //     "products" => $products,
+        // ]);
 
         return view('pages.likecard.products.index',compact('products','categories'));
     }
