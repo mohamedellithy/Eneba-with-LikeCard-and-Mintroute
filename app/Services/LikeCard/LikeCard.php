@@ -89,9 +89,9 @@ class LikeCard {
         ];
 
         $response = $this->resolve_call('/online/products',$credentail);
-        if($response->successful()):
-            return $response->json();
-        endif;
+        return $response->json();
+        // if($response->successful()):
+        // endif;
     }
 
 
