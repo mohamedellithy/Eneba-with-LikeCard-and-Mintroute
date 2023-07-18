@@ -36,7 +36,7 @@ $rows   = request()->query('rows')   ?: 10;
                         </select>
                     </div>
                 </div>
-                <div class="d-flex">
+                {{-- <div class="d-flex">
                     <div class="nav-item d-flex align-items-center m-2" >
                         <label style="padding: 0px 10px;color: #636481;">المعروض</label>
                         <select name="rows" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-sm">
@@ -45,7 +45,7 @@ $rows   = request()->query('rows')   ?: 10;
                             <option value="100" @isset($rows) @if($rows == '100') selected @endif @endisset>100</option>
                         </select>
                     </div>
-                </div>
+                </div> --}}
             </form>
             <br/>
             <div class="table-responsive">
