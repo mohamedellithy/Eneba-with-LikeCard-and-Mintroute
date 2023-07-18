@@ -67,7 +67,7 @@ $rows   = request()->query('rows')   ?: 10;
                                         <img src="{{ $product['productImage'] }}" alt="Avatar"
                                         class="">
                                     </td>
-                                    <td class="width-16">{{ $product['productName'] }}</td>
+                                    <td class="width-30">{{ $product['productName'] }}</td>
                                     <td>
                                     {{ $product['productPrice'] }} {{ $product['productCurrency'] }}
                                     </td>
@@ -78,6 +78,11 @@ $rows   = request()->query('rows')   ?: 10;
                                         @else
                                             <span class="badge bg-label-danger me-1">غير متاح</span>
                                         @endif
+                                    </td>
+                                    <td>
+                                        <a class="dropdown-item" href="{{ $product->id }}"><i
+                                                class="fa-regular fa-eye me-2"></i></i>عرض
+                                        </a>
                                     </td>
                                     {{-- <td>
                                         <div class="dropdown">
