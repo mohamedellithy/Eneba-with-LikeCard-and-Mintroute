@@ -22,7 +22,7 @@ $rows   = request()->query('rows')   ?: 10;
                     <div class="nav-item d-flex align-items-center m-2" >
                         <select name="status" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
                             <option>تصنيفات المنتجات</option>
-                            @isset(isset($categories))
+                            @isset($categories)
                                 @foreach($categories as $category)
                                     <option value="{{ $category['id'] }}">{{ $category['categoryName'] }}</option>
                                 @endforeach
