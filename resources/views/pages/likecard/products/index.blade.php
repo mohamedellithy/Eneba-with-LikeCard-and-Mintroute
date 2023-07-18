@@ -25,6 +25,13 @@ $rows   = request()->query('rows')   ?: 10;
                             @isset($categories)
                                 @foreach($categories as $category)
                                     <option value="{{ $category['id'] }}">{{ $category['categoryName'] }}</option>
+                                    @isset($category['childs'])
+                                        <optgroup label="{{ $category['categoryName'] }}">
+                                            @foreach($category['childs'] as $child)
+                                                <option value="{{ $child['id'] }}">{{ $child['categoryName'] }}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endisset
                                 @endforeach
                             @endisset
                         </select>
