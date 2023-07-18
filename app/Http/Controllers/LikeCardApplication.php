@@ -82,6 +82,7 @@ class LikeCardApplication extends Controller
 
         dd([
             "category" => $category,
+            "categories" => $categories,
             "products" => $products,
         ]);
 
