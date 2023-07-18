@@ -80,7 +80,7 @@ $rows   = request()->query('rows')   ?: 10;
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="dropdown-item" href="{{ $product->productId }}"><i
+                                        <a class="dropdown-item" href="{{ $product['productId'] }}"><i
                                                 class="fa-regular fa-eye me-2"></i></i>عرض
                                         </a>
                                     </td>
