@@ -90,7 +90,8 @@ class LikeCardApplication extends Controller
             $category  = $request->query('category_id');
         endif;
         $categories = Cache::rememberForever('likecard_categories', function(){
-            return $this->likecard_service->get_categories();
+            $categories = $this->likecard_service->get_categories();
+            return $categories['data'];
         });
 
         $products = Cache::rememberForever('likecard_products_'.$category, function() use($category){
