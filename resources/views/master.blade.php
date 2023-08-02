@@ -45,7 +45,7 @@
         }
     </style>
 
-    @yield('custom_style')
+    @stack('custom_style')
 </head>
 
 <body>

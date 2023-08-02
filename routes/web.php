@@ -42,6 +42,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::put('application/likecard/regenrate-token' ,'generate_token')->name('likecard.regenrate_token');
         Route::get('application/likecard/products','get_products')->name('likecard.products');
         Route::get('application/likecard/codes','get_codes')->name('likecard.codes');
+        Route::post('application/likecard/store-codes','store_codes')->name('likecard.store_codes');
     });
 
 });

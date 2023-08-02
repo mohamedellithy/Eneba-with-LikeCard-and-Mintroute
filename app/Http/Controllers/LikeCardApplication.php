@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ApplicationSetting;
 use App\Services\LikeCard\LikeCard;
 use Illuminate\Support\Facades\Cache;
+use App\Models\OfflineCode;
 class LikeCardApplication extends Controller
 {
     //
@@ -91,18 +92,32 @@ class LikeCardApplication extends Controller
         endif;
         $categories = Cache::rememberForever('likecard_categories', function(){
             $categories = $this->likecard_service->get_categories();
-            return $categories['data'];
+            return isset($categories['data']) ? $categories['data'] : [];
         });
 
         $products = Cache::rememberForever('likecard_products_'.$category, function() use($category){
             $products   = $this->likecard_service->get_products($category);
-            if($products['response'] == 1):
-                $products = $products['data'];
+            if(isset($products['data'])):
+                if($products['response'] == 1):
+                    $products = isset($products['data']) ? $products['data']: [];
+                endif;
             endif;
 
             return $products;
         });
 
         return view('pages.likecard.codes.index',compact('products','categories'));
+    }
+
+    public function store_codes(Request $request){
+
+        $offline_code = OfflineCode::updateOrCreate($request->only([
+            'product_id',
+            'category_id',
+            'product_type',
+            'code'
+        ]));
+
+        return back();
     }
 }
