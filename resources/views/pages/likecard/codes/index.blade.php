@@ -39,6 +39,7 @@ $category_id = request()->query('category_id') ?: null;
                 </div>
             </div>
         </div>
+        <br/>
         <div class="card" style="padding-top: 3%;">
             <div class="table-responsive">
                 <table class="table table-striped">
