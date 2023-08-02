@@ -103,6 +103,6 @@ class LikeCardApplication extends Controller
             return $data;
         });
 
-        return view('pages.likecard.products.index',compact('data'));
+        return view('pages.likecard.codes.index',compact('data'));
     }
 }
