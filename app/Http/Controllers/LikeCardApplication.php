@@ -111,6 +111,10 @@ class LikeCardApplication extends Controller
 
     public function store_codes(Request $request){
 
+        $request->merge([
+            'product_type' => 'eneba'
+        ]);
+
         $offline_code = OfflineCode::updateOrCreate($request->only([
             'product_id',
             'category_id',

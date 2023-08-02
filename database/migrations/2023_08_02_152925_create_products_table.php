@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('offline_codes', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->integer('product_name')->nullable();
-            $table->integer('product_image')->nullable();
-            $table->integer('category_id')->nullable();
-            $table->string('product_type');
-            $table->text('code');
-            $table->string('status')->default('allow');
+            $table->integer('eneba_prod_id');
+            $table->integer('likecard_prod_id');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offline_codes');
+        Schema::dropIfExists('products');
     }
 };

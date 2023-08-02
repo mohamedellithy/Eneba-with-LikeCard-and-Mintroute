@@ -11,6 +11,8 @@ class OfflineCode extends Model
 
     protected $fillable = [
         'product_id',
+        'product_name',
+        'product_image',
         'category_id',
         'product_type',
         'code',
