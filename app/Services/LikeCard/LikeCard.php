@@ -97,7 +97,4 @@ class LikeCard {
     public function get_single_product($product_id){
 
     }
-
-
-
 }

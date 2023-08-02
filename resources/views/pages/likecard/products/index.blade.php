@@ -11,11 +11,6 @@ $category_id = request()->query('category_id') ?: null;
         <div class="card" style="padding-top: 3%;">
             <form id="filter-data" method="get">
                 <div class="d-flex filters-fields">
-                    {{-- <div class="nav-item d-flex align-items-center m-2" >
-                        <i class="bx bx-search fs-4 lh-0"></i>
-                        <input type="text" class="search form-control border-0 shadow-none" placeholder="البحث ...."
-                            @isset($search) value="{{ $search }}" @endisset id="search" name="search"/>
-                    </div> --}}
                     <div class="nav-item d-flex align-items-center m-2" >
                         <select name="category_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
                             <option>تصنيفات المنتجات</option>
@@ -41,16 +36,6 @@ $category_id = request()->query('category_id') ?: null;
                         </select>
                     </div>
                 </div>
-                {{-- <div class="d-flex">
-                    <div class="nav-item d-flex align-items-center m-2" >
-                        <label style="padding: 0px 10px;color: #636481;">المعروض</label>
-                        <select name="rows" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-sm">
-                            <option>10</option>
-                            <option value="50" @isset($rows) @if($rows == '50') selected @endif @endisset>50</option>
-                            <option value="100" @isset($rows) @if($rows == '100') selected @endif @endisset>100</option>
-                        </select>
-                    </div>
-                </div> --}}
             </form>
             <br/>
             <div class="table-responsive">

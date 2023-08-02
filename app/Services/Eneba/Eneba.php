@@ -12,6 +12,10 @@ class Eneba {
         $this->endpoint   = $this->sandbox == true ? "https://api-sandbox.eneba.com" : "https://api.eneba.com";
 
         $this->credentail = $this->fetch_enebe_crediential();
+
+        $token = $this->generate_token();
+
+        $this->credentail['access_token'] = ($token['status'] == 'success') ? $token['access_token'] : null;
     }
 
     public function resolve_call($query){
@@ -67,7 +71,6 @@ class Eneba {
 
         $credential['auth_id']      = isset($application[$status.'_auth_id']) ? $application[$status.'_auth_id'] : null;
         $credential['auth_secret']  = isset($application[$status.'_auth_secret']) ? $application[$status.'_auth_secret'] : null;
-        $credential['access_token'] = isset($application['access_token']) ? $application['access_token'] : null;
 
         return $credential;
     }
@@ -90,12 +93,22 @@ class Eneba {
         dd($response->json());
     }
 
-    public function get_products(){
+    public function get_products($from = null){
+        $now = date('Y-m-d H:i:s');
         $query = <<<GQL
         query {
             S_products(
-              sort: CREATED_AT_DESC
+                sort: CREATED_AT_ASC
+                first:20
+                after:"{$from}"
               ) {
+              totalCount
+              pageInfo {
+                  hasNextPage
+                  hasPreviousPage
+                  startCursor
+                  endCursor
+              }
               edges {
                 node {
                   id
@@ -122,7 +135,20 @@ class Eneba {
           }
         GQL;
         $response = $this->resolve_call($query);
-        dd($response->json());
+
+        if($response->successful()):
+            return [
+              'code' => $response->status(),
+              'status' => isset($response->json()['data']['S_products']) ? true : false,
+              'result' => isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
+            ];
+        else:
+          return [
+              'code' => $response->status(),
+              'status' => false,
+              'result' => $response->json()
+          ];
+        endif;
     }
 
 

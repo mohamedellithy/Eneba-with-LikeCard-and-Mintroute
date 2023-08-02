@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ApplicationSetting;
 use App\Services\LikeCard\LikeCard;
+use Illuminate\Support\Facades\Cache;
 class LikeCardApplication extends Controller
 {
     //
@@ -80,12 +81,28 @@ class LikeCardApplication extends Controller
             $products = [];
         endif;
 
-        // dd([
-        //     "category" => $category,
-        //     "categories" => $categories,
-        //     "products" => $products,
-        // ]);
-
         return view('pages.likecard.products.index',compact('products','categories'));
+    }
+
+    public function get_codes(Request $request){
+        $category      = null;
+        if($request->has('category_id')):
+            $category  = $request->query('category_id');
+        endif;
+        $data = Cache::rememberForever('likecard_products_'.$category, function() use($category){
+            $categories = $this->likecard_service->get_categories();
+            $products   = $this->likecard_service->get_products($category);
+            if($categories['response'] == 1):
+                $data['categories'] = $categories['data'];
+            endif;
+
+            if($products['response'] == 1):
+                $data['products'] = $products['data'];
+            endif;
+
+            return $data;
+        });
+
+        return view('pages.likecard.products.index',compact('data'));
     }
 }

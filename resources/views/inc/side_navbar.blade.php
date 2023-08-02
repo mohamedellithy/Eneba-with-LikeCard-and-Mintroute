@@ -60,19 +60,19 @@
         <li class="menu-item {{ IsActiveOnlyIf(['dashboard']) }}">
             <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">الرئيسية</div>
             </a>
         </li>
 
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Applications</span>
+            <span class="menu-header-text">الخدمات</span>
         </li>
 
         <!-- Cards -->
         <li class="menu-item {{ IsActiveOnlyIf(['application.eneba']) }}">
             <a href="{{ route('application.eneba') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Eneba</div>
+                <div data-i18n="Basic">اينيبا</div>
             </a>
         </li>
 
@@ -80,7 +80,7 @@
         <li class="menu-item {{ IsActiveOnlyIf(['application.like_card']) }}">
             <a href="{{ route('application.like_card') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">LikeCard</div>
+                <div data-i18n="Basic">لايك كارد</div>
             </a>
         </li>
 
@@ -88,7 +88,23 @@
         <li class="menu-item {{ IsActiveOnlyIf(['application.likecard.products']) }}">
             <a href="{{ route('application.likecard.products') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">LikeCard Products</div>
+                <div data-i18n="Basic">منتجات لايك كارد</div>
+            </a>
+        </li>
+
+         <!-- Cards -->
+        <li class="menu-item {{ IsActiveOnlyIf(['application.likecard.codes']) }}">
+            <a href="{{ route('application.likecard.codes') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">أكواد لايك كارد</div>
+            </a>
+        </li>
+
+         <!-- Cards -->
+         <li class="menu-item {{ IsActiveOnlyIf(['application.eneba.products']) }}">
+            <a href="{{ route('application.eneba.products') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">منتجات اينيبا</div>
             </a>
         </li>
 

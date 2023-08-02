@@ -34,14 +34,16 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::put('application/eneba/update/{section}','update_credentials')->name('eneba.update');
         Route::put('application/eneba/regenrate-token' ,'generate_token')->name('eneba.regenrate_token');
         Route::get('application/eneba/callback','eneba_callback')->name('eneba.callback');
+        Route::get('application/eneba/products','get_products')->name('eneba.products');
     });
 
     Route::controller(LikeCardApplication::class)->group(function(){
         Route::put('application/likecard/update/{section}','update_credentials')->name('likecard.update');
         Route::put('application/likecard/regenrate-token' ,'generate_token')->name('likecard.regenrate_token');
         Route::get('application/likecard/products','get_products')->name('likecard.products');
+        Route::get('application/likecard/codes','get_codes')->name('likecard.codes');
     });
-    
+
 });
 
 

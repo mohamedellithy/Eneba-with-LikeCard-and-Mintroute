@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ApplicationSetting;
 use App\Services\Eneba\Eneba;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 class EnebaApplication extends Controller
 {
     //
@@ -51,7 +52,7 @@ class EnebaApplication extends Controller
 
 
     public function generate_token(){
-        $eneba = (new Eneba())->generate_token();
+        $eneba = $this->eneba_service->generate_token();
         ApplicationSetting::updateOrCreate([
             'application' => $this->application,
             'name'        => 'access_token'
@@ -66,5 +67,15 @@ class EnebaApplication extends Controller
 
     public function eneba_callback(Request $request){
         Http::post('https://webhook.site/7c773efe-e498-4374-8ae0-2a45e7f55be6',$request->all());
+    }
+
+    public function get_products(Request $request){
+        $page_no = $request->has('prev') ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
+        $products  = Cache::rememberForever('eneba_products_'.$page_no, function() use($page_no){
+            return $this->eneba_service->get_products($page_no);
+        });
+
+        dd($this->eneba_service);
+        return view('pages.eneba.products.index',compact('products'));
     }
 }
