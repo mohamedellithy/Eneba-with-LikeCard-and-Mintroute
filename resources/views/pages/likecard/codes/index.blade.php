@@ -15,8 +15,8 @@ $category_id = request()->query('category_id') ?: null;
                         <form id="filter-data" method="get">
                             <select name="category_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
                                 <option>تصنيفات المنتجات</option>
-                                @isset($data['categories'])
-                                    @foreach($data['categories'] as $category)
+                                @isset($categories)
+                                    @foreach($categories as $category)
                                         <option value="{{ $category['id'] }}" @isset($category_id) @if($category_id == $category['id']) selected @endif @endisset>{{ $category['categoryName'] }}</option>
                                         @isset($category['childs'])
                                             @foreach($category['childs'] as $child)
@@ -31,8 +31,8 @@ $category_id = request()->query('category_id') ?: null;
                     <div class="nav-item d-flex align-items-center m-2" >
                         <select name="category_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
                             <option>المنتجات</option>
-                            @isset($data['products'])
-                                @foreach($data['products'] as $product)
+                            @isset($products)
+                                @foreach($products as $product)
                                     <option value="{{ $product['id'] }}">{{ $product['categoryName'] }}</option>
                                 @endforeach
                             @endisset

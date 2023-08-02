@@ -89,20 +89,19 @@ class LikeCardApplication extends Controller
         if($request->has('category_id')):
             $category  = $request->query('category_id');
         endif;
-        $data = Cache::rememberForever('likecard_products_'.$category, function() use($category){
-            $categories = $this->likecard_service->get_categories();
-            $products   = $this->likecard_service->get_products($category);
-            if($categories['response'] == 1):
-                $data['categories'] = $categories['data'];
-            endif;
-
-            if($products['response'] == 1):
-                $data['products'] = $products['data'];
-            endif;
-
-            return $data;
+        $categories = Cache::rememberForever('likecard_categories', function(){
+            return $this->likecard_service->get_categories();
         });
 
-        return view('pages.likecard.codes.index',compact('data'));
+        $products = Cache::rememberForever('likecard_products_'.$category, function() use($category){
+            $products   = $this->likecard_service->get_products($category);
+            if($products['response'] == 1):
+                $products = $products['data'];
+            endif;
+
+            return $products;
+        });
+
+        return view('pages.likecard.codes.index',compact('products','categories'));
     }
 }
