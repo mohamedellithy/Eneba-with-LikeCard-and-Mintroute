@@ -115,8 +115,21 @@ class LikeCardApplication extends Controller
             'product_type' => 'eneba'
         ]);
 
+        $product = $this->likecard_service->get_single_product($request->input('product_id'));
+
+        if(isset($product['response'])):
+            if($product['response'] == 1):
+                $request->merge([
+                    'product_name'  => $product['data'][0]['productName'],
+                    'product_image' => $product['data'][0]['productImage']
+                ]);
+            endif;
+        endif;
+
         $offline_code = OfflineCode::updateOrCreate($request->only([
             'product_id',
+            'product_name',
+            'product_image',
             'category_id',
             'product_type',
             'code'
