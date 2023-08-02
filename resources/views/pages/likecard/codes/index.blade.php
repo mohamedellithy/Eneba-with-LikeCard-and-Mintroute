@@ -33,7 +33,7 @@ $category_id = request()->query('category_id') ?: null;
                             <option>المنتجات</option>
                             @isset($products)
                                 @foreach($products as $product)
-                                    <option value="{{ $product['id'] }}">{{ $product['categoryName'] }}</option>
+                                    <option value="{{ $product['productId'] }}" @isset($category_id) @if($category_id == $child['id']) selected @endif @endisset>{{ $product['productName'] }}</option>
                                 @endforeach
                             @endisset
                         </select>
