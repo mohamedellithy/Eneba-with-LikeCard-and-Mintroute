@@ -29,7 +29,7 @@ $category_id = request()->query('category_id') ?: null;
                         </form>
                     </div>
                     <div class="nav-item d-flex align-items-center m-2" >
-                        <select name="category_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
+                        <select name="product_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
                             <option>المنتجات</option>
                             @isset($products)
                                 @foreach($products as $product)
