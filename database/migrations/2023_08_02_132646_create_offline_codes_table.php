@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('offline_codes', function (Blueprint $table) {
             $table->id();
             $table->integer('product_id');
-            $table->integer('product_name')->nullable();
-            $table->integer('product_image')->nullable();
+            $table->text('product_name')->nullable();
+            $table->text('product_image')->nullable();
             $table->integer('category_id')->nullable();
             $table->string('product_type');
             $table->text('code');
