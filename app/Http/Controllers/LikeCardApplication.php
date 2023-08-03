@@ -100,6 +100,7 @@ class LikeCardApplication extends Controller
             if(isset($products['data'])):
                 if($products['response'] == 1):
                     $products = isset($products['data']) ? $products['data']: [];
+                    return $products;
                 endif;
             endif;
 
