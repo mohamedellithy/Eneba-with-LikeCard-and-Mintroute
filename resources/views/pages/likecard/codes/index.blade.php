@@ -86,7 +86,7 @@ $category_id = request()->query('category_id') ?: null;
                                 <td>{{ $code->product_name ?: '-' }}</td>
                                 <td>{{ $code->product_type ?: '-' }}</td>
                                 <td>{{ $code->code         ?: '-' }}</td>
-                                <td>{{ $code->status       ?: '-' }}</td>
+                                <td>{{ $code->status       ? ($code->status == 'allow' ? 'متاح للسحب' : 'غير متاح للسحب') : '-' }}</td>
                                 <td></td>
                             </tr>
                         @empty
