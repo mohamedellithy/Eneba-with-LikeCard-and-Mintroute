@@ -56,9 +56,10 @@ $category_id = request()->query('category_id') ?: null;
                         <select name="product_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
                             <option value="">المنتجات</option>
                             @isset($products)
-                                @foreach($products as $product)
+                                @forelse($products as $product)
                                     <option value="{{ $product['productId'] }}">{{ $product['productName'] }}</option>
-                                @endforeach
+                                @empty
+                                @endforelse
                             @endisset
                         </select>
                     </div>
