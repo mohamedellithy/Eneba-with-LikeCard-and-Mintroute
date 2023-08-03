@@ -42,19 +42,27 @@ $category_id = request()->query('category_id') ?: null;
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>الاسم</th>
                             <th>تاريخ الاطلاق</th>
                             <th>تاريخ الانشاء</th>
                             <th>نوع المنتج</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
                         @foreach($products['result']['edges'] as $product)
                             <tr>
+                                <td> {{  $product['node']['id'] }}</td>
                                 <td> {{  $product['node']['name'] }}</td>
                                 <td> {{  $product['node']['releasedAt'] }}</td>
                                 <td> {{  $product['node']['createdAt'] }}</td>
                                 <td> {{  $product['node']['type']['value'] }}</td>
+                                <td> 
+                                    <a href="#" class="btn btn-info btn-sm">
+                                        اختيار المنتج
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
