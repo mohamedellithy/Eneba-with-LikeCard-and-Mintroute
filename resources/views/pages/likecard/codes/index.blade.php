@@ -36,7 +36,7 @@ $category_id = request()->query('category_id') ?: null;
                 <div class="d-flex card-body card-body-form">
                     <div class="mb-3">
                         <label>اسم المنتج</label>
-                        <select name="product_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
+                        <select name="product_id" id="largeSelect" class="form-select form-select-lg">
                             <option value="">المنتجات</option>
                             @isset($products)
                                 @forelse($products as $product)
@@ -64,14 +64,33 @@ $category_id = request()->query('category_id') ?: null;
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>الصورة</th>
-                            <th>الاسم</th>
-                            <th>السعر</th>
-                            <th>المتوفر</th>
+                            <th>رقم المنتج</th>
+                            <th>اسم المنتج</th>
+                            <th>نوع المنتج</th>
+                            <th>كود المنتج</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
+                        @forelse($codes as $code)
+                            <tr>
+                                <td>
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td>
+                                    <img src="{{ $code->product_image ?: '' }}" />
+                                </td>
+                                <td>{{ $code->product_id   ?: '-' }}</td>
+                                <td>{{ $code->product_name ?: '-' }}</td>
+                                <td>{{ $code->product_type ?: '-' }}</td>
+                                <td>{{ $code->code         ?: '-' }}</td>
+                                <td>{{ $code->status       ?: '-' }}</td>
+                                <td></td>
+                            </tr>
+                        @empty
+                        @endforelse
                     </tbody>
                 </table>
             </div>
