@@ -146,5 +146,11 @@ $category_id = request()->query('category_id') ?: null;
     {
         height: 50px;
     }
+    .dropdown-menu{
+        padding: 10px;
+    }
+    .dropdown-menu button{
+        margin:2px;
+    }
 </style>
 @endpush
