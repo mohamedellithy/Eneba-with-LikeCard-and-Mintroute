@@ -19,7 +19,6 @@ class Eneba {
     }
 
     public function resolve_call($query){
-        dd($this->credentail['access_token']);
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $this->credentail['access_token'],
             'Content-Type' => 'application/json',
