@@ -87,7 +87,20 @@ $category_id = request()->query('category_id') ?: null;
                                 <td>{{ $code->product_type ?: '-' }}</td>
                                 <td>{{ $code->code         ?: '-' }}</td>
                                 <td>{{ $code->status       ? ($code->status == 'allow' ? 'متاح للسحب' : 'غير متاح للسحب') : '-' }}</td>
-                                <td></td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm">
+                                        ادراج الكود 
+                                    </button>
+                                    @if($code->status == 'allow')
+                                        <button class="btn btn-danger btn-sm">
+                                            توقيف الكود 
+                                        </button>
+                                    @elseif($code->status != 'allow')
+                                        <button class="btn btn-success btn-sm">
+                                            اتاحة الكود 
+                                        </button>
+                                    @endif
+                                </td>
                             </tr>
                         @empty
                         @endforelse
