@@ -16,6 +16,7 @@ class OfflineCode extends Model
         'category_id',
         'product_type',
         'code',
+        'status_used',
         'status'
     ];
 }

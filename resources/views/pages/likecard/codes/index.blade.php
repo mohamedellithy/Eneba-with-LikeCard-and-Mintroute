@@ -86,20 +86,28 @@ $category_id = request()->query('category_id') ?: null;
                                 <td>{{ $code->product_name ?: '-' }}</td>
                                 <td>{{ $code->product_type ?: '-' }}</td>
                                 <td>{{ $code->code         ?: '-' }}</td>
-                                <td>{{ $code->status       ? ($code->status == 'allow' ? 'متاح للسحب' : 'غير متاح للسحب') : '-' }}</td>
+                                <td>{{ $code->status_used   == 'used' ? 'مستخدم': 'غير مستخدم' }}</td>
+                                <td>{{ $code->status        == 'allow' ? 'متاح للسحب' : 'غير متاح للسحب' }}</td>
                                 <td>
-                                    <button class="btn btn-danger btn-sm">
-                                        ادراج الكود 
-                                    </button>
-                                    @if($code->status == 'allow')
-                                        <button class="btn btn-danger btn-sm">
-                                            توقيف الكود 
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                          <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
-                                    @elseif($code->status != 'allow')
-                                        <button class="btn btn-success btn-sm">
-                                            اتاحة الكود 
-                                        </button>
-                                    @endif
+                                        <div class="dropdown-menu">
+                                            <button class="btn btn-warning btn-sm dropdown-item">
+                                                استخدام الكود 
+                                            </button>
+                                            @if($code->status == 'allow')
+                                                <button class="btn btn-danger btn-sm dropdown-item">
+                                                    توقيف الكود 
+                                                </button>
+                                            @elseif($code->status != 'allow')
+                                                <button class="btn btn-success btn-sm dropdown-item">
+                                                    اتاحة الكود 
+                                                </button>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @empty

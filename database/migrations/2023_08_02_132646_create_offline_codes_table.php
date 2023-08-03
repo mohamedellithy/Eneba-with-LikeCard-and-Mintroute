@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('category_id')->nullable();
             $table->string('product_type');
             $table->text('code');
+            $table->string('status_used')->default('unused');
             $table->string('status')->default('allow');
             $table->timestamps();
         });
