@@ -1,6 +1,7 @@
 @extends('master')
 @php
 $category_id = request()->query('category_id') ?: null;
+dd($products);
 @endphp
 @push('custom_style')
 <style>
