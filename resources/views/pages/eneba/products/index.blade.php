@@ -42,7 +42,7 @@ $category_id = request()->query('category_id') ?: null;
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>كود المنتج</th>
                             <th>الاسم</th>
                             <th>تاريخ الاطلاق</th>
                             <th>تاريخ الانشاء</th>
@@ -59,7 +59,7 @@ $category_id = request()->query('category_id') ?: null;
                                 <td> {{  $product['node']['createdAt'] }}</td>
                                 <td> {{  $product['node']['type']['value'] }}</td>
                                 <td> 
-                                    <a href="#" class="btn btn-info btn-sm">
+                                    <a href="{{ route('application.eneba.get_single_product') }}" class="btn btn-info btn-sm">
                                         اختيار المنتج
                                     </a>
                                 </td>

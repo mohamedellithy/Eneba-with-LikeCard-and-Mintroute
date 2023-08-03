@@ -35,6 +35,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::put('application/eneba/regenrate-token' ,'generate_token')->name('eneba.regenrate_token');
         Route::get('application/eneba/callback','eneba_callback')->name('eneba.callback');
         Route::get('application/eneba/products','get_products')->name('eneba.products');
+        Route::get('application/eneba/single-product','get_single_product')->name('eneba.get_single_product');
     });
 
     Route::controller(LikeCardApplication::class)->group(function(){

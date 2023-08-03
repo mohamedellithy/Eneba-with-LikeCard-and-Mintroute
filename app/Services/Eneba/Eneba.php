@@ -173,9 +173,13 @@ class Eneba {
         }
         GQL;
         $response = $this->resolve_call($query);
-        dd($response->json());
+
+        if($response->successful()):
+            return [
+                'code' => $response->status(),
+                'status' => isset($response->json()['data']['S_products']) ? true : false,
+                'result' => isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
+            ];
+        endif;
     }
-
-
-
 }
