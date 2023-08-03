@@ -59,7 +59,7 @@ $category_id = request()->query('category_id') ?: null;
                                 <td> {{  $product['node']['createdAt'] }}</td>
                                 <td> {{  $product['node']['type']['value'] }}</td>
                                 <td> 
-                                    <a href="{{ route('application.eneba.get_single_product') }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm">
                                         اختيار المنتج
                                     </a>
                                 </td>
