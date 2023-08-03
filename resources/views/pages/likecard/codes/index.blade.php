@@ -28,9 +28,6 @@ $category_id = request()->query('category_id') ?: null;
             المنتجات
         </h4>
         <!-- Basic Bootstrap Table -->
-        <form method="post" action="{{ route('application.likecard.store_codes') }}">
-            <input type="hidden" @isset($category_id) value="{{ $category_id }}" @endisset name="category_id"/>
-            @csrf
             <div class="card" style="padding-top: 3%;">
                 <div class="d-flex card-body card-body-form">
                     <div class="mb-3">
@@ -51,30 +48,33 @@ $category_id = request()->query('category_id') ?: null;
                             </select>
                         </form>
                     </div>
-                    <div class="mb-3">
-                        <label>اسم المنتج</label>
-                        <select name="product_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
-                            <option value="">المنتجات</option>
-                            @isset($products)
-                                @forelse($products as $product)
-                                    <option value="{{ $product['productId'] }}">{{ $product['productName'] }}</option>
-                                @empty
-                                @endforelse
-                            @endisset
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label>كود المنتج</label>
-                        <input type="text" name="code" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">
-                            اضافة كود جديد
-                        </button>
-                    </div>
+                    <form method="post" action="{{ route('application.likecard.store_codes') }}">
+                        <input type="hidden" @isset($category_id) value="{{ $category_id }}" @endisset name="category_id"/>
+                        @csrf
+                        <div class="mb-3">
+                            <label>اسم المنتج</label>
+                            <select name="product_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
+                                <option value="">المنتجات</option>
+                                @isset($products)
+                                    @forelse($products as $product)
+                                        <option value="{{ $product['productId'] }}">{{ $product['productName'] }}</option>
+                                    @empty
+                                    @endforelse
+                                @endisset
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>كود المنتج</label>
+                            <input type="text" name="code" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">
+                                اضافة كود جديد
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
         <br/>
         <div class="card" style="padding-top: 3%;">
             <div class="table-responsive">
