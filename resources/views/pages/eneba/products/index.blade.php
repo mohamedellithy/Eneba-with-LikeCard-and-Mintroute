@@ -59,7 +59,7 @@ $category_id = request()->query('category_id') ?: null;
                         @endforeach
                     </tbody>
                 </table>
-                <div class="">
+                <div style="padding: 26px;">
                     @if($products['result']['pageInfo']['hasNextPage'] == true)
                         <a class="btn btn-danger" href="{{ route('application.eneba.products',['next' => $products['result']['pageInfo']['endCursor'] ]) }}">
                             التالي
