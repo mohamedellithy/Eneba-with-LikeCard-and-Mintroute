@@ -45,7 +45,7 @@ class Eneba {
         ])->post($this->endpoint.'/oauth/token',$post);
 
 
-        dd($response->json(),$post);
+        dd($response->body(),$post);
 
         if($response->successful() == true):
             return [
