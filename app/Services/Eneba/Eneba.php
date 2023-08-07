@@ -202,21 +202,21 @@ class Eneba {
     }
 
     public function declared_stock(){
-        // $query = <<<GQL
-        //     mutation {
-        //         P_registerCallback(
-        //         input: {
-        //             type: DECLARED_STOCK_PROVISION
-        //             url: "https://a-ecards.com/applications/eneba/callback-stock-provision"
-        //             authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
-        //         }
-        //         ) {
-        //         success
-        //         }
-        //     }
-        // GQL;
-        // $response = $this->resolve_call($query);
-        // dd($response->json());
+        $query = <<<GQL
+            mutation {
+                P_registerCallback(
+                input: {
+                    type: DECLARED_STOCK_PROVISION
+                    url: "https://a-ecards.com/applications/eneba/callback-stock-provision"
+                    authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
+                }
+                ) {
+                success
+                }
+            }
+        GQL;
+        $response = $this->resolve_call($query);
+        dd($response->json());
         $query = <<<GQL
             mutation {
                 P_triggerCallback(input: {
