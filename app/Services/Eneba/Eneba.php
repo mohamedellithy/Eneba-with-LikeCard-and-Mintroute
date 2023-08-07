@@ -17,7 +17,7 @@ class Eneba {
 
         $this->credentail['access_token'] = ($token['status'] == 'success') ? $token['access_token'] : null;
 
-        dd($this->credentail);
+        dd($this->credentail,$this->endpoint);
     }
 
     public function resolve_call($query){
