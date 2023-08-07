@@ -202,24 +202,18 @@ class Eneba {
     }
 
     public function declared_stock(){
-
         $query = <<<GQL
             mutation {
-                P_registerCallback(
-                input: {
-                    type: DECLARED_STOCK_RESERVATION
-                    url: "https://a-ecards.com/applications/application/eneba/callback"
-                    authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
-                }
-                ) {
+                P_enableDeclaredStock {
                 success
+                failureReason
                 }
             }
         GQL;
         $response = $this->resolve_call($query);
 
         dd($response->json());
-        
+
         $query = <<<GQL
             mutation {
                 P_triggerCallback(input: {
@@ -271,5 +265,24 @@ class Eneba {
                 'result' => isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
             ];
         endif;
+    }
+
+    public function register_callback(){
+        $query = <<<GQL
+            mutation {
+                P_registerCallback(
+                input: {
+                    type: DECLARED_STOCK_RESERVATION
+                    url: "https://a-ecards.com/applications/application/eneba/callback"
+                    authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
+                }
+                ) {
+                success
+                }
+            }
+        GQL;
+        $response = $this->resolve_call($query);
+
+        dd($response->json());
     }
 }
