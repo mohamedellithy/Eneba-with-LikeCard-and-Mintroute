@@ -11,11 +11,11 @@ $category_id = request()->query('category_id') ?: null;
         <div class="card" style="padding-top: 3%;">
             <form id="filter-data" method="get">
                 <div class="d-flex filters-fields">
-                    {{-- <div class="nav-item d-flex align-items-center m-2" >
+                    <div class="nav-item d-flex align-items-center m-2" >
                         <i class="bx bx-search fs-4 lh-0"></i>
                         <input type="text" class="search form-control border-0 shadow-none" placeholder="البحث ...."
                             @isset($search) value="{{ $search }}" @endisset id="search" name="search"/>
-                    </div> --}}
+                    </div>
                     <div class="nav-item d-flex align-items-center m-2" >
                         <select name="filter" id="largeSelect"  onchange="document.getElementById('filter-data').submit()" class="form-select form-select-lg">
                             <option>فلتر المنتجات</option>

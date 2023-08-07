@@ -70,9 +70,10 @@ class EnebaApplication extends Controller
     }
 
     public function get_products(Request $request){
-        $page_no = $request->has('prev') ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
-        $products  = Cache::rememberForever('eneba_products_'.$page_no, function() use($page_no){
-            return $this->eneba_service->get_products($page_no);
+        $page_no = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
+        $search  = request('search') ? $request->query('search') : null;
+        $products  = Cache::rememberForever('eneba_products_'.$search.'_'.$page_no, function() use($page_no,$search){
+            return $this->eneba_service->get_products($page_no,$search);
         });
 
         return view('pages.eneba.products.index',compact('products'));

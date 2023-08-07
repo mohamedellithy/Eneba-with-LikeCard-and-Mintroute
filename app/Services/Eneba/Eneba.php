@@ -109,7 +109,7 @@ class Eneba {
         dd($response->json());
     }
 
-    public function get_products($from = null){
+    public function get_products($from = null,$search = ""){
         $now = date('Y-m-d H:i:s');
         $query = <<<GQL
         query {
@@ -117,6 +117,7 @@ class Eneba {
                 sort: CREATED_AT_ASC
                 first:20
                 after:"{$from}"
+                search:"{$search}"
               ) {
               totalCount
               pageInfo {
