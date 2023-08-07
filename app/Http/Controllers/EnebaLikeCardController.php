@@ -24,6 +24,8 @@ class EnebaLikeCardController extends Controller
             return $this->eneba_service->get_single_product($id);
         });
 
+        dd( $product_eneba );
+
         $category      = null;
         if($request->has('category_id')):
             $category  = $request->query('category_id');
