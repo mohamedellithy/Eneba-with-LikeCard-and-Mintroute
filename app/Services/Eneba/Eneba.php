@@ -158,6 +158,7 @@ class Eneba {
             S_product(productId: "{$product_id}") {
               name
               slug
+              productId
               regions { code }
               type { value }
               auctions {
@@ -165,7 +166,6 @@ class Eneba {
                 edges {
                   node {
                     belongsToYou
-                    productId
                     price { amount currency }
                   }
                 }
