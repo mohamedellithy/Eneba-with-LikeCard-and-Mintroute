@@ -15,7 +15,7 @@ class EnebaApplication extends Controller
 
     public function __construct(){
         $this->application   = 'eneba';
-        $this->eneba_service = new Eneba(false);
+        $this->eneba_service = new Eneba();
     }
 
     public function update_credentials(Request $request,$section){
