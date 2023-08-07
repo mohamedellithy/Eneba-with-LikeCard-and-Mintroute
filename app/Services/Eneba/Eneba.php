@@ -207,7 +207,7 @@ class Eneba {
                 P_registerCallback(
                 input: {
                     type: DECLARED_STOCK_PROVISION
-                    url: "https://a-ecards.com/applications/application/eneba/callback?type=2"
+                    url: "https://a-ecards.com/applications/application/eneba/callback-stock-provision"
                     authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
                 }
                 ) {
@@ -290,7 +290,7 @@ class Eneba {
                 P_registerCallback(
                 input: {
                     type: DECLARED_STOCK_RESERVATION
-                    url: "https://a-ecards.com/applications/application/eneba/callback"
+                    url: "https://a-ecards.com/applications/application/eneba/callback-stock-reservation"
                     authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
                 }
                 ) {
