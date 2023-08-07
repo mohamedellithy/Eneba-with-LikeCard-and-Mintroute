@@ -227,7 +227,6 @@ class Eneba {
                 }
                 ) {
                 success
-                message
                 }
             }
         GQL;
