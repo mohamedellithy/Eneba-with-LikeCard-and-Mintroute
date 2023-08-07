@@ -68,7 +68,7 @@ class EnebaApplication extends Controller
     public function eneba_callback(Request $request){
         Http::post('https://webhook.site/4e302f27-0ad9-43ea-8573-0969708fb17e',$request->all());
         return response()->json([
-          'success' => true
+          'status' => 'success'
         ],200);
     }
 
