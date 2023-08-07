@@ -66,7 +66,7 @@ class EnebaApplication extends Controller
     }
 
     public function eneba_callback(Request $request){
-        Http::post('https://webhook.site/7c773efe-e498-4374-8ae0-2a45e7f55be6',$request->all());
+        Http::post('https://webhook.site/4e302f27-0ad9-43ea-8573-0969708fb17e',$request->all());
     }
 
     public function get_products(Request $request){

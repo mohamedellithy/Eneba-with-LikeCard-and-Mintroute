@@ -205,6 +205,23 @@ class Eneba {
 
         $query = <<<GQL
             mutation {
+                P_registerCallback(
+                input: {
+                    type: DECLARED_STOCK_RESERVATION
+                    url: "https://a-ecards.com/applications/application/eneba/callback"
+                    authorization: "{$this->credentail['access_token']}"
+                }
+                ) {
+                success
+                }
+            }
+        GQL;
+        $response = $this->resolve_call($query);
+
+        dd($response->json());
+        
+        $query = <<<GQL
+            mutation {
                 P_triggerCallback(input: {
                 type: DECLARED_STOCK_RESERVATION
                 orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
