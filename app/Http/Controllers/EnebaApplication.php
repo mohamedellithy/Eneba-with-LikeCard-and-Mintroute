@@ -75,8 +75,6 @@ class EnebaApplication extends Controller
             return $this->eneba_service->get_products($page_no);
         });
 
-        dd($products);
-
         return view('pages.eneba.products.index',compact('products'));
     }
 }
