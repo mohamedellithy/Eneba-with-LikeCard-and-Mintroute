@@ -30,7 +30,7 @@ $category_id = request()->query('category_id') ?: null;
                     </form>
                 </div>
             </div>
-            <form method="post" action="{{ route('application.likecard.store_codes') }}">
+            {{-- <form method="post" action="{{ route('application.likecard.store_codes') }}">
                 @csrf
                 <input type="hidden" value="{{ $category_id }}" name="category_id">
                 <div class="d-flex card-body card-body-form">
@@ -56,7 +56,7 @@ $category_id = request()->query('category_id') ?: null;
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> --}}
         </div>
         <br/>
         <div class="card" style="padding-top: 3%;">
@@ -64,16 +64,66 @@ $category_id = request()->query('category_id') ?: null;
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>الصورة</th>
-                            <th>رقم المنتج</th>
-                            <th>اسم المنتج</th>
-                            <th>نوع المنتج</th>
-                            <th>كود المنتج</th>
+                            <th>الاسم</th>
+                            <th>السعر</th>
+                            <th>المتوفر</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
+                        @isset($products)
+                            @forelse($products as $product)
+                                <tr>
+                                    <td class="">
+                                        <img src="{{ $product['productImage'] }}" alt="Avatar"
+                                        class="">
+                                    </td>
+                                    <td class="width-30">{{ $product['productName'] }}</td>
+                                    <td>
+                                    {{ $product['productPrice'] }} {{ $product['productCurrency'] }}
+                                    </td>
+
+                                    <td>
+                                        @if ($product['available'] == true)
+                                            <span class="badge bg-label-success me-1">متاح</span>
+                                        @else
+                                            <span class="badge bg-label-danger me-1">غير متاح</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a class="dropdown-item" href="{{ $product['productId'] }}"><i
+                                                class="fa-regular fa-eye me-2"></i></i>عرض
+                                        </a>
+                                    </td>
+                                    {{-- <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                                            <div class="dropdown-menu">
+                                                <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.products.edit', $product->id) }}"><i
+                                                            class="bx bx-edit-alt me-2"></i>
+                                                        تعديل</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item">
+                                                        <i class="bx bx-trash me-2"></i>حذف
+                                                    </button>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.products.show', $product->id) }}"><i
+                                                            class="fa-regular fa-eye me-2"></i></i>عرض
+
+                                                    </a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td> --}}
+                                </tr>
+                            @empty
+                            @endforelse
+                        @endisset
                     </tbody>
                 </table>
             </div>
@@ -103,7 +153,7 @@ $category_id = request()->query('category_id') ?: null;
     .card-category-frmae label{
         padding-bottom: 10px;
     }
-    .card-body-form .mb-3 input , 
+    .card-body-form .mb-3 input ,
     .card-category-frmae mb3 input
     {
         height: 50px;
