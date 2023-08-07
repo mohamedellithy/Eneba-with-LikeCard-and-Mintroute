@@ -40,9 +40,16 @@ class Eneba {
             'secret'     => $this->credentail['auth_secret']
         ];
 
+        if($this->sandbox == true):
+            $endpoint = $this->endpoint;
+        else:
+            $endpoint          = "https://user.eneba.com";
+            $post['client_id'] = "917611c2-70a5-11e9-97c4-46691b78bfa2";
+        endif;
+
         $response = Http::asForm()->withOptions([
             "verify"=>false
-        ])->post($this->endpoint.'/oauth/token',$post);
+        ])->post($endpoint.'/oauth/token',$post);
 
 
         dd($response->body(),$post);
