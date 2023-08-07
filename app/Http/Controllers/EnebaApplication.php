@@ -90,6 +90,7 @@ class EnebaApplication extends Controller
         return response()->json([
             "action"  => "RESERVE",
             "orderId" => $request->input('orderId'),
+            "auctionId" => $request->input('auction')['auctionId'],
             "success" => true
         ],200);
     }
