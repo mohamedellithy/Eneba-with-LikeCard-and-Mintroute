@@ -24,7 +24,7 @@ class Eneba {
         else:
             $endpoint = $this->endpoint.'/';
         endif;
-        dd($endpoint);
+        
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $this->credentail['access_token'],
             'Content-Type' => 'application/json',
