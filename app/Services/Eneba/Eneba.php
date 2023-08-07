@@ -158,7 +158,7 @@ class Eneba {
             S_product(productId: "{$product_id}") {
               name
               slug
-              productId
+              id
               regions { code }
               type { value }
               auctions {
