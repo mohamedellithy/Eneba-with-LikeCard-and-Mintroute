@@ -188,9 +188,20 @@ class Eneba {
 
         $query = <<<GQL
             mutation {
-                P_enableDeclaredStock {
+                P_triggerCallback(input: {
+                type: DECLARED_STOCK_RESERVATION
+                orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
+                auction: {
+                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
+                    price: {
+                    amount: 1500
+                    currency: "EUR"
+                    }
+                    keyCount: 1
+                }
+                }){
                 success
-                failureReason
+                message
                 }
             }
         GQL;
