@@ -183,4 +183,34 @@ class Eneba {
             ];
         endif;
     }
+
+    public function declared_stock(){
+        $query = <<<GQL
+            mutation {
+                S_createAuction(
+                input: {
+                    productId: "cdde0e73-2f2c-1c00-a0c6-4d9043330078"
+                    enabled: true
+                    declaredStock: 1
+                    autoRenew: false
+                    price: { amount: 1400, currency: "EUR" }
+                }
+                ) {
+                success
+                actionId
+                }
+            }
+        GQL;
+
+        $response = $this->resolve_call($query);
+
+        dd($response->json());
+
+        if($response->successful()):
+            return [
+                'code' => $response->status(),
+                'result' => isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
+            ];
+        endif;
+    }
 }
