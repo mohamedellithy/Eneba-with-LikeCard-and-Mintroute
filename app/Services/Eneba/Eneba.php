@@ -185,6 +185,20 @@ class Eneba {
     }
 
     public function declared_stock(){
+
+        $query = <<<GQL
+            mutation {
+                P_enableDeclaredStock {
+                success
+                failureReason
+                }
+            }
+        GQL;
+        $response = $this->resolve_call($query);
+
+        dd($response->json());
+
+
         $query = <<<GQL
             mutation {
                 S_createAuction(
