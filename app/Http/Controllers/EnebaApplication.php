@@ -69,6 +69,7 @@ class EnebaApplication extends Controller
         Http::post('https://webhook.site/4e302f27-0ad9-43ea-8573-0969708fb17e',$request->all());
         return response()->json([
           'status'   => 'RESERVE',
+          "action"   => "RESERVE",
           'RESERVE'  => true,
           'received' => true
         ],200);
