@@ -216,7 +216,7 @@ class Eneba {
         //     }
         // GQL;
         // $response = $this->resolve_call($query);
-        
+
         $query = <<<GQL
             mutation {
                 P_registerCallback(
@@ -227,6 +227,7 @@ class Eneba {
                 }
                 ) {
                 success
+                message
                 }
             }
         GQL;
