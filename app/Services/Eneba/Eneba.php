@@ -217,6 +217,28 @@ class Eneba {
         // GQL;
         // $response = $this->resolve_call($query);
         // dd($response->json());
+        $query = <<<GQL
+            mutation {
+                P_triggerCallback(input: {
+                type: DECLARED_STOCK_RESERVATION
+                orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
+                auction: {
+                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
+                    price: {
+                    amount: 1500
+                    currency: "EUR"
+                    }
+                    keyCount: 1
+                }
+                }){
+                success
+                message
+                }
+            }
+        GQL;
+
+        $response = $this->resolve_call($query);
+        dd($response->json());
 
         $query = <<<GQL
             mutation {
@@ -289,7 +311,7 @@ class Eneba {
                 P_registerCallback(
                 input: {
                     type: DECLARED_STOCK_RESERVATION
-                    url: "https://a-ecards.com/applications/application/eneba/callback-stock-reservation"
+                    url: "https://a-ecards.com/applications/eneba/callback-stock-reservation"
                     authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
                 }
                 ) {
