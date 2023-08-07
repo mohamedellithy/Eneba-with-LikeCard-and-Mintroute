@@ -34,8 +34,8 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
     Route::controller(EnebaApplication::class)->group(function(){
         Route::put('application/eneba/update/{section}','update_credentials')->name('eneba.update');
         Route::put('application/eneba/regenrate-token' ,'generate_token')->name('eneba.regenrate_token');
-        Route::post('eneba/callback-stock-provision','eneba_callback')->name('eneba.callback_stock_provision');
-        Route::post('eneba/callback-stock-reservation','eneba_callback')->name('eneba.callback_stock_reservation');
+        Route::post('eneba/callback-stock-provision','eneba_callback_stock_provision')->name('eneba.callback_stock_provision');
+        Route::post('eneba/callback-stock-reservation','eneba_callback_stock_reservation')->name('eneba.callback_stock_reservation');
         Route::get('application/eneba/products','get_products')->name('eneba.products');
     });
 
