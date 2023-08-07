@@ -207,7 +207,7 @@ class Eneba {
                 P_registerCallback(
                 input: {
                     type: DECLARED_STOCK_PROVISION
-                    url: "https://a-ecards.com/applications/application/eneba/callback-stock-provision"
+                    url: "https://a-ecards.com/applications/eneba/callback-stock-provision"
                     authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
                 }
                 ) {
@@ -216,6 +216,7 @@ class Eneba {
             }
         GQL;
         $response = $this->resolve_call($query);
+        dd($response->json());
 
         $query = <<<GQL
             mutation {
@@ -307,7 +308,7 @@ class Eneba {
                 P_registerCallback(
                 input: {
                     type: DECLARED_STOCK_PROVISION
-                    url: "https://a-ecards.com/applications/application/eneba/callback-stock-provision"
+                    url: "https://a-ecards.com/applications/eneba/callback-stock-provision"
                     authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
                 }
                 ) {
