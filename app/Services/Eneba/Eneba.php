@@ -22,7 +22,7 @@ class Eneba {
         if($this->sandbox == true):
             $endpoint = $this->endpoint.'/graphql/';
         else:
-            $endpoint = $this->endpoint;
+            $endpoint = $this->endpoint.'/';
         endif;
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $this->credentail['access_token'],
