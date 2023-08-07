@@ -19,12 +19,17 @@ class Eneba {
     }
 
     public function resolve_call($query){
+        if($this->sandbox == true):
+            $endpoint = $this->endpoint.'/graphql/';
+        else:
+            $endpoint = $this->endpoint;
+        endif;
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $this->credentail['access_token'],
             'Content-Type' => 'application/json',
         ])->withOptions([
             "verify"=>false
-        ])->post($this->endpoint.'/graphql/',[
+        ])->post($endpoint,[
             'query' => $query
         ]);
 
