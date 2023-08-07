@@ -165,6 +165,7 @@ class Eneba {
                 edges {
                   node {
                     belongsToYou
+                    productId
                     price { amount currency }
                   }
                 }
