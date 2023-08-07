@@ -209,7 +209,7 @@ class Eneba {
                 input: {
                     type: DECLARED_STOCK_RESERVATION
                     url: "https://a-ecards.com/applications/application/eneba/callback"
-                    authorization: "{$this->credentail['access_token']}"
+                    authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
                 }
                 ) {
                 success
