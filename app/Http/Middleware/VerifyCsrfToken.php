@@ -13,5 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        'applications/eneba/callback-stock-provision',
+        'applications/eneba/callback-stock-reservation',
     ];
 }
