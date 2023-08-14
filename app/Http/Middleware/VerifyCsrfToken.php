@@ -15,6 +15,6 @@ class VerifyCsrfToken extends Middleware
         //
         'applications/eneba/callback-stock-provision',
         'applications/eneba/callback-stock-reservation',
-        'applications/application/eneba/single-product/{id}'
+        // 'applications/application/eneba/single-product/{id}'
     ];
 }

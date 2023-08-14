@@ -300,7 +300,7 @@ class Eneba {
             mutation {
                 S_createAuction(
                 input: {
-                    productId: "92c73bdc-80d4-1041-a4de-c12cc3d288c0"
+                    productId: "6f8f00a6-9def-18b3-a2d4-b37c780945a2"
                     enabled: true
                     declaredStock: 1
                     autoRenew: false
