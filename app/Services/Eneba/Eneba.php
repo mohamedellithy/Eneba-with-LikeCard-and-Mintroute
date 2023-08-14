@@ -202,6 +202,7 @@ class Eneba {
     }
 
     public function declared_stock(){
+        // first 1
         // $query = <<<GQL
         //     mutation {
         //         P_registerCallback(
@@ -217,19 +218,19 @@ class Eneba {
         // GQL;
         // $response = $this->resolve_call($query);
 
-        // $query = <<<GQL
-        //     mutation {
-        //         P_registerCallback(
-        //         input: {
-        //             type: DECLARED_STOCK_RESERVATION
-        //             url: "https://a-ecards.com/applications/eneba/callback-stock-reservation"
-        //             authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
-        //         }
-        //         ) {
-        //         success
-        //         }
-        //     }
-        // GQL;
+        $query = <<<GQL
+            mutation {
+                P_registerCallback(
+                input: {
+                    type: DECLARED_STOCK_RESERVATION
+                    url: "https://a-ecards.com/applications/eneba/callback-stock-reservation"
+                    authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
+                }
+                ) {
+                success
+                }
+            }
+        GQL;
         // $response = $this->resolve_call($query);
         // dd($response->json());
 
@@ -285,14 +286,14 @@ class Eneba {
         //     }
         // GQL;
 
-        $query = <<<GQL
-            mutation {
-                P_enableDeclaredStock {
-                success
-                failureReason
-                }
-            }
-        GQL;
+        // $query = <<<GQL
+        //     mutation {
+        //         P_enableDeclaredStock {
+        //         success
+        //         failureReason
+        //         }
+        //     }
+        // GQL;
 
 
         // $query = <<<GQL
