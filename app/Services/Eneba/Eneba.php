@@ -157,7 +157,7 @@ class Eneba {
             return [
               'code' => $response->status(),
               'status' => isset($response->json()['data']['S_products']) ? true : false,
-              'result' => $response->json()//isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
+              'result' => isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
             ];
         else:
           return [
