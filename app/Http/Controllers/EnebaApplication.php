@@ -98,7 +98,7 @@ class EnebaApplication extends Controller
     public function get_products(Request $request){
         $page_no = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
         $search  = request('search') ? $request->query('search') : null;
-        //dd($this->eneba_service->get_products($page_no,$search));
+        dd($this->eneba_service->get_products($page_no,$search));
         $products  = Cache::rememberForever('eneba_products_'.$search.'_'.$page_no, function() use($page_no,$search){
             return $this->eneba_service->get_products($page_no,$search);
         });
