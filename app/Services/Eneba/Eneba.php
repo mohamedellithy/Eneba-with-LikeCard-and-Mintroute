@@ -203,21 +203,22 @@ class Eneba {
 
     public function declared_stock(){
         // first 1
-        $query = <<<GQL
-            mutation {
-                P_registerCallback(
-                input: {
-                    type: DECLARED_STOCK_PROVISION
-                    url: "https://a-ecards.com/applications/eneba/callback-stock-provision"
-                    authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
-                }
-                ) {
-                success
-                }
-            }
-        GQL;
-        // $response = $this->resolve_call($query);
+        // $query = <<<GQL
+        //     mutation {
+        //         P_registerCallback(
+        //         input: {
+        //             type: DECLARED_STOCK_PROVISION
+        //             url: "https://a-ecards.com/applications/eneba/callback-stock-provision"
+        //             authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
+        //         }
+        //         ) {
+        //         success
+        //         }
+        //     }
+        // GQL;
 
+
+        // first 2
         // $query = <<<GQL
         //     mutation {
         //         P_registerCallback(
@@ -231,28 +232,27 @@ class Eneba {
         //         }
         //     }
         // GQL;
-        // $response = $this->resolve_call($query);
-        // dd($response->json());
 
-        // $query = <<<GQL
-        //     mutation {
-        //         P_triggerCallback(input: {
-        //         type: DECLARED_STOCK_RESERVATION
-        //         orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
-        //         auction: {
-        //             auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
-        //             price: {
-        //             amount: 1500
-        //             currency: "EUR"
-        //             }
-        //             keyCount: 1
-        //         }
-        //         }){
-        //         success
-        //         message
-        //         }
-        //     }
-        // GQL;
+
+        $query = <<<GQL
+            mutation {
+                P_triggerCallback(input: {
+                type: DECLARED_STOCK_RESERVATION
+                orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
+                auction: {
+                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
+                    price: {
+                    amount: 1500
+                    currency: "EUR"
+                    }
+                    keyCount: 1
+                }
+                }){
+                success
+                message
+                }
+            }
+        GQL;
 
         // $query = <<<GQL
         //     mutation {
