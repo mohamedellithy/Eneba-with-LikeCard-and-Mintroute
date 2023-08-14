@@ -286,32 +286,32 @@ class Eneba {
         //     }
         // GQL;
 
-        // $query = <<<GQL
-        //     mutation {
-        //         P_enableDeclaredStock {
-        //         success
-        //         failureReason
-        //         }
-        //     }
-        // GQL;
-
-
         $query = <<<GQL
             mutation {
-                S_createAuction(
-                input: {
-                    productId: "6f8f00a6-9def-18b3-a2d4-b37c780945a2"
-                    enabled: true
-                    declaredStock: 1
-                    autoRenew: false
-                    price: { amount: 1399, currency: "EUR" }
-                }
-                ) {
+                P_enableDeclaredStock {
                 success
-                actionId
+                failureReason
                 }
             }
         GQL;
+
+
+        // $query = <<<GQL
+        //     mutation {
+        //         S_createAuction(
+        //         input: {
+        //             productId: "6f8f00a6-9def-18b3-a2d4-b37c780945a2"
+        //             enabled: true
+        //             declaredStock: 1
+        //             autoRenew: false
+        //             price: { amount: 1399, currency: "EUR" }
+        //         }
+        //         ) {
+        //         success
+        //         actionId
+        //         }
+        //     }
+        // GQL;
         $response = $this->resolve_call($query);
         dd($response->json());
 
