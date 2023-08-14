@@ -24,7 +24,7 @@ class Eneba {
         else:
             $endpoint = $this->endpoint.'/';
         endif;
-        
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $this->credentail['access_token'],
             'Content-Type' => 'application/json',
@@ -157,7 +157,7 @@ class Eneba {
             return [
               'code' => $response->status(),
               'status' => isset($response->json()['data']['S_products']) ? true : false,
-              'result' => isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
+              'result' => $response->json()//isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
             ];
         else:
           return [
@@ -232,7 +232,7 @@ class Eneba {
         // GQL;
         // $response = $this->resolve_call($query);
         // dd($response->json());
-        
+
         // $query = <<<GQL
         //     mutation {
         //         P_triggerCallback(input: {
