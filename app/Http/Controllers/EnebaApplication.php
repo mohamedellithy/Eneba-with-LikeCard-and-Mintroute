@@ -66,7 +66,7 @@ class EnebaApplication extends Controller
     }
 
     public function eneba_callback_stock_provision(Request $request){
-        Http::post('https://webhook.site/4e302f27-0ad9-43ea-8573-0969708fb17e',$request->all());
+        Http::post('https://webhook.site/0afab317-8495-4996-bfe9-728fe66ba933',$request->all());
         return response()->json([
             "action"  => "PROVIDE",
             "orderId" => $request->input('orderId'),
@@ -86,7 +86,7 @@ class EnebaApplication extends Controller
     }
 
     public function eneba_callback_stock_reservation(Request $request){
-        Http::post('https://webhook.site/4e302f27-0ad9-43ea-8573-0969708fb17e',$request->all());
+        Http::post('https://webhook.site/0afab317-8495-4996-bfe9-728fe66ba933',$request->all());
         return response()->json([
             "action"  => "RESERVE",
             "orderId" => $request->input('orderId'),
