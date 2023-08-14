@@ -253,25 +253,25 @@ class Eneba {
         //     }
         // GQL;
 
-        $query = <<<GQL
-            mutation {
-                P_triggerCallback(input: {
-                type: DECLARED_STOCK_PROVISION
-                orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
-                auction: {
-                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
-                    price: {
-                    amount: 1500
-                    currency: "EUR"
-                    }
-                    keyCount: 1
-                }
-                }){
-                success
-                message
-                }
-            }
-        GQL;
+        // $query = <<<GQL
+        //     mutation {
+        //         P_triggerCallback(input: {
+        //         type: DECLARED_STOCK_PROVISION
+        //         orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
+        //         auction: {
+        //             auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
+        //             price: {
+        //             amount: 1500
+        //             currency: "EUR"
+        //             }
+        //             keyCount: 1
+        //         }
+        //         }){
+        //         success
+        //         message
+        //         }
+        //     }
+        // GQL;
 
         // $response = $this->resolve_call($query);
         // dd($response->json());
@@ -284,6 +284,24 @@ class Eneba {
         //         }
         //     }
         // GQL;
+        $query = <<<GQL
+            mutation {
+                S_createAuction(
+                input: {
+                    productId: "92c73bdc-80d4-1041-a4de-c12cc3d288c0"
+                    enabled: true
+                    declaredStock: 1
+                    autoRenew: false
+                    price: { amount: 1399, currency: "EUR" }
+                }
+                ) {
+                success
+                actionId
+                auctionId
+                price { amount currency }
+                }
+            }
+        GQL;
         $response = $this->resolve_call($query);
         dd($response->json());
 
