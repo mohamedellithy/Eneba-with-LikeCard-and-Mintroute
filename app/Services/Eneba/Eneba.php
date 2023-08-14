@@ -297,8 +297,6 @@ class Eneba {
                 ) {
                 success
                 actionId
-                auctionId
-                price { amount currency }
                 }
             }
         GQL;
