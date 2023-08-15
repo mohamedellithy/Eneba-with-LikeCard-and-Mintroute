@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('eneba_orders', function (Blueprint $table) {
+        Schema::create('eneba_order_auctions', function (Blueprint $table) {
             $table->id();
-            $table->text('order_id')->nullable();
-            $table->string('status_order')->nullable();
+            $table->unsignedBigInteger('eneba_order_id');
+            $table->foreign('eneba_order_id')->on('eneba_orders')->references('id');
+            $table->unsignedBigInteger('eneba_auction_id');
+            $table->foreign('eneba_auction_id')->on('auctions')->references('id');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eneba_orders');
+        Schema::dropIfExists('eneba_order_auctions');
     }
 };

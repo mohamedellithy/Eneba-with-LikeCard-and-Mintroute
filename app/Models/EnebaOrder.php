@@ -9,5 +9,9 @@ class EnebaOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['status_order','order_id','product_id','auctions'];
+    protected $fillable = ['status_order','order_id'];
+
+    public function auctions(){
+        return $this->belongsToMany(Auction::class)->using(EnebaOrderAuction::class);
+    }
 }

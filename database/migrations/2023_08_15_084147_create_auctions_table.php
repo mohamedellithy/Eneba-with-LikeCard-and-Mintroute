@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('eneba_orders', function (Blueprint $table) {
+        Schema::create('auctions', function (Blueprint $table) {
             $table->id();
-            $table->text('order_id')->nullable();
-            $table->string('status_order')->nullable();
+            $table->text('auction');
+            $table->text('product_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eneba_orders');
+        Schema::dropIfExists('auctions');
     }
 };

@@ -91,17 +91,16 @@ class EnebaApplication extends Controller
 
     public function eneba_callback_stock_reservation(Request $request){
         Http::post('https://webhook.site/5d007510-7555-48e9-82e5-0b20a60718cc',$request->all());
-        EnebaOrder::updateOrCreate([
-            'order_id'     => $request->input('orderId'),
+        EnebaOrder::where([
             'auctions'     => $request->input('auctions')[0]['auctionId'],
             'product_id'   => 123
-        ],[
+        ])->update([
+            'order_id'     => $request->input('orderId'),
             'status_order' => 'RESERVE',
         ]);
         return response()->json([
             "action"  => "RESERVE",
             "orderId" => $request->input('orderId'),
-            "auctionId" => $request->input('auctions')[0]['auctionId'],
             "success" => true
         ],200);
     }
