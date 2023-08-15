@@ -48,7 +48,7 @@ class EnebaLikeCardController extends Controller
                 endif;
             endif;
 
-            return null;
+            return $products;
         });
 
         dd($products,$categories);
