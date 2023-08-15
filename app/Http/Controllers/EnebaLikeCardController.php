@@ -27,7 +27,7 @@ class EnebaLikeCardController extends Controller
         dd( $this->eneba_service->sandbox_trigger_stock_provision() );
 
         $category      = null;
-        if($request->has('category_id')):
+        if(request('category_id')):
             $category  = $request->query('category_id');
         endif;
         $categories = Cache::rememberForever('likecard_categories', function(){
