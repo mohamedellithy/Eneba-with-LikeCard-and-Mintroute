@@ -41,6 +41,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
 
     Route::controller(EnebaLikeCardController::class)->group(function(){
         Route::get('application/eneba/single-product/{id}', 'get_single_product')->name('eneba.get_single_product');
+        Route::get('attach-eneba-likecard/{eneba_id}/{likecard_id}','attach_eneba_likecard')->name('eneba.attach_eneba_likecard');
     });
 
     Route::controller(LikeCardApplication::class)->group(function(){

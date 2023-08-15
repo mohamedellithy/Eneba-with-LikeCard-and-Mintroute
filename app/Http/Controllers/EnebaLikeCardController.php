@@ -56,7 +56,12 @@ class EnebaLikeCardController extends Controller
         return view('pages.eneba.products.show',compact('product_eneba','categories','products','eneba_likecard_product'));
     }
 
-    public function attach_product_eneba_to_like_card(Request $request){
+    public function attach_eneba_likecard(Request $request,$eneba_id,$likecard_id){
+        Product::updateOrCreate([
+            'eneba_prod_id'    => $eneba_id,
+            'likecard_prod_id' => $likecard_id
+        ]);
 
+        return back();
     }
 }

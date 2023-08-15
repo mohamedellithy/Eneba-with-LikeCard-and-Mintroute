@@ -92,7 +92,10 @@ $category_id = request()->query('category_id') ?: null;
                                             مختار
                                            </span>
                                         @else
-                                            <a class="dropdown-item btn btn-success" href="{{ $product['productId'] }}"><i
+                                            <a class="dropdown-item btn btn-success" href="{{ route('applications.eneba.attach-eneba-likecard',[
+                                                'likecard_id' => $product['productId'],
+                                                'eneba_id'    => request('id')
+                                            ]) }}"><i
                                                     class="fa-regular fa-eye me-2"></i></i>
                                                     ارفاق المنتج
                                             </a>
