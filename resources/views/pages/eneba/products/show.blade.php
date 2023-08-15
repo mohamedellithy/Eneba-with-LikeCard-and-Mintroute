@@ -93,8 +93,8 @@ $category_id = request()->query('category_id') ?: null;
                                            </span>
                                         @else
                                             <a class="dropdown-item btn btn-success" href="{{ route('application.eneba.attach_eneba_likecard',[
-                                                'likecard_id' => $product['productId'],
-                                                'eneba_id'    => request('id')
+                                                'eneba_id'    => request('id'),
+                                                'likecard_id' => $product['productId']
                                             ]) }}"><i
                                                     class="fa-regular fa-eye me-2"></i></i>
                                                     ارفاق المنتج
