@@ -51,6 +51,8 @@ class EnebaLikeCardController extends Controller
             return null;
         });
 
+        dd($products,$categories);
+
         return view('pages.eneba.products.show',compact('product_eneba','categories','products'));
     }
 }

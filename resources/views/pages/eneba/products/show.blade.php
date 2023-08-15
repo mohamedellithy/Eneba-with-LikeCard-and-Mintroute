@@ -30,33 +30,6 @@ $category_id = request()->query('category_id') ?: null;
                     </form>
                 </div>
             </div>
-            {{-- <form method="post" action="{{ route('application.likecard.store_codes') }}">
-                @csrf
-                <input type="hidden" value="{{ $category_id }}" name="category_id">
-                <div class="d-flex card-body card-body-form">
-                    <div class="mb-3">
-                        <label>اسم المنتج</label>
-                        <select name="product_id" id="largeSelect" class="form-select form-select-lg">
-                            <option value="">المنتجات</option>
-                            @isset($products)
-                                @forelse($products as $product)
-                                    <option value="{{ $product['productId'] }}">{{ $product['productName'] }}</option>
-                                @empty
-                                @endforelse
-                            @endisset
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label>كود المنتج</label>
-                        <input type="text" name="code" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">
-                            اضافة كود جديد
-                        </button>
-                    </div>
-                </div>
-            </form> --}}
         </div>
         <br/>
         <div class="card" style="padding-top: 3%;">
