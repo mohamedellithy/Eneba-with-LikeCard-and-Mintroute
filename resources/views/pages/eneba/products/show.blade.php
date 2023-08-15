@@ -21,6 +21,7 @@ $category_id = request()->query('category_id') ?: null;
                 </div>
             </div>
         </div>
+        <br/>
         <div class="card" style="padding-top: 3%;">
             <div class="card-body card-category-frmae">
                 <div class="mb-3">
