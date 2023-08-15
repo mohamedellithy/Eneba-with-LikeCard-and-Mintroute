@@ -12,6 +12,18 @@ $category_id = request()->query('category_id') ?: null;
         <div class="card" style="padding-top: 3%;">
             <div class="card-body card-category-frmae">
                 <div class="mb-3">
+                    <h4>
+                        {{ $product_eneba->name }}
+                    </h4>
+                    <a href="{{ 'https://www.eneba.com/'.$product_eneba->slug }}">
+                       تفاصيل المنتج
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="padding-top: 3%;">
+            <div class="card-body card-category-frmae">
+                <div class="mb-3">
                     <form id="filter-data" method="get">
                         <label>التصنيفات</label>
                         <select name="category_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
