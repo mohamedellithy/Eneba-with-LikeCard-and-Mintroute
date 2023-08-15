@@ -12,10 +12,13 @@ $category_id = request()->query('category_id') ?: null;
         <div class="card" style="padding-top: 3%;">
             <div class="card-body card-category-frmae">
                 <div class="mb-3">
+                    <span class="badge bg-danger">
+                        منتج اينيبا
+                    </span>
                     <h4>
                         {{ $product_eneba['S_product']['name'] }}
                     </h4>
-                    <a href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}">
+                    <a href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}" class="btn btn-info">
                        تفاصيل المنتج
                     </a>
                 </div>
