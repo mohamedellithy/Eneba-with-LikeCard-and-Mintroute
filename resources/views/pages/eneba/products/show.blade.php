@@ -26,7 +26,7 @@ $category_id = request()->query('category_id') ?: null;
         </div>
         <br/>
         <div class="card" style="padding-top: 0%;box-shadow: unset;">
-            <div class="card-body card-category-frmae">
+            <div class="card-body">
                 <div class="mb-3">
                     <span class="badge bg-info" style="margin: 15px auto;">
                         تصنيفات لايك كارد
@@ -50,6 +50,9 @@ $category_id = request()->query('category_id') ?: null;
                 </div>
                 <div class="mb-3">
                     @if($likecard_product_info && ($likecard_product_info['response'] == 1))
+                        <span class="badge bg-danger">
+                            المنتج المحدد 
+                        </span>
                         <table class="table">
                             @foreach($likecard_product_info['data'] as $likecard_selected)
                             <tr>
