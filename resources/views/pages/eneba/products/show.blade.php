@@ -18,7 +18,7 @@ $category_id = request()->query('category_id') ?: null;
                     <h4 style="line-height: 4em;">
                         {{ $product_eneba['S_product']['name'] }}
                     </h4>
-                    <a href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}" class="btn btn-info">
+                    <a href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}" target="_blank" class="btn btn-info">
                        تفاصيل المنتج
                     </a>
                 </div>
@@ -28,6 +28,9 @@ $category_id = request()->query('category_id') ?: null;
         <div class="card" style="padding-top: 3%;">
             <div class="card-body card-category-frmae">
                 <div class="mb-3">
+                    <span class="badge bg-info">
+                        تصنيفات لايك كارد
+                    </span>
                     <form id="filter-data" method="get">
                         <label>التصنيفات</label>
                         <select name="category_id" onchange="document.getElementById('filter-data').submit()" id="largeSelect" class="form-select form-select-lg">
@@ -49,6 +52,9 @@ $category_id = request()->query('category_id') ?: null;
         </div>
         <br/>
         <div class="card" style="padding-top: 3%;">
+            <span class="badge bg-info">
+                منتجات لايك كارد لتصنيف ( # {{ $category_id  }})
+            </span>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
