@@ -15,9 +15,11 @@ $category_id = request()->query('category_id') ?: null;
                     <span class="badge bg-danger">
                         منتج اينيبا
                     </span>
+                    <br/>
                     <h4>
                         {{ $product_eneba['S_product']['name'] }}
                     </h4>
+                    <br/>
                     <a href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}" class="btn btn-info">
                        تفاصيل المنتج
                     </a>
