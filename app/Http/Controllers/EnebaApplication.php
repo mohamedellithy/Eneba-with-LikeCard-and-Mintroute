@@ -93,7 +93,8 @@ class EnebaApplication extends Controller
         Http::post('https://webhook.site/5d007510-7555-48e9-82e5-0b20a60718cc',$request->all());
         EnebaOrder::updateOrCreate([
             'order_id'     => $request->input('orderId'),
-            'auctions'     => $request->input('auctions')[0]['auctionId']
+            'auctions'     => $request->input('auctions')[0]['auctionId'],
+            'product_id'   => 123
         ],[
             'status_order' => 'RESERVE',
         ]);
