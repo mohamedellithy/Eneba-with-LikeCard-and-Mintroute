@@ -16,7 +16,7 @@ class EnebaLikeCardController extends Controller
 
     public function __construct(){
         $this->likecard_service = new LikeCard();
-        $this->eneba_service = new Eneba(true);
+        $this->eneba_service = new Eneba($sandbox = true);
     }
 
     public function get_single_product(Request $request,$id){
