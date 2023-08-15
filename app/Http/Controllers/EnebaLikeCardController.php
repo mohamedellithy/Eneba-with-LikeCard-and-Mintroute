@@ -48,10 +48,10 @@ class EnebaLikeCardController extends Controller
                 endif;
             endif;
 
-            return $products;
+            return null;
         });
 
-       // dd($products,$categories);
+        // dd($products,$categories);
 
         return view('pages.eneba.products.show',compact('product_eneba','categories','products'));
     }
