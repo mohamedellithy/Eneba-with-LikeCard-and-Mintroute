@@ -87,10 +87,16 @@ $category_id = request()->query('category_id') ?: null;
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="dropdown-item btn btn-success" href="{{ $product['productId'] }}"><i
-                                                class="fa-regular fa-eye me-2"></i></i>
-                                                ارفاق المنتج
-                                        </a>
+                                        @if($eneba_likecard_product && ($eneba_likecard_product == $product['productId']))
+                                           <span class="badge bg-danger">
+                                            مختار
+                                           </span>
+                                        @else
+                                            <a class="dropdown-item btn btn-success" href="{{ $product['productId'] }}"><i
+                                                    class="fa-regular fa-eye me-2"></i></i>
+                                                    ارفاق المنتج
+                                            </a>
+                                        @endif
                                     </td>
                                     {{-- <td>
                                         <div class="dropdown">

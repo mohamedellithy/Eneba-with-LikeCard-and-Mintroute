@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\LikeCard\LikeCard;
 use App\Services\Eneba\Eneba;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Product;
 class EnebaLikeCardController extends Controller
 {
     //
@@ -24,11 +25,11 @@ class EnebaLikeCardController extends Controller
         //dd($this->eneba_service->sandbox_trigger_stock_provision());
         //dd($this->eneba_service->enable_declared_stock());
 
-
         $product_eneba  = Cache::rememberForever('eneba_single_product_'.$id, function() use($id){
             return $this->eneba_service->get_single_product($id)['result']['data'];
         });
 
+        $eneba_likecard_product = Product::where('eneba_prod_id',$id)->select('likecard_prod_id');
 
         $category      = null;
         if(request('category_id')):
@@ -52,6 +53,10 @@ class EnebaLikeCardController extends Controller
         });
 
 
-        return view('pages.eneba.products.show',compact('product_eneba','categories','products'));
+        return view('pages.eneba.products.show',compact('product_eneba','categories','products','eneba_likecard_product'));
+    }
+
+    public function attach_product_eneba_to_like_card(Request $request){
+
     }
 }
