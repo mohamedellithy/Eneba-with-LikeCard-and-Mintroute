@@ -24,7 +24,7 @@ class EnebaLikeCardController extends Controller
         //     return $this->eneba_service->get_single_product($id)['result']['data'];
         // });
 
-        dd( $this->eneba_service->declared_stock() );
+        dd( $this->eneba_service->register_stock_reservation() );
 
         $category      = null;
         if($request->has('category_id')):

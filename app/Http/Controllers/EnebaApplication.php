@@ -51,7 +51,6 @@ class EnebaApplication extends Controller
         return back();
     }
 
-
     public function generate_token(){
         $eneba = $this->eneba_service->generate_token();
         ApplicationSetting::updateOrCreate([
@@ -67,7 +66,7 @@ class EnebaApplication extends Controller
     }
 
     public function eneba_callback_stock_provision(Request $request){
-        Http::post('https://webhook.site/0afab317-8495-4996-bfe9-728fe66ba933',$request->all());
+        Http::post('https://webhook.site/5d007510-7555-48e9-82e5-0b20a60718cc',$request->all());
         $order_eneba = EnebaOrder::find($request->input('orderId'));
         $order_eneba->update([
             'status_order' => 'PROVIDE',
@@ -91,7 +90,7 @@ class EnebaApplication extends Controller
     }
 
     public function eneba_callback_stock_reservation(Request $request){
-        Http::post('https://webhook.site/0afab317-8495-4996-bfe9-728fe66ba933',$request->all());
+        Http::post('https://webhook.site/5d007510-7555-48e9-82e5-0b20a60718cc',$request->all());
         EnebaOrder::updateOrCreate([
             'order_id'     => $request->input('orderId'),
             'auctions'     => $request->input('auctions')[0]['auctionId']

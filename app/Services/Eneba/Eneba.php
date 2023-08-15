@@ -37,7 +37,6 @@ class Eneba {
         return $response;
     }
 
-
     public function generate_token(){
         $post = [
             'grant_type' => 'api_consumer',
@@ -168,7 +167,6 @@ class Eneba {
         endif;
     }
 
-
     public function get_single_product($product_id){
         $query = <<<GQL
         query {
@@ -201,129 +199,16 @@ class Eneba {
         endif;
     }
 
-    public function declared_stock(){
-        // first 1
-        // $query = <<<GQL
-        //     mutation {
-        //         P_registerCallback(
-        //         input: {
-        //             type: DECLARED_STOCK_PROVISION
-        //             url: "https://a-ecards.com/applications/eneba/callback-stock-provision"
-        //             authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
-        //         }
-        //         ) {
-        //         success
-        //         }
-        //     }
-        // GQL;
-
-
-        // first 2
-        // $query = <<<GQL
-        //     mutation {
-        //         P_registerCallback(
-        //         input: {
-        //             type: DECLARED_STOCK_RESERVATION
-        //             url: "https://a-ecards.com/applications/eneba/callback-stock-reservation"
-        //             authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
-        //         }
-        //         ) {
-        //         success
-        //         }
-        //     }
-        // GQL;
-
-
-        // $query = <<<GQL
-        //     mutation {
-        //         P_triggerCallback(input: {
-        //         type: DECLARED_STOCK_RESERVATION
-        //         orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
-        //         auction: {
-        //             auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
-        //             price: {
-        //             amount: 1500
-        //             currency: "EUR"
-        //             }
-        //             keyCount: 1
-        //         }
-        //         }){
-        //         success
-        //         message
-        //         }
-        //     }
-        // GQL;
-
-        // $query = <<<GQL
-        //     mutation {
-        //         P_triggerCallback(input: {
-        //         type: DECLARED_STOCK_PROVISION
-        //         orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
-        //         auction: {
-        //             auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
-        //             price: {
-        //             amount: 1500
-        //             currency: "EUR"
-        //             }
-        //             keyCount: 1
-        //         }
-        //         }){
-        //         success
-        //         message
-        //         }
-        //     }
-        // GQL;
-
-        // $response = $this->resolve_call($query);
-        // dd($response->json());
-
-        // $query = <<<GQL
-        //     mutation {
-        //         P_enableDeclaredStock {
-        //         success
-        //         failureReason
-        //         }
-        //     }
-        // GQL;
-
-        $query = <<<GQL
-            mutation {
-                P_enableDeclaredStock {
-                success
-                failureReason
-                }
-            }
-        GQL;
-
-
-        // $query = <<<GQL
-        //     mutation {
-        //         S_createAuction(
-        //         input: {
-        //             productId: "6f8f00a6-9def-18b3-a2d4-b37c780945a2"
-        //             enabled: true
-        //             declaredStock: 1
-        //             autoRenew: false
-        //             price: { amount: 1399, currency: "EUR" }
-        //         }
-        //         ) {
-        //         success
-        //         actionId
-        //         }
-        //     }
-        // GQL;
-        $response = $this->resolve_call($query);
-        dd($response->json());
-
+    public function create_auction($attr = []){
         $query = <<<GQL
             mutation {
                 S_createAuction(
                 input: {
-                    productId: "beb58814-a15e-1de2-af2d-47633c765f13"
+                    productId: "{$attr['productId']}"
                     enabled: true
-                    declaredStock: 1
+                    declaredStock: {$attr['codesCount']}
                     autoRenew: false
-                    price: { amount: 1400, currency: "EUR" }
+                    price: { amount: {$attr['price']}, currency: "EUR" }
                 }
                 ) {
                 success
@@ -344,13 +229,27 @@ class Eneba {
         endif;
     }
 
-    public function register_callback(){
+    public function enable_declared_stock(){
+        $query = <<<GQL
+            mutation {
+                P_enableDeclaredStock {
+                success
+                failureReason
+                }
+            }
+        GQL;
+        $response = $this->resolve_call($query);
+        dd($response->json());
+    }
+
+    public function register_stock_reservation(){
+        $callback_url = route('application.eneba.callback_stock_reservation');
         $query = <<<GQL
             mutation {
                 P_registerCallback(
                 input: {
                     type: DECLARED_STOCK_RESERVATION
-                    url: "https://a-ecards.com/applications/eneba/callback-stock-reservation"
+                    url: "{$callback_url}"
                     authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
                 }
                 ) {
@@ -359,17 +258,17 @@ class Eneba {
             }
         GQL;
         $response = $this->resolve_call($query);
+        dd($response->json());
+    }
 
-        /************************************************************* */
-        /************************************************************* */
-        /************************************************************* */
-
+    public function register_stock_provision(){
+        $callback_url = route('application.eneba.callback_stock_provision');
         $query = <<<GQL
             mutation {
                 P_registerCallback(
                 input: {
                     type: DECLARED_STOCK_PROVISION
-                    url: "https://a-ecards.com/applications/eneba/callback-stock-provision"
+                    url: "{$callback_url}"
                     authorization: "eW91ci1hdXRob3JpemF0aW9uLWhlYWRlcg=="
                 }
                 ) {
@@ -378,7 +277,6 @@ class Eneba {
             }
         GQL;
         $response = $this->resolve_call($query);
-
         dd($response->json());
     }
 }
