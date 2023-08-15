@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\Eneba;
 use App\Models\ApplicationSetting;
+use App\Services\Eneba\Operations as EnebaOperations;
 use Illuminate\Support\Facades\Http;
 class Eneba {
     protected $sandbox       = true;
@@ -219,14 +220,39 @@ class Eneba {
 
         $response = $this->resolve_call($query);
 
-        dd($response->json());
-
         if($response->successful()):
-            return [
-                'code' => $response->status(),
-                'result' => isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
-            ];
+            $data = $response->json();
+            if($data['data']['S_createAuction']['success'] == true):
+                EnebaOperations::create_new_auction([
+                    'product_id' => $attr['productId'],
+                    'auction'    => $data['data']['S_createAuction']['actionId']
+                ]);
+            endif;
         endif;
+
+        return [
+            'code' => $response->status(),
+            'result' => $response->json()
+        ];
+    }
+
+    public function eneba_callback_stock_reservation(){
+        EnebaOperations::create_new_order();
+        return response()->json([
+            "action"  => "RESERVE",
+            "orderId" => request('orderId'),
+            "success" => true
+        ],200);
+    }
+
+    public function eneba_callback_stock_provision(){
+        $codes = EnebaOperations::update_orders_and_get_codes();
+        return response()->json([
+            "action"   => "PROVIDE",
+            "orderId"  => request('orderId'),
+            "success"  => true,
+            "auctions" => $codes
+        ],200);
     }
 
     public function sandbox_trigger_stock_reservation(){

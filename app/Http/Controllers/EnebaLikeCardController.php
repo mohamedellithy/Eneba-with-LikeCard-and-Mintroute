@@ -20,13 +20,15 @@ class EnebaLikeCardController extends Controller
     }
 
     public function get_single_product(Request $request,$id){
-        // $product_eneba  = Cache::rememberForever('eneba_single_product_'.$id, function() use($id){
-        //     return $this->eneba_service->get_single_product($id)['result']['data'];
-        // });
-
         //dd($this->eneba_service->sandbox_trigger_stock_reservation());
         //dd($this->eneba_service->sandbox_trigger_stock_provision());
         //dd($this->eneba_service->enable_declared_stock());
+
+
+        $product_eneba  = Cache::rememberForever('eneba_single_product_'.$id, function() use($id){
+            return $this->eneba_service->get_single_product($id)['result']['data'];
+        });
+
 
         $category      = null;
         if(request('category_id')):
