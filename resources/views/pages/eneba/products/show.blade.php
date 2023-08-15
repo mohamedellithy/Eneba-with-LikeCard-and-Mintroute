@@ -9,7 +9,7 @@ $category_id = request()->query('category_id') ?: null;
             المنتجات
         </h4>
         <!-- Basic Bootstrap Table -->
-        <div class="card" style="padding-top: 3%;">
+        <div class="card" style="padding-top: 0%;">
             <div class="card-body card-category-frmae">
                 <div class="mb-3">
                     <span class="badge bg-danger">
@@ -25,7 +25,7 @@ $category_id = request()->query('category_id') ?: null;
             </div>
         </div>
         <br/>
-        <div class="card" style="padding-top: 3%;">
+        <div class="card" style="padding-top: 0%;">
             <div class="card-body card-category-frmae">
                 <div class="mb-3">
                     <span class="badge bg-info" style="margin: 15px auto;">
