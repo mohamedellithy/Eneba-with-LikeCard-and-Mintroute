@@ -29,7 +29,7 @@ class EnebaLikeCardController extends Controller
             return $this->eneba_service->get_single_product($id)['result']['data'];
         });
 
-        $eneba_likecard_product = Product::where('eneba_prod_id',$id)->select('likecard_prod_id');
+        $eneba_likecard_product = Product::where('eneba_prod_id',$id)->value('likecard_prod_id');
 
         dd($eneba_likecard_product);
 
