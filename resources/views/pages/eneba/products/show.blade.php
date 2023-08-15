@@ -28,7 +28,7 @@ $category_id = request()->query('category_id') ?: null;
         <div class="card" style="padding-top: 3%;">
             <div class="card-body card-category-frmae">
                 <div class="mb-3">
-                    <span class="badge bg-info">
+                    <span class="badge bg-info" style="margin: 15px auto;">
                         تصنيفات لايك كارد
                     </span>
                     <form id="filter-data" method="get">
@@ -52,7 +52,7 @@ $category_id = request()->query('category_id') ?: null;
         </div>
         <br/>
         <div class="card" style="padding-top: 3%;">
-            <span class="badge bg-info">
+            <span class="badge bg-info" style="margin: 15px auto;">
                 منتجات لايك كارد لتصنيف ( # {{ $category_id  }})
             </span>
             <div class="table-responsive">
