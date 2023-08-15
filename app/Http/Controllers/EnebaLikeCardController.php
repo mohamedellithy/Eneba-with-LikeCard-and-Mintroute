@@ -16,7 +16,7 @@ class EnebaLikeCardController extends Controller
 
     public function __construct(){
         $this->likecard_service = new LikeCard();
-        $this->eneba_service = new Eneba(false);
+        $this->eneba_service = new Eneba(true);
     }
 
     public function get_single_product(Request $request,$id){
@@ -24,7 +24,7 @@ class EnebaLikeCardController extends Controller
         //     return $this->eneba_service->get_single_product($id)['result']['data'];
         // });
 
-        dd( $this->eneba_service->enable_declared_stock() );
+        dd( $this->eneba_service->sandbox_trigger_stock_provision() );
 
         $category      = null;
         if(request('category_id')):
