@@ -63,7 +63,8 @@ class EnebaLikeCardController extends Controller
 
     public function attach_eneba_likecard(Request $request,$eneba_id,$likecard_id){
         Product::updateOrCreate([
-            'eneba_prod_id'    => $eneba_id,
+            'eneba_prod_id'    => $eneba_id
+        ],[
             'likecard_prod_id' => $likecard_id
         ]);
 
