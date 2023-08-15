@@ -229,6 +229,55 @@ class Eneba {
         endif;
     }
 
+    public function sandbox_trigger_stock_reservation(){
+        $query = <<<GQL
+            mutation {
+                P_triggerCallback(input: {
+                type: DECLARED_STOCK_RESERVATION
+                orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
+                auction: {
+                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
+                    price: {
+                    amount: 1500
+                    currency: "EUR"
+                    }
+                    keyCount: 1
+                }
+                }){
+                success
+                message
+                }
+            }
+        GQL;
+        $response = $this->resolve_call($query);
+        dd($response->json());
+
+    }
+
+    public function sandbox_trigger_stock_provision(){
+        $query = <<<GQL
+            mutation {
+                P_triggerCallback(input: {
+                type: DECLARED_STOCK_PROVISION
+                orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
+                auction: {
+                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
+                    price: {
+                    amount: 1500
+                    currency: "EUR"
+                    }
+                    keyCount: 1
+                }
+                }){
+                success
+                message
+                }
+            }
+        GQL;
+        $response = $this->resolve_call($query);
+        dd($response->json());
+    }
+
     public function enable_declared_stock(){
         $query = <<<GQL
             mutation {
