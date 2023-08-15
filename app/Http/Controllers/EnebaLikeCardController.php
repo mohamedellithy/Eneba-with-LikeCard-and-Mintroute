@@ -31,6 +31,8 @@ class EnebaLikeCardController extends Controller
 
         $eneba_likecard_product = Product::where('eneba_prod_id',$id)->select('likecard_prod_id');
 
+        dd($eneba_likecard_product);
+
         $category      = null;
         if(request('category_id')):
             $category  = $request->query('category_id');
