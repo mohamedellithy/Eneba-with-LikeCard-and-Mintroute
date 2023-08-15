@@ -13,9 +13,9 @@ $category_id = request()->query('category_id') ?: null;
             <div class="card-body card-category-frmae">
                 <div class="mb-3">
                     <h4>
-                        {{ $product_eneba->name }}
+                        {{ $product_eneba['name'] }}
                     </h4>
-                    <a href="{{ 'https://www.eneba.com/'.$product_eneba->slug }}">
+                    <a href="{{ 'https://www.eneba.com/'.$product_eneba['slug'] }}">
                        تفاصيل المنتج
                     </a>
                 </div>
