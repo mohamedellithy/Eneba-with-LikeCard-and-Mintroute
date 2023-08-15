@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('eneba_orders', function (Blueprint $table) {
             $table->id();
-            $table->text('order_id');
-            $table->string('status_order');
+            $table->text('order_id')->nullable();
+            $table->string('status_order')->nullable();
             $table->text('auctions');
+            $table->text('product_id');
             $table->timestamps();
         });
     }

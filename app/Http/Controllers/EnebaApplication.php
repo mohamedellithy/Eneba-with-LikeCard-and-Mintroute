@@ -7,6 +7,7 @@ use App\Models\ApplicationSetting;
 use App\Services\Eneba\Eneba;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use App\Models\EnebaOrder;
 class EnebaApplication extends Controller
 {
     //
@@ -67,13 +68,17 @@ class EnebaApplication extends Controller
 
     public function eneba_callback_stock_provision(Request $request){
         Http::post('https://webhook.site/0afab317-8495-4996-bfe9-728fe66ba933',$request->all());
+        $order_eneba = EnebaOrder::find($request->input('orderId'));
+        $order_eneba->update([
+            'status_order' => 'PROVIDE',
+        ]);
         return response()->json([
             "action"  => "PROVIDE",
             "orderId" => $request->input('orderId'),
             "success" => true,
             "auctions" => [
                 [
-                    "auctionId" => "347c4e96-4f81-11ed-bdc3-0242ac120002",
+                    "auctionId" => $order_eneba->auctions,
                     "keys" => [
                         [
                             "type"  => "TEXT",
@@ -87,6 +92,12 @@ class EnebaApplication extends Controller
 
     public function eneba_callback_stock_reservation(Request $request){
         Http::post('https://webhook.site/0afab317-8495-4996-bfe9-728fe66ba933',$request->all());
+        EnebaOrder::updateOrCreate([
+            'order_id'     => $request->input('orderId'),
+            'auctions'     => $request->input('auctions')[0]['auctionId']
+        ],[
+            'status_order' => 'RESERVE',
+        ]);
         return response()->json([
             "action"  => "RESERVE",
             "orderId" => $request->input('orderId'),
