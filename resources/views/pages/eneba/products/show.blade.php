@@ -18,7 +18,7 @@ $category_id = request()->query('category_id') ?: null;
                     <h4 style="line-height: 4em;">
                         {{ $product_eneba['S_product']['name'] }}
                     </h4>
-                    <a href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}" target="_blank" class="btn btn-info">
+                    <a href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}" target="_blank" class="btn btn-warning">
                        تفاصيل المنتج
                     </a>
                 </div>
