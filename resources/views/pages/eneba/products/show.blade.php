@@ -69,7 +69,7 @@ $category_id = request()->query('category_id') ?: null;
                     <tbody class="table-border-bottom-0 alldata">
                         @isset($products)
                             @forelse($products as $product)
-                                <tr>
+                                <tr @if($eneba_likecard_product && ($eneba_likecard_product == $product['productId'])) style="background-color:#ede7f6" @endif>
                                     <td class="">
                                         <img src="{{ $product['productImage'] }}" alt="Avatar"
                                         class="">
