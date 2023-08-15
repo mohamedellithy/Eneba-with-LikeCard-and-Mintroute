@@ -21,15 +21,20 @@ class EnebaLikeCardController extends Controller
     }
 
     public function get_single_product(Request $request,$id){
-        //dd($this->eneba_service->sandbox_trigger_stock_reservation());
-        //dd($this->eneba_service->sandbox_trigger_stock_provision());
-        //dd($this->eneba_service->enable_declared_stock());
-
         $product_eneba  = Cache::rememberForever('eneba_single_product_'.$id, function() use($id){
             return $this->eneba_service->get_single_product($id)['result']['data'];
         });
 
         $eneba_likecard_product = Product::where('eneba_prod_id',$id)->value('likecard_prod_id');
+
+        $likecard_product_info = null;
+        if($eneba_likecard_product):
+            $likecard_product_info =  Cache::rememberForever('likecard_product_'.$eneba_likecard_product, function() use($eneba_likecard_product){
+                return $this->likecard_service->get_single_product($eneba_likecard_product);
+            });
+        endif;
+
+        dd($likecard_product_info);
 
         $category      = null;
         if(request('category_id')):
@@ -53,7 +58,7 @@ class EnebaLikeCardController extends Controller
         });
 
 
-        return view('pages.eneba.products.show',compact('product_eneba','categories','products','eneba_likecard_product'));
+        return view('pages.eneba.products.show',compact('product_eneba','categories','products','eneba_likecard_product','likecard_product_info'));
     }
 
     public function attach_eneba_likecard(Request $request,$eneba_id,$likecard_id){

@@ -48,6 +48,19 @@ $category_id = request()->query('category_id') ?: null;
                         </select>
                     </form>
                 </div>
+                <div class="mb-3">
+                    @if($likecard_product_info)
+                        <table class="table">
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    @endif
+                </div>
             </div>
         </div>
         <br/>
