@@ -49,15 +49,28 @@ $category_id = request()->query('category_id') ?: null;
                     </form>
                 </div>
                 <div class="mb-3">
-                    @if($likecard_product_info)
+                    @if($likecard_product_info && ($likecard_product_info['response'] == 1))
                         <table class="table">
+                            @foreach($likecard_product_info['data'] as $likecard_selected)
                             <tr>
-                                <td>
-
+                                <td class="">
+                                    <img src="{{ $likecard_selected['productImage'] }}" alt="Avatar" class="">
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    {{ $likecard_selected['productName'] }}
+                                </td>
+                                <td>
+                                    {{ $likecard_selected['productPrice'] }} {{ $likecard_selected['productCurrency'] }}
+                                </td>
+                                <td>
+                                    @if ($likecard_selected['available'] == true)
+                                        <span class="badge bg-label-success me-1">متاح</span>
+                                    @else
+                                        <span class="badge bg-label-danger me-1">غير متاح</span>
+                                    @endif
+                                </td>
                             </tr>
+                            @endforeach
                         </table>
                     @endif
                 </div>

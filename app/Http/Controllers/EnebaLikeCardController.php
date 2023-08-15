@@ -34,7 +34,7 @@ class EnebaLikeCardController extends Controller
             });
         endif;
 
-        dd($likecard_product_info);
+        //dd($likecard_product_info);
 
         $category      = null;
         if(request('category_id')):
