@@ -62,7 +62,23 @@
 <script>
     jQuery('document').ready(function(){
         jQuery('.search_on_eneba_prods').on('click',function(){
-            alert('hi');
+            let product_name = jQuery('.product_name').val();
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN':jQuery('meta[name="csrf-token"]').attr('content');
+                }
+            });
+            
+            $.ajax({
+                type:'POST',
+                url:"{{ route('application.search-on-eneba-products') }}",
+                data:{
+                    eneba_product_name:product_name
+                },
+                success:function(response){
+                    console.log(response);
+                }
+            })
         });
     });
 </script>
