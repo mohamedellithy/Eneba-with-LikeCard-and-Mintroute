@@ -74,7 +74,7 @@ $eneba_id = request('eneba_id') ?: null;
                                             <form method="post" action="{{ route('application.eneba.update_codes',$eneba_code->id) }}">
                                                 @csrf
                                                 @method('PUT')
-                                                <input name="status" value="disallow" />
+                                                <input type="hidden" name="status" value="disallow" />
                                                 <button class="btn btn-danger btn-sm dropdown-item">
                                                     توقيف الكود
                                                 </button>
@@ -83,7 +83,7 @@ $eneba_id = request('eneba_id') ?: null;
                                             <form method="post" action="{{ route('application.eneba.update_codes',$eneba_code->id) }}">
                                                 @csrf
                                                 @method('PUT')
-                                                <input name="status" value="allow" />
+                                                <input type="hidden" name="status" value="allow" />
                                                 <button class="btn btn-success btn-sm dropdown-item">
                                                     اتاحة الكود
                                                 </button>
