@@ -1,19 +1,7 @@
 @extends('master')
-
-@push('custom_style')
-<style>
-    .container-fields{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-end;
-        justify-content: flex-start;
-    }
-    .container-fields .form-group:first-child{
-        width: 50%;
-        margin: auto 0px auto 17px;
-    }
-</style>
-@endpush
+@php 
+    $name = request('name');
+@endphp
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">
@@ -26,7 +14,7 @@
                 <div class="mb-3 container-fields">
                     <div class="form-group">
                         <label>المنتجات </label>
-                        <input type="text" name="name" class="form-control" required/>
+                        <input type="text" name="name" value="{{ $name }}" class="form-control" required/>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">
@@ -59,7 +47,20 @@
     </div>
 </div>
 @endsection
-
+@push('custom_style')
+<style>
+    .container-fields{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: flex-start;
+    }
+    .container-fields .form-group:first-child{
+        width: 50%;
+        margin: auto 0px auto 17px;
+    }
+</style>
+@endpush
 @push('custom_script')
 <script>
     // jQuery('document').ready(function(){

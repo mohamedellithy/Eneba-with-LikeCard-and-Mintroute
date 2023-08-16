@@ -20,8 +20,15 @@ class AuctionApplication extends Controller
     }
 
     public function index(Request $request){
-        $auctions = Auction::paginate(20);
-        return view('pages.auctions.index',compact('auctions'));
+        $auctions  = Auction::paginate(20);
+        $search    = request('name');
+        $products  = null;
+        if($search = request('name')){
+            $products  = Cache::rememberForever('eneba_products_'.$search, function() use($search){
+                return $this->eneba_service->get_products($page_no = null,$search);
+            });
+        }
+        return view('pages.auctions.index',compact('auctions','products'));
     }
 
     // public function ajax_search_on_eneba_products(Request $request){
