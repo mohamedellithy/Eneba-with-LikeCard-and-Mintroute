@@ -25,7 +25,7 @@
             <form id="filter-data" method="get">
                 <div class="mb-3 container-fields">
                     <div class="form-group">
-                        <label>التصنيفات</label>
+                        <label>المنتجات </label>
                         <input type="text" name="" class="form-control"/>
                     </div>
                     <div class="form-group">
@@ -37,6 +37,7 @@
             </form>
         </div>
     </div>
+    <br/>
     <div class="card" style="padding-top: 3%;">
         <div class="table-responsive">
             <table class="table table-striped">
