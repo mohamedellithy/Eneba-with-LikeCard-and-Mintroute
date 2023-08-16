@@ -108,7 +108,7 @@ class EnebaApplication extends Controller
             return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
         });
 
-        if(count($product_eneba['response']) > 0):
+        if(count($product_eneba['S_product']) > 0):
             $request->merge([
                 'product_name'  => $product_eneba['S_product']['name'],
             ]);
