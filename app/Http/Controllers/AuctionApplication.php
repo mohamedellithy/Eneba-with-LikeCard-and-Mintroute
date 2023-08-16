@@ -21,11 +21,12 @@ class AuctionApplication extends Controller
 
     public function index(Request $request){
         $auctions  = Auction::paginate(20);
+        $page_no   = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
         $search    = request('name');
         $products  = null;
         if($search = request('name')){
-            $products  = Cache::rememberForever('eneba_products_'.$search, function() use($search){
-                return $this->eneba_service->get_products($page_no = null,$search);
+            $products  = Cache::rememberForever('eneba_products_'.$search.'_'.$page_no, function() use($page_no,$search){
+                return $this->eneba_service->get_products($page_no,$search);
             });
         }
         //dd($products);
