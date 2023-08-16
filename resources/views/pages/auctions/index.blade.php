@@ -42,7 +42,7 @@
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
                         <tbody>
-                            @forelse($products as $product)
+                            @forelse($products['result'] as $product)
                                 <tr>
                                     <td> {{  $product['node']['id'] }}</td>
                                     <td> {{  $product['node']['name'] }}</td>
