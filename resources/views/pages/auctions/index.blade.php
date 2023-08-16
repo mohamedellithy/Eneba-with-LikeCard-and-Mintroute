@@ -8,7 +8,7 @@
         align-items: flex-end;
         justify-content: flex-start;
     }
-    .container-fields .from-group{
+    .container-fields .form-group{
         width: 50%;
         margin: auto 0px auto 17px;
     }
