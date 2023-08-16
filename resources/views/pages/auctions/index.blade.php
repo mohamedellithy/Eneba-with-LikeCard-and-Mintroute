@@ -8,8 +8,8 @@
     <!-- Basic Bootstrap Table -->
     <div class="card" style="padding-top: 3%;">
         <div class="card-body card-category-frmae">
-            <div class="mb-3 container-fields">
-                <form id="filter-data" method="get">
+            <form id="filter-data" method="get">
+                <div class="mb-3 container-fields">
                     <div class="form--group">
                         <label>التصنيفات</label>
                         <input type="text" name="" class="form-control"/>
@@ -19,8 +19,8 @@
                             البحث عن المنتج
                         </button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="card" style="padding-top: 3%;">
