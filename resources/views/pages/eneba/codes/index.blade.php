@@ -59,6 +59,27 @@ $eneba_id = request('eneba_id') ?: null;
                                 <td>{{ $eneba_code->code }}</td>
                                 <td>{{ $eneba_code->status_used == 'unused' ? 'غير مستخدم' :'مستخدم' }}</td>
                                 <td>{{ $eneba_code->status == 'allow' ? 'مسموح' :'محظور' }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                          <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <button class="btn btn-warning btn-sm dropdown-item">
+                                                استخدام الكود
+                                            </button>
+                                            @if($code->status == 'allow')
+                                                <button class="btn btn-danger btn-sm dropdown-item">
+                                                    توقيف الكود
+                                                </button>
+                                            @elseif($code->status != 'allow')
+                                                <button class="btn btn-success btn-sm dropdown-item">
+                                                    اتاحة الكود
+                                                </button>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         @empty
                         @endforelse
