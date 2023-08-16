@@ -115,7 +115,7 @@ class LikeCardApplication extends Controller
     public function store_codes(Request $request){
 
         $request->merge([
-            'product_type' => 'eneba'
+            'product_type' => 'likecard'
         ]);
 
         $product = $this->likecard_service->get_single_product($request->input('product_id'));

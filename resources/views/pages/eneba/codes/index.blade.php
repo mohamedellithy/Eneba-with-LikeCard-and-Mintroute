@@ -23,7 +23,7 @@ $eneba_id = request('eneba_id') ?: null;
                     </a>
                 </div>
             </div>
-            <form method="post" action="{{ route('application.likecard.store_codes') }}">
+            <form method="post" action="{{ route('application.eneba.store_codes') }}">
                 @csrf
                 <input type="hidden" value="{{ $eneba_id }}" name="eneba_id">
                 <div class="d-flex card-body card-body-form">

@@ -96,4 +96,35 @@ class EnebaApplication extends Controller
 
         return view('pages.eneba.codes.index',compact('product_eneba','eneba_offline_codes'));
     }
+
+    public function store_eneba_codes(Request $request){
+        $request->merge([
+            'product_type' => 'likecard'
+        ]);
+
+        $eneba_id = request('eneba_id');
+
+        $product_eneba  = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id){
+            return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
+        });
+
+        dd($product_eneba);
+
+        if(isset($product['response'])):
+            if($product['response'] == 1):
+                $request->merge([
+                    'product_name'  => $product['data'][0]['productName'],
+                ]);
+            endif;
+        endif;
+
+        $offline_code = OfflineCode::updateOrCreate($request->only([
+            'product_id',
+            'product_name',
+            'product_image',
+            'category_id',
+            'product_type',
+            'code'
+        ]));
+    }
 }
