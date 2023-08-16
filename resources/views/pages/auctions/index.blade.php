@@ -65,10 +65,10 @@
             let product_name = jQuery('.product_name').val();
             $.ajaxSetup({
                 headers:{
-                    'X-CSRF-TOKEN':jQuery('meta[name="csrf-token"]').attr('content');
+                    'X-CSRF-TOKEN':jQuery('meta[name="csrf-token"]').attr('content')
                 }
             });
-            
+
             $.ajax({
                 type:'POST',
                 url:"{{ route('application.search-on-eneba-products') }}",
