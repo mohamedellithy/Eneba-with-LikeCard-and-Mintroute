@@ -34,8 +34,6 @@
                         <tr>
                             <th>كود المنتج</th>
                             <th>الاسم</th>
-                            <th>تاريخ الاطلاق</th>
-                            <th>تاريخ الانشاء</th>
                             <th>نوع المنتج</th>
                             <th></th>
                         </tr>
@@ -46,8 +44,6 @@
                                 <tr>
                                     <td> {{  $product['node']['id'] }}</td>
                                     <td> {{  $product['node']['name'] }}</td>
-                                    <td> {{  $product['node']['releasedAt'] }}</td>
-                                    <td> {{  $product['node']['createdAt'] }}</td>
                                     <td> {{  $product['node']['type']['value'] }}</td>
                                     <td>
                                         <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm">
