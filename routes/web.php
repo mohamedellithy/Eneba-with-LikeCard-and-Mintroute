@@ -59,6 +59,10 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::delete('application/likecard/delete_codes/{code_id}','delete_likecard_codes')->name('likecard.delete_codes');
     });
 
+    Route::controller(AuctionApplication::class)->group(function(){
+        Route::post('application/auctions', 'index')->name('auctions');
+    });
+
 });
 
 

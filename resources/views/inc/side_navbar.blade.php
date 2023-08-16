@@ -100,11 +100,19 @@
             </a>
         </li>
 
-         <!-- Cards -->
-         <li class="menu-item {{ IsActiveOnlyIf(['application.eneba.products']) }}">
+        <!-- Cards -->
+        <li class="menu-item {{ IsActiveOnlyIf(['application.eneba.products']) }}">
             <a href="{{ route('application.eneba.products') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">منتجات اينيبا</div>
+            </a>
+        </li>
+
+        <!-- Cards -->
+        <li class="menu-item {{ IsActiveOnlyIf(['application.auctions']) }}">
+            <a href="{{ route('application.auctions') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">المزادات</div>
             </a>
         </li>
 
