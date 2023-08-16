@@ -40,6 +40,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::get('application/eneba/codes/{eneba_id}','add_eneba_codes')->name('eneba.codes');
         Route::post('application/eneba/store_codes','store_eneba_codes')->name('eneba.store_codes');
         Route::put('application/eneba/update_codes/{code_id}','update_eneba_codes')->name('eneba.update_codes');
+        Route::delete('application/eneba/delete_codes/{code_id}','delete_eneba_codes')->name('eneba.delete_codes');
 
     });
 

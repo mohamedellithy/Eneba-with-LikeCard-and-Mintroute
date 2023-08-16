@@ -105,6 +105,13 @@ $eneba_id = request('eneba_id') ?: null;
                                                     </button>
                                                 </form>
                                             @endif
+                                            <form method="post" action="{{ route('application.eneba.delete_codes',$eneba_code->id) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger btn-sm dropdown-item">
+                                                    حذف الكود
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>

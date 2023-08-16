@@ -134,4 +134,9 @@ class EnebaApplication extends Controller
 
         return back();
     }
+
+    public function delete_eneba_codes($code_id){
+        OfflineCode::where('id',$code_id)->delete();
+        return back();
+    }
 }
