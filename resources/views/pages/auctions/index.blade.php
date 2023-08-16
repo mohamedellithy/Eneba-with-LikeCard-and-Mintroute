@@ -42,7 +42,7 @@
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
                         <tbody>
-                            @forelse($products['result'] as $product)
+                            @forelse($products['result']['edges'] as $product)
                                 <tr>
                                     <td> {{  $product['node']['id'] }}</td>
                                     <td> {{  $product['node']['name'] }}</td>
@@ -60,6 +60,13 @@
                         </tbody>
                     </tbody>
                 </table>
+            </div>
+            <div style="padding: 26px;">
+                @if($products['result']['pageInfo']['hasNextPage'] == true)
+                    <a class="btn btn-danger" href="{{ route('application.eneba.products',['next' => $products['result']['pageInfo']['endCursor'] ]) }}">
+                        التالي
+                    </a>
+                @endif
             </div>
         </div>
     @else
