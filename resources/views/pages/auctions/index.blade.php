@@ -61,7 +61,9 @@
 @push('custom_script')
 <script>
     jQuery('document').ready(function(){
-        alert('hi');
+        jQuery('.search_on_eneba_prods').on('click',function(){
+            alert('hi');
+        });
     });
 </script>
 @endpush
