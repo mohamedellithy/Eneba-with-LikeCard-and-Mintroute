@@ -49,6 +49,7 @@ $eneba_id = request('eneba_id') ?: null;
                             <th>كود المنتج</th>
                             <th>كود مستخدم</th>
                             <th>حالة الكود</th>
+                            <th>تاريخ الاضافة</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -59,6 +60,7 @@ $eneba_id = request('eneba_id') ?: null;
                                 <td>{{ $eneba_code->code }}</td>
                                 <td>{{ $eneba_code->status_used == 'unused' ? 'غير مستخدم' :'مستخدم' }}</td>
                                 <td>{{ $eneba_code->status == 'allow' ? 'مسموح' :'محظور' }}</td>
+                                <td>{{ $eneba_code->created_at }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
