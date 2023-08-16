@@ -22,17 +22,19 @@
     <!-- Basic Bootstrap Table -->
     <div class="card" style="padding-top: 3%;">
         <div class="card-body card-category-frmae">
-            <div class="mb-3 container-fields">
-                <div class="form-group">
-                    <label>المنتجات </label>
-                    <input type="text" name="product_name" class="form-control product_name"/>
+            <form method="get" >
+                <div class="mb-3 container-fields">
+                    <div class="form-group">
+                        <label>المنتجات </label>
+                        <input type="text" name="name" class="form-control" required/>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">
+                            البحث عن المنتج
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <button type="button" name="" class="btn btn-success search_on_eneba_prods">
-                        البحث عن المنتج
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <br/>
@@ -60,26 +62,26 @@
 
 @push('custom_script')
 <script>
-    jQuery('document').ready(function(){
-        jQuery('.search_on_eneba_prods').on('click',function(){
-            let product_name = jQuery('.product_name').val();
-            $.ajaxSetup({
-                headers:{
-                    'X-CSRF-TOKEN':jQuery('meta[name="csrf-token"]').attr('content')
-                }
-            });
+    // jQuery('document').ready(function(){
+    //     jQuery('.search_on_eneba_prods').on('click',function(){
+    //         let product_name = jQuery('.product_name').val();
+    //         $.ajaxSetup({
+    //             headers:{
+    //                 'X-CSRF-TOKEN':jQuery('meta[name="csrf-token"]').attr('content')
+    //             }
+    //         });
 
-            $.ajax({
-                type:'POST',
-                url:"{{ route('application.search-on-eneba-products') }}",
-                data:{
-                    eneba_product_name:product_name
-                },
-                success:function(response){
-                    console.log(response);
-                }
-            })
-        });
-    });
+    //         $.ajax({
+    //             type:'POST',
+    //             url:"{{ route('application.search-on-eneba-products') }}",
+    //             data:{
+    //                 eneba_product_name:product_name
+    //             },
+    //             success:function(response){
+    //                 console.log(response);
+    //             }
+    //         })
+    //     });
+    // });
 </script>
 @endpush

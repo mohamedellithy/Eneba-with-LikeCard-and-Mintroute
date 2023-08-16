@@ -24,13 +24,13 @@ class AuctionApplication extends Controller
         return view('pages.auctions.index',compact('auctions'));
     }
 
-    public function ajax_search_on_eneba_products(Request $request){
-        $search    = request('eneba_product_name');
-        $products  = Cache::rememberForever('eneba_products_'.$search, function() use($search){
-            return $this->eneba_service->get_products($page_no = null,$search);
-        });
-        return response()->json([
-            'result' => $products
-        ]);
-    }
+    // public function ajax_search_on_eneba_products(Request $request){
+    //     $search    = request('eneba_product_name');
+    //     $products  = Cache::rememberForever('eneba_products_'.$search, function() use($search){
+    //         return $this->eneba_service->get_products($page_no = null,$search);
+    //     });
+    //     return response()->json([
+    //         'products' => $products['result']
+    //     ]);
+    // }
 }
