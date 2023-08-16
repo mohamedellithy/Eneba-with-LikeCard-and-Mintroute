@@ -10,10 +10,10 @@
         <div class="card-body card-category-frmae">
             <div class="mb-3">
                 <form id="filter-data" method="get">
-                    <label>التصنيفات</label>
-                    <select name="category_id" id="largeSelect" class="form-select form-select-lg">
-                        <option>تصنيفات المنتجات</option>
-                    </select>
+                    <div class="form--group">
+                        <label>التصنيفات</label>
+                        <input type="text" name="" class="form-control"/>
+                    </div>
                 </form>
             </div>
         </div>
