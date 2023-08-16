@@ -46,16 +46,21 @@ $eneba_id = request('eneba_id') ?: null;
                     <thead>
                         <tr>
                             <th></th>
-                            <th>الصورة</th>
-                            <th>رقم المنتج</th>
-                            <th>اسم المنتج</th>
-                            <th>نوع المنتج</th>
                             <th>كود المنتج</th>
+                            <th>كود مستخدم</th>
+                            <th>حالة الكود</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
-
+                        @forelse($eneba_offline_codes as $eneba_code)
+                            <tr>
+                                <td>{{ $eneba_code->id }}</td>
+                                <td>{{ $eneba_code->status_used == 'unused' ? 'غير مستخدم' :'مستخدم' }}</td>
+                                <td>{{ $eneba_code->status == 'allow' ? 'مسموح' :'محظور' }}</td>
+                            </tr>
+                        @empty
+                        @endforelse
                     </tbody>
                 </table>
             </div>

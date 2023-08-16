@@ -8,6 +8,8 @@ use App\Services\Eneba\Eneba;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use App\Models\EnebaOrder;
+use App\Models\OfflineCode;
+
 class EnebaApplication extends Controller
 {
     //
@@ -86,6 +88,12 @@ class EnebaApplication extends Controller
     }
 
     public function add_eneba_codes(Request $request,$enebe_id){
-        dd($enebe_id);
+        $product_eneba  = Cache::rememberForever('eneba_single_product_'.$enebe_id, function() use($enebe_id){
+            return $this->eneba_service->get_single_product($enebe_id)['result']['data'];
+        });
+
+        $eneba_offline_codes = OfflineCode::where('product_id',$enebe_id)->get();
+
+        return view('pages.eneba.codes.index',compact('product_eneba','eneba_offline_codes'));
     }
 }
