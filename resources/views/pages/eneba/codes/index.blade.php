@@ -67,7 +67,7 @@ $eneba_id = request('eneba_id') ?: null;
                                           <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            @if($eneba_code->status == 'used')
+                                            @if($eneba_code->status_used == 'used')
                                                 <form method="post" action="{{ route('application.eneba.update_codes',$eneba_code->id) }}">
                                                     @csrf
                                                     @method('PUT')
