@@ -102,7 +102,7 @@ class EnebaApplication extends Controller
             'product_type' => 'likecard'
         ]);
 
-        $eneba_id = request('eneba_id');
+        $eneba_id = request('product_id');
 
         $product_eneba  = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id){
             return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
