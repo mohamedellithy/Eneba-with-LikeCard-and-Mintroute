@@ -60,7 +60,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
     });
 
     Route::controller(AuctionApplication::class)->group(function(){
-        Route::post('application/auctions', 'index')->name('auctions');
+        Route::get('application/auctions', 'index')->name('auctions');
     });
 
 });
