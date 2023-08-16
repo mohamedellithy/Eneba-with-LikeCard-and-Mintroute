@@ -140,4 +140,18 @@ class LikeCardApplication extends Controller
 
         return back();
     }
+
+    public function update_likecard_codes(Request $request,$code_id){
+        OfflineCode::where('id',$code_id)->update($request->only([
+            'status_used',
+            'status'
+        ]));
+
+        return back();
+    }
+
+    public function delete_likecard_codes($code_id){
+        OfflineCode::where('id',$code_id)->delete();
+        return back();
+    }
 }

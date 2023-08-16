@@ -94,18 +94,51 @@ $category_id = request()->query('category_id') ?: null;
                                           <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <button class="btn btn-warning btn-sm dropdown-item">
-                                                استخدام الكود 
-                                            </button>
-                                            @if($code->status == 'allow')
-                                                <button class="btn btn-danger btn-sm dropdown-item">
-                                                    توقيف الكود 
-                                                </button>
-                                            @elseif($code->status != 'allow')
-                                                <button class="btn btn-success btn-sm dropdown-item">
-                                                    اتاحة الكود 
-                                                </button>
+                                            @if($code->status_used == 'used')
+                                                <form method="post" action="{{ route('application.likecard.update_codes',$code->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status_used" value="unused" />
+                                                    <button class="btn btn-danger btn-sm dropdown-item">
+                                                        كود غير مستخدم
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form method="post" action="{{ route('application.likecard.update_codes',$code->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status_used" value="used" />
+                                                    <button class="btn btn-success btn-sm dropdown-item">
+                                                        استخدام الكود
+                                                    </button>
+                                                </form>
                                             @endif
+                                            @if($code->status == 'allow')
+                                                <form method="post" action="{{ route('application.likecard.update_codes',$code->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status" value="disallow" />
+                                                    <button class="btn btn-danger btn-sm dropdown-item">
+                                                        توقيف الكود
+                                                    </button>
+                                                </form>
+                                            @elseif($code->status != 'allow')
+                                                <form method="post" action="{{ route('application.likecard.update_codes',$code->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status" value="allow" />
+                                                    <button class="btn btn-success btn-sm dropdown-item">
+                                                        اتاحة الكود
+                                                    </button>
+                                                </form>
+                                            @endif
+                                            <form method="post" action="{{ route('application.likecard.delete_codes',$code->id) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger btn-sm dropdown-item">
+                                                    حذف الكود
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>

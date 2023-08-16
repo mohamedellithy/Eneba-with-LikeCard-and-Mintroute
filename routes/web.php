@@ -55,6 +55,8 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::get('application/likecard/products','get_products')->name('likecard.products');
         Route::get('application/likecard/codes','get_codes')->name('likecard.codes');
         Route::post('application/likecard/store-codes','store_codes')->name('likecard.store_codes');
+        Route::put('application/likecard/update_codes/{code_id}','update_likecard_codes')->name('likecard.update_codes');
+        Route::delete('application/likecard/delete_codes/{code_id}','delete_likecard_codes')->name('likecard.delete_codes');
     });
 
 });
