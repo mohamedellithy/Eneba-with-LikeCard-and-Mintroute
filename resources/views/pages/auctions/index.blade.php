@@ -1,5 +1,19 @@
 @extends('master')
 
+@push('custom_style')
+<style>
+    .container-fields{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: flex-start;
+    }
+    .container-fields .from-group{
+        width: 50%;
+        margin: auto 0px auto 17px;
+    }
+</style>
+@endpush
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">
