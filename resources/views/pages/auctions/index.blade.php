@@ -22,19 +22,17 @@
     <!-- Basic Bootstrap Table -->
     <div class="card" style="padding-top: 3%;">
         <div class="card-body card-category-frmae">
-            <form id="filter-data" method="get">
-                <div class="mb-3 container-fields">
-                    <div class="form-group">
-                        <label>المنتجات </label>
-                        <input type="text" name="" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <button type="text" name="" class="btn btn-success">
-                            البحث عن المنتج
-                        </button>
-                    </div>
+            <div class="mb-3 container-fields">
+                <div class="form-group">
+                    <label>المنتجات </label>
+                    <input type="text" name="product_name" class="form-control product_name"/>
                 </div>
-            </form>
+                <div class="form-group">
+                    <button type="button" name="" class="btn btn-success search_on_eneba_prods">
+                        البحث عن المنتج
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <br/>
@@ -59,3 +57,11 @@
     </div>
 </div>
 @endsection
+
+@push('custom_script')
+<script>
+    jQuery('document').ready(function(){
+        alert('hi');
+    });
+</script>
+@endpush
