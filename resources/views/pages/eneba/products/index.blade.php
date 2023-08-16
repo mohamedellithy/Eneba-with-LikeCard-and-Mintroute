@@ -60,7 +60,7 @@ $category_id = request()->query('category_id') ?: null;
                                 <td> {{  $product['node']['createdAt'] }}</td>
                                 <td> {{  $product['node']['type']['value'] }}</td>
                                 <td>
-                                    <a href="{{ route('application.eneba.codes') }}" class="btn btn-danger">
+                                    <a href="{{ route('application.eneba.codes',$product['node']['id']) }}" class="btn btn-danger">
                                         الاكواد
                                     </a>
                                 </td>

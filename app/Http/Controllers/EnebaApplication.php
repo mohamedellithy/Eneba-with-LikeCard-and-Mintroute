@@ -84,4 +84,8 @@ class EnebaApplication extends Controller
 
         return view('pages.eneba.products.index',compact('products'));
     }
+
+    public function add_eneba_codes(Request $request,$enebe_id){
+        dd($enebe_id);
+    }
 }
