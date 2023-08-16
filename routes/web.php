@@ -7,6 +7,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EnebaApplication;
 use App\Http\Controllers\LikeCardApplication;
 use App\Http\Controllers\EnebaLikeCardController;
+use App\Http\Controllers\AuctionApplication;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
