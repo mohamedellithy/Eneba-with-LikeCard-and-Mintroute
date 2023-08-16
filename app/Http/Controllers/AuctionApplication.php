@@ -20,14 +20,17 @@ class AuctionApplication extends Controller
     }
 
     public function index(Request $request){
-        $auctions  = Auction::paginate(20);
+        
         $page_no   = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
         $search    = request('name');
         $products  = null;
         if($search = request('name')){
+            $auctions  = Auction::pluck('product_id')->toArray();
             $products  = Cache::rememberForever('eneba_products_'.$search.'_'.$page_no, function() use($page_no,$search){
                 return $this->eneba_service->get_products($page_no,$search);
             });
+        } else {
+            $auctions  = Auction::paginate(20);
         }
         //dd($products);
         return view('pages.auctions.index',compact('auctions','products'));
