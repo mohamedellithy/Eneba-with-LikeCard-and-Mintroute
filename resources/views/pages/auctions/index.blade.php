@@ -26,25 +26,63 @@
         </div>
     </div>
     <br/>
-    <div class="card" style="padding-top: 3%;">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>الصورة</th>
-                        <th>رقم المنتج</th>
-                        <th>اسم المنتج</th>
-                        <th>نوع المنتج</th>
-                        <th>كود المنتج</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody class="table-border-bottom-0 alldata">                    
-                </tbody>
-            </table>
+    @if(isset($name))
+        <div class="card" style="padding-top: 3%;">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>كود المنتج</th>
+                            <th>الاسم</th>
+                            <th>تاريخ الاطلاق</th>
+                            <th>تاريخ الانشاء</th>
+                            <th>نوع المنتج</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0 alldata">
+                        <tbody>
+                            @forelse($products as $product)
+                                <tr>
+                                    <td> {{  $product['node']['id'] }}</td>
+                                    <td> {{  $product['node']['name'] }}</td>
+                                    <td> {{  $product['node']['releasedAt'] }}</td>
+                                    <td> {{  $product['node']['createdAt'] }}</td>
+                                    <td> {{  $product['node']['type']['value'] }}</td>
+                                    <td>
+                                        <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm">
+                                            اختيار المنتج
+                                        </a>
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
+                        </tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    @else
+        <div class="card" style="padding-top: 3%;">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>الصورة</th>
+                            <th>رقم المنتج</th>
+                            <th>اسم المنتج</th>
+                            <th>نوع المنتج</th>
+                            <th>كود المنتج</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0 alldata">                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
 </div>
 @endsection
 @push('custom_style')
