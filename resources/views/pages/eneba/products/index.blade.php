@@ -48,6 +48,7 @@ $category_id = request()->query('category_id') ?: null;
                             <th>تاريخ الانشاء</th>
                             <th>نوع المنتج</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
@@ -58,7 +59,12 @@ $category_id = request()->query('category_id') ?: null;
                                 <td> {{  $product['node']['releasedAt'] }}</td>
                                 <td> {{  $product['node']['createdAt'] }}</td>
                                 <td> {{  $product['node']['type']['value'] }}</td>
-                                <td> 
+                                <td>
+                                    <a href="{{ route('application.eneba.codes') }}" class="btn btn-danger">
+                                        الاكواد
+                                    </a>
+                                </td>
+                                <td>
                                     <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm">
                                         اختيار المنتج
                                     </a>

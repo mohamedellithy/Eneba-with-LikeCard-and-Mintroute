@@ -37,6 +37,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::post('eneba/callback-stock-provision','eneba_callback_stock_provision')->name('eneba.callback_stock_provision');
         Route::post('eneba/callback-stock-reservation','eneba_callback_stock_reservation')->name('eneba.callback_stock_reservation');
         Route::get('application/eneba/products','get_products')->name('eneba.products');
+        Route::get('application/eneba/codes','add_eneba_codes')->name('eneba.codes');
     });
 
     Route::controller(EnebaLikeCardController::class)->group(function(){
