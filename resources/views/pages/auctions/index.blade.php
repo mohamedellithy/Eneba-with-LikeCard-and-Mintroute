@@ -59,7 +59,7 @@
             </div>
             <div style="padding: 26px;">
                 @if($products['result']['pageInfo']['hasNextPage'] == true)
-                    <a class="btn btn-danger" href="{{ route('application.auctions',['next' => $products['result']['pageInfo']['endCursor'] ]) }}">
+                    <a class="btn btn-danger" href="{{ route('application.auctions',['name' =>$name,'next' => $products['result']['pageInfo']['endCursor'] ]) }}">
                         التالي
                     </a>
                 @endif
