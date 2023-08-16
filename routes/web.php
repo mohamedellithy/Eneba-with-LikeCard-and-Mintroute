@@ -39,6 +39,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::get('application/eneba/products','get_products')->name('eneba.products');
         Route::get('application/eneba/codes/{eneba_id}','add_eneba_codes')->name('eneba.codes');
         Route::post('application/eneba/store_codes','store_eneba_codes')->name('eneba.store_codes');
+        Route::put('application/eneba/update_codes/{code_id}','update_eneba_codes')->name('eneba.update_codes');
 
     });
 

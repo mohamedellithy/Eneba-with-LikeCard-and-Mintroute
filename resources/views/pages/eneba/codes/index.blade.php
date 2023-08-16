@@ -71,13 +71,23 @@ $eneba_id = request('eneba_id') ?: null;
                                                 استخدام الكود
                                             </button>
                                             @if($eneba_code->status == 'allow')
+                                            <form method="post" action="{{ route('application.eneba.update_codes') }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <input name="status" value="disallow" />
                                                 <button class="btn btn-danger btn-sm dropdown-item">
                                                     توقيف الكود
                                                 </button>
+                                            </form>
                                             @elseif($eneba_code->status != 'allow')
+                                            <form method="post" action="{{ route('application.eneba.update_codes') }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <input name="status" value="allow" />
                                                 <button class="btn btn-success btn-sm dropdown-item">
                                                     اتاحة الكود
                                                 </button>
+                                            </form>
                                             @endif
                                         </div>
                                     </div>

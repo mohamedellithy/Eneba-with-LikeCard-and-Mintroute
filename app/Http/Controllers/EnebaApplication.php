@@ -125,4 +125,13 @@ class EnebaApplication extends Controller
 
         return back();
     }
+
+    public function update_eneba_codes(Request $request,$code_id){
+        OfflineCode::where('id',$code_id)->update($request->only([
+            'status_used',
+            'status'
+        ]));
+
+        return back();
+    }
 }
