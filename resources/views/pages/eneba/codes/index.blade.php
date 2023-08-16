@@ -68,11 +68,11 @@ $eneba_id = request('eneba_id') ?: null;
                                             <button class="btn btn-warning btn-sm dropdown-item">
                                                 استخدام الكود
                                             </button>
-                                            @if($code->status == 'allow')
+                                            @if($eneba_code->status == 'allow')
                                                 <button class="btn btn-danger btn-sm dropdown-item">
                                                     توقيف الكود
                                                 </button>
-                                            @elseif($code->status != 'allow')
+                                            @elseif($eneba_code->status != 'allow')
                                                 <button class="btn btn-success btn-sm dropdown-item">
                                                     اتاحة الكود
                                                 </button>
