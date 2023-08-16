@@ -99,7 +99,7 @@ class EnebaApplication extends Controller
 
     public function store_eneba_codes(Request $request){
         $request->merge([
-            'product_type' => 'likecard'
+            'product_type' => 'eneba'
         ]);
 
         $eneba_id = request('product_id');
