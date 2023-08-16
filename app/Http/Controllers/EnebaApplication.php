@@ -108,14 +108,10 @@ class EnebaApplication extends Controller
             return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
         });
 
-        dd($product_eneba);
-
-        if(isset($product['response'])):
-            if($product['response'] == 1):
-                $request->merge([
-                    'product_name'  => $product['data'][0]['productName'],
-                ]);
-            endif;
+        if(count($product_eneba['response']) > 0):
+            $request->merge([
+                'product_name'  => $product_eneba['S_product']['name'],
+            ]);
         endif;
 
         $offline_code = OfflineCode::updateOrCreate($request->only([
@@ -126,5 +122,7 @@ class EnebaApplication extends Controller
             'product_type',
             'code'
         ]));
+
+        return back();
     }
 }
