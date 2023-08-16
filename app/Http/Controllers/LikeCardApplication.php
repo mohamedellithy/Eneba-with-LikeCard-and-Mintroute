@@ -107,7 +107,7 @@ class LikeCardApplication extends Controller
             return null;
         });
 
-        $codes = OfflineCode::paginate(10);
+        $codes = OfflineCode::where('product_type','likecard')->paginate(10);
 
         return view('pages.likecard.codes.index',compact('products','categories','codes'));
     }
