@@ -56,6 +56,7 @@ $eneba_id = request('eneba_id') ?: null;
                         @forelse($eneba_offline_codes as $eneba_code)
                             <tr>
                                 <td>{{ $eneba_code->id }}</td>
+                                <td>{{ $eneba_code->code }}</td>
                                 <td>{{ $eneba_code->status_used == 'unused' ? 'غير مستخدم' :'مستخدم' }}</td>
                                 <td>{{ $eneba_code->status == 'allow' ? 'مسموح' :'محظور' }}</td>
                             </tr>
