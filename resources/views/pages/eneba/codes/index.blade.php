@@ -71,7 +71,7 @@ $eneba_id = request('eneba_id') ?: null;
                                                 استخدام الكود
                                             </button>
                                             @if($eneba_code->status == 'allow')
-                                            <form method="post" action="{{ route('application.eneba.update_codes') }}">
+                                            <form method="post" action="{{ route('application.eneba.update_codes',$eneba_code->id) }}">
                                                 @csrf
                                                 @method('PUT')
                                                 <input name="status" value="disallow" />
@@ -80,7 +80,7 @@ $eneba_id = request('eneba_id') ?: null;
                                                 </button>
                                             </form>
                                             @elseif($eneba_code->status != 'allow')
-                                            <form method="post" action="{{ route('application.eneba.update_codes') }}">
+                                            <form method="post" action="{{ route('application.eneba.update_codes',$eneba_code->id) }}">
                                                 @csrf
                                                 @method('PUT')
                                                 <input name="status" value="allow" />
