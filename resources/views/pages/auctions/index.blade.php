@@ -47,9 +47,14 @@
                                     <td> {{  $product['node']['type']['value'] }}</td>
                                     <td>
                                         @if(in_array($product['node']['id'],$auctions))
-                                        <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm">
-                                            اختيار المنتج
-                                        </a>
+                                           <span class="badge bg-warning">
+                                             مزايد عليها
+                                           </span>
+                                        @else
+                                            <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm">
+                                                اختيار المنتج
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
