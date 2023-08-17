@@ -179,7 +179,7 @@ class Eneba {
               type { value }
               auctions(
                 first:100
-                PRICE_DESC
+                sort:"PRICE_DESC"
                 after:"{$from}"
               ) {
                 totalCount
