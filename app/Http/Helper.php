@@ -56,8 +56,8 @@ if(!function_exists('GetAuctionHighPrice')) {
         
             $collect_auctions[] = $auction_eneba['S_product']['auctions']['edges'];
 
-            if($auction_eneba['S_product']['auctions']['edges']['pageInfo']['hasNextPage'] == true){
-                GetAuctionHighPrice($eneba_id,$auction_eneba['S_product']['auctions']['edges']['pageInfo']['endCursor']);
+            if($auction_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true){
+                GetAuctionHighPrice($eneba_id,$auction_eneba['S_product']['auctions']['pageInfo']['endCursor']);
             }
 
             return dd($collect_auctions);
