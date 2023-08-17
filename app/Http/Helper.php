@@ -50,6 +50,7 @@ if(!function_exists('GetAuctionHighPrice')) {
     {
         $auction_eneba      = new Eneba($sandbox = false);
         $auction_eneba      = $auction_eneba->get_single_product($eneba_id,$page_no);
+        return $auction_eneba;
         if($auction_eneba['status'] == 200){
             $auction_eneba = $auction_eneba['result']['data'];
         
