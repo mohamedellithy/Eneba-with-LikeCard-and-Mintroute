@@ -41,9 +41,9 @@ class AuctionApplication extends Controller
         //     return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
         // });
         $page_no = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
-        $product_eneba =  $this->eneba_service->get_single_product($eneba_id,$page_no)['result']['data'];
+        //$product_eneba =  $this->eneba_service->get_single_product($eneba_id,$page_no)['result']['data'];
 
-        dd($product_eneba);
+        dd(GetAuctionHighPrice($eneba_id));
 
         return view('pages.auctions.create',compact('product_eneba'));
     }

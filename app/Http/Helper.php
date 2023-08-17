@@ -45,15 +45,19 @@ if(!function_exists('GetAttachments')) {
 }
 
 
-// if(!function_exists('GetAuctionHighPrice')) {
-//     function GetAuctionHighPrice($eneba_id,$page_no = null)
-//     {
-//         $auction_eneba      = new Eneba($sandbox = false);
-//         $auction_eneba      = $auction_eneba->get_single_product($eneba_id,$page_no);
-//         $collect_auctions[] = $auction_eneba['auctions']['edges'];
+if(!function_exists('GetAuctionHighPrice')) {
+    function GetAuctionHighPrice($eneba_id,$page_no = null)
+    {
+        $auction_eneba      = new Eneba($sandbox = false);
+        $auction_eneba      = $auction_eneba->get_single_product($eneba_id,$page_no);
+        $collect_auctions[] = $auction_eneba['auctions']['edges'];
 
-//         if($auction_eneba['auctions']['edges'])
-//     }
-// }
+        if($auction_eneba['auctions']['edges']['pageInfo']['hasNextPage'] == true){
+            GetAuctionHighPrice($eneba_id,$auction_eneba['auctions']['edges']['pageInfo']['endCursor']);
+        }
+
+        return dd($collect_auctions);
+    }
+}
 
 
