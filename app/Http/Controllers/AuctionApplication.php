@@ -41,7 +41,7 @@ class AuctionApplication extends Controller
             return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
         });
 
-        dd($product_eneba);
+        //dd($product_eneba);
 
         return view('pages.auctions.create',compact('product_eneba'));
     }
