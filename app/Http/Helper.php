@@ -63,7 +63,7 @@ if(!function_exists('GetAuctionHighPrice')) {
                 GetAuctionHighPrice($eneba_id,$auction_eneba['S_product']['auctions']['pageInfo']['endCursor']);
             }
 
-            return collect($collect_auctions);
+            return collect($collect_auctions)->get('node.merchantName');
         }
 
         return null;
