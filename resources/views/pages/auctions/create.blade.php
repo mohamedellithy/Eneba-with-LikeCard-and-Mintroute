@@ -1,5 +1,5 @@
 @extends('master')
-@php $name = request('name'); @endphp
+@php $enebal_id = request('enebal_id'); @endphp
 @section('content')
 <div class="row">
     <div class="col-xl">
@@ -54,7 +54,7 @@
                     </div>
                 </div>
 
-                <a href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}" class="btn btn-primary">
+                <a target="_blank" href="{{ 'https://www.eneba.com/'.$product_eneba['S_product']['slug'] }}" class="btn btn-primary">
                     تفاصييل المنتج
                 </a>
             </div>
@@ -78,6 +78,13 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div style="padding: 26px;">
+                    @if($products['S_product']['auctions']['pageInfo']['hasNextPage'] == true)
+                        <a class="btn btn-danger" href="{{ route('application.auctions.create',['eneba_id' =>$enebal_id,'next' => $products['result']['pageInfo']['endCursor'] ]) }}">
+                            التالي
+                        </a>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

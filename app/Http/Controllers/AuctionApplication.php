@@ -40,8 +40,8 @@ class AuctionApplication extends Controller
         // $product_eneba  = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id){
         //     return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
         // });
-
-        $product_eneba =  $this->eneba_service->get_single_product($eneba_id)['result']['data'];
+        $page_no = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
+        $product_eneba =  $this->eneba_service->get_single_product($eneba_id,$page_no)['result']['data'];
 
         //dd($product_eneba['S_product']['auctions']['edges']);
 
