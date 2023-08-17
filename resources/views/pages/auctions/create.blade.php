@@ -64,10 +64,20 @@
                 <table class="table table-dark">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th></th>
+                            <th>اسم التاجر</th>
+                            <th>سعر المزاد</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        @forelse($product_eneba['S_product']['auctions']['edges'] as $auction )
+                            <tr>
+                                <td> {{  $auction['node']['merchantName'] }}</td>
+                                <td> {{  $auction['node']['price'] }}</td>
+                                <td> {{  $auction['node']['belongsToYou'] == true ? 'مزادك' : '-' }}</td>
+                            </tr>
+                        @empty
+                        @endforelse
+                    </tbody>
                 </table>
             </div>
         </div>
