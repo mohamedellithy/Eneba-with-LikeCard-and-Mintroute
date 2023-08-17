@@ -1,5 +1,5 @@
 @extends('master')
-@php $enebal_id = request('enebal_id'); @endphp
+@php $eneba_id = request('eneba_id'); @endphp
 @section('content')
 <div class="row">
     <div class="col-xl">
@@ -80,7 +80,7 @@
                 </table>
                 <div style="padding: 26px;">
                     @if($product_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true)
-                        <a class="btn btn-danger" href="{{ route('application.auctions.create',['eneba_id' =>$enebal_id,'next' => $product_eneba['S_product']['auctions']['pageInfo']['endCursor'] ]) }}">
+                        <a class="btn btn-danger" href="{{ route('application.auctions.create',['eneba_id' =>$eneba_id,'next' => $product_eneba['S_product']['auctions']['pageInfo']['endCursor'] ]) }}">
                             التالي
                         </a>
                     @endif
