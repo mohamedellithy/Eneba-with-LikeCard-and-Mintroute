@@ -2,8 +2,8 @@
 @php 
 $eneba_id   = request('eneba_id'); 
 $prices     = GetAuctionPrices($eneba_id);
-$low_price  = $prices->sortBy('amount')->first();
-$high_price = $prices->sortByDesc('amount')->first();
+$low_price  = $prices->min('amount');
+$high_price = $prices->max('amount');
 @endphp
 @section('content')
 <div class="row">
@@ -55,6 +55,24 @@ $high_price = $prices->sortByDesc('amount')->first();
                     <div class="input-group input-group-merge">
                         <h5>
                             {{ $product_eneba['S_product']['name'] }}
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-fullname">أعلي سعر مزاد</label>
+                    <div class="input-group input-group-merge">
+                        <h5>
+                            {{ $high_price ?: 0 }}
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-fullname">أقل سعر مزاد</label>
+                    <div class="input-group input-group-merge">
+                        <h5>
+                            {{ $low_price ?: 0  }}
                         </h5>
                     </div>
                 </div>
