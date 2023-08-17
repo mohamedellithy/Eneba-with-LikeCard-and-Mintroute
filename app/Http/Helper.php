@@ -44,6 +44,13 @@ if(!function_exists('GetAttachments')) {
     }
 }
 
+if(!function_exists('FormatePrice')) {
+    function FormatePrice($price)
+    {
+       return $price.'€';
+    }
+}
+
 
 if(!function_exists('GetAuctionPrices')) {
     function GetAuctionPrices($eneba_id,$page_no = null)

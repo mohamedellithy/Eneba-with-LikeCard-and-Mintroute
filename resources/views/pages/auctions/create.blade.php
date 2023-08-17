@@ -63,7 +63,7 @@ $high_price = $prices->max('amount') / 100;
                     <label class="form-label" for="basic-icon-default-fullname">أعلي سعر مزاد</label>
                     <div class="input-group input-group-merge">
                         <h5>
-                            {{ $high_price ?: 0 }}
+                            {{ $high_price ? FormatePrice($high_price) : 0 }}
                         </h5>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ $high_price = $prices->max('amount') / 100;
                     <label class="form-label" for="basic-icon-default-fullname">أقل سعر مزاد</label>
                     <div class="input-group input-group-merge">
                         <h5>
-                            {{ $low_price ?: 0  }}
+                            {{ $low_price ? FormatePrice($low_price) : 0  }}
                         </h5>
                     </div>
                 </div>
