@@ -179,6 +179,12 @@ class Eneba {
               type { value }
               auctions {
                 totalCount
+                pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                    startCursor
+                    endCursor
+                }
                 edges {
                   node {
                     merchantName
