@@ -46,7 +46,7 @@ if(!function_exists('GetAttachments')) {
 
 
 if(!function_exists('GetAuctionPrices')) {
-    function GetAuctionPrices($eneba_id,$page_no = null,$type = 'high')
+    function GetAuctionPrices($eneba_id,$page_no = null)
     {
         global $collect_auctions;
         $auction_eneba      = new Eneba($sandbox = false);
@@ -69,11 +69,12 @@ if(!function_exists('GetAuctionPrices')) {
 
             $collect_prices = collect($collect_auctions);
 
-            if($type == 'high'){
-                return $collect_prices->sortByDesc('amount')->first();
-            } else if($type == 'low'){
-                return $collect_prices->sortBy('amount')->first();
-            }
+            // if($type == 'high'){
+            //     return $collect_prices->sortByDesc('amount')->first();
+            // } else if($type == 'low'){
+            //     return $collect_prices->sortBy('amount')->first();
+            // }
+            return $collect_prices;
         }
 
         return null;
