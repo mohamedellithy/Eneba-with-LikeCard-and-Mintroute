@@ -48,8 +48,6 @@
                 <div class="mb-3">
                     <label class="form-label" for="basic-icon-default-fullname">اسم المنتج</label>
                     <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                class="bx bx-user"></i></span>
                         <h5>
                             {{ $product_eneba['S_product']['name'] }}
                         </h5>
