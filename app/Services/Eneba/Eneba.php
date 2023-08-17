@@ -181,6 +181,7 @@ class Eneba {
                 totalCount
                 edges {
                   node {
+                    merchantName
                     belongsToYou
                     price { amount currency }
                   }
