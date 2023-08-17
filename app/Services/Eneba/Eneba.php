@@ -208,6 +208,11 @@ class Eneba {
                 'status' => isset($response->json()['data']['S_products']) ? true : false,
                 'result' => isset($response->json()['data']['S_products']) ? $response->json()['data']['S_products'] : $response->json()
             ];
+        else:
+            return [
+                'code' => $response->status(),
+                'result' => $response->json()
+            ];
         endif;
     }
     
