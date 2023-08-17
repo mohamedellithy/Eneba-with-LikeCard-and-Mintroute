@@ -55,7 +55,9 @@ if(!function_exists('GetAuctionHighPrice')) {
         if($auction_eneba['code'] == 200){
             $auction_eneba = $auction_eneba['result']['data'];
         
-            $collect_auctions[] = $auction_eneba['S_product']['auctions']['edges'];
+            foreach($auction_eneba['S_product']['auctions']['edges'] as $auction):
+                $collect_auctions[] = $auction;
+            endforeach;
 
             if($auction_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true){
                 GetAuctionHighPrice($eneba_id,$auction_eneba['S_product']['auctions']['pageInfo']['endCursor']);
