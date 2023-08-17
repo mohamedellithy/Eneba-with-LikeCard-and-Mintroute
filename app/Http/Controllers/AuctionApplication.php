@@ -43,7 +43,7 @@ class AuctionApplication extends Controller
         $page_no = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
         $product_eneba =  $this->eneba_service->get_single_product($eneba_id,$page_no)['result']['data'];
 
-        dd($product_eneba);
+       // dd($product_eneba);
 
         return view('pages.auctions.create',compact('product_eneba'));
     }
