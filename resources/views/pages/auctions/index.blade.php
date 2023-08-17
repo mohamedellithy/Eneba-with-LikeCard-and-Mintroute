@@ -1,5 +1,5 @@
 @extends('master')
-@php 
+@php
     $name = request('name');
 @endphp
 @section('content')
@@ -51,7 +51,7 @@
                                              مزايد عليها
                                            </span>
                                         @else
-                                            <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm">
+                                            <a href="{{ route('application.auctions.create',$product['node']['id']) }}" class="btn btn-info btn-sm">
                                                 اختيار المنتج
                                             </a>
                                         @endif
@@ -86,7 +86,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0 alldata">                  
+                    <tbody class="table-border-bottom-0 alldata">
                         <t
                     </tbody>
                 </table>

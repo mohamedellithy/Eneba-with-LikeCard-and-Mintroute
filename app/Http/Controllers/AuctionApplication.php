@@ -20,7 +20,7 @@ class AuctionApplication extends Controller
     }
 
     public function index(Request $request){
-        
+
         $page_no   = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
         $search    = request('name');
         $products  = null;
@@ -34,6 +34,14 @@ class AuctionApplication extends Controller
         }
         //dd($products);
         return view('pages.auctions.index',compact('auctions','products'));
+    }
+
+    public function create(Request $request,$eneba_id){
+        $product_eneba  = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id){
+            return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
+        });
+
+        return view('pages.auctions.index',compact('product_eneba'));
     }
 
     // public function ajax_search_on_eneba_products(Request $request){
