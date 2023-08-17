@@ -178,7 +178,7 @@ class Eneba {
               regions { code }
               type { value }
               auctions(
-                first:2
+                first:50
                 after:"{$from}"
               ) {
                 totalCount
