@@ -168,7 +168,7 @@ class Eneba {
         endif;
     }
 
-    public function get_single_product($product_id){
+    public function get_single_product($product_id,$from = null){
         $query = <<<GQL
         query {
             S_product(productId: "{$product_id}") {
@@ -177,7 +177,10 @@ class Eneba {
               id
               regions { code }
               type { value }
-              auctions {
+              auctions(
+                first:20
+                after:"{$from}"
+              ) {
                 totalCount
                 pageInfo {
                     hasNextPage
