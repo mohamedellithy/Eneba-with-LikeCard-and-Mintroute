@@ -80,7 +80,7 @@
                 </table>
                 <div style="padding: 26px;">
                     @if($product_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true)
-                        <a class="btn btn-danger" href="{{ route('application.auctions.create',['eneba_id' =>$enebal_id,'next' => $products['result']['pageInfo']['endCursor'] ]) }}">
+                        <a class="btn btn-danger" href="{{ route('application.auctions.create',['eneba_id' =>$enebal_id,'next' => $product_eneba['S_product']['auctions']['pageInfo']['endCursor'] ]) }}">
                             التالي
                         </a>
                     @endif
