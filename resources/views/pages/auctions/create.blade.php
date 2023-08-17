@@ -1,5 +1,10 @@
 @extends('master')
-@php $eneba_id = request('eneba_id'); @endphp
+@php 
+$eneba_id   = request('eneba_id'); 
+$prices     = GetAuctionPrices($eneba_id);
+$low_price  = $prices->sortBy('amount')->first();
+$high_price = $prices->sortByDesc('amount')->first();
+@endphp
 @section('content')
 <div class="row">
     <div class="col-xl">
