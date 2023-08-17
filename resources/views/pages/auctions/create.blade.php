@@ -64,6 +64,7 @@
                         <tr>
                             <th>اسم التاجر</th>
                             <th>سعر المزاد</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
