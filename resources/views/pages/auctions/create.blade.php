@@ -1,4 +1,6 @@
-@extends('master') @php $name = request('name'); @endphp @section('content')
+@extends('master')
+@php $name = request('name'); @endphp
+@section('content')
 <div class="row">
     <div class="col-xl">
         <div class="card mb-4">
