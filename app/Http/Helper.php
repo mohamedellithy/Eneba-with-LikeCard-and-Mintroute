@@ -48,6 +48,7 @@ if(!function_exists('GetAttachments')) {
 if(!function_exists('GetAuctionHighPrice')) {
     function GetAuctionHighPrice($eneba_id,$page_no = null)
     {
+        global $collect_auctions;
         $auction_eneba      = new Eneba($sandbox = false);
         $auction_eneba      = $auction_eneba->get_single_product($eneba_id,$page_no);
 
@@ -56,9 +57,9 @@ if(!function_exists('GetAuctionHighPrice')) {
         
             $collect_auctions[] = $auction_eneba['S_product']['auctions']['edges'];
 
-            // if($auction_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true){
-            //     GetAuctionHighPrice($eneba_id,$auction_eneba['S_product']['auctions']['pageInfo']['endCursor']);
-            // }
+            if($auction_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true){
+                GetAuctionHighPrice($eneba_id,$auction_eneba['S_product']['auctions']['pageInfo']['endCursor']);
+            }
 
             return $collect_auctions;
         }
