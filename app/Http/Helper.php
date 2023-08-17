@@ -50,13 +50,19 @@ if(!function_exists('GetAuctionHighPrice')) {
     {
         $auction_eneba      = new Eneba($sandbox = false);
         $auction_eneba      = $auction_eneba->get_single_product($eneba_id,$page_no);
-        $collect_auctions[] = $auction_eneba['auctions']['edges'];
+        if($auction_eneba['status'] == 200){
+            $auction_eneba = $auction_eneba['result']['data'];
+        
+            $collect_auctions[] = $auction_eneba['auctions']['edges'];
 
-        if($auction_eneba['auctions']['edges']['pageInfo']['hasNextPage'] == true){
-            GetAuctionHighPrice($eneba_id,$auction_eneba['auctions']['edges']['pageInfo']['endCursor']);
+            if($auction_eneba['auctions']['edges']['pageInfo']['hasNextPage'] == true){
+                GetAuctionHighPrice($eneba_id,$auction_eneba['auctions']['edges']['pageInfo']['endCursor']);
+            }
+
+            return dd($collect_auctions);
         }
 
-        return dd($collect_auctions);
+        return null;
     }
 }
 
