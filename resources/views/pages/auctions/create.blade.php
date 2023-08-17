@@ -72,7 +72,7 @@
                         @forelse($product_eneba['S_product']['auctions']['edges'] as $auction )
                             <tr>
                                 <td> {{  $auction['node']['merchantName'] }}</td>
-                                <td> {{  $auction['node']['price'] }}</td>
+                                <td> {{  $auction['node']['price']['amount'].' '.$auction['node']['price']['currency'] }}</td>
                                 <td> {{  $auction['node']['belongsToYou'] == true ? 'مزادك' : '-' }}</td>
                             </tr>
                         @empty
