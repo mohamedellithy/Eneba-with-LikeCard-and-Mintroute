@@ -2,8 +2,8 @@
 @php 
 $eneba_id   = request('eneba_id'); 
 $prices     = GetAuctionPrices($eneba_id);
-$low_price  = $prices->min('amount');
-$high_price = $prices->max('amount');
+$low_price  = $prices->min('amount') / 100;
+$high_price = $prices->max('amount') / 100;
 @endphp
 @section('content')
 <div class="row">
