@@ -56,14 +56,14 @@ if(!function_exists('GetAuctionHighPrice')) {
             $auction_eneba = $auction_eneba['result']['data'];
         
             foreach($auction_eneba['S_product']['auctions']['edges'] as $auction):
-                $collect_auctions[] = $auction;
+                $collect_auctions[] = $auction['node'];
             endforeach;
 
             if($auction_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true){
                 GetAuctionHighPrice($eneba_id,$auction_eneba['S_product']['auctions']['pageInfo']['endCursor']);
             }
 
-            return collect($collect_auctions)->get('node.merchantName');
+            return collect($collect_auctions);
         }
 
         return null;
