@@ -178,7 +178,8 @@ class Eneba {
               regions { code }
               type { value }
               auctions(
-                first:5
+                first:100
+                sort:PRICE_DESC
                 after:"{$from}"
               ) {
                 totalCount
@@ -209,6 +210,43 @@ class Eneba {
             ];
         endif;
     }
+    
+    public function get_competitions($products_id = [],$from = null,$count = 50){
+        $query = <<<GQL
+            query {
+                S_competition(productIds: {$products_id}) {
+                    productId
+                    competition(
+                        first: {$count}
+                        after:"{$from}"
+                    ) { 
+                        totalCount 
+                        edges {
+                        node {
+                            belongsToYou
+                            merchantName
+                            price {
+                            amount
+                            currency
+                            }
+                        }
+                        }
+                    }
+                }
+            }
+        GQL;
+
+        $response = $this->resolve_call($query);
+
+        if($response->successful()):
+            return [
+                'code' => $response->status(),
+                'status' => isset($response->json()['data']['S_competition']) ? true : false,
+                'result' => isset($response->json()['data']['S_competition']) ? $response->json()['data']['S_competition'] : $response->json()
+            ];
+        endif;
+    }
+   
 
     public function create_auction($attr = []){
         $query = <<<GQL
