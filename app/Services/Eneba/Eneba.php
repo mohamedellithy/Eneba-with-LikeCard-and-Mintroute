@@ -178,8 +178,7 @@ class Eneba {
               regions { code }
               type { value }
               auctions(
-                first:100
-                sort:"PRICE_DESC"
+                first:50
                 after:"{$from}"
               ) {
                 totalCount

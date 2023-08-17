@@ -1,4 +1,5 @@
 <?php
+use App\Services\Eneba\Eneba;
 
 if(!function_exists('upload_assets')){
     function upload_assets($image){
@@ -42,3 +43,17 @@ if(!function_exists('GetAttachments')) {
         return $attachments;
     }
 }
+
+
+if(!function_exists('GetAuctionHighPrice')) {
+    function GetAuctionHighPrice($eneba_id,$page_no = null)
+    {
+        $auction_eneba      = new Eneba($sandbox = false);
+        $auction_eneba      = $auction_eneba->get_single_product($eneba_id,$page_no);
+        $collect_auctions[] = $auction_eneba['auctions']['edges'];
+
+        if($auction_eneba['auctions']['edges'])
+    }
+}
+
+
