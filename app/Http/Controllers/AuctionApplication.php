@@ -70,6 +70,7 @@ class AuctionApplication extends Controller
         $auction = Auction::create([
             'product_id'     => $eneba_id,
             'status'         => $request->input('status'),
+            'count_cards'    => $request->input('count_cards'),
             'min_price'      => $request->input('min_price'),
             'max_price'      => $request->input('max_price'),
             'current_price'  => $request->input('current_price'),
@@ -85,6 +86,7 @@ class AuctionApplication extends Controller
         $auction = Auction::where('id',$auction_id)->update([
             'status'         => $request->input('status'),
             'min_price'      => $request->input('min_price'),
+            'count_cards'    => $request->input('count_cards'),
             'max_price'      => $request->input('max_price'),
             'current_price'  => $request->input('current_price'),
             'automation'     => $request->input('automation'),
