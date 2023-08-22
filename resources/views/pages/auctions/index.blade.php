@@ -134,6 +134,9 @@
                                                     </button>
                                                 </form>
                                             @endif
+                                            <a class="btn btn-info" href="{{ "https://www.eneba.com/".eneba_single_product($auction->product_id)['S_product']['slug'] }}">
+                                                  المزاد
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
