@@ -102,7 +102,7 @@
                                     {{ eneba_single_product($auction->product_id)['S_product']['name'] }}
                                 </td>
                                 <td>
-                                    {{ likecard_single_product($auction->product->likecard_prod_id)['data']['productName'] }}
+                                    {{ likecard_single_product($auction->product->likecard_prod_id)['data'][0]['productName'] }}
                                 </td>
                                 <td>
                                     {{ $auction->current_price.' EUR' }}
