@@ -82,8 +82,7 @@
                             <th>اسم منتج اينيبا</th>
                             <th>اسم منتج لايك كارد</th>
                             <th>سعر المزاد</th>
-                            <th>نوع المنتج</th>
-                            <th>كود المنتج</th>
+                            <th>حالة المزاد</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -106,6 +105,37 @@
                                 </td>
                                 <td>
                                     {{ $auction->current_price.' EUR' }}
+                                </td>
+                                <td>
+                                    <i class='bx bxs-circle' @if($auction->status == 1) style="color:green" @else style="color:red" @endif ></i>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                          <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            @if($auction->status == 1)
+                                                <form method="post" action="{{ route('application.likecard.update_codes',$auction->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status_used" value="0" />
+                                                    <button class="btn btn-danger btn-sm dropdown-item">
+                                                        ايقاف المزاد
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form method="post" action="{{ route('application.likecard.update_codes',$auction->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status_used" value="1" />
+                                                    <button class="btn btn-success btn-sm dropdown-item">
+                                                        تشغيل المزاد
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
