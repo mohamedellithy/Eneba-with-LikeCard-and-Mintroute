@@ -18,7 +18,7 @@ $high_price = $prices->max('amount');
                     <form class="inner-auction-info" method="post" action="{{ route('application.auctions.store',$eneba_id) }}">
                         @csrf
                         <div class="form-check form-switch mb-3">
-                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked="">
+                            <input class="form-check-input" type="checkbox" name="status" value="1" id="flexSwitchCheckChecked" checked="">
                             <label class="form-check-label" for="flexSwitchCheckChecked">تشغيل المزاد</label>
                         </div>
                         <div class="mb-3">
@@ -40,7 +40,7 @@ $high_price = $prices->max('amount');
                             </div>
                         </div>
                         <div class="form-check form-switch mb-3">
-                            <input class="form-check-input" type="checkbox" name="automation" id="flexSwitchCheckChecked" checked="">
+                            <input class="form-check-input" type="checkbox" name="automation" value="1" id="flexSwitchCheckChecked" checked="">
                             <label class="form-check-label" for="flexSwitchCheckChecked">تغير السعر بشكل اتوماتك</label>
                         </div>
                         <div class="mb-3">
