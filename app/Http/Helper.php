@@ -47,7 +47,7 @@ if(!function_exists('GetAttachments')) {
 if(!function_exists('FormatePrice')) {
     function FormatePrice($price)
     {
-       return $price.'€';
+       return ($price/100).'€';
     }
 }
 
