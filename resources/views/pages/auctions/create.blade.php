@@ -40,7 +40,7 @@ $high_price = $prices->max('amount');
                     <div class="mb-3">
                         <label for="defaultSelect" class="form-label">مدة مراجعة السعر</label>
                         <select id="defaultSelect" name="change_time" class="form-select">
-                            <option>Default select</option>
+                            <option>بشكل اتوماتك</option>
                             <option value="5">5 دقائق</option>
                             <option value="10">10 دقائق</option>
                             <option value="15">15 دقائق</option>
