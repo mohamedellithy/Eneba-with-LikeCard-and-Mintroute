@@ -80,8 +80,8 @@
                             <th></th>
                             <th>رقم المزاد</th>
                             <th>رقم المنتج</th>
-                            <th>الصورة</th>
                             <th>اسم المنتج</th>
+                            <th>سعر المزاد</th>
                             <th>نوع المنتج</th>
                             <th>كود المنتج</th>
                             <th></th>
@@ -90,6 +90,7 @@
                     <tbody class="table-border-bottom-0 alldata">
                         @forelse($auctions as $auction)
                             <tr>
+                                <td></td>
                                 <td>
                                     @if($auction->auction)
                                         {{ $auction->auction }} 
@@ -98,10 +99,13 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $auction->auction }}
+                                    {{ $auction->product_id }}
                                 </td>
                                 <td>
-                                    {{ $auction->product_id }}
+                                    {{ eneba_single_price($auction->product_id)['S_product']['name'] }}
+                                </td>
+                                <td>
+                                    {{ $auction->current_price.' EUR' }}
                                 </td>
                             </tr>
                         @empty

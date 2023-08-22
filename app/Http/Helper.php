@@ -1,5 +1,6 @@
 <?php
 use App\Services\Eneba\Eneba;
+use Illuminate\Support\Facades\Cache;
 
 if(!function_exists('upload_assets')){
     function upload_assets($image){
@@ -92,4 +93,13 @@ if(!function_exists('GetAuctionPrices')) {
     }
 }
 
+if(!function_exists('eneba_single_price')) {
+    function eneba_single_price($eneba_id){
+        $eneba_service      = new Eneba($sandbox = false);
+        $product_eneba      = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id){
+            return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
+        });
+        return $product_eneba;
+    }
+}
 
