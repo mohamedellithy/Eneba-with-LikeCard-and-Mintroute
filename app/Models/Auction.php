@@ -16,6 +16,6 @@ class Auction extends Model
     }
 
     public function product(){
-        return $this->hasOne(Product::class,'product_id','eneba_prod_id');
+        return $this->belongsTo(Product::class,'product_id','eneba_prod_id');
     }
 }
