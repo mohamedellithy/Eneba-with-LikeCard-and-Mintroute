@@ -116,4 +116,12 @@ class AuctionApplication extends Controller
 
         return redirect()->route('application.auctions');
     }
+
+    public function update_status(Request $request,$auction_id){
+        $auction = Auction::where('id',$auction_id)->update([
+            'status'         => $request->input('status'),
+        ]);
+
+        return back();
+    }
 }

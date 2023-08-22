@@ -65,6 +65,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::get('application/auctions/create/{eneba_id}', 'create')->name('auctions.create');
         Route::get('application/auctions/edit/{auction_id}', 'edit')->name('auctions.edit');
         Route::put('application/auctions/update/{auction_id}', 'update')->name('auctions.update');
+        Route::put('application/auctions/update-status/{auction_id}', 'update')->name('auctions.update_status');
         Route::post('application/auctions/{eneba_id}', 'store')->name('auctions.store');
         Route::post('application/search-on-eneba-products','ajax_search_on_eneba_products')->name('search-on-eneba-products');
     });

@@ -125,19 +125,19 @@
                                         </button>
                                         <div class="dropdown-menu" style="padding: 11px;">
                                             @if($auction->status == 1)
-                                                <form method="post" action="{{ route('application.likecard.update_codes',$auction->id) }}">
+                                                <form method="post" action="{{ route('application.auctions.update_status',$auction->id) }}">
                                                     @csrf
                                                     @method('PUT')
-                                                    <input type="hidden" name="status_used" value="0" />
+                                                    <input type="hidden" name="status" value="0" />
                                                     <button class="btn btn-danger btn-sm dropdown-item">
                                                         ايقاف المزاد
                                                     </button>
                                                 </form>
                                             @else
-                                                <form method="post" action="{{ route('application.likecard.update_codes',$auction->id) }}">
+                                                <form method="post" action="{{ route('application.auctions.update_status',$auction->id) }}">
                                                     @csrf
                                                     @method('PUT')
-                                                    <input type="hidden" name="status_used" value="1" />
+                                                    <input type="hidden" name="status" value="1" />
                                                     <button class="btn btn-success btn-sm dropdown-item">
                                                         تشغيل المزاد
                                                     </button>
