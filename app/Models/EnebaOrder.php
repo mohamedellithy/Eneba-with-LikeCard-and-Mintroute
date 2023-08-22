@@ -12,6 +12,6 @@ class EnebaOrder extends Model
     protected $fillable = ['status_order','order_id'];
 
     public function auctions(){
-        return $this->belongsToMany(Auction::class,'eneba_order_auction','eneba_order_id','eneba_auction_id')->using(EnebaOrderAuction::class);
+        return $this->belongsToMany(Auction::class,'eneba_order_auctions','eneba_order_id','eneba_auction_id')->using(EnebaOrderAuction::class);
     }
 }
