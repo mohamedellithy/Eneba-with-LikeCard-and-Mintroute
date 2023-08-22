@@ -69,7 +69,7 @@ $high_price = $prices->max('amount');
                    <div class="alert alert-danger">
                     منتجك غير مربوط بمنتج لايك كارد الرحاء ربط منتجك بمنتج لايك كارد للبدء فى الدحول للمزاد
                    </div>
-                   <a class="btn btn-danger" href="{{ route('application.eneba.get_single_product') }}">
+                   <a class="btn btn-danger" href="{{ route('application.eneba.get_single_product',$eneba_id) }}">
                         ربط المنتج بمنتج لايك كارد
                    </a>
                 @endif
