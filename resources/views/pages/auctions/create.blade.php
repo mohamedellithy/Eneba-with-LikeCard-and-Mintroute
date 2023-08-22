@@ -14,7 +14,8 @@ $high_price = $prices->max('amount');
                 <small class="text-muted float-end">Default label</small>
             </div>
             <div class="card-body">
-                <form class="inner-auction-info">
+                <form class="inner-auction-info" method="post" action="{{ route('application.auctions.store',$eneba_id) }}">
+                    @csrf
                     <div class="form-check form-switch mb-3">
                         <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked="">
                         <label class="form-check-label" for="flexSwitchCheckChecked">تشغيل المزاد</label>
