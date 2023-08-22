@@ -39,7 +39,7 @@ class Operations {
 
         $data = [];
 
-        foreach($eneba_order->auctions as $auction):
+        foreach($eneba_order->auctions() as $auction):
             $data []= [
                 "auctionId" => $auction->auction,
                 "keys" => [
