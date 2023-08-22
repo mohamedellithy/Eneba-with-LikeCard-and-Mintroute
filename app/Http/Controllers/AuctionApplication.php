@@ -67,6 +67,16 @@ class AuctionApplication extends Controller
     }
 
     public function store(Request $request,$eneba_id){
+        if(!request('status')):
+            $request->merge([
+                'status' => 0
+            ]);
+        endif;
+        if(!request('automation')):
+            $request->merge([
+                'automation' => 0
+            ]);
+        endif;
         $auction = Auction::create([
             'product_id'     => $eneba_id,
             'status'         => $request->input('status'),
@@ -83,6 +93,16 @@ class AuctionApplication extends Controller
     }
 
     public function update(Request $request,$auction_id){
+        if(!request('status')):
+            $request->merge([
+                'status' => 0
+            ]);
+        endif;
+        if(!request('automation')):
+            $request->merge([
+                'automation' => 0
+            ]);
+        endif;
         $auction = Auction::where('id',$auction_id)->update([
             'status'         => $request->input('status'),
             'min_price'      => $request->input('min_price'),
