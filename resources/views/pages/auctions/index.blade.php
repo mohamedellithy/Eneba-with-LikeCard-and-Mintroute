@@ -105,7 +105,7 @@
                                     {{ likecard_single_product($auction->product->likecard_prod_id)['data'][0]['productName'] }}
                                 </td>
                                 <td>
-                                    {{ $auction->count_codes.' أكواد ' }}
+                                    {{ $auction->count_cards.' أكواد ' }}
                                 </td>
                                 <td>
                                     {{ $auction->current_price.' EUR' }}
