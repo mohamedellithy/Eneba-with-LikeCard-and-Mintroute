@@ -25,12 +25,16 @@ $high_price = $prices->max('amount');
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="basic-default-company">الحد الادني للتسعير</label>
-                        <input type="text" class="form-control" value="{{ FormatePrice($low_price,false) }}" id="basic-default-company" placeholder="ACME Inc.">
+                        <input type="text" class="form-control" name="min_price" value="{{ FormatePrice($low_price,false) }}" id="basic-default-company" placeholder="ACME Inc.">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">سعر الحالى </label>
+                        <input type="text" class="form-control" name="current_price" id="basic-default-company" placeholder="">
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="basic-default-email">الحد الأقصي للتسعير</label>
                         <div class="input-group input-group-merge">
-                            <input type="text" id="basic-default-email"  value="{{ FormatePrice($high_price,false) }}" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2">
+                            <input type="text" id="basic-default-email" name="max_price" value="{{ FormatePrice($high_price,false) }}" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2">
                         </div>
                     </div>
                     <div class="form-check form-switch mb-3">
