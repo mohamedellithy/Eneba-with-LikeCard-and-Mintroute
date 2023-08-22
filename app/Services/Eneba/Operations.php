@@ -19,7 +19,7 @@ class Operations {
         ]);
 
         $auction = Auction::where('auction',request('auctionId'))->first();
-        $eneba_order->auctions()->updateOrCreate([
+        $eneba_order->auctions()->attach([
             'eneba_order_id'  => $eneba_order->id,
             'eneba_auction_id'=> $auction->id
         ]);
