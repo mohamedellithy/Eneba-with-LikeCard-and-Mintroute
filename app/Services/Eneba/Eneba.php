@@ -289,7 +289,7 @@ class Eneba {
     }
 
     public function eneba_callback_stock_reservation(){
-        //EnebaOperations::create_new_order();
+        EnebaOperations::create_new_order();
         Http::post('https://webhook.site/f032ba41-f451-4aba-a8b3-a97fbff114de',request('orderId'));
         return response()->json([
             "action"  => "RESERVE",
