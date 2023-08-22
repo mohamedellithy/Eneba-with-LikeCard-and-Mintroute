@@ -115,7 +115,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="dropdown">
+                                    <div class="dropdown" style="padding: 11px;">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                           <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
