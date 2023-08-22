@@ -17,13 +17,11 @@ class Operations {
             'status_order' => 'RESERVE',
         ]);
 
-        foreach(request('auctions') as $auction):
-            $auction = Auction::where('auction',$auction['auctionId'])->first();
-            $eneba_order->auctions()->updateOrCreate([
-                'eneba_order_id'  => $eneba_order->id,
-                'eneba_auction_id'=> $auction->id
-            ]);
-        endforeach;
+        $auction = Auction::where('auction',request('auctionId'))->first();
+        $eneba_order->auctions()->updateOrCreate([
+            'eneba_order_id'  => $eneba_order->id,
+            'eneba_auction_id'=> $auction->id
+        ]);
     }
 
     public static function update_orders_and_get_codes(){
