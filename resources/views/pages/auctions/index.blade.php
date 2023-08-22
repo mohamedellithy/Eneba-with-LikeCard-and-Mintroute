@@ -90,7 +90,13 @@
                     <tbody class="table-border-bottom-0 alldata">
                         @forelse($auctions as $auction)
                             <tr>
-                                <td></td>
+                                <td>
+                                    @if($auction->auction)
+                                        {{ $auction->auction }} 
+                                    @else
+                                         لم يدرج للمزاد بعد
+                                    @endif
+                                </td>
                                 <td>
                                     {{ $auction->auction }}
                                 </td>
