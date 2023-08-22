@@ -14,7 +14,7 @@ $high_price = $prices->max('amount');
                 <small class="text-muted float-end">Default label</small>
             </div>
             <div class="card-body">
-                <form>
+                <form class="inner-auction-info">
                     <div class="form-check form-switch mb-3">
                         <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked="">
                         <label class="form-check-label" for="flexSwitchCheckChecked">تشغيل المزاد</label>
@@ -131,3 +131,12 @@ $high_price = $prices->max('amount');
     </div>
 </div>
 @endsection
+
+@push('custom_style')
+<style>
+    .card-body .inner-auction-info div.mb-3{
+        background-color: #E0F2F1;
+        padding: 16px 16px 16px 50px !important;
+    }
+</style>
+@endpush
