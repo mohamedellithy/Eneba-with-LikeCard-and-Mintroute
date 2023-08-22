@@ -1,6 +1,6 @@
 @extends('master')
-@php 
-$eneba_id   = request('eneba_id'); 
+@php
+$eneba_id   = request('eneba_id');
 $prices     = GetAuctionPrices($eneba_id);
 $low_price  = $prices->min('amount') / 100;
 $high_price = $prices->max('amount') / 100;
@@ -84,7 +84,7 @@ $high_price = $prices->max('amount') / 100;
                         @forelse($product_eneba['S_product']['auctions']['edges'] as $auction )
                             <tr>
                                 <td> {{  $auction['node']['merchantName'] }}</td>
-                                <td> {{  $auction['node']['price']['amount'].' '.$auction['node']['price']['currency'] }}</td>
+                                <td> {{  FormatePrice($auction['node']['price']['amount']).' '.$auction['node']['price']['currency'] }}</td>
                                 <td> {{  $auction['node']['belongsToYou'] == true ? 'مزادك' : '-' }}</td>
                             </tr>
                         @empty
