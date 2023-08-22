@@ -51,6 +51,7 @@ if(!function_exists('FormatePrice')) {
         if($currency == true):
             $total = $total.'€';
         endif;
+        return $total;
     }
 }
 
