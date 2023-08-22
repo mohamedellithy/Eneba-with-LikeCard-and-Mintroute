@@ -6,8 +6,7 @@ use App\Models\EnebaOrder;
 use App\Models\Auction;
 class Operations {
     public static function create_new_auction($attr = []){
-        Auction::updateOrCreate([
-            'product_id' => $attr['product_id'],
+        Auction::where('product_id',$attr['product_id'])->update([
             'auction'    => $attr['auction']
         ]);
     }

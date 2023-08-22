@@ -67,16 +67,6 @@ class EnebaApplication extends Controller
         return back();
     }
 
-    public function eneba_callback_stock_provision(Request $request){
-        Http::post('https://webhook.site/5d007510-7555-48e9-82e5-0b20a60718cc',$request->all());
-        $this->eneba_service->eneba_callback_stock_provision();
-    }
-
-    public function eneba_callback_stock_reservation(Request $request){
-        Http::post('https://webhook.site/5d007510-7555-48e9-82e5-0b20a60718cc',$request->all());
-        $this->eneba_service->eneba_callback_stock_reservation();
-    }
-
     public function get_products(Request $request){
         $page_no = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
         $search  = request('search') ? $request->query('search') : null;

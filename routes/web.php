@@ -1,13 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ApplicationController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EnebaApplication;
-use App\Http\Controllers\LikeCardApplication;
-use App\Http\Controllers\EnebaLikeCardController;
 use App\Http\Controllers\AuctionApplication;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LikeCardApplication;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\EnebaLikeCardController;
+use App\Http\Controllers\DemoPurchasingController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,8 +39,6 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
     Route::controller(EnebaApplication::class)->group(function(){
         Route::put('application/eneba/update/{section}','update_credentials')->name('eneba.update');
         Route::put('application/eneba/regenrate-token' ,'generate_token')->name('eneba.regenrate_token');
-        Route::post('eneba/callback-stock-provision','eneba_callback_stock_provision')->name('eneba.callback_stock_provision');
-        Route::post('eneba/callback-stock-reservation','eneba_callback_stock_reservation')->name('eneba.callback_stock_reservation');
         Route::get('application/eneba/products','get_products')->name('eneba.products');
         Route::get('application/eneba/codes/{eneba_id}','add_eneba_codes')->name('eneba.codes');
         Route::post('application/eneba/store_codes','store_eneba_codes')->name('eneba.store_codes');
@@ -68,6 +70,15 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::put('application/auctions/update-status/{auction_id}', 'update_status')->name('auctions.update_status');
         Route::post('application/auctions/{eneba_id}', 'store')->name('auctions.store');
         Route::post('application/search-on-eneba-products','ajax_search_on_eneba_products')->name('search-on-eneba-products');
+    });
+
+    Route::controller(OrderController::class)->group(function(){
+        Route::post('eneba/callback-stock-provision','eneba_callback_stock_provision')->name('eneba.callback_stock_provision');
+        Route::post('eneba/callback-stock-reservation','eneba_callback_stock_reservation')->name('eneba.callback_stock_reservation');
+    });
+
+    Route::controller(DemoPurchasingController::class)->group(function(){
+        Route::get('eneba/test-order-purchasing','index');
     });
 
 });
