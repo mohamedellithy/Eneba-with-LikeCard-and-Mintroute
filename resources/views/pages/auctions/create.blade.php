@@ -33,7 +33,31 @@ $high_price = $prices->max('amount');
                             <input type="text" id="basic-default-email"  value="{{ FormatePrice($high_price,false) }}" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send</button>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" name="automation" id="flexSwitchCheckChecked" checked="">
+                        <label class="form-check-label" for="flexSwitchCheckChecked">تغير السعر بشكل اتوماتك</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="defaultSelect" class="form-label">مدة مراجعة السعر</label>
+                        <select id="defaultSelect" name="change_time" class="form-select">
+                            <option>Default select</option>
+                            <option value="5">5 دقائق</option>
+                            <option value="10">10 دقائق</option>
+                            <option value="15">15 دقائق</option>
+                            <option value="60">ساعة</option>
+                            <option value="120">ساعتين</option>
+                            <option value="180">3 ساعات</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-email">قيمة التغير فى السعر</label>
+                        <div class="input-group input-group-merge">
+                            <input type="text" name="price_step" id="basic-default-email"  value="0.01" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        انشاء المزاد
+                    </button>
                 </form>
             </div>
         </div>
