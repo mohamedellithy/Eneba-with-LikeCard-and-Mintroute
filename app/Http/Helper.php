@@ -45,9 +45,12 @@ if(!function_exists('GetAttachments')) {
 }
 
 if(!function_exists('FormatePrice')) {
-    function FormatePrice($price)
+    function FormatePrice($price,$currency = true)
     {
-       return ($price/100).'€';
+        $total = ($price/100);
+        if($currency == true):
+            $total = $total.'€';
+        endif;
     }
 }
 
