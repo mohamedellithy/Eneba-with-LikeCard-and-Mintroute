@@ -81,6 +81,7 @@
                             <th>رقم المزاد</th>
                             <th>اسم منتج اينيبا</th>
                             <th>اسم منتج لايك كارد</th>
+                            <th>عدد الأكواد</th>
                             <th>سعر المزاد</th>
                             <th>حالة المزاد</th>
                             <th></th>
@@ -104,6 +105,9 @@
                                     {{ likecard_single_product($auction->product->likecard_prod_id)['data'][0]['productName'] }}
                                 </td>
                                 <td>
+                                    {{ $auction->count_codes.' أكواد ' }}
+                                </td>
+                                <td>
                                     {{ $auction->current_price.' EUR' }}
                                 </td>
                                 <td>
@@ -115,11 +119,11 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="dropdown" style="padding: 11px;">
+                                    <div class="dropdown" >
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                           <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
-                                        <div class="dropdown-menu">
+                                        <div class="dropdown-menu" style="padding: 11px;">
                                             @if($auction->status == 1)
                                                 <form method="post" action="{{ route('application.likecard.update_codes',$auction->id) }}">
                                                     @csrf

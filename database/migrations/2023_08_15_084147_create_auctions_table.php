@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('auction')->nullable();
             $table->text('product_id');
             $table->integer('status')->default(0);
+            $table->integer('count_cards')->default(1);
             $table->float('min_price')->nullable();
             $table->float('max_price')->nullable();
             $table->float('current_price')->nullable();

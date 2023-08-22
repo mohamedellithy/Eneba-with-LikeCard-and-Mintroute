@@ -39,6 +39,12 @@ $high_price = $prices->max('amount');
                                 <input type="text" id="basic-default-email" name="max_price" value="{{ FormatePrice($high_price,false) }}" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-email">عدد الأكواد</label>
+                            <div class="input-group input-group-merge">
+                                <input type="number" id="basic-default-email" name="count_cards" value="1" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
+                            </div>
+                        </div>
                         <div class="form-check form-switch mb-3">
                             <input class="form-check-input" type="checkbox" name="automation" value="1" id="flexSwitchCheckChecked" checked="">
                             <label class="form-check-label" for="flexSwitchCheckChecked">تغير السعر بشكل اتوماتك</label>
