@@ -289,7 +289,7 @@ class Eneba {
     }
 
     public function eneba_callback_stock_reservation(){
-        EnebaOperations::create_new_order();
+        //EnebaOperations::create_new_order();
         return response()->json([
             "action"  => "RESERVE",
             "orderId" => request('orderId'),
