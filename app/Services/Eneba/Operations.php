@@ -4,6 +4,8 @@ use App\Models\ApplicationSetting;
 use Illuminate\Support\Facades\Http;
 use App\Models\EnebaOrder;
 use App\Models\Auction;
+use App\Models\EnebaOrderAuction;
+
 class Operations {
     public static function create_new_auction($attr = []){
         Auction::where('product_id',$attr['product_id'])->update([
@@ -19,7 +21,7 @@ class Operations {
         ]);
 
         $auction = Auction::where('auction',request('auctionId'))->first();
-        $eneba_order->auctions()->attach([
+        EnebaOrderAuction::updateOrCreate([
             'eneba_order_id'  => $eneba_order->id,
             'eneba_auction_id'=> $auction->id
         ]);
