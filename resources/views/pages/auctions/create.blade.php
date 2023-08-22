@@ -135,7 +135,7 @@ $high_price = $prices->max('amount');
 @push('custom_style')
 <style>
     .card-body .inner-auction-info div.mb-3{
-        background-color: #E0F2F1;
+        background-color: #EFEBE9;
         padding: 16px 16px 16px 50px !important;
     }
 </style>
