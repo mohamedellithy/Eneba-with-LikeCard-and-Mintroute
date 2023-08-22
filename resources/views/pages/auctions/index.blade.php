@@ -78,8 +78,9 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>الصورة</th>
+                            <th>رقم المزاد</th>
                             <th>رقم المنتج</th>
+                            <th>الصورة</th>
                             <th>اسم المنتج</th>
                             <th>نوع المنتج</th>
                             <th>كود المنتج</th>
@@ -87,7 +88,18 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
-                        <t
+                        @forelse($auctions as $auction)
+                            <tr>
+                                <td></td>
+                                <td>
+                                    {{ $auction->auction }}
+                                </td>
+                                <td>
+                                    {{ $auction->product_id }}
+                                </td>
+                            </tr>
+                        @empty
+                        @endforelse
                     </tbody>
                 </table>
             </div>
