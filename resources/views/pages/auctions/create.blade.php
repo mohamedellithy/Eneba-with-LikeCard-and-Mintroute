@@ -21,7 +21,7 @@ $high_price = $prices->max('amount');
                         <label class="form-check-label" for="flexSwitchCheckChecked">تشغيل المزاد</label>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-fullname">السعر من لايك كارد</label>
+                        <label class="form-label" for="basic-default-fullname">السعر من لايك كارد ( {{ $likecard_product[0]['productCurrency'] }} ) </label>
                         <input type="text" class="form-control" value="{{ $likecard_product[0]['productPrice'] }}" id="basic-default-fullname" readonly>
                     </div>
                     <div class="mb-3">
