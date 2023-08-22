@@ -14,56 +14,62 @@ $high_price = $prices->max('amount');
                 <small class="text-muted float-end">Default label</small>
             </div>
             <div class="card-body">
-                <form class="inner-auction-info" method="post" action="{{ route('application.auctions.store',$eneba_id) }}">
-                    @csrf
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked="">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">تشغيل المزاد</label>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="basic-default-fullname">السعر من لايك كارد ( {{ $likecard_product[0]['productCurrency'] }} ) </label>
-                        <input type="text" class="form-control" value="{{ $likecard_product[0]['productPrice'] }}" id="basic-default-fullname" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="basic-default-company">الحد الادني للتسعير ( EUR )</label>
-                        <input type="text" class="form-control" name="min_price" value="{{ FormatePrice($low_price,false) }}" id="basic-default-company" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="basic-default-company">سعر الحالى  ( EUR )</label>
-                        <input type="text" class="form-control" name="current_price" id="basic-default-company" placeholder="" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="basic-default-email">الحد الأقصي للتسعير ( EUR )</label>
-                        <div class="input-group input-group-merge">
-                            <input type="text" id="basic-default-email" name="max_price" value="{{ FormatePrice($high_price,false) }}" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
+                @if(count($likecard_product) > 0 )
+                    <form class="inner-auction-info" method="post" action="{{ route('application.auctions.store',$eneba_id) }}">
+                        @csrf
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked="">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">تشغيل المزاد</label>
                         </div>
-                    </div>
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" name="automation" id="flexSwitchCheckChecked" checked="">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">تغير السعر بشكل اتوماتك</label>
-                    </div>
-                    <div class="mb-3">
-                        <label for="defaultSelect" class="form-label">مدة مراجعة السعر</label>
-                        <select id="defaultSelect" name="change_time" class="form-select">
-                            <option>بشكل اتوماتك</option>
-                            <option value="5">5 دقائق</option>
-                            <option value="10">10 دقائق</option>
-                            <option value="15">15 دقائق</option>
-                            <option value="60">ساعة</option>
-                            <option value="120">ساعتين</option>
-                            <option value="180">3 ساعات</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="basic-default-email">قيمة التغير فى السعر</label>
-                        <div class="input-group input-group-merge">
-                            <input type="text" name="price_step" id="basic-default-email"  value="0.01" class="form-control" aria-label="john.doe" aria-describedby="basic-default-email2" required>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-fullname">السعر من لايك كارد ( {{ $likecard_product[0]['productCurrency'] }} ) </label>
+                            <input type="text" class="form-control" value="{{ $likecard_product[0]['productPrice'] }}" id="basic-default-fullname" readonly>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        انشاء المزاد
-                    </button>
-                </form>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-company">الحد الادني للتسعير ( EUR )</label>
+                            <input type="text" class="form-control" name="min_price" value="{{ FormatePrice($low_price,false) }}" id="basic-default-company" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-company">سعر الحالى  ( EUR )</label>
+                            <input type="text" class="form-control" name="current_price" value="{{ $likecard_product[0]['productPrice'] }}" id="basic-default-company" placeholder="" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-email">الحد الأقصي للتسعير ( EUR )</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="basic-default-email" name="max_price" value="{{ FormatePrice($high_price,false) }}" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" name="automation" id="flexSwitchCheckChecked" checked="">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">تغير السعر بشكل اتوماتك</label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="defaultSelect" class="form-label">مدة مراجعة السعر</label>
+                            <select id="defaultSelect" name="change_time" class="form-select">
+                                <option>بشكل اتوماتك</option>
+                                <option value="5">5 دقائق</option>
+                                <option value="10">10 دقائق</option>
+                                <option value="15">15 دقائق</option>
+                                <option value="60">ساعة</option>
+                                <option value="120">ساعتين</option>
+                                <option value="180">3 ساعات</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-email">قيمة التغير فى السعر</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" name="price_step" id="basic-default-email"  value="0.01" class="form-control" aria-label="john.doe" aria-describedby="basic-default-email2" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            انشاء المزاد
+                        </button>
+                    </form>
+                @else
+                   <a class="btn btn-danger" href="">
+                        ربط المنتج بمنتج لايك كارد
+                   </a>
+                @endif
             </div>
         </div>
     </div>
