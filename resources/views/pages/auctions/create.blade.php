@@ -16,8 +16,8 @@ $high_price = $prices->max('amount');
             <div class="card-body">
                 <form>
                     <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                        <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked="">
+                        <label class="form-check-label" for="flexSwitchCheckChecked">تشغيل المزاد</label>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="basic-default-fullname">السعر من لايك كارد</label>
