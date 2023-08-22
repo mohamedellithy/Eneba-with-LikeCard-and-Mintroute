@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Auction;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Services\Eneba\Eneba;
+use App\Services\LikeCard\LikeCard;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+
 class AuctionApplication extends Controller
 {
     //
 
     protected $application;
     protected $eneba_service;
+    protected $likecard_service;
 
     public function __construct(){
         $this->application   = 'eneba';
         $this->eneba_service = new Eneba($sandbox = false);
+        $this->likecard_service = new LikeCard();
     }
 
     public function index(Request $request){
@@ -37,26 +42,14 @@ class AuctionApplication extends Controller
     }
 
     public function create(Request $request,$eneba_id){
-        // $product_eneba  = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id){
-        //     return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
-        // });
         $page_no = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
-        $product_eneba =  $this->eneba_service->get_single_product($eneba_id,$page_no)['result']['data'];
+        $product_eneba           =  $this->eneba_service->get_single_product($eneba_id,$page_no)['result']['data'];
+        $eneba_likecard_relation = Product::where('eneba_prod_id',$eneba_id)->first();
+        $likecard_product        = $this->likecard_service->get_single_product($eneba_likecard_relation->likecard_prod_id);
 
-       // dd($prices->sortBy('amount')->first(),$prices->sortByDesc('amount')->first());
-
+        dd($likecard_product);
         return view('pages.auctions.create',compact('product_eneba'));
     }
-
-    // public function ajax_search_on_eneba_products(Request $request){
-    //     $search    = request('eneba_product_name');
-    //     $products  = Cache::rememberForever('eneba_products_'.$search, function() use($search){
-    //         return $this->eneba_service->get_products($page_no = null,$search);
-    //     });
-    //     return response()->json([
-    //         'products' => $products['result']
-    //     ]);
-    // }
 
     public function store(Request $request,$eneba_id){
         $auction = Auction::create([
