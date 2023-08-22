@@ -65,6 +65,6 @@ class AuctionApplication extends Controller
             'price_step'     => $request->input('price_step')
         ]);
 
-        return back();
+        return redirect()->route('application.auctions');
     }
 }
