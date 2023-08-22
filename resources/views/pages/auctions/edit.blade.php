@@ -19,7 +19,7 @@ $high_price = $prices->max('amount');
                         @method('PUT')
                         @csrf
                         <div class="form-check form-switch mb-3">
-                            <input class="form-check-input" type="checkbox" name="status" value="1" id="flexSwitchCheckChecked" checked="">
+                            <input class="form-check-input" type="checkbox" name="status" value="1" id="flexSwitchCheckChecked" @if($auction->status == 1) checked @endif>
                             <label class="form-check-label" for="flexSwitchCheckChecked">تشغيل المزاد</label>
                         </div>
                         <div class="mb-3">
@@ -28,48 +28,48 @@ $high_price = $prices->max('amount');
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="basic-default-company">الحد الادني للتسعير ( EUR )</label>
-                            <input type="text" class="form-control" name="min_price" value="{{ FormatePrice($low_price,false) }}" id="basic-default-company" required>
+                            <input type="text" class="form-control" name="min_price" value="{{ FormatePrice($auction->low_price ?: $low_price,false) }}" id="basic-default-company" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="basic-default-company">سعر الحالى  ( EUR )</label>
-                            <input type="text" class="form-control" name="current_price" value="{{ $likecard_product[0]['productPrice'] }}" id="basic-default-company" placeholder="" required>
+                            <input type="text" class="form-control" name="current_price" value="{{ $auction->current_price ?: $likecard_product[0]['productPrice'] }}" id="basic-default-company" placeholder="" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="basic-default-email">الحد الأقصي للتسعير ( EUR )</label>
                             <div class="input-group input-group-merge">
-                                <input type="text" id="basic-default-email" name="max_price" value="{{ FormatePrice($high_price,false) }}" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
+                                <input type="text" id="basic-default-email" name="max_price" value="{{ FormatePrice($auction->high_price ?: $high_price,false) }}" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="basic-default-email">عدد الأكواد</label>
                             <div class="input-group input-group-merge">
-                                <input type="number" id="basic-default-email" name="count_cards" value="1" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
+                                <input type="number" id="basic-default-email" name="count_cards" value="{{ $auction->count_cards ?: 1 }}" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
                             </div>
                         </div>
                         <div class="form-check form-switch mb-3">
-                            <input class="form-check-input" type="checkbox" name="automation" value="1" id="flexSwitchCheckChecked" checked="">
+                            <input class="form-check-input" type="checkbox" name="automation" value="1" id="flexSwitchCheckChecked" @if($auction->automation == 1) checked @endif>
                             <label class="form-check-label" for="flexSwitchCheckChecked">تغير السعر بشكل اتوماتك</label>
                         </div>
                         <div class="mb-3">
                             <label for="defaultSelect" class="form-label">مدة مراجعة السعر</label>
                             <select id="defaultSelect" name="change_time" class="form-select">
                                 <option>بشكل اتوماتك</option>
-                                <option value="5">5 دقائق</option>
-                                <option value="10">10 دقائق</option>
-                                <option value="15">15 دقائق</option>
-                                <option value="60">ساعة</option>
-                                <option value="120">ساعتين</option>
-                                <option value="180">3 ساعات</option>
+                                <option value="5"   @if($auction->change_time == 5)   selected @endif>5 دقائق</option>
+                                <option value="10"  @if($auction->change_time == 10)  selected @endif>10 دقائق</option>
+                                <option value="15"  @if($auction->change_time == 15)  selected @endif>15 دقائق</option>
+                                <option value="60"  @if($auction->change_time == 60)  selected @endif>ساعة</option>
+                                <option value="120" @if($auction->change_time == 120) selected @endif>ساعتين</option>
+                                <option value="180" @if($auction->change_time == 180) selected @endif>3 ساعات</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="basic-default-email">قيمة التغير فى السعر</label>
                             <div class="input-group input-group-merge">
-                                <input type="text" name="price_step" id="basic-default-email"  value="0.01" class="form-control" aria-label="john.doe" aria-describedby="basic-default-email2" required>
+                                <input type="text" name="price_step" id="basic-default-email"  value="{{ $auction->price_step ?: '0.01' }}" class="form-control" aria-label="john.doe" aria-describedby="basic-default-email2" required>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">
-                            انشاء المزاد
+                            تعديل المزاد
                         </button>
                     </form>
                 @else
