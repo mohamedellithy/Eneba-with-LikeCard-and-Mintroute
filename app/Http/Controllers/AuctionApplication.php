@@ -56,7 +56,7 @@ class AuctionApplication extends Controller
     public function store(Request $request,$eneba_id){
         $auction = Auction::create([
             'product_id'     => $eneba_id,
-            'status'         => $request->status('status'),
+            'status'         => $request->input('status'),
             'min_price'      => $request->input('min_price'),
             'max_price'      => $request->input('max_price'),
             'current_price'  => $request->input('current_price'),
