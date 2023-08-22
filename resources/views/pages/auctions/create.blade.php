@@ -25,15 +25,15 @@ $high_price = $prices->max('amount');
                         <input type="text" class="form-control" value="{{ $likecard_product[0]['productPrice'] }}" id="basic-default-fullname" readonly>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-company">الحد الادني للتسعير</label>
+                        <label class="form-label" for="basic-default-company">الحد الادني للتسعير ( EUR )</label>
                         <input type="text" class="form-control" name="min_price" value="{{ FormatePrice($low_price,false) }}" id="basic-default-company" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-company">سعر الحالى </label>
+                        <label class="form-label" for="basic-default-company">سعر الحالى  ( EUR )</label>
                         <input type="text" class="form-control" name="current_price" id="basic-default-company" placeholder="" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-default-email">الحد الأقصي للتسعير</label>
+                        <label class="form-label" for="basic-default-email">الحد الأقصي للتسعير ( EUR )</label>
                         <div class="input-group input-group-merge">
                             <input type="text" id="basic-default-email" name="max_price" value="{{ FormatePrice($high_price,false) }}" class="form-control"  aria-label="john.doe" aria-describedby="basic-default-email2" required>
                         </div>
