@@ -1,5 +1,6 @@
 <?php
 use App\Services\Eneba\Eneba;
+use App\Services\LikeCard\LikeCard;
 use Illuminate\Support\Facades\Cache;
 
 if(!function_exists('upload_assets')){
@@ -33,15 +34,6 @@ if(!function_exists('IsActiveOnlyIf')){
 if(!function_exists('TrimLongText')){
     function TrimLongText($text,$length = 100){
         return substr($text,0,$length).' ... ';
-    }
-}
-
-if(!function_exists('GetAttachments')) {
-    function GetAttachments($attachments_id)
-    {
-        $media_ids = explode(',', $attachments_id);
-        $attachments = \App\Models\Image::whereIn('id', $media_ids)->get();
-        return $attachments;
     }
 }
 
@@ -93,13 +85,24 @@ if(!function_exists('GetAuctionPrices')) {
     }
 }
 
-if(!function_exists('eneba_single_price')) {
-    function eneba_single_price($eneba_id){
+if(!function_exists('eneba_single_product')) {
+    function eneba_single_product($eneba_id){
         $eneba_service      = new Eneba($sandbox = false);
-        $product_eneba      = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id){
-            return $this->eneba_service->get_single_product($eneba_id)['result']['data'];
+        $product_eneba      = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id,$eneba_service){
+            return $eneba_service->get_single_product($eneba_id)['result']['data'];
         });
         return $product_eneba;
+    }
+}
+
+
+if(!function_exists('likecard_single_product')) {
+    function likecard_single_product($likecard_id){
+        $likecard_service = new LikeCard();
+        $product_likecard =  Cache::rememberForever('likecard_product_'.$likecard_id, function() use($likecard_id,$likecard_service){
+            return $likecard_service->get_single_product($likecard_id);
+        });
+        return $product_likecard;
     }
 }
 

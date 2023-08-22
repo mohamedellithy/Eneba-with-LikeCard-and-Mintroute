@@ -35,7 +35,7 @@ class AuctionApplication extends Controller
                 return $this->eneba_service->get_products($page_no,$search);
             });
         } else {
-            $auctions  = Auction::paginate(20);
+            $auctions  = Auction::with('product')->paginate(20);
         }
         //dd($products);
         return view('pages.auctions.index',compact('auctions','products'));

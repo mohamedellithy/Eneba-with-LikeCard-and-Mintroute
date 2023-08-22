@@ -79,8 +79,8 @@
                         <tr>
                             <th></th>
                             <th>رقم المزاد</th>
-                            <th>رقم المنتج</th>
-                            <th>اسم المنتج</th>
+                            <th>اسم منتج اينيبا</th>
+                            <th>اسم منتج لايك كارد</th>
                             <th>سعر المزاد</th>
                             <th>نوع المنتج</th>
                             <th>كود المنتج</th>
@@ -99,10 +99,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $auction->product_id }}
+                                    {{ eneba_single_product($auction->product_id)['S_product']['name'] }}
                                 </td>
                                 <td>
-                                    {{ eneba_single_price($auction->product_id)['S_product']['name'] }}
+                                    {{ likecard_single_product($auction->product->likecard_prod_id)['productName'] }}
                                 </td>
                                 <td>
                                     {{ $auction->current_price.' EUR' }}
