@@ -13,7 +13,8 @@ class Operations {
 
     public static function create_new_order(){
         $eneba_order = EnebaOrder::updateOrCreate([
-            'order_id'     => request('orderId'),
+            'order_id'     => request('orderId')
+        ],[
             'status_order' => 'RESERVE',
         ]);
 
