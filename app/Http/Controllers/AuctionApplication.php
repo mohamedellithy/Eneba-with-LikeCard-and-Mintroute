@@ -57,4 +57,19 @@ class AuctionApplication extends Controller
     //         'products' => $products['result']
     //     ]);
     // }
+
+    public function store(Request $request,$eneba_id){
+        $auction = Auction::create([
+            'product_id'     => $eneba_id,
+            'status'         => $request->status('status'),
+            'min_price'      => $request->input('min_price'),
+            'max_price'      => $request->input('max_price'),
+            'current_price'  => $request->input('current_price'),
+            'automation'     => $request->input('automation'),
+            'change_time'    => $request->input('change_time'),
+            'price_step'     => $request->input('price_step')
+        ]);
+
+        return back();
+    }
 }

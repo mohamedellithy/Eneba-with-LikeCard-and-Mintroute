@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
-            $table->text('auction');
+            $table->text('auction')->nullable();
             $table->text('product_id');
             $table->integer('status')->default(0);
             $table->float('min_price')->nullable();
