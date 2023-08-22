@@ -46,9 +46,8 @@ class AuctionApplication extends Controller
         $product_eneba           =  $this->eneba_service->get_single_product($eneba_id,$page_no)['result']['data'];
         $eneba_likecard_relation = Product::where('eneba_prod_id',$eneba_id)->first();
         $likecard_product        = $this->likecard_service->get_single_product($eneba_likecard_relation->likecard_prod_id);
-
-        dd($likecard_product);
-        return view('pages.auctions.create',compact('product_eneba'));
+        $likecard_product        = $likecard_product['data'];
+        return view('pages.auctions.create',compact('product_eneba','likecard_product'));
     }
 
     public function store(Request $request,$eneba_id){

@@ -22,7 +22,7 @@ $high_price = $prices->max('amount');
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="basic-default-fullname">السعر من لايك كارد</label>
-                        <input type="text" class="form-control" id="basic-default-fullname" readonly>
+                        <input type="text" class="form-control" value="{{ $likecard_product[0]['productPrice'] }}" id="basic-default-fullname" readonly>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="basic-default-company">الحد الادني للتسعير</label>
