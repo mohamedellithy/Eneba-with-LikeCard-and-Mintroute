@@ -61,7 +61,7 @@ if(!function_exists('GetAuctionPrices')) {
 
         if($auction_eneba['code'] == 200){
             $auction_eneba = $auction_eneba['result']['data'];
-        
+
             foreach($auction_eneba['S_product']['auctions']['edges'] as $auction):
                 $data = [
                     'amount' => $auction['node']['price']['amount'],
