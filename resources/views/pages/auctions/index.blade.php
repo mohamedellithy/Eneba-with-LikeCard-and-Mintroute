@@ -108,6 +108,11 @@
                                 </td>
                                 <td>
                                     <i class='bx bxs-circle' @if($auction->status == 1) style="color:green" @else style="color:red" @endif ></i>
+                                    @if($auction->status == 1)
+                                    مفعل
+                                    @else
+                                    متوقف
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="dropdown">
@@ -135,7 +140,7 @@
                                                 </form>
                                             @endif
                                             <a class="btn btn-info btn-sm dropdown-item" href="{{ "https://www.eneba.com/".eneba_single_product($auction->product_id)['S_product']['slug'] }}">
-                                                  المزاد
+                                                  عرض المزاد
                                             </a>
                                         </div>
                                     </div>
