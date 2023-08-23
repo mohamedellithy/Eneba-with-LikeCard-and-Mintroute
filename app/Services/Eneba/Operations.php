@@ -33,9 +33,9 @@ class Operations {
             ]);
         endforeach;
 
-        // if($eneba_order):
-        //     return true;
-        // endif;
+        if($eneba_order):
+            return true;
+        endif;
 
         return null;
     }
