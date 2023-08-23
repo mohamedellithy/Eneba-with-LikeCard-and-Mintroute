@@ -74,5 +74,6 @@ class Operations {
 
         // endif;
 
+        return $auction_details;
     }
 }
