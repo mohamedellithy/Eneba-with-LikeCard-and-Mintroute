@@ -123,7 +123,8 @@ class LikeCard {
             'langId'       => '1',
             'productId'    => $product_id,
             'quantity'     => $qty,
-            'referenceId' => 'Order_'.$order_id
+            'referenceId' => 'Order_'.$order_id,
+            'hash'        => $this->generateHash(strtotime(date('Y-m-d H:i:s')))
         ];
 
         $response = $this->resolve_call('/online/create_order',$credentail);
@@ -133,4 +134,12 @@ class LikeCard {
             return null;
         endif;
     }
+
+    public function generateHash($time){
+        $email = strtolower(isset($this->credentail['prod_email']) ? $this->credentail['prod_email'] : null);
+        $phone = isset($this->credentail['prod_phone']) ? $this->credentail['prod_phone'] : null;
+        $key   = isset($this->credentail['prod_hash_key']) ? $this->credentail['prod_hash_key'] : null;
+        return hash('sha256',$time.$email.$phone.$key);
+    }
+      
 }
