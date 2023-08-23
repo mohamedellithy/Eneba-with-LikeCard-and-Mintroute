@@ -21,9 +21,9 @@ class DemoPurchasingController extends Controller
             'orderId'  => '347c4978-4f81-11ed-bdc3-0242ac120002'
         ]);
 
-        dd($this->eneba_service->eneba_callback_stock_provision());
+        //$this->eneba_service->eneba_callback_stock_provision();
 
         //$this->eneba_service->sandbox_trigger_stock_reservation();
-        //$this->eneba_service->sandbox_trigger_stock_provision();
+        dd($this->eneba_service->sandbox_trigger_stock_provision());
     }
 }
