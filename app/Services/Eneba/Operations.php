@@ -56,6 +56,7 @@ class Operations {
         $auction_details['auctionId'] = $auction->auction;
         $used_codes     = [];
         $offline_codes  = OfflineCode::query();
+        $count_required = $auction->pivot->key_count_required ?: $auction->count_cards;
         $offline_codes->where([
             'product_id'   => $auction->product_id,
             'product_type' => 'eneba',
@@ -66,7 +67,7 @@ class Operations {
             'product_type' => 'likecard',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->limit($auction->pivot->key_count_required ?: $auction->count_cards);
+        ])->limit($count_required);
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
@@ -76,7 +77,7 @@ class Operations {
             ];
         endforeach;
 
-        $rest_of_codes_required = $auction->key_count_required - $offline_codes->count();
+        $rest_of_codes_required = $count_required - $offline_codes->count();
         if($rest_of_codes_required > 0):
             $LikeCard = new LikeCard();
             $likecard_result = $LikeCard->create_likecard_order(
