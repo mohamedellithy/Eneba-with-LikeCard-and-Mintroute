@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\EnebaOrder;
 use App\Models\Auction;
 use App\Models\EnebaOrderAuction;
+use App\Models\OfflineCode;
 
 class Operations {
     public static function create_new_auction($attr = []){
@@ -42,17 +43,36 @@ class Operations {
         $data = [];
 
         foreach($eneba_order->auctions() as $auction):
-            $data []= [
-                "auctionId" => $auction->auction,
-                "keys" => [
-                    [
-                        "type"  => "TEXT",
-                        "value" => "QS8ND-G0W76-BTSQO-WAAJA-6LCD3"
-                    ]
-                ]
-            ];
+            $data []= self::order_stock($auction,$eneba_order->count_cards);
         endforeach;
 
         return $data;
+    }
+
+    public static function order_stock($auction,$count_key_required){
+        $auction_details['auctionId'] = $auction->auction;
+        $offline_codes  = OfflineCode::where([
+            'product_id'   => $auction->product_id,
+            'product_type' => 'eneba',
+            'status'       => 'allow',
+            'status_used'  => 'unused'
+        ])->orWhere([
+            'product_id'   => $auction->product->likecard_prod_id,
+            'product_type' => 'likecard',
+            'status'       => 'allow',
+            'status_used'  => 'unused'
+        ])->query();
+
+        foreach($offline_codes->take($count_key_required)->get() as $code):
+            $auction_details['keys'][] = [
+                "type"  => "TEXT",
+                "value" => $code->code
+            ];
+        endforeach;
+
+        // if(($rest_of_codes_required = $count_key_required - $offline_codes->count()) > 0):
+
+        // endif;
+
     }
 }
