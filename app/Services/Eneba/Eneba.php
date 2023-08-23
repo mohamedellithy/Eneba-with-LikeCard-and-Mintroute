@@ -289,23 +289,30 @@ class Eneba {
     }
 
     public function eneba_callback_stock_reservation(){
-        Http::post('https://webhook.site/f032ba41-f451-4aba-a8b3-a97fbff114de',request()->all());
-        EnebaOperations::create_new_order();
-        return response()->json([
-            "action"  => "RESERVE",
-            "orderId" => request('orderId'),
-            "success" => true
-        ],200);
+        $create_order = EnebaOperations::create_new_order();
+        if($create_order == true):
+            return response()->json([
+                "action"  => "RESERVE",
+                "orderId" => request('orderId'),
+                "success" => true
+            ],200);
+        else:
+            new \Exception("Invalid Reservation ");
+        endif;
     }
 
     public function eneba_callback_stock_provision(){
         $codes = EnebaOperations::update_orders_and_get_codes();
-        return response()->json([
-            "action"   => "PROVIDE",
-            "orderId"  => request('orderId'),
-            "success"  => true,
-            "auctions" => $codes
-        ],200);
+        if(($codes != null) || (count($codes) > 0)):
+            return response()->json([
+                "action"   => "PROVIDE",
+                "orderId"  => request('orderId'),
+                "success"  => true,
+                "auctions" => $codes
+            ],200);
+        else:
+            new \Exception("Invalid Reservation ");
+        endif;
     }
 
     public function sandbox_trigger_stock_reservation(){

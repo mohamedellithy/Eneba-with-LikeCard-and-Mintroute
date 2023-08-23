@@ -32,6 +32,12 @@ class Operations {
                 'unit_price'         => $auction['price']['amount'],
             ]);
         endforeach;
+
+        if($eneba_order):
+            return true;
+        endif;
+
+        return null;
     }
 
     public static function update_orders_and_get_codes(){
@@ -69,6 +75,8 @@ class Operations {
             'status'       => 'allow',
             'status_used'  => 'unused'
         ])->limit($count_required);
+        
+        //return $auction_details['keys'] = [];
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
