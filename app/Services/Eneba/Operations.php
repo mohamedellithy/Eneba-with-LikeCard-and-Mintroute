@@ -68,7 +68,7 @@ class Operations {
             'status_used'  => 'unused'
         ])->limit($auction->count_cards);
 
-        dd($auction);
+        dd($auction->pivot->key_count_required);
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
