@@ -53,7 +53,13 @@ class Operations {
 
 
         foreach($eneba_order->auctions as $auction):
-            $data []= self::order_stock($auction);
+            $result = self::order_stock($auction);
+            if($result == null):
+                $data =  null;
+                break;
+            endif;
+
+            $data[] = $result;
         endforeach;
 
         return $data;
@@ -75,8 +81,6 @@ class Operations {
             'status'       => 'allow',
             'status_used'  => 'unused'
         ])->limit($count_required);
-        
-        return $auction_details['keys'] = [];
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
