@@ -111,7 +111,7 @@ class Operations {
         if(!isset($auction_details['keys']) || (count($auction_details['keys']) == 0)):
             return dd('null');
         endif;
-
+        dd($likecard_result);
         dd($auction_details);
         return $auction_details;
     }
