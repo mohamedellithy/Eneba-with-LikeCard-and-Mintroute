@@ -35,7 +35,7 @@ class Operations {
             'order_id'     => request('orderId')
         ])->first();
 
-        $eneba_order = $eneba_order->update([
+        $eneba_order->update([
             'status_order' => 'PROVIDE',
         ]);
 
