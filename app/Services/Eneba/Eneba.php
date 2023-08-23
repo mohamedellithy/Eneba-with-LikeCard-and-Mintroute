@@ -2,6 +2,7 @@
 namespace App\Services\Eneba;
 use App\Models\ApplicationSetting;
 use App\Services\Eneba\Operations as EnebaOperations;
+use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Support\Facades\Http;
 class Eneba {
     protected $sandbox       = true;
@@ -297,7 +298,9 @@ class Eneba {
                 "success" => true
             ],200);
         else:
-            new \Exception("Invalid Reservation ");
+            return response()->json([
+                'message' => 'RESERVE not completed'
+            ],500);
         endif;
     }
 
@@ -311,7 +314,9 @@ class Eneba {
                 "auctions" => $codes
             ],200);
         else:
-            new \Exception("Invalid Reservation ");
+            return response()->json([
+                'message' => 'PROVIDE not completed'
+            ],500);
         endif;
     }
 
