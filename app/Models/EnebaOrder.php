@@ -12,6 +12,9 @@ class EnebaOrder extends Model
     protected $fillable = ['status_order','order_id'];
 
     public function auctions(){
-        return $this->belongsToMany(Auction::class,'eneba_order_auctions','eneba_order_id','eneba_auction_id');
+        return $this->belongsToMany(Auction::class,'eneba_order_auctions','eneba_order_id','eneba_auction_id')->withPivot(
+            'key_count_required',
+            'unit_price'
+        );
     }
 }
