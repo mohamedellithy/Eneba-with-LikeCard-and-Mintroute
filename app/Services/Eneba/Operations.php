@@ -50,7 +50,6 @@ class Operations {
     }
 
     public static function order_stock($auction,$count_key_required){
-        dd($auction->auction);
         $auction_details['auctionId'] = $auction->auction;
         $offline_codes  = OfflineCode::query();
         $offline_codes->where([
