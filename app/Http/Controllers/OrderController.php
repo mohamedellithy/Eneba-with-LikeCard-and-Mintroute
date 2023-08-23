@@ -25,12 +25,12 @@ class OrderController extends Controller
     }
 
     public function eneba_callback_stock_provision(Request $request){
-        Http::post('https://webhook.site/5d007510-7555-48e9-82e5-0b20a60718cc',$request->all());
+        Http::post('https://webhook.site/f032ba41-f451-4aba-a8b3-a97fbff114de',$request->all());
         return $this->eneba_service->eneba_callback_stock_provision();
     }
 
     public function eneba_callback_stock_reservation(Request $request){
-        Http::post('https://webhook.site/5d007510-7555-48e9-82e5-0b20a60718cc',$request->all());
+        Http::post('https://webhook.site/f032ba41-f451-4aba-a8b3-a97fbff114de',$request->all());
         return $this->eneba_service->eneba_callback_stock_reservation();
     }
 }
