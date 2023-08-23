@@ -41,7 +41,9 @@ class Operations {
 
         $data = [];
 
-        foreach($eneba_order->auctions() as $auction):
+        dd($eneba_order->auctions);
+
+        foreach($eneba_order->auctions as $auction):
             $data []= self::order_stock($auction,$eneba_order->count_cards);
         endforeach;
 
