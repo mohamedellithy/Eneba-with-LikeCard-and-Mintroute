@@ -54,6 +54,7 @@ class Operations {
 
     public static function order_stock($auction){
         $auction_details['auctionId'] = $auction->auction;
+        $used_codes     = [];
         $offline_codes  = OfflineCode::query();
         $offline_codes->where([
             'product_id'   => $auction->product_id,
@@ -68,6 +69,7 @@ class Operations {
         ])->take($auction->key_count_required);
 
         foreach($offline_codes->get() as $key_code):
+            $used_codes[]              = $key_code->id;
             $auction_details['keys'][] = [
                 "type"  => "TEXT",
                 "value" => $key_code->code
@@ -103,6 +105,11 @@ class Operations {
                 return null;
             endif;
         endif;
+
+        if(!isset($auction_details['keys']) || (count($auction_details['keys']) == 0)):
+            return null;
+        endif;
+
         dd($auction_details);
         return $auction_details;
     }
