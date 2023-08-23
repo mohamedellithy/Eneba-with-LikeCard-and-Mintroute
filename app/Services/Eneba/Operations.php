@@ -49,7 +49,7 @@ class Operations {
             $data []= self::order_stock($auction);
         endforeach;
 
-        return $data;
+        return dd($data);
     }
 
     public static function order_stock($auction){
