@@ -74,7 +74,7 @@ class Operations {
         // if(($rest_of_codes_required = $count_key_required - $offline_codes->count()) > 0):
 
         // endif;
-
+        dd($auction_details);
         return $auction_details;
     }
 }
