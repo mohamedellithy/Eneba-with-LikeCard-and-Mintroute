@@ -112,8 +112,9 @@ class LikeCard {
         endif;
     }
 
-    public function create_likecard_order($product_id,$qty = 1,$order_id = Str::random(5)){
+    public function create_likecard_order($product_id,$qty = 1,$order_id = null){
         if(!$product_id) return null;
+        $order_id   = $order_id ?: Str::random(5);
         $credentail =  [
             'deviceId'     => isset($this->credentail['prod_deviceId']) ? $this->credentail['prod_deviceId'] : null,
             'email'        => isset($this->credentail['prod_email'])    ? $this->credentail['prod_email'] : null,
