@@ -49,7 +49,7 @@ class Operations {
             $data []= self::order_stock($auction);
         endforeach;
 
-        return dd($data);
+        return $data;
     }
 
     public static function order_stock($auction){
@@ -109,10 +109,13 @@ class Operations {
         endif;
 
         if(!isset($auction_details['keys']) || (count($auction_details['keys']) == 0)):
-            return dd('null');
+            return null;
         endif;
-        // dd($likecard_result);
-        // dd($auction_details);
+
+        OfflineCode::whereIn('id',$used_codes)->update([
+            'status_used'  => 'used'
+        ]);
+       
         return $auction_details;
     }
 }
