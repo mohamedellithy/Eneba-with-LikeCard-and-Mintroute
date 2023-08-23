@@ -66,7 +66,7 @@ class Operations {
             'product_type' => 'likecard',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->take($auction->key_count_required);
+        ])->limit($auction->key_count_required);
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
@@ -76,7 +76,8 @@ class Operations {
             ];
         endforeach;
 
-        if(($rest_of_codes_required = $auction->key_count_required - $offline_codes->count()) > 0):
+        $rest_of_codes_required = $auction->key_count_required - $offline_codes->count();
+        if($rest_of_codes_required > 0):
             $LikeCard = new LikeCard();
             $likecard_result = $LikeCard->create_likecard_order(
                 $auction->product->likecard_prod_id,
