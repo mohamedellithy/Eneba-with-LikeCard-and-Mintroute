@@ -109,7 +109,7 @@ class Operations {
         endif;
 
         if(!isset($auction_details['keys']) || (count($auction_details['keys']) == 0)):
-            return null;
+            return dd('null');
         endif;
 
         dd($auction_details);
