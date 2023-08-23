@@ -1,11 +1,12 @@
 <?php
 namespace App\Services\Eneba;
-use App\Models\ApplicationSetting;
-use Illuminate\Support\Facades\Http;
-use App\Models\EnebaOrder;
 use App\Models\Auction;
-use App\Models\EnebaOrderAuction;
+use App\Models\EnebaOrder;
 use App\Models\OfflineCode;
+use App\Models\EnebaOrderAuction;
+use App\Models\ApplicationSetting;
+use App\Services\LikeCard\LikeCard;
+use Illuminate\Support\Facades\Http;
 
 class Operations {
     public static function create_new_auction($attr = []){
@@ -18,14 +19,16 @@ class Operations {
         $eneba_order = EnebaOrder::updateOrCreate([
             'order_id'     => request('orderId')
         ],[
-            'status_order' => 'RESERVE',
+            'status_order' => 'RESERVE'
         ]);
 
         foreach(request('auctions') as $auction):
             $auction = Auction::where('auction',$auction['auctionId'])->first();
             EnebaOrderAuction::updateOrCreate([
-                'eneba_order_id'  => $eneba_order->id,
-                'eneba_auction_id'=> $auction->id
+                'eneba_order_id'     => $eneba_order->id,
+                'eneba_auction_id'   => $auction->id,
+                'key_count_required' => $auction['keyCount'],
+                'unit_price'         => $auction['price']['amount'],
             ]);
         endforeach;
     }
@@ -43,13 +46,13 @@ class Operations {
 
 
         foreach($eneba_order->auctions as $auction):
-            $data []= self::order_stock($auction,$eneba_order->count_cards);
+            $data []= self::order_stock($auction);
         endforeach;
 
         return $data;
     }
 
-    public static function order_stock($auction,$count_key_required){
+    public static function order_stock($auction){
         $auction_details['auctionId'] = $auction->auction;
         $offline_codes  = OfflineCode::query();
         $offline_codes->where([
@@ -62,7 +65,7 @@ class Operations {
             'product_type' => 'likecard',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->take($count_key_required);
+        ])->take($auction->key_count_required);
 
         foreach($offline_codes->get() as $key_code):
             $auction_details['keys'][] = [
@@ -71,9 +74,35 @@ class Operations {
             ];
         endforeach;
 
-        // if(($rest_of_codes_required = $count_key_required - $offline_codes->count()) > 0):
+        if(($rest_of_codes_required = $auction->key_count_required - $offline_codes->count()) > 0):
+            $LikeCard = new LikeCard();
+            $likecard_result = $LikeCard->create_likecard_order(
+                $auction->product->likecard_prod_id,
+                $rest_of_codes_required ?: 1,
+                $auction->id
+            );
 
-        // endif;
+            if($likecard_result && ($likecard_result['response'] == 1) && (count($likecard_result['serials']) > 0) ):
+                foreach($likecard_result['serials'] as $like_card_code):
+                    $auction_details['keys'][] = [
+                        "type"  => "TEXT",
+                        "value" => $like_card_code['serialCode']
+                    ];
+
+                    OfflineCode::create([
+                        'product_id'   => $auction->product->likecard_prod_id,
+                        'product_type' => 'likecard',
+                        'status'       => 'allow',
+                        'status_used'  => 'used',
+                        'product_name' => $likecard_result['productName'],
+                        'product_image'=> $likecard_result['productImage'],
+                        'code'         => $like_card_code['serialCode']
+                    ]);
+                endforeach;
+            else:
+                return null;
+            endif;
+        endif;
         dd($auction_details);
         return $auction_details;
     }

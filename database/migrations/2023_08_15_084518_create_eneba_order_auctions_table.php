@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('eneba_order_id')->on('eneba_orders')->references('id');
             $table->unsignedBigInteger('eneba_auction_id');
             $table->foreign('eneba_auction_id')->on('auctions')->references('id');
+            $table->integer('key_count_required')->default(1);
+            $table->float('unit_price');
             $table->timestamps();
         });
     }

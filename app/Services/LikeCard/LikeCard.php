@@ -1,7 +1,9 @@
 <?php
 namespace App\Services\LikeCard;
+use Illuminate\Support\Str;
 use App\Models\ApplicationSetting;
 use Illuminate\Support\Facades\Http;
+
 class LikeCard {
     protected $sandbox       = false;
     public   $endpoint       = "https://taxes.like4app.com";
@@ -107,6 +109,27 @@ class LikeCard {
         $response = $this->resolve_call('/online/products',$credentail);
         if($response->successful()):
             return $response->json();
+        endif;
+    }
+
+    public function create_likecard_order($product_id,$qty = 1,$order_id = Str::random(5)){
+        if(!$product_id) return null;
+        $credentail =  [
+            'deviceId'     => isset($this->credentail['prod_deviceId']) ? $this->credentail['prod_deviceId'] : null,
+            'email'        => isset($this->credentail['prod_email'])    ? $this->credentail['prod_email'] : null,
+            'password'     => isset($this->credentail['prod_password']) ? $this->credentail['prod_password'] : null,
+            'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
+            'langId'       => '1',
+            'productId'    => $product_id,
+            'quantity'     => $qty,
+            'referenceId' => 'Order_'.$order_id
+        ];
+
+        $response = $this->resolve_call('/online/create_order',$credentail);
+        if($response->successful()):
+            return $response->json();
+        else:
+            return null;
         endif;
     }
 }
