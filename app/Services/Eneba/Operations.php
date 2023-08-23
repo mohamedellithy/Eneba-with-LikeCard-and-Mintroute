@@ -76,7 +76,7 @@ class Operations {
             'status_used'  => 'unused'
         ])->limit($count_required);
         
-        //return $auction_details['keys'] = [];
+        return $auction_details['keys'] = [];
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
