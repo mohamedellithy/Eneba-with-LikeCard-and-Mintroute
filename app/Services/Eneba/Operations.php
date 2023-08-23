@@ -41,7 +41,6 @@ class Operations {
 
         $data = [];
 
-        dd($eneba_order->auctions);
 
         foreach($eneba_order->auctions as $auction):
             $data []= self::order_stock($auction,$eneba_order->count_cards);
@@ -51,6 +50,7 @@ class Operations {
     }
 
     public static function order_stock($auction,$count_key_required){
+        dd($auction->auction);
         $auction_details['auctionId'] = $auction->auction;
         $offline_codes  = OfflineCode::query();
         $offline_codes->where([
