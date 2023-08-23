@@ -27,6 +27,7 @@ class Operations {
             EnebaOrderAuction::updateOrCreate([
                 'eneba_order_id'     => $eneba_order->id,
                 'eneba_auction_id'   => $auction->id,
+            ],[
                 'key_count_required' => $auction['keyCount'],
                 'unit_price'         => $auction['price']['amount'],
             ]);
