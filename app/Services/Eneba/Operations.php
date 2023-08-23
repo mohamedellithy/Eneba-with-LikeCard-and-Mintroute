@@ -86,6 +86,8 @@ class Operations {
                 $auction->id
             );
 
+            dd($likecard_result);
+
             if($likecard_result && ($likecard_result['response'] == 1) && (count($likecard_result['serials']) > 0) ):
                 foreach($likecard_result['serials'] as $like_card_code):
                     $auction_details['keys'][] = [
