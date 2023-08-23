@@ -66,9 +66,7 @@ class Operations {
             'product_type' => 'likecard',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->limit($auction->count_cards);
-
-        dd($auction->pivot->key_count_required);
+        ])->limit($auction->pivot->key_count_required ?: $auction->count_cards);
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
