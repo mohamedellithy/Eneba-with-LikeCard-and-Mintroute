@@ -51,7 +51,8 @@ class Operations {
 
     public static function order_stock($auction,$count_key_required){
         $auction_details['auctionId'] = $auction->auction;
-        $offline_codes  = OfflineCode::where([
+        $offline_codes  = OfflineCode::query();
+        $offline_codes->where([
             'product_id'   => $auction->product_id,
             'product_type' => 'eneba',
             'status'       => 'allow',
@@ -61,12 +62,12 @@ class Operations {
             'product_type' => 'likecard',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->query();
+        ])->take($count_key_required);
 
-        foreach($offline_codes->take($count_key_required)->get() as $code):
+        foreach($offline_codes->get() as $key_code):
             $auction_details['keys'][] = [
                 "type"  => "TEXT",
-                "value" => $code->code
+                "value" => $key_code->code
             ];
         endforeach;
 
