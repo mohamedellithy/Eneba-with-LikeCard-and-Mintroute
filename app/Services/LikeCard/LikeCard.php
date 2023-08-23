@@ -115,6 +115,7 @@ class LikeCard {
     public function create_likecard_order($product_id,$qty = 1,$order_id = null){
         if(!$product_id) return null;
         $order_id   = $order_id ?: Str::random(5);
+        $time       = strtotime(date('Y-m-d H:i:s'));
         $credentail =  [
             'deviceId'     => isset($this->credentail['prod_deviceId']) ? $this->credentail['prod_deviceId'] : null,
             'email'        => isset($this->credentail['prod_email'])    ? $this->credentail['prod_email'] : null,
@@ -123,8 +124,9 @@ class LikeCard {
             'langId'       => '1',
             'productId'    => $product_id,
             'quantity'     => $qty,
-            'referenceId' => 'Order_'.$order_id,
-            'hash'        => $this->generateHash(strtotime(date('Y-m-d H:i:s')))
+            'referenceId'  => 'Order_'.$order_id,
+            'time'         => $time,
+            'hash'         => $this->generateHash($time)
         ];
 
         $response = $this->resolve_call('/online/create_order',$credentail);
