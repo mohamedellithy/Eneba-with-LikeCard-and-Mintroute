@@ -32,8 +32,7 @@ class Operations {
 
     public static function update_orders_and_get_codes(){
         $eneba_order = EnebaOrder::where([
-            'order_id'     => request('orderId'),
-            'status_order' => 'RESERVE',
+            'order_id'     => request('orderId')
         ])->first();
 
         $eneba_order = $eneba_order->update([
