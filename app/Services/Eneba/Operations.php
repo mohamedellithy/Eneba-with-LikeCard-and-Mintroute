@@ -23,10 +23,10 @@ class Operations {
         ]);
 
         foreach(request('auctions') as $auction):
-            $auction = Auction::where('auction',$auction['auctionId'])->first();
+            $auction_details = Auction::where('auction',$auction['auctionId'])->first();
             EnebaOrderAuction::updateOrCreate([
                 'eneba_order_id'     => $eneba_order->id,
-                'eneba_auction_id'   => $auction->id,
+                'eneba_auction_id'   => $auction_details->id,
             ],[
                 'key_count_required' => $auction['keyCount'],
                 'unit_price'         => $auction['price']['amount'],
