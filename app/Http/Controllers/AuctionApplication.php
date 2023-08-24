@@ -103,7 +103,8 @@ class AuctionApplication extends Controller
                 'automation' => 0
             ]);
         endif;
-        $auction = Auction::where('id',$auction_id)->update([
+        $auction = Auction::where('id',$auction_id)->first();
+        $auction->update([
             'status'         => $request->input('status'),
             'min_price'      => $request->input('min_price'),
             'count_cards'    => $request->input('count_cards'),
