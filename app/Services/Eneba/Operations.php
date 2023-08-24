@@ -7,6 +7,7 @@ use App\Models\EnebaOrderAuction;
 use App\Models\ApplicationSetting;
 use App\Services\LikeCard\LikeCard;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Database\Eloquent\Builder;
 
 class Operations {
     public static function create_new_auction($attr = []){
@@ -74,14 +75,14 @@ class Operations {
             'product_type' => 'eneba',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->get();
-        
-        // ->orWhere([
-        //     'product_id'   => $auction->product->likecard_prod_id,
-        //     'product_type' => 'likecard',
-        //     'status'       => 'allow',
-        //     'status_used'  => 'unused'
-        // ])->get();
+        ])->orWhere(function(Builder $query) use($auction){
+            $query->where([
+                'product_id'   => $auction->product->likecard_prod_id,
+                'product_type' => 'likecard',
+                'status'       => 'allow',
+                'status_used'  => 'unused'
+            ]);
+        })->get();
 
         dd($offline_codes);
 
