@@ -119,7 +119,7 @@ class Eneba {
         $response = $this->resolve_call($query);
         if($response->successful()):
             $data = $response->json();
-            if($data['data']['S_createAuction']['success'] == true):
+            if((isset($data['data']['S_createAuction'])) && ($data['data']['S_createAuction']['success'] == true)):
                 $auction->where([
                     'product_id' => $auction->product_id,
                 ])->update([
