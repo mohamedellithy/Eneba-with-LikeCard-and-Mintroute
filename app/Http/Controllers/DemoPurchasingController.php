@@ -30,6 +30,6 @@ class DemoPurchasingController extends Controller
         // $likecard = new LikeCard();
         // $response = $likecard->create_likecard_order(376,5);
         // dd($response);
-         dd($this->eneba_service->eneba_callback_stock_provision());
+        // dd($this->eneba_service->eneba_callback_stock_provision());
     }
 }

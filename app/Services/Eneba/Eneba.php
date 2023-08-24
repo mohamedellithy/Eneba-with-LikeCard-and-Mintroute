@@ -75,6 +75,43 @@ class Eneba {
         ];
     }
 
+    public function update_create_auction($auction){
+        dd($auction);
+        $query = <<<GQL
+            mutation {
+                S_createAuction(
+                input: {
+                    productId: "{$attr['productId']}"
+                    enabled: true
+                    declaredStock: {$attr['codesCount']}
+                    autoRenew: false
+                    price: { amount: {$attr['price']}, currency: "EUR" }
+                }
+                ) {
+                success
+                actionId
+                }
+            }
+        GQL;
+
+        $response = $this->resolve_call($query);
+
+        if($response->successful()):
+            $data = $response->json();
+            if($data['data']['S_createAuction']['success'] == true):
+                EnebaOperations::create_new_auction([
+                    'product_id' => $attr['productId'],
+                    'auction'    => $data['data']['S_createAuction']['actionId']
+                ]);
+            endif;
+        endif;
+
+        return [
+            'code' => $response->status(),
+            'result' => $response->json()
+        ];
+    }
+
     public function fetch_enebe_crediential(){
         $credential        = [];
         $application       = ApplicationSetting::where([
@@ -250,43 +287,6 @@ class Eneba {
                 'result' => isset($response->json()['data']['S_competition']) ? $response->json()['data']['S_competition'] : $response->json()
             ];
         endif;
-    }
-   
-
-    public function create_auction($attr = []){
-        $query = <<<GQL
-            mutation {
-                S_createAuction(
-                input: {
-                    productId: "{$attr['productId']}"
-                    enabled: true
-                    declaredStock: {$attr['codesCount']}
-                    autoRenew: false
-                    price: { amount: {$attr['price']}, currency: "EUR" }
-                }
-                ) {
-                success
-                actionId
-                }
-            }
-        GQL;
-
-        $response = $this->resolve_call($query);
-
-        if($response->successful()):
-            $data = $response->json();
-            if($data['data']['S_createAuction']['success'] == true):
-                EnebaOperations::create_new_auction([
-                    'product_id' => $attr['productId'],
-                    'auction'    => $data['data']['S_createAuction']['actionId']
-                ]);
-            endif;
-        endif;
-
-        return [
-            'code' => $response->status(),
-            'result' => $response->json()
-        ];
     }
 
     public function eneba_callback_stock_reservation(){
