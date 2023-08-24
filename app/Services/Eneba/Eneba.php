@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 class Eneba {
     protected $sandbox       = true;
     public   $endpoint      = "";
-    protected $credentail    = array();
+    public $credentail    = array();
     public function __construct($sandbox = true){
         $this->sandbox    = $sandbox;
 
