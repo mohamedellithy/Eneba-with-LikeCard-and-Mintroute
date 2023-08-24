@@ -123,8 +123,10 @@ class LikeCard {
             'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
             'langId'       => '1',
             'products'     => [
-                'productId'    => $product_id,
-                'quantity'     => $qty
+                [
+                    'productId'    => $product_id,
+                    'quantity'     => $qty
+                ]
             ],
             'referenceId'  => 'Order_'.$order_id,
             'time'         => $time,
