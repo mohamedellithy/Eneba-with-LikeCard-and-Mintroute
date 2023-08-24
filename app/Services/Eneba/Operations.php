@@ -80,9 +80,9 @@ class Operations {
             'product_type' => 'likecard',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->limit($count_required);
+        ])->take($count_required)->get();
 
-        dd($offline_codes->get());
+        dd($offline_codes);
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
