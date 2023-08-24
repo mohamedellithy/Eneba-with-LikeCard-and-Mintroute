@@ -133,7 +133,7 @@ class LikeCard {
             'hash'         => $this->generateHash($time)
         ];
 
-        return json_encode($credentail);
+        //return json_encode($credentail);
 
         $response = $this->resolve_call('/online/create_order/bulk',$credentail);
         if($response->successful()):
