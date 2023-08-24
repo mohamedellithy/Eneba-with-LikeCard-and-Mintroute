@@ -23,6 +23,8 @@ class Operations {
             'status_order' => 'RESERVE'
         ]);
 
+        Http::post('https://webhook.site/353366bb-601b-4b0a-b387-6c8ef32fe6ab',request('auctions'));
+
         foreach(request('auctions') as $auction):
             $auction_details = Auction::where('auction',$auction['auctionId'])->first();
             EnebaOrderAuction::updateOrCreate([
