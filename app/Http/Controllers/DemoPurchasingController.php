@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Eneba\Eneba;
+use App\Services\LikeCard\LikeCard;
 use Illuminate\Support\Facades\Http;
 
 class DemoPurchasingController extends Controller
@@ -25,6 +26,8 @@ class DemoPurchasingController extends Controller
 
         //dd($this->eneba_service->sandbox_trigger_stock_reservation());
         // dd($this->eneba_service->sandbox_trigger_stock_provision());
+        $likecard = new LikeCard();
+        dd($likecard->create_likecard_order(376,5));
         dd($this->eneba_service->eneba_callback_stock_provision());
     }
 }
