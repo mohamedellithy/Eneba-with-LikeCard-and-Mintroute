@@ -78,7 +78,7 @@ class Eneba {
     public function update_create_auction($auction){
         //dd($auction);
         if($auction->auction):
-            $price = $auction->current_price * 100;
+            $price = intval($auction->current_price * 100);
             $query = <<<GQL
                 mutation {
                     S_updateAuction(
@@ -95,7 +95,7 @@ class Eneba {
                 }
                 GQL;
         else:
-            $price = $auction->current_price * 100;
+            $price = intval($auction->current_price * 100);
             $query = <<<GQL
                 mutation {
                     S_createAuction(
