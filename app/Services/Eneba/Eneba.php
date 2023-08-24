@@ -441,4 +441,19 @@ class Eneba {
         $response = $this->resolve_call($query);
         dd($response->json());
     }
+
+    public function get_callbacks_registered(){
+        $query = <<<GQL
+        query {
+            P_apiCallbacks {
+              id
+              type
+              url
+              authorization
+            }
+          }
+        GQL;
+        $response = $this->resolve_call($query);
+        dd($response->json());
+    }
 }

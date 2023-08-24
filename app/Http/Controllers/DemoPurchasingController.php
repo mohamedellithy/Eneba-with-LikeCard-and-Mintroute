@@ -15,16 +15,17 @@ class DemoPurchasingController extends Controller
 
     public function __construct(){
         $this->application   = 'eneba';
-        $this->eneba_service = new Eneba($sandbox = true);
+        $this->eneba_service = new Eneba($sandbox = false);
     }
     public function index(Request $request){
-        $request->merge([
-            'orderId'  => '347c4978-4f81-11ed-bdc3-0242ac120002'
-        ]);
+        // $request->merge([
+        //     'orderId'  => '347c4978-4f81-11ed-bdc3-0242ac120002'
+        // ]);
 
         //$this->eneba_service->eneba_callback_stock_provision();
 
-        dd($this->eneba_service->sandbox_trigger_stock_reservation());
+        dd($this->eneba_service->get_callbacks_registered());
+        //dd($this->eneba_service->sandbox_trigger_stock_reservation());
         // dd($this->eneba_service->sandbox_trigger_stock_provision());
        
         // $likecard = new LikeCard();
