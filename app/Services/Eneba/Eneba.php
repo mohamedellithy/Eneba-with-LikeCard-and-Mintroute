@@ -349,7 +349,7 @@ class Eneba {
                 type: DECLARED_STOCK_RESERVATION
                 orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
                 auction: {
-                    auctionId: "95e79a58-4280-11ee-8afc-6229f616c185"
+                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
                     price: {
                     amount: 1500
                     currency: "EUR"
@@ -374,7 +374,7 @@ class Eneba {
                 type: DECLARED_STOCK_PROVISION
                 orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
                 auction: {
-                    auctionId: "95e79a58-4280-11ee-8afc-6229f616c185"
+                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
                     price: {
                     amount: 1500
                     currency: "EUR"

@@ -15,7 +15,7 @@ class DemoPurchasingController extends Controller
 
     public function __construct(){
         $this->application   = 'eneba';
-        $this->eneba_service = new Eneba($sandbox = true);
+        $this->eneba_service = new Eneba($sandbox = false);
     }
     public function index(Request $request){
         $request->merge([
