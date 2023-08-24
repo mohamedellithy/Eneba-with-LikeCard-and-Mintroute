@@ -132,7 +132,6 @@ class LikeCard {
         ];
 
         $response = $this->resolve_call('/online/create_order/bulk',$credentail);
-        dd($response);
         if($response->successful()):
             return $response->json();
         else:
