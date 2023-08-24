@@ -70,7 +70,7 @@ class Operations {
         $used_codes     = [];
         $offline_codes  = OfflineCode::query();
         $count_required = $auction->pivot->key_count_required ?: $auction->count_cards;
-        $offline_codes->where([
+        $offline_codes  = $offline_codes->where([
             'product_id'   => $auction->product_id,
             'product_type' => 'eneba',
             'status'       => 'allow',
