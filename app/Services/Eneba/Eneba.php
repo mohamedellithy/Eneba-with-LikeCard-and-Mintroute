@@ -83,7 +83,7 @@ class Eneba {
                 mutation {
                     S_updateAuction(
                     input: {
-                        id: "{$auction->auction}"
+                        id: "{$auction->product_id}"
                         price: { amount: $price , currency: "EUR" }
                         declaredStock:$auction->count_cards
                         enabled: false
