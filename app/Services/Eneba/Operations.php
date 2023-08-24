@@ -74,12 +74,14 @@ class Operations {
             'product_type' => 'eneba',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->orWhere([
-            'product_id'   => $auction->product->likecard_prod_id,
-            'product_type' => 'likecard',
-            'status'       => 'allow',
-            'status_used'  => 'unused'
         ])->get();
+        
+        // ->orWhere([
+        //     'product_id'   => $auction->product->likecard_prod_id,
+        //     'product_type' => 'likecard',
+        //     'status'       => 'allow',
+        //     'status_used'  => 'unused'
+        // ])->get();
 
         dd($offline_codes);
 
