@@ -118,9 +118,9 @@ class Eneba {
         if($response->successful()):
             $data = $response->json();
             if($data['data']['S_createAuction']['success'] == true):
-                $auction->update([
+                $auction->where([
                     'product_id' => $auction->product_id,
-                ],[
+                ])->update([
                     'auction'    => $data['data']['S_createAuction']['actionId']
                 ]);
             endif;
