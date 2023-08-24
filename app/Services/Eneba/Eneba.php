@@ -78,12 +78,13 @@ class Eneba {
     public function update_create_auction($auction){
         //dd($auction);
         if($auction->auction):
+            $price = $auction->current_price * 100;
             $query = <<<GQL
                 mutation {
                     S_updateAuction(
                     input: {
                         id: "{$auction->auction}"
-                        price: { amount: $auction->current_price, currency: "EUR" }
+                        price: { amount: $price , currency: "EUR" }
                         declaredStock:$auction->count_cards
                     }
                     ) {
@@ -94,6 +95,7 @@ class Eneba {
                 }
                 GQL;
         else:
+            $price = $auction->current_price * 100;
             $query = <<<GQL
                 mutation {
                     S_createAuction(
@@ -102,7 +104,7 @@ class Eneba {
                         enabled: true
                         declaredStock: $auction->count_cards
                         autoRenew: false
-                        price: { amount: $auction->current_price, currency: "EUR" }
+                        price: { amount: $price, currency: "EUR" }
                     }
                     ) {
                     success
