@@ -86,6 +86,7 @@ class Eneba {
                         id: "{$auction->auction}"
                         price: { amount: $price , currency: "EUR" }
                         declaredStock:$auction->count_cards
+                        enabled: false
                     }
                     ) {
                     success
@@ -104,6 +105,7 @@ class Eneba {
                         enabled: true
                         declaredStock: $auction->count_cards
                         autoRenew: false
+                        enabled: false
                         price: { amount: $price, currency: "EUR" }
                     }
                     ) {
