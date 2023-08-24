@@ -122,14 +122,17 @@ class LikeCard {
             'password'     => isset($this->credentail['prod_password']) ? $this->credentail['prod_password'] : null,
             'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
             'langId'       => '1',
-            'productId'    => $product_id,
-            'quantity'     => $qty,
+            'products'     => [
+                'productId'    => $product_id,
+                'quantity'     => $qty
+            ],
             'referenceId'  => 'Order_'.$order_id,
             'time'         => $time,
             'hash'         => $this->generateHash($time)
         ];
 
-        $response = $this->resolve_call('/online/create_order',$credentail);
+        $response = $this->resolve_call('/online/create_order/bulk',$credentail);
+        dd($response);
         if($response->successful()):
             return $response->json();
         else:
@@ -143,5 +146,5 @@ class LikeCard {
         $key   = isset($this->credentail['prod_hash_key']) ? $this->credentail['prod_hash_key'] : null;
         return hash('sha256',$time.$email.$phone.$key);
     }
-      
+
 }
