@@ -79,7 +79,7 @@ class Operations {
             'product_type' => 'likecard',
             'status'       => 'allow',
             'status_used'  => 'unused'
-        ])->take($count_required)->get();
+        ])->get();
 
         dd($offline_codes);
 
