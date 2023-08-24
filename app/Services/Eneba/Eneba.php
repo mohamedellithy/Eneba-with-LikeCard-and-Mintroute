@@ -77,8 +77,9 @@ class Eneba {
 
     public function update_create_auction($auction){
         //dd($auction);
+        $price = intval($auction->current_price * 100);
+        $enable = $auction->status == 1 ? true : false;
         if($auction->auction):
-            $price = intval($auction->current_price * 100);
             $query = <<<GQL
                 mutation {
                     S_updateAuction(
@@ -86,7 +87,7 @@ class Eneba {
                         id: "{$auction->auction}"
                         price: { amount: $price , currency: "EUR" }
                         declaredStock:$auction->count_cards
-                        enabled: false
+                        enabled: $enable
                     }
                     ) {
                     success
@@ -96,21 +97,20 @@ class Eneba {
                 }
                 GQL;
         else:
-            $price = intval($auction->current_price * 100);
             $query = <<<GQL
                 mutation {
                     S_createAuction(
                     input: {
                         productId: "{$auction->product_id}"
-                        enabled: true
                         declaredStock: $auction->count_cards
                         autoRenew: false
-                        enabled: false
+                        enabled: $enable
                         price: { amount: $price, currency: "EUR" }
                     }
                     ) {
                     success
                     actionId
+                    auctionId
                     }
                 }
             GQL;
@@ -123,7 +123,7 @@ class Eneba {
                 $auction->where([
                     'product_id' => $auction->product_id,
                 ])->update([
-                    'auction'    => $data['data']['S_createAuction']['actionId']
+                    'auction'    => $data['data']['S_createAuction']['auctionId']
                 ]);
             endif;
         endif;
