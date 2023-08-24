@@ -76,7 +76,7 @@ class Eneba {
     }
 
     public function update_create_auction($auction){
-        dd($auction);
+        //dd($auction);
         if($auction->auction):
             $query = <<<GQL
                 mutation {
