@@ -77,30 +77,48 @@ class Eneba {
 
     public function update_create_auction($auction){
         dd($auction);
-        $query = <<<GQL
-            mutation {
-                S_createAuction(
-                input: {
-                    productId: "{$attr['productId']}"
-                    enabled: true
-                    declaredStock: {$attr['codesCount']}
-                    autoRenew: false
-                    price: { amount: {$attr['price']}, currency: "EUR" }
+        if($auction->auction):
+            $query = <<<GQL
+                mutation {
+                    S_updateAuction(
+                    input: {
+                        id: "{$auction->auction}"
+                        price: { amount: $auction->current_price, currency: "EUR" }
+                        declaredStock:$auction->count_cards
+                    }
+                    ) {
+                    success
+                    actionId
+                    price { amount currency }
+                    }
                 }
-                ) {
-                success
-                actionId
+                GQL;
+        else:
+            $query = <<<GQL
+                mutation {
+                    S_createAuction(
+                    input: {
+                        productId: "{$auction->product_id}"
+                        enabled: true
+                        declaredStock: $auction->count_cards
+                        autoRenew: false
+                        price: { amount: $auction->current_price, currency: "EUR" }
+                    }
+                    ) {
+                    success
+                    actionId
+                    }
                 }
-            }
-        GQL;
+            GQL;
+        endif;
 
         $response = $this->resolve_call($query);
-
         if($response->successful()):
             $data = $response->json();
             if($data['data']['S_createAuction']['success'] == true):
-                EnebaOperations::create_new_auction([
-                    'product_id' => $attr['productId'],
+                $auction->update([
+                    'product_id' => $auction->product_id,
+                ],[
                     'auction'    => $data['data']['S_createAuction']['actionId']
                 ]);
             endif;

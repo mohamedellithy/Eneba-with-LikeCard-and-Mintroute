@@ -115,7 +115,7 @@ class AuctionApplication extends Controller
             'price_step'     => $request->input('price_step')
         ]);
 
-        $this->eneba_service->update_create_auction($auction);
+        dd($this->eneba_service->update_create_auction($auction));
         return redirect()->route('application.auctions');
     }
 
