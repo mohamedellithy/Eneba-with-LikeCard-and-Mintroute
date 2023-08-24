@@ -122,6 +122,33 @@ class LikeCard {
             'password'     => isset($this->credentail['prod_password']) ? $this->credentail['prod_password'] : null,
             'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
             'langId'       => '1',
+            'productId'    => $product_id,
+            'quantity'     => $qty,
+            'referenceId'  => 'Order_'.$order_id,
+            'time'         => $time,
+            'hash'         => $this->generateHash($time)
+        ];
+
+        //return json_encode($credentail);
+
+        $response = $this->resolve_call('/online/create_order',$credentail);
+        if($response->successful()):
+            return $response->json();
+        else:
+            return null;
+        endif;
+    }
+
+    public function create_bulk_likecard_order($product_id,$qty = 1,$order_id = null){
+        if(!$product_id) return null;
+        $order_id   = $order_id ?: Str::random(5);
+        $time       = strtotime(date('Y-m-d H:i:s'));
+        $credentail =  [
+            'deviceId'     => isset($this->credentail['prod_deviceId']) ? $this->credentail['prod_deviceId'] : null,
+            'email'        => isset($this->credentail['prod_email'])    ? $this->credentail['prod_email'] : null,
+            'password'     => isset($this->credentail['prod_password']) ? $this->credentail['prod_password'] : null,
+            'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
+            'langId'       => '1',
             'products'     => [
                 [
                     'productId'    => $product_id,
@@ -142,6 +169,7 @@ class LikeCard {
             return null;
         endif;
     }
+
 
     public function generateHash($time){
         $email = strtolower(isset($this->credentail['prod_email']) ? $this->credentail['prod_email'] : null);
