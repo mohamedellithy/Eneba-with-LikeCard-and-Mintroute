@@ -82,9 +82,9 @@ class Operations {
                 'status'       => 'allow',
                 'status_used'  => 'unused'
             ]);
-        })->get();
+        })->limit($count_required);
 
-        dd($offline_codes);
+        dd($offline_codes->get());
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
