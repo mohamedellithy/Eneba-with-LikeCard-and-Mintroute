@@ -127,8 +127,6 @@ class Operations {
             return null;
         endif;
 
-        dd($used_codes);
-
         OfflineCode::whereIn('id',$used_codes)->update([
             'status_used'  => 'used'
         ]);
