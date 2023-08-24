@@ -82,6 +82,8 @@ class Operations {
             'status_used'  => 'unused'
         ])->limit($count_required);
 
+        dd($offline_codes->get());
+
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
             $auction_details['keys'][] = [
