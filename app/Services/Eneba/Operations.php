@@ -68,9 +68,8 @@ class Operations {
     public static function order_stock($auction){
         $auction_details['auctionId'] = $auction->auction;
         $used_codes     = [];
-        $offline_codes  = OfflineCode::query();
         $count_required = $auction->pivot->key_count_required ?: $auction->count_cards;
-        $offline_codes  = $offline_codes->where([
+        $offline_codes  = OfflineCode::where([
             'product_id'   => $auction->product_id,
             'product_type' => 'eneba',
             'status'       => 'allow',
