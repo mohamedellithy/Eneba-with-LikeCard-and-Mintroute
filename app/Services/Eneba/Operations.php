@@ -107,22 +107,24 @@ class Operations {
 
             if($likecard_result && ($likecard_result['response'] == 1) && (count($likecard_result['orders']) > 0) ):
                 foreach($likecard_result['orders'] as $order):
-                    foreach($order['serials'] as $like_card_code):
-                        $auction_details['keys'][] = [
-                            "type"  => "TEXT",
-                            "value" => $like_card_code['serialCode']
-                        ];
+                    if(count($order['serials']) > 0):
+                        foreach($order['serials'] as $like_card_code):
+                            $auction_details['keys'][] = [
+                                "type"  => "TEXT",
+                                "value" => $like_card_code['serialCode']
+                            ];
 
-                        OfflineCode::create([
-                            'product_id'   => $auction->product->likecard_prod_id,
-                            'product_type' => 'likecard',
-                            'status'       => 'allow',
-                            'status_used'  => 'used',
-                            'product_name' => $order['productName'],
-                            'product_image'=> $order['productImage'],
-                            'code'         => $like_card_code['serialCode']
-                        ]);
-                    endforeach;
+                            OfflineCode::create([
+                                'product_id'   => $auction->product->likecard_prod_id,
+                                'product_type' => 'likecard',
+                                'status'       => 'allow',
+                                'status_used'  => 'used',
+                                'product_name' => $order['productName'],
+                                'product_image'=> $order['productImage'],
+                                'code'         => $like_card_code['serialCode']
+                            ]);
+                        endforeach;
+                    endif;
                 endforeach;
             else:
                 return null;
