@@ -104,21 +104,23 @@ class Operations {
             );
 
             if($likecard_result && ($likecard_result['response'] == 1) && (count($likecard_result['serials']) > 0) ):
-                foreach($likecard_result['serials'] as $like_card_code):
-                    $auction_details['keys'][] = [
-                        "type"  => "TEXT",
-                        "value" => $like_card_code['serialCode']
-                    ];
+                foreach($likecard_result['orders'] as $order):
+                    foreach($order['serials'] as $like_card_code):
+                        $auction_details['keys'][] = [
+                            "type"  => "TEXT",
+                            "value" => $like_card_code['serialCode']
+                        ];
 
-                    OfflineCode::create([
-                        'product_id'   => $auction->product->likecard_prod_id,
-                        'product_type' => 'likecard',
-                        'status'       => 'allow',
-                        'status_used'  => 'used',
-                        'product_name' => $likecard_result['productName'],
-                        'product_image'=> $likecard_result['productImage'],
-                        'code'         => $like_card_code['serialCode']
-                    ]);
+                        OfflineCode::create([
+                            'product_id'   => $auction->product->likecard_prod_id,
+                            'product_type' => 'likecard',
+                            'status'       => 'allow',
+                            'status_used'  => 'used',
+                            'product_name' => $order['productName'],
+                            'product_image'=> $order['productImage'],
+                            'code'         => $like_card_code['serialCode']
+                        ]);
+                    endforeach;
                 endforeach;
             else:
                 return null;
@@ -132,7 +134,7 @@ class Operations {
         OfflineCode::whereIn('id',$used_codes)->update([
             'status_used'  => 'used'
         ]);
-       
+
         return $auction_details;
     }
 }
