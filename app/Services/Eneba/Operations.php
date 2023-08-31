@@ -97,7 +97,7 @@ class Operations {
         $rest_of_codes_required = $count_required - $offline_codes->count();
         if($rest_of_codes_required > 0):
             $LikeCard = new LikeCard();
-            $likecard_result = $LikeCard->create_likecard_order(
+            $likecard_result = $LikeCard->create_bulk_likecard_order(
                 $auction->product->likecard_prod_id,
                 $rest_of_codes_required ?: 1,
                 $auction->id
