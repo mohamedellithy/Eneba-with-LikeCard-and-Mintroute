@@ -274,7 +274,7 @@ class Eneba {
             ];
         endif;
     }
-    
+
     public function get_competitions($products_id = [],$from = null,$count = 50){
         $query = <<<GQL
             query {
@@ -283,8 +283,8 @@ class Eneba {
                     competition(
                         first: {$count}
                         after:"{$from}"
-                    ) { 
-                        totalCount 
+                    ) {
+                        totalCount
                         edges {
                         node {
                             belongsToYou
@@ -328,7 +328,7 @@ class Eneba {
 
     public function eneba_callback_stock_provision(){
         $codes = EnebaOperations::update_orders_and_get_codes();
-        if(($codes != null) || (count($codes) > 0)):
+        if( ($codes != null) || (is_array($codes) && (count($codes) > 0)) ):
             return response()->json([
                 "action"   => "PROVIDE",
                 "orderId"  => request('orderId'),
