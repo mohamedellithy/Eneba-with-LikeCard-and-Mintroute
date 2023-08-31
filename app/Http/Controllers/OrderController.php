@@ -13,7 +13,7 @@ class OrderController extends Controller
 
     public function __construct(){
         $this->application   = 'eneba';
-        $this->eneba_service = new Eneba($sandbox = false);
+        $this->eneba_service = new Eneba($sandbox = true);
     }
 
     public function index(){
@@ -25,12 +25,12 @@ class OrderController extends Controller
     }
 
     public function eneba_callback_stock_provision(Request $request){
-        Http::post('https://webhook.site/353366bb-601b-4b0a-b387-6c8ef32fe6ab',$request->all());
+        Http::post('https://webhook.site/719867a1-c405-453a-97f0-0968f7834d11',$request->all());
         return $this->eneba_service->eneba_callback_stock_provision();
     }
 
     public function eneba_callback_stock_reservation(Request $request){
-        Http::post('https://webhook.site/353366bb-601b-4b0a-b387-6c8ef32fe6ab',$request->all());
+        Http::post('https://webhook.site/719867a1-c405-453a-97f0-0968f7834d11',$request->all());
         return $this->eneba_service->eneba_callback_stock_reservation();
     }
 }
