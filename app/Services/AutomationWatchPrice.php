@@ -55,6 +55,9 @@ class AutomationWatchPrice{
              // in case of my_price is equal max_price and my_price is less than or equal min_price settings
             elseif(($this->my_price >= $min_price) && ( $min_price <= ($this->auction_settings->min_price * 100) )):
                 $current_price = $befor_last_price - ($this->auction_settings->price_step * 100);
+                if(($befor_last_price - $min_price) == 1):
+                    $current_price = ($this->auction_settings->min_price * 100);
+                endif;
                 $section = "itme 2";
 
             // in case of my_price is equal max_price and my_price is less than or equal min_price settings
@@ -75,6 +78,7 @@ class AutomationWatchPrice{
         Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',[
             $current_price,
             $min_price,
+            $befor_last_price,
             $section,
             $auctions
         ]);
