@@ -43,7 +43,7 @@ class AutomationWatchPrice{
         $max_price        = $auctions->where('belongsToYou',false)->max('amount');
         $current_price    = $this->my_price;
 
-        if($auctions->where('belongsToYou',false) == 0):
+        if($auctions->where('belongsToYou',false)->count() == 0):
             $current_price = $this->auction_settings->max_price;
         else:
             // in case of my_price  is greater than max_price and my_price is greater than min_price settings
