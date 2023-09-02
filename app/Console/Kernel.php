@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('automation_change_price')->everyMinute();
+        $schedule->command('command:automation_change_price')->everyMinute();
 
     }
 
