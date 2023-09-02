@@ -61,7 +61,8 @@ if(!function_exists('GetAuctionPrices')) {
 
             foreach($auction_eneba['S_product']['auctions']['edges'] as $auction):
                 $data = [
-                    'amount' => $auction['node']['price']['amount'],
+                    'amount'       => $auction['node']['price']['amount'],
+                    'belongsToYou' => $auction['node']['belongsToYou'],
                     'merchantName' => $auction['node']['merchantName']
                 ];
                 $collect_auctions[] = $data;
