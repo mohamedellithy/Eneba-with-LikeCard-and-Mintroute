@@ -3,13 +3,14 @@
 namespace App\Console;
 
 use Illuminate\Support\Facades\Http;
+use App\Services\AutomationWatchPrice;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
-        Commands\AutomationChangePrice::class
+        //Commands\AutomationChangePrice::class
     ];
 
     /**
@@ -20,7 +21,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:automation_change_price')->everyMinute();
+        //$schedule->command('command:automation_change_price')->everyMinute();
+
+        $automation_change_price = new AutomationWatchPrice($schedule);
+        $automation_change_price->schedule;
 
     }
 

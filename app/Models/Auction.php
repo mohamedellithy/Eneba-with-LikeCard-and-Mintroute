@@ -21,4 +21,8 @@ class Auction extends Model
     public function product(){
         return $this->belongsTo(Product::class,'product_id','eneba_prod_id');
     }
+
+    public function logs_auction_price(){
+        return $this->hasMany(LogAuctionPrice::class,'auction_id','id');
+    }
 }
