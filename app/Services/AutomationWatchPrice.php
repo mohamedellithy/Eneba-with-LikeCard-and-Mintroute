@@ -75,8 +75,6 @@ class AutomationWatchPrice{
         Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',[
             $current_price,
             $min_price,
-            $this->auction_settings->price_step * 100,
-            $this->my_price,
             $section,
             $auctions
         ]);
