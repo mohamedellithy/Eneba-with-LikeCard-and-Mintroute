@@ -21,8 +21,8 @@ class AutomationWatchPrice{
         foreach($auctions as $auction):
             $this->auction_settings  = $auction;
             $command = $this->schedule->call(function(){
-                // $this->getAuctionPrices();
-                Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',$this->auction_settings);
+                 $this->getAuctionPrices();
+                //Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',$this->auction_settings);
             });
     
             $command->name("Auction no #".$this->auction_settings->id);
