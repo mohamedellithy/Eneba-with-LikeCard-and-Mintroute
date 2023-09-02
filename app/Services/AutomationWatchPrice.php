@@ -48,12 +48,12 @@ class AutomationWatchPrice{
             $current_price = $this->auction_settings->max_price * 100;
         else:
             // in case of my_price  is greater than max_price and my_price is greater than min_price settings
-            if(($this->my_price > $min_price) && ( $this->my_price > ($this->auction_settings->min_price * 100) )):
+            if(($this->my_price > $min_price) && ( $min_price > ($this->auction_settings->min_price * 100) )):
                 $current_price = $min_price - ($this->auction_settings->price_step * 100);
                 $section = "itme 1";
 
              // in case of my_price is equal max_price and my_price is less than or equal min_price settings
-            elseif(($this->my_price == $min_price) && ( $this->my_price <= ($this->auction_settings->min_price * 100) )):
+            elseif(($this->my_price >= $min_price) && ( $min_price <= ($this->auction_settings->min_price * 100) )):
                 $current_price = $befor_last_price - ($this->auction_settings->price_step * 100);
                 $section = "itme 2";
 
