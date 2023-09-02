@@ -11,7 +11,7 @@ class AutomationWatchPrice{
     public    $schedule;
     public function __construct(Schedule $schedule){
         $this->schedule = $schedule;
-        $this->eneba_service = new Eneba($sandbox = true);
+        $this->eneba_service = new Eneba($sandbox = false);
         $auctions = Auction::has('logs_auction_price','<',10)->where([
             'status' => 1,
             'automation' => 1
