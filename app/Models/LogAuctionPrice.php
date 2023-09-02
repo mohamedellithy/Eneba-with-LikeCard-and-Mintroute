@@ -9,7 +9,7 @@ class LogAuctionPrice extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
         'from','to','eneba_response','status'
     ];
 }

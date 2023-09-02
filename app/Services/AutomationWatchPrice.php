@@ -42,6 +42,7 @@ class AutomationWatchPrice{
         $befor_last_price = $auctions->where('belongsToYou',false)->skip(1)->min('amount');
         $max_price        = $auctions->where('belongsToYou',false)->max('amount');
         $current_price    = $this->my_price;
+        $section          = null;
 
         if($auctions->where('belongsToYou',false)->count() == 0):
             $current_price = $this->auction_settings->max_price * 100;
@@ -49,28 +50,33 @@ class AutomationWatchPrice{
             // in case of my_price  is greater than max_price and my_price is greater than min_price settings
             if(($this->my_price > $min_price) && ( $this->my_price > ($this->auction_settings->min_price * 100) )):
                 $current_price = $min_price - ($this->auction_settings->price_step * 100);
+                $section = "itme 1";
 
              // in case of my_price is equal max_price and my_price is less than or equal min_price settings
             elseif(($this->my_price == $min_price) && ( $this->my_price <= ($this->auction_settings->min_price * 100) )):
                 $current_price = $befor_last_price - ($this->auction_settings->price_step * 100);
+                $section = "itme 2";
 
             // in case of my_price is equal max_price and my_price is less than or equal min_price settings
             elseif(($this->my_price < $min_price) && ( $this->my_price >= ($this->auction_settings->min_price * 100) )):
                 $diff = $min_price - $this->my_price;
                 if($diff > ($this->auction_settings->price_step * 100)){
                     $current_price = $min_price - ($this->auction_settings->price_step * 100);
+                    $section = "itme 3";
                 }
+                $section = "itme 4";
             endif;
         endif;
 
         if($this->my_price !=  $current_price):
             $this->update_price_on_auction($current_price);
         endif;
-        // Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',[
-        //     $current_price,
-        //     $this->my_price,
-        //     $auctions
-        // ]);
+        Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',[
+            $current_price,
+            $this->my_price,
+            $section,
+            $auctions
+        ]);
     }
 
     public function update_price_on_auction($current_price){
