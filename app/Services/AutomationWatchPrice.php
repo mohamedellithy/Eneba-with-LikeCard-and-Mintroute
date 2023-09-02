@@ -84,8 +84,8 @@ class AutomationWatchPrice{
         $this->auction_settings->logs_auction_price()->create([
             'from'           => $form,
             'to'             => $this->auction_settings->current_price,
-            'eneba_response' => $response['result'],
-            'status'         => $response['status']
+            'eneba_response' => json_encode($response['result']),
+            'status'         => $response['code']
         ]);
 
     }
