@@ -68,7 +68,8 @@ class AutomationWatchPrice{
         endif;
         Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',[
             $current_price,
-            $this->my_price
+            $this->my_price,
+            $auctions
         ]);
     }
 
