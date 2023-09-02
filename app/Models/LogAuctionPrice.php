@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class LogAuctionPrice extends Model
 {
     use HasFactory;
+
+    protected $fillabel = [
+        'from','to','eneba_response','status'
+    ];
 }
