@@ -63,8 +63,9 @@ class AutomationWatchPrice{
                 if($diff > ($this->auction_settings->price_step * 100)){
                     $current_price = $min_price - ($this->auction_settings->price_step * 100);
                     $section = "itme 3";
+                } else {
+                    $section = "itme 4";
                 }
-                $section = "itme 4";
             endif;
         endif;
 
