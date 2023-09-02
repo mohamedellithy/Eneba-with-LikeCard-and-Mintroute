@@ -90,13 +90,13 @@ class AutomationWatchPrice{
             'current_price'  => $current_price
         ]);
         
-        //$response = $this->eneba_service->update_create_auction($this->auction_settings);
+        $response = $this->eneba_service->update_create_auction($this->auction_settings);
 
         $this->auction_settings->logs_auction_price()->create([
             'from'           => $form,
             'to'             => $this->auction_settings->current_price,
-            'eneba_response' => null,//json_encode($response['result']),
-            'status'         => null //$response['code']
+            'eneba_response' => json_encode($response['result']),
+            'status'         => $response['code']
         ]);
 
     }
