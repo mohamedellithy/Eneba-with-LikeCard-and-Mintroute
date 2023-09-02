@@ -8,6 +8,10 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+    protected $commands = [
+        Commands\AutomationChangePrice::class
+    ];
+
     /**
      * Define the application's command schedule.
      *
@@ -16,8 +20,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
-        Http::get("https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0","hi mohamd");
+        $schedule->command('automation_change_price')->everyMinute();
+
     }
 
     /**
