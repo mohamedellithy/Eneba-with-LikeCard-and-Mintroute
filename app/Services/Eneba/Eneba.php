@@ -87,6 +87,7 @@ class Eneba {
                         id: "{$auction->auction}"
                         price: { amount: $price , currency: "EUR" }
                         declaredStock:$auction->count_cards
+                        autoRenew: true
                         enabled: $enable
                     }
                     ) {
@@ -103,7 +104,7 @@ class Eneba {
                     input: {
                         productId: "{$auction->product_id}"
                         declaredStock: $auction->count_cards
-                        autoRenew: false
+                        autoRenew: true
                         enabled: $enable
                         price: { amount: $price, currency: "EUR" }
                     }
