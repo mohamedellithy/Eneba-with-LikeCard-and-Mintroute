@@ -20,7 +20,7 @@ class AuctionApplication extends Controller
 
     public function __construct(){
         $this->application   = 'eneba';
-        $this->eneba_service = new Eneba($sandbox = true);
+        $this->eneba_service = new Eneba($sandbox = false);
         $this->likecard_service = new LikeCard();
     }
 
