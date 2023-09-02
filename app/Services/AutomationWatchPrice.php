@@ -86,8 +86,9 @@ class AutomationWatchPrice{
 
     public function update_price_on_auction($current_price){
         $form   = $this->auction_settings->current_price;
+        $current_price = $current_price / 100;
         $this->auction_settings->update([
-            'current_price'  => $current_price
+            'current_price'  => $current_price 
         ]);
         
         $response = $this->eneba_service->update_create_auction($this->auction_settings);
