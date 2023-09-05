@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function(){
             LogAuctionPrice::truncate();
-        })->name("remove all price changes")->timezone("Africa/Cairo")->withoutOverlapping()->onOneServer()->between('23:30','00:00');
+        })->name("remove all price changes")->timezone("Africa/Cairo")->withoutOverlapping()->onOneServer()->between('00:00','00:30');
 
     }
 
