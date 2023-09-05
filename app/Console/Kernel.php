@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\LogAuctionPrice;
 use Illuminate\Support\Facades\Http;
 use App\Services\AutomationWatchPrice;
 use Illuminate\Console\Scheduling\Schedule;
@@ -25,6 +26,10 @@ class Kernel extends ConsoleKernel
 
         $automation_change_price = new AutomationWatchPrice($schedule);
         $automation_change_price->schedule;
+
+        $schedule->call(function(){
+            LogAuctionPrice::truncate();
+        })->name("remove all price changes")->timezone("Africa/Cairo")->withoutOverlapping()->onOneServer()->at('00:00');
 
     }
 
