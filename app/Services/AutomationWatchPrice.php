@@ -16,15 +16,14 @@ class AutomationWatchPrice{
             'status' => 1,
             'automation' => 1
         ])->get();
-    
-    
+
+
         foreach($auctions as $auction):
             $this->auction_settings  = $auction;
             $command = $this->schedule->call(function(){
                  $this->getAuctionPrices();
-                //Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',$this->auction_settings);
             });
-    
+
             $command->name("Auction no #".$this->auction_settings->id);
 
             $command->timezone("Africa/Cairo");
@@ -50,7 +49,10 @@ class AutomationWatchPrice{
             // in case of my_price  is greater than max_price and my_price is greater than min_price settings
             if(($this->my_price > $min_price) && ( $min_price > ($this->auction_settings->min_price * 100) )):
                 $current_price = $min_price - ($this->auction_settings->price_step * 100);
-                $section = "itme 1";
+                if($current_price < ($this->auction_settings->min_price * 100)):
+                    $current_price = $this->auction_settings->min_price * 100;
+                endif;
+                //$section = "itme 1";
 
              // in case of my_price is equal max_price and my_price is less than or equal min_price settings
             elseif(($this->my_price >= $min_price) && ( $min_price <= ($this->auction_settings->min_price * 100) )):
@@ -58,39 +60,44 @@ class AutomationWatchPrice{
                 if(($befor_last_price - $min_price) == 1):
                     $current_price = ($this->auction_settings->min_price * 100);
                 endif;
-                $section = "itme 2";
+
+                if($current_price < ($this->auction_settings->min_price * 100)):
+                    $current_price = $this->auction_settings->min_price * 100;
+                endif;
+                //$section = "itme 2";
 
             // in case of my_price is equal max_price and my_price is less than or equal min_price settings
             elseif(($this->my_price < $min_price) && ( $this->my_price >= ($this->auction_settings->min_price * 100) )):
                 $diff = $min_price - $this->my_price;
                 if($diff > ($this->auction_settings->price_step * 100)){
                     $current_price = $min_price - ($this->auction_settings->price_step * 100);
-                    $section = "itme 3";
-                } else {
-                    $section = "itme 4";
+                    //$section = "itme 3";
                 }
+                if($current_price < ($this->auction_settings->min_price * 100)):
+                    $current_price = $this->auction_settings->min_price * 100;
+                endif;
             endif;
         endif;
 
         if($this->my_price !=  $current_price):
             $this->update_price_on_auction($current_price);
         endif;
-        Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',[
-            $current_price,
-            $min_price,
-            $befor_last_price,
-            $section,
-            $auctions
-        ]);
+        // Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',[
+        //     $current_price,
+        //     $min_price,
+        //     $befor_last_price,
+        //     $section,
+        //     $auctions
+        // ]);
     }
 
     public function update_price_on_auction($current_price){
         $form   = $this->auction_settings->current_price;
         $current_price = $current_price / 100;
         $this->auction_settings->update([
-            'current_price'  => $current_price 
+            'current_price'  => $current_price
         ]);
-        
+
         $response = $this->eneba_service->update_create_auction($this->auction_settings);
 
         $this->auction_settings->logs_auction_price()->create([
