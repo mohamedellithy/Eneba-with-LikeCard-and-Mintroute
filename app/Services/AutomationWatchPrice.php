@@ -38,7 +38,8 @@ class AutomationWatchPrice{
         $auctions         = GetAuctionPrices($this->auction_settings->product_id);
         $this->my_price   = $auctions->where('belongsToYou',true)->value('amount');
         $min_price        = $auctions->where('belongsToYou',false)->min('amount');
-        $befor_last_price = $auctions->where('belongsToYou',false)->skip(1)->min('amount');
+        $befor_last_price = $auctions->firstWhere('amount','>',$this->auction_settings->min_price * 100);
+        $befor_last_price = isset($befor_last_price) ? $befor_last_price['amount'] : null;
         $max_price        = $auctions->where('belongsToYou',false)->max('amount');
         $current_price    = $this->my_price;
         $section          = null;
@@ -57,9 +58,11 @@ class AutomationWatchPrice{
 
              // in case of my_price is equal max_price and my_price is less than or equal min_price settings
             elseif(($this->my_price >= $min_price) && ( $min_price <= ($this->auction_settings->min_price * 100) )):
-                $current_price = $befor_last_price - ($this->auction_settings->price_step * 100);
-                if(($befor_last_price - $min_price) == 1):
-                    $current_price = ($this->auction_settings->min_price * 100);
+                if($befor_last_price):
+                    $current_price = $befor_last_price - ($this->auction_settings->price_step * 100);
+                    if(($befor_last_price - $min_price) == 1):
+                        $current_price = ($this->auction_settings->min_price * 100);
+                    endif;
                 endif;
 
                 if($current_price < ($this->auction_settings->min_price * 100)):
