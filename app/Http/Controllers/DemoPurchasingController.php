@@ -23,8 +23,9 @@ class DemoPurchasingController extends Controller
         // ]);
 
         //$this->eneba_service->eneba_callback_stock_provision();
-
-        $result = GetMyAuctions("7d0462a2-fdec-11ec-9ceb-b62153817ae7");
+        // 7d0462a2-fdec-11ec-9ceb-b62153817ae7
+        // 
+        $result = GetMyAuctions("9fea8e4c-c54a-11e8-a803-186590d66063");
         dd($result);
 
         //dd($this->eneba_service->register_stock_reservation());
