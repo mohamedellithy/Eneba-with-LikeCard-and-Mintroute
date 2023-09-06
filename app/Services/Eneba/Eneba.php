@@ -230,7 +230,8 @@ class Eneba {
         endif;
     }
 
-    public function get_single_product($product_id,$from = null){
+    public function get_single_product($product_id,$from = null,$belongsToMe = false){
+        $belongsToMe = ($belongsToMe == true ? "belongsToMe:true" : "");
         $query = <<<GQL
         query {
             S_product(productId: "{$product_id}") {
@@ -242,7 +243,7 @@ class Eneba {
               auctions(
                 first:50
                 after:"{$from}"
-                belongsToMe:true
+                $belongsToMe
               ) {
                 totalCount
                 pageInfo {

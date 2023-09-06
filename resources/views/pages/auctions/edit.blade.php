@@ -53,7 +53,6 @@ $high_price = $prices->max('amount');
                         <div class="mb-3">
                             <label for="defaultSelect" class="form-label">مدة مراجعة السعر</label>
                             <select id="defaultSelect" name="change_time" class="form-select">
-                                <option>بشكل اتوماتك</option>
                                 <option value="5"   @if($auction->change_time == 5)   selected @endif>5 دقائق</option>
                                 <option value="10"  @if($auction->change_time == 10)  selected @endif>10 دقائق</option>
                                 <option value="15"  @if($auction->change_time == 15)  selected @endif>15 دقائق</option>
