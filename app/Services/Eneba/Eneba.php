@@ -81,7 +81,7 @@ class Eneba {
         $enable = ($auction->status == 1 ? 'true' : 'false');
         $autoRenewe = ($auction->autoRenew == 1 ? 'true' : 'false');
         // CHECK IF AUCTION IS EXIST
-        if($auction->auction && GetMyAuctions($auction->product_id)):
+        if($auction->auction):
             $query = <<<GQL
                 mutation {
                     S_updateAuction(
