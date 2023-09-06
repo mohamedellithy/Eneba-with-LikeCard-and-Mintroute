@@ -139,6 +139,10 @@ class Operations {
             'status_used'  => 'used'
         ]);
 
+        if($auction->autoRenew == 0):
+            $auction->decrement('count_cards',$count_required ?: 1);
+        endif;
+
         return $auction_details;
     }
 }

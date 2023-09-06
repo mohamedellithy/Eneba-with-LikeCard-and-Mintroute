@@ -23,6 +23,7 @@ return new class extends Migration
             $table->float('max_price')->nullable();
             $table->float('current_price')->nullable();
             $table->integer('automation')->default(0);
+            $table->integer('autoRenew')->default(1);
             $table->string('change_time')->nullable();
             $table->float('price_step')->default('0.01');
             $table->timestamps();

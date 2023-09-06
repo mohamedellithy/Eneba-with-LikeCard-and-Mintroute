@@ -49,6 +49,12 @@ $high_price = $prices->max('amount');
                             <input class="form-check-input" type="checkbox" name="automation" value="1" id="flexSwitchCheckChecked" checked="">
                             <label class="form-check-label" for="flexSwitchCheckChecked">تغير السعر بشكل اتوماتك</label>
                         </div>
+
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" name="autoRenew" value="1" id="flexSwitchCheckChecked" checked="">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">المخزون ثابت</label>
+                        </div>
+
                         <div class="mb-3">
                             <label for="defaultSelect" class="form-label">مدة مراجعة السعر</label>
                             <select id="defaultSelect" name="change_time" class="form-select">

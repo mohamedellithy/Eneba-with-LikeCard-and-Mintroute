@@ -67,6 +67,10 @@ $high_price = $prices->max('amount');
                                 <input type="text" name="price_step" id="basic-default-email"  value="{{ $auction->price_step ?: '0.01' }}" class="form-control" aria-label="john.doe" aria-describedby="basic-default-email2" required>
                             </div>
                         </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" name="autoRenew" value="1" id="flexSwitchCheckChecked" @if($auction->autoRenew == 1) checked @endif>
+                            <label class="form-check-label" for="flexSwitchCheckChecked">المخزون ثابت</label>
+                        </div>
                         <button type="submit" class="btn btn-primary">
                             تعديل المزاد
                         </button>
