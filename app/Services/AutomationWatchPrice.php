@@ -102,7 +102,7 @@ class AutomationWatchPrice{
 
         $response = $this->eneba_service->update_create_auction($this->auction_settings);
 
-        if($response['code'] == 200):
+        if(!isset($response['result']['errors'])):
             $this->auction_settings->logs_auction_price()->create([
                 'from'           => $form,
                 'to'             => $this->auction_settings->current_price,
