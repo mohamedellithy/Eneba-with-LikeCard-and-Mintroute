@@ -86,6 +86,19 @@ if(!function_exists('GetAuctionPrices')) {
     }
 }
 
+if(!function_exists('GetMyAuctions')) {
+    function GetMyAuctions($product_id){
+        $eneba_service = new Eneba($sandbox = false);
+        $result        = $eneba_service->get_single_product($product_id,null,true);
+        if(isset($result['result']['data']['S_product']['auctions']['edges'])):
+            if(count($result['result']['data']['S_product']['auctions']['edges']) > 0):
+                return $result['result']['data']['S_product']['auctions']['edges'][0];
+            endif;
+        endif;
+        return null;
+    }
+}
+
 if(!function_exists('eneba_single_product')) {
     function eneba_single_product($eneba_id){
         $eneba_service      = new Eneba($sandbox = false);
