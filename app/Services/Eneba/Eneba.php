@@ -242,6 +242,7 @@ class Eneba {
               auctions(
                 first:50
                 after:"{$from}"
+                belongsToYou:true
               ) {
                 totalCount
                 pageInfo {
