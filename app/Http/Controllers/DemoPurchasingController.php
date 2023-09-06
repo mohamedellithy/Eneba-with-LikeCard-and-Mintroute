@@ -24,7 +24,8 @@ class DemoPurchasingController extends Controller
 
         //$this->eneba_service->eneba_callback_stock_provision();
 
-        //$this->eneba_service->get_single_product();
+        $result = $this->eneba_service->get_single_product("7d0462a2-fdec-11ec-9ceb-b62153817ae7");
+        dd($result);
 
         //dd($this->eneba_service->register_stock_reservation());
         //dd($this->eneba_service->register_stock_provision());
