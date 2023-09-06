@@ -79,6 +79,7 @@ class Eneba {
         //dd($auction);
         $price = intval($auction->current_price * 100);
         $enable = ($auction->status == 1 ? 'true' : 'false');
+        // CHECK IF AUCTION IS EXIST
         if($auction->auction):
             $query = <<<GQL
                 mutation {
