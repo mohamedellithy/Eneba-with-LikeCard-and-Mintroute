@@ -77,6 +77,11 @@ class AuctionApplication extends Controller
                 'automation' => 0
             ]);
         endif;
+        if(!request('autoRenew')):
+            $request->merge([
+                'autoRenew' => 0
+            ]);
+        endif;
         $auction = Auction::create([
             'product_id'     => $eneba_id,
             'status'         => $request->input('status'),
@@ -85,6 +90,7 @@ class AuctionApplication extends Controller
             'max_price'      => $request->input('max_price'),
             'current_price'  => $request->input('current_price'),
             'automation'     => $request->input('automation'),
+            'autoRenew'      => $request->input('autoRenew'),
             'change_time'    => $request->input('change_time'),
             'price_step'     => $request->input('price_step')
         ]);
@@ -104,6 +110,11 @@ class AuctionApplication extends Controller
                 'automation' => 0
             ]);
         endif;
+        if(!request('autoRenew')):
+            $request->merge([
+                'autoRenew' => 0
+            ]);
+        endif;
         $auction = Auction::where('id',$auction_id)->first();
         $auction->update([
             'status'         => $request->input('status'),
@@ -112,6 +123,7 @@ class AuctionApplication extends Controller
             'max_price'      => $request->input('max_price'),
             'current_price'  => $request->input('current_price'),
             'automation'     => $request->input('automation'),
+            'autoRenew'      => $request->input('autoRenew'),
             'change_time'    => $request->input('change_time'),
             'price_step'     => $request->input('price_step')
         ]);
