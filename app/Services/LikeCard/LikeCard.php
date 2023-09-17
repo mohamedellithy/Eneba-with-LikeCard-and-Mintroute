@@ -184,7 +184,7 @@ class LikeCard {
 
         //return json_encode($credentail);
 
-        $response = $this->resolve_call('/online/online/check_balance',$credentail);
+        $response = $this->resolve_call('/online/check_balance',$credentail);
         if($response->successful()):
             return $response->json();
         else:
