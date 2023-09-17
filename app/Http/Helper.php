@@ -1,6 +1,7 @@
 <?php
 use App\Services\Eneba\Eneba;
 use App\Services\LikeCard\LikeCard;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 
 if(!function_exists('upload_assets')){
@@ -119,5 +120,21 @@ if(!function_exists('likecard_single_product')) {
         });
         return $product_likecard;
     }
+}
+
+
+function exchange_currency($amount,$from = 'USD',$to = 'EUR'){
+    $response = Http::withOptions([
+        'verify' => false
+    ])->withHeaders([
+        'apikey' => 'hUbZSrc2OIHH818soPvCENH7hfn2JZ19'
+    ])->get("https://api.apilayer.com/fixer/convert?to={$to}&from={$from}&amount={$amount}");
+
+    if($response->successful()):
+        $result = $response->json();
+        return round($result['result'],2);
+    endif;
+
+    return 0;
 }
 
