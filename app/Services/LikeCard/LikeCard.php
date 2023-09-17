@@ -173,6 +173,26 @@ class LikeCard {
     }
 
 
+    public function check_balance(){
+        $credentail =  [
+            'deviceId'     => isset($this->credentail['prod_deviceId']) ? $this->credentail['prod_deviceId'] : null,
+            'email'        => isset($this->credentail['prod_email'])    ? $this->credentail['prod_email'] : null,
+            'password'     => isset($this->credentail['prod_password']) ? $this->credentail['prod_password'] : null,
+            'securityCode' => isset($this->credentail['prod_securityCode']) ? $this->credentail['prod_securityCode'] : null,
+            'langId'       => '1'
+        ];
+
+        //return json_encode($credentail);
+
+        $response = $this->resolve_call('/online/online/check_balance',$credentail);
+        if($response->successful()):
+            return $response->json();
+        else:
+            return null;
+        endif;
+    }
+
+
     public function generateHash($time){
         $email = strtolower(isset($this->credentail['prod_email']) ? $this->credentail['prod_email'] : null);
         $phone = isset($this->credentail['prod_phone']) ? $this->credentail['prod_phone'] : null;
