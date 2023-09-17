@@ -3,6 +3,7 @@ namespace App\Services\Eneba;
 use App\Models\Auction;
 use App\Models\EnebaOrder;
 use App\Models\OfflineCode;
+use App\Models\ProviderOrder;
 use App\Models\EnebaOrderAuction;
 use App\Models\ApplicationSetting;
 use App\Services\LikeCard\LikeCard;
@@ -130,7 +131,21 @@ class Operations {
                 $auction->id
             );
 
-            Http::post("https://webhook.site/719867a1-c405-453a-97f0-0968f7834d11",$likecard_result);
+            if(isset($likecard_result['bulkOrderId'])):
+                $likecard_result = $LikeCard->get_bulk_order(
+                    $likecard_result['bulkOrderId']
+                );
+
+                ProviderOrder::updateOrCreate([
+                    'order_auction_id'  => $auction->pivot->id,
+                    'provider_order_id' => $likecard_result['bulkOrderId'],
+                    'provider_name'     => 'LikeCard'
+                ],[
+                    'response'          => json_encode($likecard_result)
+                ]);
+            endif;
+
+            Http::post("https://webhook.site/29cdf1d4-95b3-4ea9-9da4-8abaf7a83bf5",$likecard_result);
 
             if($likecard_result && ($likecard_result['response'] == 1) && (count($likecard_result['orders']) > 0) ):
                 foreach($likecard_result['orders'] as $order):
