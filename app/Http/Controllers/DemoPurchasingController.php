@@ -15,7 +15,7 @@ class DemoPurchasingController extends Controller
 
     public function __construct(){
         $this->application   = 'eneba';
-        $this->eneba_service = new Eneba($sandbox = false);
+        $this->eneba_service = new Eneba($sandbox = true);
     }
     public function index(Request $request){
         // $request->merge([
@@ -25,13 +25,13 @@ class DemoPurchasingController extends Controller
         //$this->eneba_service->eneba_callback_stock_provision();
         // 7d0462a2-fdec-11ec-9ceb-b62153817ae7
         // 9fea8e4c-c54a-11e8-a803-186590d66063
-        $result = GetMyAuctions("7d0462a2-fdec-11ec-9ceb-b62153817ae7");
-        dd($result);
+        // $result = GetMyAuctions("7d0462a2-fdec-11ec-9ceb-b62153817ae7");
+        // dd($result);
 
         //dd($this->eneba_service->register_stock_reservation());
         //dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
-        // dd($this->eneba_service->sandbox_trigger_stock_reservation());
+        dd($this->eneba_service->sandbox_trigger_stock_reservation());
         //dd($this->eneba_service->sandbox_trigger_stock_provision());
        //dd($this->eneba_service->credentail);
         // $likecard = new LikeCard();

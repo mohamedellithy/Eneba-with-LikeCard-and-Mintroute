@@ -25,8 +25,39 @@ class Operations {
 
         Http::post('https://webhook.site/353366bb-601b-4b0a-b387-6c8ef32fe6ab',request('auctions'));
 
+        $like_card_balancy   = new Likecard();
+        $full_balance        = $like_card_balancy->check_balance();
+        $offline_codes_count = 0;
+        $key_count_required  = 0;
+        $balance             = isset($full_balance['balance']) ? $full_balance['balance'] : 0;
+        $status              = true;
         foreach(request('auctions') as $auction):
-            $auction_details = Auction::where('auction',$auction['auctionId'])->first();
+            $auction_details      = Auction::where('auction',$auction['auctionId'])->first();
+            $offline_codes_count  = OfflineCode::where([
+                'product_id'   => $auction_details->product_id,
+                'product_type' => 'eneba',
+                'status'       => 'allow',
+                'status_used'  => 'unused'
+            ])->orWhere(function(Builder $query) use($auction_details){
+                $query->where([
+                    'product_id'   => $auction_details->product->likecard_prod_id,
+                    'product_type' => 'likecard',
+                    'status'       => 'allow',
+                    'status_used'  => 'unused'
+                ]);
+            })->count();
+
+            $key_count_required =  $auction['keyCount'];
+            if($offline_codes_count < $key_count_required):
+                $rest_count_needed = $key_count_required - $offline_codes_count;
+                $balance           = $balance - ($rest_count_needed * $auction['price']['amount']);
+                if($balance < 0):
+                    $status = false;
+                    return null;
+                    break;
+                endif;
+            endif;
+
             EnebaOrderAuction::updateOrCreate([
                 'eneba_order_id'     => $eneba_order->id,
                 'eneba_auction_id'   => $auction_details->id,
@@ -34,13 +65,10 @@ class Operations {
                 'key_count_required' => $auction['keyCount'],
                 'unit_price'         => $auction['price']['amount'],
             ]);
+
         endforeach;
 
-        if($eneba_order):
-            return true;
-        endif;
-
-        return null;
+        return $status;
     }
 
     public static function update_orders_and_get_codes(){
@@ -53,8 +81,6 @@ class Operations {
         ]);
 
         $data = [];
-
-
         foreach($eneba_order->auctions as $auction):
             $result = self::order_stock($auction);
             if($result == null):
