@@ -230,7 +230,7 @@ class Eneba {
           ];
         endif;
     }
-    
+
 
     public function get_single_product($product_id,$from = null,$belongsToMe = false){
         $belongsToMe = ($belongsToMe == true ? "belongsToMe:true" : "");
@@ -357,7 +357,7 @@ class Eneba {
                 auction: {
                     auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
                     price: {
-                    amount: 1500
+                    amount: 50
                     currency: "EUR"
                     }
                     keyCount: 1
@@ -382,7 +382,7 @@ class Eneba {
                 auction: {
                     auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
                     price: {
-                    amount: 1500
+                    amount: 50
                     currency: "EUR"
                     }
                     keyCount: 1
