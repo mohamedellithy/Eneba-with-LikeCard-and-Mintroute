@@ -32,7 +32,6 @@ class Operations {
         $key_count_required  = 0;
         $balance             = isset($full_balance['balance']) ? exchange_currency(round($full_balance['balance'],2)) : 0;
         $status              = true;
-        Http::post('https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623',$balance);
         foreach(request('auctions') as $auction):
             $auction_details      = Auction::where('auction',$auction['auctionId'])->first();
             $offline_codes_count  = OfflineCode::where([
@@ -53,6 +52,10 @@ class Operations {
             if($offline_codes_count < $key_count_required):
                 $rest_count_needed = $key_count_required - $offline_codes_count;
                 $balance           = $balance - ($rest_count_needed * $auction['price']['amount']);
+                Http::post('https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623',[
+                    $balance,
+                    $rest_count_needed * $auction['price']['amount']
+                ]);
                 if($balance < 0):
                     $status = false;
                     return null;
