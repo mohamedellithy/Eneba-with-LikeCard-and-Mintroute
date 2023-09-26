@@ -49,6 +49,11 @@ class Operations {
             })->count();
 
             $key_count_required =  $auction['keyCount'];
+
+            // for test only
+            $auction['price']['amount'] = 50;
+            // end for test only
+
             if($offline_codes_count < $key_count_required):
                 $rest_count_needed = $key_count_required - $offline_codes_count;
                 $balance           = $balance - ($rest_count_needed * $auction['price']['amount']);
