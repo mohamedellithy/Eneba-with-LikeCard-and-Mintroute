@@ -140,6 +140,8 @@ class Operations {
                     $likecard_result['bulkOrderId']
                 );
 
+                Http::post("https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623",$likecard_result);
+
                 ProviderOrder::updateOrCreate([
                     'order_auction_id'  => $auction->pivot->id,
                     'provider_order_id' => $likecard_result['bulkOrderId'],
