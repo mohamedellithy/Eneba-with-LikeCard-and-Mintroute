@@ -139,6 +139,8 @@ class Operations {
                 $auction->id
             );
 
+            $likecard_order_id = $likecard_result['bulkOrderId'];
+
             if(isset($likecard_result['bulkOrderId'])):
                 $likecard_result = $LikeCard->get_bulk_order(
                     $likecard_result['bulkOrderId']
@@ -148,7 +150,7 @@ class Operations {
 
                 ProviderOrder::updateOrCreate([
                     'order_auction_id'  => $auction->pivot->eneba_auction_id,
-                    'provider_order_id' => '123333',//$likecard_result['orders'][0]['bulkOrderId'],
+                    'provider_order_id' => $likecard_order_id,//$likecard_result['orders'][0]['bulkOrderId'],
                     'provider_name'     => 'LikeCard'
                 ],[
                     'response'          => json_encode($likecard_result)
