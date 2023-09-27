@@ -129,27 +129,31 @@ class Operations {
         $rest_of_codes_required = $count_required - $offline_codes->count();
         if($rest_of_codes_required > 0):
             $LikeCard = new LikeCard();
-            $likecard_result = $LikeCard->create_bulk_likecard_order(
-                $auction->product->likecard_prod_id,
-                $rest_of_codes_required ?: 1,
-                $auction->id
-            );
+            Http::post("https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623",[
+                $auction,
+                $auction->pivot->id
+            ]);
+            // $likecard_result = $LikeCard->create_bulk_likecard_order(
+            //     $auction->product->likecard_prod_id,
+            //     $rest_of_codes_required ?: 1,
+            //     $auction->id
+            // );
 
-            if(isset($likecard_result['bulkOrderId'])):
-                $likecard_result = $LikeCard->get_bulk_order(
-                    $likecard_result['bulkOrderId']
-                );
+            // if(isset($likecard_result['bulkOrderId'])):
+            //     $likecard_result = $LikeCard->get_bulk_order(
+            //         $likecard_result['bulkOrderId']
+            //     );
 
-                Http::post("https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623",$likecard_result);
+            //     Http::post("https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623",$likecard_result);
 
-                ProviderOrder::updateOrCreate([
-                    'order_auction_id'  => $auction->pivot->id,
-                    'provider_order_id' => '123333',//$likecard_result['orders'][0]['bulkOrderId'],
-                    'provider_name'     => 'LikeCard'
-                ],[
-                    'response'          => json_encode($likecard_result)
-                ]);
-            endif;
+            //     ProviderOrder::updateOrCreate([
+            //         'order_auction_id'  => $auction->pivot->id,
+            //         'provider_order_id' => '123333',//$likecard_result['orders'][0]['bulkOrderId'],
+            //         'provider_name'     => 'LikeCard'
+            //     ],[
+            //         'response'          => json_encode($likecard_result)
+            //     ]);
+            // endif;
 
             Http::post("https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623",$likecard_result);
 
