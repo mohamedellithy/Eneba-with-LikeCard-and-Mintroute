@@ -129,10 +129,6 @@ class Operations {
         $rest_of_codes_required = $count_required - $offline_codes->count();
         if($rest_of_codes_required > 0):
             $LikeCard = new LikeCard();
-            // Http::post("https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623",[
-            //     $auction,
-            //     $auction->pivot->id
-            // ]);
             $likecard_result = $LikeCard->create_bulk_likecard_order(
                 $auction->product->likecard_prod_id,
                 $rest_of_codes_required ?: 1,
@@ -150,7 +146,7 @@ class Operations {
 
                 ProviderOrder::updateOrCreate([
                     'order_auction_id'  => $auction->pivot->eneba_auction_id,
-                    'provider_order_id' => $likecard_order_id,//$likecard_result['orders'][0]['bulkOrderId'],
+                    'provider_order_id' => $likecard_order_id,
                     'provider_name'     => 'LikeCard'
                 ],[
                     'response'          => json_encode($likecard_result)
@@ -165,7 +161,7 @@ class Operations {
                         foreach($order['serials'] as $like_card_code):
                             $auction_details['keys'][] = [
                                 "type"  => "TEXT",
-                                "value" => $like_card_code['serialCode']
+                                "value" => $LikeCard->decryptSerial($like_card_code['serialCode'])
                             ];
 
                             OfflineCode::create([
@@ -174,7 +170,7 @@ class Operations {
                                 'status'       => 'allow',
                                 'status_used'  => 'used',
                                 'product_name' => $order['productName'],
-                                'code'         => $like_card_code['serialCode']
+                                'code'         => $LikeCard->decryptSerial($like_card_code['serialCode'])
                             ]);
                         endforeach;
                     endif;
