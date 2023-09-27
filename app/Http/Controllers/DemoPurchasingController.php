@@ -58,9 +58,9 @@ class DemoPurchasingController extends Controller
         ];
 
         foreach($codes as $code):
-            $response = $likecard->decryptSerial($code);
-            dd($response);
+            $response [] = $likecard->decryptSerial($code);
         endforeach;
+        dd($response);
         // dd($this->eneba_service->eneba_callback_stock_provision());
     }
 }
