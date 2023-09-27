@@ -216,4 +216,16 @@ class LikeCard {
         return hash('sha256',$time.$email.$phone.$key);
     }
 
+    function decryptSerial($encrypted_txt){
+        $secret_key = isset($this->credentail['prod_secret_key']) ? $this->credentail['prod_secret_key'] : null;
+        $secret_iv  = isset($this->credentail['prod_secret_iv']) ? $this->credentail['prod_secret_iv'] : null;;
+        $encrypt_method = 'AES-256-CBC';
+        $key = hash('sha256', $secret_key);
+
+        //iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);
+
+        return openssl_decrypt(base64_decode($encrypted_txt), $encrypt_method, $key, 0, $iv);
+    }
+
 }

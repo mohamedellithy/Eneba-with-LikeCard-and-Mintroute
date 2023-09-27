@@ -32,11 +32,11 @@ class DemoPurchasingController extends Controller
         //dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
         //dd($this->eneba_service->sandbox_trigger_stock_reservation());
-        dd($this->eneba_service->sandbox_trigger_stock_provision());
+        //dd($this->eneba_service->sandbox_trigger_stock_provision());
        //dd($this->eneba_service->credentail);
-        // $likecard = new LikeCard();
-        // $response = $likecard->create_bulk_likecard_order(376,5);
-        // dd($response);
+        $likecard = new LikeCard();
+        $response = $likecard->decryptSerial("MCttSkNob2NzMjg0SGcxYkFCcTAydU5WYjN4TnJsaWpSMTJGWEdSY1piWT0=");
+        dd($response);
         // dd($this->eneba_service->eneba_callback_stock_provision());
     }
 }
