@@ -147,7 +147,7 @@ class Operations {
             //     Http::post("https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623",$likecard_result);
 
             //     ProviderOrder::updateOrCreate([
-            //         'order_auction_id'  => $auction->pivot->id,
+            //         'order_auction_id'  => $auction->pivot->eneba_auction_id,
             //         'provider_order_id' => '123333',//$likecard_result['orders'][0]['bulkOrderId'],
             //         'provider_name'     => 'LikeCard'
             //     ],[
