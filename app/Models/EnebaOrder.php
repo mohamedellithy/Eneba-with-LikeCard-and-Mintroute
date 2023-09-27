@@ -14,7 +14,8 @@ class EnebaOrder extends Model
     public function auctions(){
         return $this->belongsToMany(Auction::class,'eneba_order_auctions','eneba_order_id','eneba_auction_id')->withPivot(
             'key_count_required',
-            'unit_price'
+            'unit_price',
+            'id'
         );
     }
 }
