@@ -174,7 +174,6 @@ class Operations {
                                 'status'       => 'allow',
                                 'status_used'  => 'used',
                                 'product_name' => $order['productName'],
-                                'product_image'=> $order['productImage'],
                                 'code'         => $like_card_code['serialCode']
                             ]);
                         endforeach;
