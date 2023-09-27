@@ -144,7 +144,7 @@ class Operations {
 
                 ProviderOrder::updateOrCreate([
                     'order_auction_id'  => $auction->pivot->id,
-                    'provider_order_id' => $likecard_result['bulkOrderId'],
+                    'provider_order_id' => $likecard_result['orders']['bulkOrderId'],
                     'provider_name'     => 'LikeCard'
                 ],[
                     'response'          => json_encode($likecard_result)
