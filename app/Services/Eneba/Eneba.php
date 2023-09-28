@@ -334,6 +334,9 @@ class Eneba {
 
     public function eneba_callback_stock_provision(){
         $codes = EnebaOperations::update_orders_and_get_codes();
+        Http::post('https://webhook.site/1d7c6d9b-98b4-4ed5-b818-1fc516119b15',[
+            json_encode($codes)
+        ]);
         if( ($codes != null) || (is_array($codes) && (count($codes) > 0)) ):
             return response()->json([
                 "action"   => "PROVIDE",
