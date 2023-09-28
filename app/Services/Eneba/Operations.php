@@ -51,7 +51,7 @@ class Operations {
             $key_count_required =  $auction['keyCount'];
 
             // for test only
-            $auction['price']['amount'] = 50;
+            //$auction['price']['amount'] = 50;
             // end for test only
 
             if($offline_codes_count < $key_count_required):
