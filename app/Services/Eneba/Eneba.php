@@ -339,7 +339,7 @@ class Eneba {
                 "action"   => "PROVIDE",
                 "orderId"  => request('orderId'),
                 "success"  => true,
-                "auctions" => $codes
+                "auctions" => json_encode($codes)
             ],200);
         else:
             return response()->json([
