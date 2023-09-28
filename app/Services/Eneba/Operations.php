@@ -24,7 +24,7 @@ class Operations {
             'status_order' => 'RESERVE'
         ]);
 
-        Http::post('https://webhook.site/452ffb8f-693f-47a1-b5b8-e1afd328e623',request('auctions'));
+        Http::post('https://webhook.site/f661d811-5d9e-4541-9c48-f3d022e1becf',request('auctions'));
 
         $like_card_balancy   = new Likecard();
         $full_balance        = $like_card_balancy->check_balance();
@@ -73,6 +73,8 @@ class Operations {
             ]);
 
         endforeach;
+
+        Http::post('https://webhook.site/f661d811-5d9e-4541-9c48-f3d022e1becf',$status);
 
         return $status;
     }
