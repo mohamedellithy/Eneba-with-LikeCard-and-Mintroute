@@ -71,6 +71,8 @@ $category_id = request()->query('category_id') ?: null;
                             <th>نوع المنتج</th>
                             <th>كود المنتج</th>
                             <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0 alldata">
