@@ -122,20 +122,19 @@
                                     @isset($orders)
                                         @isset($orders['data'])
                                             @foreach($orders['data'] as $order)
-                                                {{-- <tr>
+                                                <tr>
                                                     <td>
-                                                        {{ $order->orderNumber ?: '-' }}
+                                                        {{ $order['orderNumber'] ?: '-' }}
                                                     </td>
                                                     <td>
-                                                        {{ $order->orderCurrentStatus ?: '-' }}
+                                                        {{ $order['orderCurrentStatus'] ?: '-' }}
                                                     </td>
                                                     <td>
                                                         <a href="#">
                                                             <i class='bx bxs-show'></i>
                                                         </a>
                                                     </td>
-                                                </tr> --}}
-                                                @php var_dump($order) @endphp
+                                                </tr>
                                             @endforeach
                                         @endisset
                                     @else
