@@ -13,9 +13,10 @@ class ApplicationController extends Controller
     }
 
     public function index_likecard(){
+        $page        = request('page') ?: 1;
         $like_card   = new LikeCard();
         $balance     = $like_card->get_balance();
-        $orders      = $like_card->get_orders();
+        $orders      = $like_card->get_orders($page);
         $settings    = ApplicationSetting::where('application','likecard')->pluck('value','name')->toArray();
 
         dd($orders);
