@@ -69,7 +69,7 @@ $category_id = request()->query('category_id') ?: null;
                             <th>رقم المنتج</th>
                             <th>اسم المنتج</th>
                             <th>نوع المنتج</th>
-                            <th>كود المنتج</th>
+                            <th style="width: 20%;">كود المنتج</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -87,7 +87,7 @@ $category_id = request()->query('category_id') ?: null;
                                 <td>{{ $code->product_id   ?: '-' }}</td>
                                 <td>{{ $code->product_name ?: '-' }}</td>
                                 <td>{{ $code->product_type ?: '-' }}</td>
-                                <td>{{ $code->code         ?: '-' }}</td>
+                                <td style="width: 20%;">{{ $code->code         ?: '-' }}</td>
                                 <td>{{ $code->status_used   == 'used' ? 'مستخدم': 'غير مستخدم' }}</td>
                                 <td>{{ $code->status        == 'allow' ? 'متاح للسحب' : 'غير متاح للسحب' }}</td>
                                 <td>
