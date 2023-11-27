@@ -138,10 +138,10 @@
                                             @endforeach
                                             @php $next_page = request('page') + 1 @endphp
                                             @php $prev_page = (request('page') ?: 2) - 1 @endphp
-                                            <a href="?page={{ $next_page }}" class="btn btn-info btn-sm">
+                                            <a href="?page={{ $next_page < 1 ? 1 : $next_page }}" class="btn btn-info btn-sm">
                                                 التالي
                                             </a>
-                                            <a href="?page={{ $prev_page }}" class="btn btn-info btn-sm">
+                                            <a href="?page={{ $prev_page < 1 ? 1 : $prev_page   }}" class="btn btn-info btn-sm">
                                                 السابق
                                             </a>
                                         @endisset
