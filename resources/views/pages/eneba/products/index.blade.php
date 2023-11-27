@@ -60,12 +60,12 @@ $category_id = request()->query('category_id') ?: null;
                                 <td> {{  $product['node']['createdAt'] }}</td>
                                 <td> {{  $product['node']['type']['value'] }}</td>
                                 <td>
-                                    <a href="{{ route('application.eneba.codes',$product['node']['id']) }}" class="btn btn-danger" style="padding: 3px 15px;">
+                                    <a href="{{ route('application.eneba.codes',$product['node']['id']) }}" class="btn btn-danger" style="padding: 3px 9px;">
                                         الاكواد
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm" style="padding: 3px 15px;">
+                                    <a href="{{ route('application.eneba.get_single_product',$product['node']['id']) }}" class="btn btn-info btn-sm" style="padding: 3px 9px;">
                                         اختيار المنتج
                                     </a>
                                 </td>
