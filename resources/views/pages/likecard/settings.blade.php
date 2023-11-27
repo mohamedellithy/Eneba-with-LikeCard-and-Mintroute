@@ -122,7 +122,7 @@
                                     @isset($orders)
                                         @isset($orders['data'])
                                             @foreach($orders['data'] as $order)
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>
                                                         {{ $order->orderNumber ?: '-' }}
                                                     </td>
@@ -134,7 +134,8 @@
                                                             <i class='bx bxs-show'></i>
                                                         </a>
                                                     </td>
-                                                </tr>
+                                                </tr> --}}
+                                                @php var_dump($order) @endphp
                                             @endforeach
                                         @endisset
                                     @else
