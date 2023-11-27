@@ -136,12 +136,13 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            @php $next_page = (request('page') ?: 1) + 1 @endphp
+                                            @php $next_page = request('page') + 1 @endphp
                                             @php $prev_page = (request('page') ?: 2) - 1 @endphp
-                                            <a href="?page=".$next_page."" class="btn btn-info btn-sm">
+                                            @php var_dump($next_page,$prev_page) @endphp
+                                            <a href="?page=$next_page" class="btn btn-info btn-sm">
                                                 التالي
                                             </a>
-                                            <a href="?page=".$prev_page."" class="btn btn-info btn-sm">
+                                            <a href="?page=$prev_page" class="btn btn-info btn-sm">
                                                 السابق
                                             </a>
                                         @endisset
