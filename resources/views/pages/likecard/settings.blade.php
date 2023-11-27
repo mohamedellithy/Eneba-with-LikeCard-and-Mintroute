@@ -124,10 +124,10 @@
                                             @foreach($orders['data'] as $order)
                                                 <tr>
                                                     <td>
-                                                        {{ $order->orderNumber }}
+                                                        {{ $order->orderNumber ?: '-' }}
                                                     </td>
                                                     <td>
-                                                        {{ $order->orderCurrentStatus }}
+                                                        {{ $order->orderCurrentStatus ?: '-' }}
                                                     </td>
                                                     <td>
                                                         <a href="#">
