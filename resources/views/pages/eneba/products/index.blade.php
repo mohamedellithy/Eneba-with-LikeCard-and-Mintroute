@@ -39,7 +39,7 @@ $category_id = request()->query('category_id') ?: null;
             </form>
             <br/>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" style="word-break: break-word;">
                     <thead>
                         <tr>
                             <th>كود المنتج</th>

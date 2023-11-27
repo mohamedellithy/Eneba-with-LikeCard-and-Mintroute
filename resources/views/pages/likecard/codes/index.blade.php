@@ -61,7 +61,7 @@ $category_id = request()->query('category_id') ?: null;
         <br/>
         <div class="card" style="padding-top: 3%;">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" style="word-break: break-word;">
                     <thead>
                         <tr>
                             <th></th>
