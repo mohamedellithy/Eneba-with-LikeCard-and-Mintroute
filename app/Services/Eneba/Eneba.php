@@ -79,7 +79,9 @@ class Eneba {
         //dd($auction);
         $price = intval($auction->current_price * 100);
         $enable = ($auction->status == 1 ? 'true' : 'false');
-        $autoRenewe = ($auction->autoRenew == 1 ? 'true' : 'false');
+        $autoRenewe = ($auction->autoRenew == 1 ? true : false);
+
+        dd($autoRenewe);
         // CHECK IF AUCTION IS EXIST
         if($auction->auction):
             $query = <<<GQL
