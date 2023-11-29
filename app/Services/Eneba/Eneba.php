@@ -79,7 +79,7 @@ class Eneba {
         //dd($auction);
         $price = intval($auction->current_price * 100);
         $enable = ($auction->status == 1 ? 'true' : 'false');
-        $autoRenewe = ($auction->autoRenew == 1 ? true : false);
+        $autoRenewe = ($auction->autoRenew == 1 ? 'true' : 'false');
         // CHECK IF AUCTION IS EXIST
         if($auction->auction):
             $query = <<<GQL
@@ -87,10 +87,10 @@ class Eneba {
                     S_updateAuction(
                     input: {
                         id: "{$auction->auction}"
-                        price: { amount: $price , currency: "EUR" }
+                        price: { amount:$price , currency: "EUR" }
                         declaredStock:$auction->count_cards
-                        autoRenew: $autoRenewe
-                        enabled: $enable
+                        autoRenew:$autoRenewe
+                        enabled:$enable
                     }
                     ) {
                     success
