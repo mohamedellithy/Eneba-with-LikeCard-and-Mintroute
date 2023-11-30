@@ -107,7 +107,6 @@ class Eneba {
                     ) {
                     success
                     actionId
-                    autoRenew
                     price { amount currency }
                     }
                 }
