@@ -75,6 +75,19 @@ class Eneba {
         ];
     }
 
+    public function fetch_single_auction($id){
+        $query = <<<GQL
+            query {
+                A_action(actionId: "{$id}") {
+                    id
+                    state
+                }
+            }
+        GQL;
+        $response = $this->resolve_call($query);
+        return $response->json();
+    }
+
     public function update_create_auction($auction){
         //dd($auction);
         $price = intval($auction->current_price * 100);

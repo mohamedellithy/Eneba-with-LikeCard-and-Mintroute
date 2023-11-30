@@ -14,10 +14,14 @@ class DemoPurchasingController extends Controller
     protected $eneba_service;
 
     public function __construct(){
-        $this->application   = 'eneba';
-        $this->eneba_service = new Eneba($sandbox = true);
+        // $this->application   = 'eneba';
+        // $this->eneba_service = new Eneba($sandbox = true);
     }
     public function index(Request $request){
+        $eneba  = new Eneba();
+        $result = $eneba->fetch_single_auction("95e79a58-4280-11ee-8afc-6229f616c185");
+
+        dd($result);
         // $request->merge([
         //     'orderId'  => '347c4978-4f81-11ed-bdc3-0242ac120002'
         // ]);
