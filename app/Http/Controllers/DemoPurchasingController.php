@@ -19,7 +19,7 @@ class DemoPurchasingController extends Controller
     }
     public function index(Request $request){
         $eneba  = new Eneba(false);
-        $result = $eneba->fetch_single_auction("95e79a58-4280-11ee-8afc-6229f616c185");
+        $result = $eneba->fetch_single_auction("f6060584-8f95-11ee-8741-2ef471adb63c");
 
         dd($result);
         // $request->merge([
