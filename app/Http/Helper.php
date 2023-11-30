@@ -124,17 +124,18 @@ if(!function_exists('likecard_single_product')) {
 
 
 function exchange_currency($amount,$from = 'USD',$to = 'EUR'){
-    $response = Http::withOptions([
-        'verify' => false
-    ])->withHeaders([
-        'apikey' => 'hUbZSrc2OIHH818soPvCENH7hfn2JZ19'
-    ])->get("https://api.apilayer.com/fixer/convert?to={$to}&from={$from}&amount={$amount}");
+    // $response = Http::withOptions([
+    //     'verify' => false
+    // ])->withHeaders([
+    //     'apikey' => 'hUbZSrc2OIHH818soPvCENH7hfn2JZ19'
+    // ])->get("https://api.apilayer.com/fixer/convert?to={$to}&from={$from}&amount={$amount}");
 
-    if($response->successful()):
-        $result = $response->json();
-        return round($result['result'],2);
-    endif;
+    // if($response->successful()):
+    //     $result = $response->json();
+    //     return round($result['result'],2);
+    // endif;
+    return round($amount * 0.92,2);
 
-    return 0;
+    // return 0;
 }
 

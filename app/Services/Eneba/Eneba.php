@@ -80,6 +80,7 @@ class Eneba {
             query {
                 A_action(actionId: "{$id}") {
                     id
+                    state
                 }
             }
         GQL;
