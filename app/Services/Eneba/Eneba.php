@@ -80,7 +80,6 @@ class Eneba {
             query {
                 A_action(actionId: "{$id}") {
                     id
-                    state
                 }
             }
         GQL;
@@ -102,7 +101,7 @@ class Eneba {
                         id: "{$auction->auction}"
                         price: { amount:$price , currency: "EUR" }
                         declaredStock:$auction->count_cards
-                        autoRenew:$autoRenewe
+                        autoRenew:true
                         enabled:$enable
                     }
                     ) {
