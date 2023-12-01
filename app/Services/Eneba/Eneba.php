@@ -137,7 +137,6 @@ class Eneba {
                         price: { amount:$price , currency: "EUR" }
                         declaredStock:$auction->count_cards
                         autoRenew:true
-                        onHand:1
                         enabled:$enable
                     }
                     ) {
