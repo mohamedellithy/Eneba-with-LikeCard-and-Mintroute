@@ -78,8 +78,8 @@ class Eneba {
     public function fetch_single_auction($id){
         $query = <<<GQL
         query {
-            S_stock {
-              edges(first: 100) {
+            S_stock(first: 100){
+              edges {
                 node{
                   id
                   product { id name }
