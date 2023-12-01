@@ -122,10 +122,10 @@ class Operations {
 
         foreach($offline_codes->get() as $key_code):
             $used_codes[]              = $key_code->id;
-            $auction_details['keys'][] = json_encode([
+            $auction_details['keys'][] = [
                 "type"  => "TEXT",
                 "value" => $key_code->code
-            ]);
+            ];
         endforeach;
 
         $rest_of_codes_required = $count_required - $offline_codes->count();
@@ -161,10 +161,10 @@ class Operations {
                 foreach($likecard_result['orders'] as $order):
                     if(count($order['serials']) > 0):
                         foreach($order['serials'] as $like_card_code):
-                            $auction_details['keys'][] = json_encode([
+                            $auction_details['keys'][] = [
                                 "type"  => "TEXT",
                                 "value" => $LikeCard->decryptSerial($like_card_code['serialCode'])
-                            ]);
+                            ];
 
                             OfflineCode::create([
                                 'product_id'   => $auction->product->likecard_prod_id,
