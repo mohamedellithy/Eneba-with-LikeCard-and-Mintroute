@@ -77,12 +77,46 @@ class Eneba {
 
     public function fetch_single_auction($id){
         $query = <<<GQL
-            query {
-                A_action(actionId: "{$id}") {
-                    id
-                    state
+        query {
+            S_stock {
+              edges {
+                node {
+                  id
+                  product { id name }
+                  unitsSold
+                  onHold
+                  onHand
+                  declaredStock
+                  status
+                  expiresAt
+                  createdAt
+                  autoRenew
+                  price { amount currency }
+                  position
+                  priceUpdateQuota { quota nextFreeIn totalFree }
+                  commission {
+                    rate {
+                      amount
+                      currency
+                    }
+                    label
+                  }
+                  competition(first: 10) {
+                    edges {
+                      node {
+                        belongsToYou
+                        merchantName
+                        price {
+                          amount
+                          currency
+                        }
+                      }
+                    }
+                  }
                 }
+              }
             }
+          }
         GQL;
         $response = $this->resolve_call($query);
         return $response->json();
