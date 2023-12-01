@@ -79,8 +79,8 @@ class Eneba {
         $query = <<<GQL
         query {
             S_stock {
-              edges {
-                node(first: 100) {
+              edges(first: 100) {
+                node{
                   id
                   product { id name }
                   unitsSold
