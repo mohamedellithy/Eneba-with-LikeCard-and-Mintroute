@@ -80,7 +80,7 @@ class Eneba {
         query {
             S_stock {
               edges {
-                node {
+                node(first: 100) {
                   id
                   product { id name }
                   unitsSold
