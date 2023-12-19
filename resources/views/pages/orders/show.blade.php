@@ -24,10 +24,10 @@
                         <tbody class="table-border-bottom-0 alldata">
                             @foreach($auctions as $auction)
                                 <tr>
-                                    <td>{{ $order->auction }}</td>
-                                    <td>{{ $order->product_id }}</td>
-                                    <td>{{ $order->pivot_key_count_required }}</td>
-                                    <td>{{ $order->pivot_unit_price }}</td>
+                                    <td>{{ $auction->auction }}</td>
+                                    <td>{{ $auction->product_id }}</td>
+                                    <td>{{ $auction->pivot_key_count_required }}</td>
+                                    <td>{{ $auction->pivot_unit_price }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
