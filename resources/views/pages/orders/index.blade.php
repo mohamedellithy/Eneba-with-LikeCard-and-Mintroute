@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">
-        المزادات
+        الطلبات
     </h4>
     <!-- Basic Bootstrap Table -->
     <div class="card" style="padding-top: 3%;">
@@ -13,7 +13,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>كود المنتج</th>
+                        <th>رقم الطلبية</th>
                         <th>الاسم</th>
                         <th>نوع المنتج</th>
                         <th></th>

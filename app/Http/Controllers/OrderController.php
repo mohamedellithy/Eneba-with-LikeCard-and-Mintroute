@@ -38,7 +38,7 @@ class OrderController extends Controller
     }
 
     public function eneba_orders(){
-        $eneba_orders = EnebaOrder::paginate(10);
+        $eneba_orders = EnebaOrder::with('auctions')->paginate(10);
         return view('pages.orders.index',compact('eneba_orders'));
     }
 }
