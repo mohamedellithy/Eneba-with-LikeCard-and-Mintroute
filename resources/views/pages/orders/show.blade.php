@@ -15,26 +15,20 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>رقم الطلب اينيبا</th>
-                                <th>حالة الطلب</th>
-                                <th>تاريخ التحديث</th>
-                                <th>تاريخ الطلبية</th>
-                                <th></th>
+                                <th>رقم المزاد</th>
+                                <th>رقم المنتج</th>
+                                <th>عدد الاكواد المطلوبة</th>
+                                <th>سعر الوحدة</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0 alldata">
                             @foreach($auctions as $auction)
-                                {{-- <tr>
-                                    <td>{{ $order->order_id }}</td>
-                                    <td>{{ $order->status_order }}</td>
-                                    <td>{{ $order->updated_at }}</td>
-                                    <td>{{ $order->created_at }}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-success btn-sm ">
-                                            عرض تفاصيل الطلبية
-                                        </a>
-                                    </td>
-                                </tr> --}}
+                                <tr>
+                                    <td>{{ $order->auction }}</td>
+                                    <td>{{ $order->product_id }}</td>
+                                    <td>{{ $order->pivot_key_count_required }}</td>
+                                    <td>{{ $order->pivot_unit_price }}</td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
