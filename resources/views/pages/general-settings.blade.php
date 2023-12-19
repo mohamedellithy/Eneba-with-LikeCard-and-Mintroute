@@ -9,6 +9,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
+                            {{ exchange_currency(20) }}
                             <label class="label-control" style="line-height: 3em;">معدل تحويل العملة من الدولار الى اليورو</label>
                             <input class="form-control" type="number" step="0.01" value="{{ get_settings('exchange_rate') }}" name="exchange_rate" placeholder="معدل تحويل العملة من الدولار الى اليورو"/>
                         </div>

@@ -129,7 +129,7 @@ function get_settings($name,$application = 'general'){
         'name'         => $name
     ])->value('value');
 
-    return $setting_value ?: null;
+    return $setting_value ?: 0;
 }
 
 
@@ -144,8 +144,7 @@ function exchange_currency($amount,$from = 'USD',$to = 'EUR'){
     //     $result = $response->json();
     //     return round($result['result'],2);
     // endif;
-    return round($amount * 0.92,2);
 
-    // return 0;
+    return round($amount * get_settings('exchange_rate'),2);
 }
 
