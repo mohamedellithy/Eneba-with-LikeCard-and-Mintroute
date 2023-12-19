@@ -117,8 +117,8 @@
         </li>
 
         <!-- Cards -->
-        <li class="menu-item {{ IsActiveOnlyIf(['application.orders']) }}">
-            <a href="{{ route('application.orders') }}" class="menu-link">
+        <li class="menu-item {{ IsActiveOnlyIf(['application.eneba_orders']) }}">
+            <a href="{{ route('application.eneba_orders') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">الطلبات</div>
             </a>
