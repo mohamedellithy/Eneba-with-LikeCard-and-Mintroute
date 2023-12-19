@@ -2,6 +2,7 @@
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
+        <h4>اعدادات المنصة</h4>
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
