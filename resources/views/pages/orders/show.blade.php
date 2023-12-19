@@ -44,6 +44,32 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card" style="padding-top: 3%;">
+                <ul class="u-lists">
+                    <li>
+                        <label>رقم الطلبية</label>
+                        <strong>{{ $eneba_order->order_id }}</strong>
+                    </li>
+                    <li>
+                        <label>رقم الطلبية</label>
+                        <strong></strong>
+                    </li>
+                    <li>
+                        <label>رقم الطلبية</label>
+                        <strong></strong>
+                    </li>
+                    <li>
+                        <label>رقم الطلبية</label>
+                        <strong></strong>
+                    </li>
+                    <li>
+                        <label>رقم الطلبية</label>
+                        <strong></strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
