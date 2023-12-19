@@ -33,24 +33,8 @@
                 </tbody>
             </table>
         </div>
-        {!! $eneba_orders->links()  !!}
+        {!! $eneba_orders->links() !!}
     </div>
 </div>
 @endsection
-@push('custom_style')
-<style>
-    .container-fields{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-end;
-        justify-content: flex-start;
-    }
-    .container-fields .form-group:first-child{
-        width: 50%;
-        margin: auto 0px auto 17px;
-    }
-</style>
-@endpush
-@push('custom_script')
 
-@endpush
