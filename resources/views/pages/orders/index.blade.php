@@ -33,9 +33,7 @@
                 </tbody>
             </table>
         </div>
-        <div style="padding: 26px;">
-            {!! $eneba_orders->links()  !!}
-        </div>
+        {!! $eneba_orders->links()  !!}
     </div>
 </div>
 @endsection
