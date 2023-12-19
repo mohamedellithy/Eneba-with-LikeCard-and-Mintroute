@@ -1,5 +1,6 @@
 <?php
 use App\Services\Eneba\Eneba;
+use App\Models\ApplicationSetting;
 use App\Services\LikeCard\LikeCard;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
@@ -120,6 +121,15 @@ if(!function_exists('likecard_single_product')) {
         });
         return $product_likecard;
     }
+}
+
+function get_settings($name,$application = 'general'){
+    $setting_value = ApplicationSetting::where([
+        'application'  => $application,
+        'name'         => $name
+    ])->value('value');
+
+    return $setting_value;
 }
 
 
