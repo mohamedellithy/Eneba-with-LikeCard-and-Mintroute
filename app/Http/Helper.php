@@ -129,7 +129,7 @@ function get_settings($name,$application = 'general'){
         'name'         => $name
     ])->value('value');
 
-    return $setting_value;
+    return $setting_value ?: null;
 }
 
 
