@@ -28,7 +28,7 @@
                             <td>{{ $order->updated_at }}</td>
                             <td>{{ $order->created_at }}</td>
                             <td>
-                                <a href="#" class="btn btn-success btn-sm ">
+                                <a href="{{ route('application.single_eneba_order',['id' => $order->id]) }}" class="btn btn-success btn-sm ">
                                     عرض تفاصيل الطلبية
                                 </a>
                             </td>
