@@ -82,7 +82,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
     });
 
     Route::get('settings',[ApplicationController::class,'general_settings'])->name('settings');
-
+    Route::get('save-settings',[ApplicationController::class,'save_settings'])->name('save_settings');
 });
 
 

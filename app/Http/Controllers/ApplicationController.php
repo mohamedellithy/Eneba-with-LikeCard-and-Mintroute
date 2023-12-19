@@ -30,4 +30,17 @@ class ApplicationController extends Controller
     public function general_settings(){
         return view('pages.general-settings');
     }
+
+    public function save_settings(Request $request){
+        if($request->has('exchange_rate')):
+            ApplicationSetting::updateOrCreate([
+                'application' => "general",
+                'name'        => "exchange_rate"
+            ],[
+                'value'       => $request->input('exchange_rate')
+            ]);
+        endif;
+
+        return back();
+    }
 }
