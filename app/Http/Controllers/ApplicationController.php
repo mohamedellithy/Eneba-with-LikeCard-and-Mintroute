@@ -26,4 +26,8 @@ class ApplicationController extends Controller
     public function index_mintroute(){
         return view('pages.mintroute.settings');
     }
+
+    public function general_settings(){
+        return view('pages.general-settings');
+    }
 }
