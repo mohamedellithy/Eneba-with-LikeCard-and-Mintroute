@@ -9,24 +9,6 @@
     </h4>
     <!-- Basic Bootstrap Table -->
     <div class="card" style="padding-top: 3%;">
-        <div class="card-body card-category-frmae">
-            <form method="get" >
-                <div class="mb-3 container-fields">
-                    <div class="form-group">
-                        <label>المنتجات </label>
-                        <input type="text" name="name" value="{{ $name }}" class="form-control" required/>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success">
-                            البحث عن المنتج
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <br/>
-    <div class="card" style="padding-top: 3%;">
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
