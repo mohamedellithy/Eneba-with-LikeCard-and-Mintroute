@@ -33,7 +33,7 @@
                 </tbody>
             </table>
         </div>
-        {!! $eneba_orders->links() !!}
+        {{  $eneba_orders->links()  }}
     </div>
 </div>
 @endsection
