@@ -6,9 +6,12 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-group">
-                        <label>معدل تحويل العملة من الدولار الى اليورو</label>
+                        <label class="label-control" style="line-height: 3em;">معدل تحويل العملة من الدولار الى اليورو</label>
                         <input class="form-control" type="number" steps="0.01" name="exchange_rate" placeholder="معدل تحويل العملة من الدولار الى اليورو"/>
                     </div>
+                    <button type="submit" class="btn btn-success btn-sm">
+                        حفظ الاعدادات
+                    </button>
                 </div>
             </div>
         </div>
