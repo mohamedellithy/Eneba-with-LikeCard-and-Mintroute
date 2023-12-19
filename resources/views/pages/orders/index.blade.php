@@ -13,9 +13,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>رقم الطلبية</th>
-                        <th>الاسم</th>
-                        <th>نوع المنتج</th>
+                        <th>رقم الطلب اينيبا</th>
+                        <th>حالة الطلب</th>
+                        <th>تاريخ الطلبية</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -23,8 +23,8 @@
                     @foreach($eneba_orders as $order)
                         <tr>
                             <td>{{ $order->order_id }}</td>
-                            <td>2</td>
-                            <td>3</td>
+                            <td>{{ $order->status_order }}</td>
+                            <td>{{ $order->created_at }}</td>
                             <td>4</td>
                             <td>5</td>
                             <td>6</td>
