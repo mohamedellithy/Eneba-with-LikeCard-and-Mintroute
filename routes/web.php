@@ -81,6 +81,8 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::get('eneba/test-order-purchasing','index');
     });
 
+    Route::get('settings',[,'settings']);
+
 });
 
 
