@@ -48,24 +48,20 @@
             <div class="card" style="padding-top: 3%;">
                 <ul class="u-lists">
                     <li>
-                        <label>رقم الطلبية</label>
+                        <p>رقم الطلبية</p>
                         <strong>{{ $eneba_order->order_id }}</strong>
                     </li>
                     <li>
-                        <label>رقم الطلبية</label>
-                        <strong></strong>
+                        <p>حالة الطلب</p>
+                        <strong>{{ $eneba_order->status_order }}</strong>
                     </li>
                     <li>
-                        <label>رقم الطلبية</label>
-                        <strong></strong>
+                        <p>تاريخ الطلبية</p>
+                        <strong>{{ $eneba_order->created_at }}</strong>
                     </li>
                     <li>
-                        <label>رقم الطلبية</label>
-                        <strong></strong>
-                    </li>
-                    <li>
-                        <label>رقم الطلبية</label>
-                        <strong></strong>
+                        <p>تحديث الطلبية</p>
+                        <strong>{{ $eneba_order->updated_at }}</strong>
                     </li>
                 </ul>
             </div>
