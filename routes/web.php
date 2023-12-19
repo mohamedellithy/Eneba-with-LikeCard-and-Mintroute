@@ -83,6 +83,7 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
 
     Route::get('settings',[ApplicationController::class,'general_settings'])->name('settings');
     Route::post('save-settings',[ApplicationController::class,'save_settings'])->name('save_settings');
+    Route::get('eneba-orders',['eneba_orders'])->name('eneba-orders');
 });
 
 

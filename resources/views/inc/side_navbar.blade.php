@@ -116,6 +116,14 @@
             </a>
         </li>
 
+        <!-- Cards -->
+        <li class="menu-item {{ IsActiveOnlyIf(['application.orders']) }}">
+            <a href="{{ route('application.orders') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">الطلبات</div>
+            </a>
+        </li>
+
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
