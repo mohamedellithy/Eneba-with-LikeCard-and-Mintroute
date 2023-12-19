@@ -15,6 +15,7 @@
                     <tr>
                         <th>رقم الطلب اينيبا</th>
                         <th>حالة الطلب</th>
+                        <th>تاريخ التحديث</th>
                         <th>تاريخ الطلبية</th>
                         <th></th>
                     </tr>
@@ -24,10 +25,13 @@
                         <tr>
                             <td>{{ $order->order_id }}</td>
                             <td>{{ $order->status_order }}</td>
+                            <td>{{ $order->updated_at }}</td>
                             <td>{{ $order->created_at }}</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
+                            <td>
+                                <a href="#" class="btn btn-success btn-sm ">
+                                    عرض تفاصيل الطلبية
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
