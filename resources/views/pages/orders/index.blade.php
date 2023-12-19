@@ -22,7 +22,7 @@
                 <tbody class="table-border-bottom-0 alldata">
                     @foreach($eneba_orders as $order)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $order->order_id }}</td>
                             <td>2</td>
                             <td>3</td>
                             <td>4</td>
