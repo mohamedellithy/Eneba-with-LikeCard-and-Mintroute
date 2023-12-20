@@ -57,7 +57,7 @@
                             </div>
                             <span class="fw-semibold d-block mb-1">عدد الأكواد المستخدمة</span>
                             <h3 class="card-title mb-2">
-                                {{ \App\Models\OfflineCode::where('product_type','used')->count() }}
+                                {{ \App\Models\OfflineCode::where('status_used','used')->count() }}
                             </h3>
                             <small class="text-success fw-semibold"><i
                                     class="bx bx-up-arrow-alt"></i> </small>
