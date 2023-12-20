@@ -52,7 +52,6 @@ class OrderController extends Controller
 
     public function provider_orders(){
         $provider_orders = ProviderOrder::with('auction_details')->paginate(10);
-        dd($provider_orders);
         return view('pages.provider-orders.index',compact('provider_orders'));
     }
 
