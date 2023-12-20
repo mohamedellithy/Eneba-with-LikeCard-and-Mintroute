@@ -15,15 +15,18 @@
                     <tr>
                         <th>رقم الطلب </th>
                         <th>موفر الطلب</th>
+                        <th>عدد الطلبيات</th>
                         <th>تاريخ الطلبية</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0 alldata">
                     @foreach($provider_orders as $order)
+                        @php $response_orders = json_decode($order->response,true) @endphp
                         <tr>
                             <td>{{ $order->provider_order_id }}</td>
                             <td>{{ $order->provider_name }}</td>
+                            <td>{{ count($response_orders['orders']) }}</td>
                             <td>{{ $order->created_at }}</td>
                             <td>
                                 <a href="{{ route('application.single_provider_order',['id' => $order->id]) }}" class="btn btn-success btn-sm ">
