@@ -32,8 +32,8 @@
                                 <label class="form-label" for="password">كلمة المرور</label>
                             </div>
                             <div class="input-group input-group-merge">
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
-                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                <input type="password" class="form-control password @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
+                                <span class="input-group-text cursor-pointer show-hide-password"><i class="bx bx-hide"></i></span>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -60,3 +60,18 @@
     </div>
 </div>
 @endsection
+
+@push('custom_style')
+    <style>
+        .password{
+            border: 1px solid #eee;
+            border-left: 2px solid white;
+            border-radius: 0px 7px 7px 0px;
+        }
+        .show-hide-password{
+            border: 1px solid #eee;
+            border-right: 1px solid white;
+            border-radius: 7px 0px 0px 8px;
+        }
+    </style>
+@endpush
