@@ -23,7 +23,6 @@
                         </thead>
                         <tbody class="table-border-bottom-0 alldata">
                             @foreach($auctions as $auction_item)
-                                @php var_dump($auction_item->auction) @endphp
                                 <tr>
                                     <td>{{ $auction_item->auction_details->auction }}</td>
                                     <td>{{ $auction_item->auction_details->product_id }}</td>
