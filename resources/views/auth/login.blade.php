@@ -64,14 +64,14 @@
 @push('custom_style')
     <style>
         .password{
-            border: 1px solid #eee;
-            border-left: 2px solid white;
-            border-radius: 0px 7px 7px 0px;
+            border: 1px solid #eee !important;
+            border-left: 2px solid white !important;
+            border-radius: 0px 7px 7px 0px !important;
         }
         .show-hide-password{
-            border: 1px solid #eee;
-            border-right: 1px solid white;
-            border-radius: 7px 0px 0px 8px;
+            border: 1px solid #eee !important;
+            border-right: 1px solid white !important;
+            border-radius: 7px 0px 0px 8px !important;
         }
     </style>
 @endpush
