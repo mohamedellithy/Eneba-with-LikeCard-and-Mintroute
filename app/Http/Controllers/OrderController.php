@@ -40,7 +40,7 @@ class OrderController extends Controller
     }
 
     public function eneba_orders(){
-        $eneba_orders = EnebaOrder::with('auctions')->paginate(10);
+        $eneba_orders = EnebaOrder::with('auctions')->orderBy('created_at','desc')->paginate(10);
         return view('pages.orders.index',compact('eneba_orders'));
     }
 
@@ -51,7 +51,7 @@ class OrderController extends Controller
     }
 
     public function provider_orders(){
-        $provider_orders = ProviderOrder::with('auction_details')->paginate(10);
+        $provider_orders = ProviderOrder::with('auction_details')->orderBy('created_at','desc')->paginate(10);
         return view('pages.provider-orders.index',compact('provider_orders'));
     }
 
