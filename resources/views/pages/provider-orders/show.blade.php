@@ -2,7 +2,7 @@
 @php
     $name = request('name');
     $response_order = json_decode($provider_order->response,true);
-    $LikeCard = new LikeCard();
+    $LikeCard = new \App\Services\LikeCard\LikeCard();
 @endphp
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
