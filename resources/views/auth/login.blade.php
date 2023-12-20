@@ -19,7 +19,7 @@
                     <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3">
-                            <label for="email" class="form-label">{{ __('Email Address') }}</label>
+                            <label for="email" class="form-label">البريد الالكترونى</label>
                             <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus id="email"/>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
-                                <label class="form-label" for="password">{{ __('Password') }}</label>
+                                <label class="form-label" for="password">كلمة المرور</label>
                             </div>
                             <div class="input-group input-group-merge">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
@@ -44,12 +44,12 @@
                         <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}/>
-                                <label class="form-check-label" for="remember-me"> {{ __('Remember Me') }} </label>
+                                <label class="form-check-label" for="remember-me"> تذكرنى </label>
                             </div>
                         </div>
                         <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">
-                                {{ __('Login') }}
+                                تسجيل الدخول
                             </button>
                         </div>
                     </form>
