@@ -25,10 +25,10 @@
                             @foreach($auctions as $auction_item)
                                 @php var_dump($auction_item->auction) @endphp
                                 <tr>
-                                    <td>{{ $auction_item->auction }}</td>
-                                    <td>{{ $auction_item->product_id }}</td>
-                                    <td>{{ $auction_item->pivot_key_count_required }}</td>
-                                    <td>{{ $auction_item->pivot_unit_price }}</td>
+                                    <td>{{ $auction_item->auction_details->auction }}</td>
+                                    <td>{{ $auction_item->auction_details->product_id }}</td>
+                                    <td>{{ $auction_item->key_count_required }}</td>
+                                    <td>{{ $auction_item->unit_price }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -11,7 +11,7 @@ class EnebaOrderAuction extends Model
 
     protected $fillable = ['eneba_order_id','eneba_auction_id','key_count_required','unit_price'];
 
-    public function auction(){
+    public function auction_details(){
         return $this->belongsTo(Auction::class,'eneba_auction_id','id');
     }
 }

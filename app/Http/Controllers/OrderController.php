@@ -45,8 +45,7 @@ class OrderController extends Controller
 
     public function single_eneba_order($id){
         $eneba_order = EnebaOrder::where('id',$id)->first();
-        $auctions    = EnebaOrderAuction::with('auction')->where('eneba_order_id',$id)->paginate(10);
-        dd($auctions);
+        $auctions    = EnebaOrderAuction::with('auction_details')->where('eneba_order_id',$id)->paginate(10);
         return view('pages.orders.show',compact('eneba_order','auctions'));
     }
 }
