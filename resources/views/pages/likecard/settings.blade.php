@@ -110,48 +110,51 @@
                         <div class="card-body">
                             <h6 class="fw-semibold d-block mb-1">last orders</h6>
                             <br/>
-                            <table class="table table-dark">
-                                <thead>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Order Status</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @isset($orders)
-                                        @isset($orders['data'])
-                                            @foreach($orders['data'] as $order)
-                                                <tr>
-                                                    <td>
-                                                        {{ $order['orderNumber'] ?: '-' }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $order['orderCurrentStatus'] ?: '-' }}
-                                                    </td>
-                                                    <td>
-                                                        <a href="#">
-                                                            <i class='bx bxs-show'></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            @php $next_page = request('page') + 1 @endphp
-                                            @php $prev_page = (request('page') ?: 2) - 1 @endphp
-                                            <a href="?page={{ $next_page < 1 ? 1 : $next_page }}" class="btn btn-info btn-sm">
-                                                التالي
-                                            </a>
-                                            <a href="?page={{ $prev_page <= 1 ? 1 : $prev_page   }}" class="btn btn-info btn-sm">
-                                                السابق
-                                            </a>
-                                        @endisset
-                                    @else
+                            @php $next_page = request('page') + 1 @endphp
+                            @php $prev_page = (request('page') ?: 2) - 1 @endphp
+                            <a href="?page={{ $next_page < 1 ? 1 : $next_page }}" class="btn btn-info btn-sm">
+                                التالي
+                            </a>
+                            <a href="?page={{ $prev_page <= 1 ? 1 : $prev_page   }}" class="btn btn-info btn-sm">
+                                السابق
+                            </a>
+                            <div style="height:550px;overflow-x:auto">
+                                <table class="table table-dark">
+                                    <thead>
                                         <tr>
-                                            <td colspan="3">No Orders</td>
+                                            <th>Order ID</th>
+                                            <th>Order Status</th>
+                                            <th></th>
                                         </tr>
-                                    @endisset
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @isset($orders)
+                                            @isset($orders['data'])
+                                                @foreach($orders['data'] as $order)
+                                                    <tr>
+                                                        <td>
+                                                            {{ $order['orderNumber'] ?: '-' }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $order['orderCurrentStatus'] ?: '-' }}
+                                                        </td>
+                                                        <td>
+                                                            <a href="#">
+                                                                <i class='bx bxs-show'></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                
+                                            @endisset
+                                        @else
+                                            <tr>
+                                                <td colspan="3">No Orders</td>
+                                            </tr>
+                                        @endisset
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
