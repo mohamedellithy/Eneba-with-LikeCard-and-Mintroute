@@ -67,6 +67,8 @@
             border: 1px solid #eee !important;
             border-left: 2px solid white !important;
             border-radius: 0px 7px 7px 0px !important;
+            padding-right: 12px !important;
+
         }
         .show-hide-password{
             border: 1px solid #eee !important;
