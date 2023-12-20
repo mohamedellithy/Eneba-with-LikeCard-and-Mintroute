@@ -10,4 +10,8 @@ class EnebaOrderAuction extends Model
     use HasFactory;
 
     protected $fillable = ['eneba_order_id','eneba_auction_id','key_count_required','unit_price'];
+
+    public function auction(){
+        return $this->belongsTo(Auction::class,'eneba_auction_id','id');
+    }
 }
