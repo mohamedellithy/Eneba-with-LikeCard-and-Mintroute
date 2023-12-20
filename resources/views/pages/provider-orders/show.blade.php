@@ -26,10 +26,10 @@
                         <tbody class="table-border-bottom-0 alldata">
                             @foreach($response_order['orders'] as $order)
                                 <tr>
-                                    <td>{{ $order->orderNumber }}</td>
-                                    <td>{{ $order->orderFinalTotal }}</td>
-                                    <td>{{ $order->productName }}</td>
-                                    <td>{{ $LikeCard->decryptSerial($order->serials[0]['serialNumber']) }}</td>
+                                    <td>{{ $order["orderNumber"] }}</td>
+                                    <td>{{ $order["orderFinalTotal"] }}</td>
+                                    <td>{{ $order["productName"] }}</td>
+                                    <td>{{ $LikeCard->decryptSerial($order["serials"][0]['serialNumber']) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
