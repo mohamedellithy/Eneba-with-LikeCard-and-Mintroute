@@ -46,7 +46,7 @@
                     </li>
                     <li style="padding: 15px;">
                         <p style="margin-bottom: 0px;">رقم المزاد</p>
-                        <strong>{{ $provider_order->auction }}</strong>
+                        <strong>{{ $provider_order->auction_details->auction }}</strong>
                     </li>
                     <li style="padding: 15px;">
                         <p style="margin-bottom: 0px;">تاريخ الطلبية</p>
