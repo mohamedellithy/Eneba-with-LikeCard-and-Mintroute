@@ -15,6 +15,8 @@
                     <tr>
                         <th>رقم الطلب </th>
                         <th>موفر الطلب</th>
+                        <th>رقم المزاد</th>
+                        <th>اسم منتج اينيبا</th>
                         <th>عدد المنتجات</th>
                         <th>تاريخ الطلبية</th>
                         <th></th>
@@ -26,6 +28,8 @@
                         <tr>
                             <td>{{ $order->provider_order_id }}</td>
                             <td>{{ $order->provider_name }}</td>
+                            <td>{{ $order->auction_details->auction }}</td>
+                            <td>{{ eneba_single_product($order->auction_details->product_id)['S_product']['name'] }}</td>
                             <td>{{ count($response_orders['orders']) }}</td>
                             <td>{{ $order->created_at }}</td>
                             <td>
