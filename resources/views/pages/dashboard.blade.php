@@ -29,7 +29,7 @@
         <div class="col-lg-6 mb-4 order-0">
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">عدد المنتجات المربوطة</span>
-                            <h3 class="card-title mb-2">
+                            <h3 class="card-title mb-2" style="color: white !important;">
                                 {{ \App\Models\Product::count() }}
                             </h3>
                             <small class="text-success fw-semibold"><i
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -67,7 +67,7 @@
         <div class="col-lg-12 mb-4 order-0">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-3 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-3 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-3 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-3 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-3 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -152,7 +152,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-3 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-3 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
@@ -186,7 +186,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-3 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #880e4f;color: white !important;">
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
