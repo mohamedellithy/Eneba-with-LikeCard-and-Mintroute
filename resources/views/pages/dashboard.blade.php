@@ -4,31 +4,34 @@
     <div class="row">
         <div class="col-lg-6 mb-4 order-0">
             <div class="row">
-                <div class="card">
-                    <div class="d-flex align-items-end row">
-                        <div class="col-sm-7">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">مرحبا ! 🎉</h5>
-                                <p class="mb-4">
-                                    قم بادارة سيستم ادارة بيع الاأكواد
-                                    <br/>
-                                    <br/>
-                                </p>
-                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">
-                                    ابدأ الان
-                                </a>
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                    <div class="card">
+                        <div class="d-flex align-items-end row">
+                            <div class="col-sm-7">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">مرحبا ! 🎉</h5>
+                                    <p class="mb-4">
+                                        قم بادارة سيستم ادارة بيع الاأكواد
+                                        <br/>
+                                        <br/>
+                                    </p>
+                                    <a href="javascript:;" class="btn btn-sm btn-outline-primary">
+                                        ابدأ الان
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-5 text-center text-sm-left">
-                            <div class="card-body pb-0 px-0 px-md-4">
-                                <img src="{{ asset('/assets/img/illustrations/man-with-laptop-light.png') }}" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
+                            <div class="col-sm-5 text-center text-sm-left">
+                                <div class="card-body pb-0 px-0 px-md-4">
+                                    <img src="{{ asset('/assets/img/illustrations/man-with-laptop-light.png') }}" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-            <br/>
+        </div>
+        <div class="col-lg-6 mb-4 order-0">
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <div class="card">
@@ -65,6 +68,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-12 mb-4 order-0">
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <div class="card">
@@ -100,10 +105,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-4 order-1">
-            <div class="row">
+
+
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <div class="card">
                         <div class="card-body">
@@ -134,8 +137,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <div class="card">
                         <div class="card-body">
