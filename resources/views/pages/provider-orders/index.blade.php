@@ -13,22 +13,20 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>رقم الطلب اينيبا</th>
-                        <th>حالة الطلب</th>
-                        <th>تاريخ التحديث</th>
+                        <th>رقم الطلب </th>
+                        <th>موفر الطلب</th>
                         <th>تاريخ الطلبية</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0 alldata">
-                    @foreach($eneba_orders as $order)
+                    @foreach($provider_orders as $order)
                         <tr>
-                            <td>{{ $order->order_id }}</td>
-                            <td>{{ $order->status_order }}</td>
-                            <td>{{ $order->updated_at }}</td>
+                            <td>{{ $order->provider_order_id }}</td>
+                            <td>{{ $order->provider_name }}</td>
                             <td>{{ $order->created_at }}</td>
                             <td>
-                                <a href="{{ route('application.single_eneba_order',['id' => $order->id]) }}" class="btn btn-success btn-sm ">
+                                <a href="{{ route('application.single_provider_order',['id' => $order->id]) }}" class="btn btn-success btn-sm ">
                                     عرض تفاصيل الطلبية
                                 </a>
                             </td>
@@ -38,7 +36,7 @@
             </table>
         </div>
         <div style="padding: 26px;">
-            {{  $eneba_orders->links()  }}
+            {{  $provider_orders->links()  }}
         </div>
     </div>
 </div>
