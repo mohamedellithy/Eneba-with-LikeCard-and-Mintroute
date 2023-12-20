@@ -56,7 +56,8 @@ class OrderController extends Controller
     }
 
     public function single_provider_order($id){
-        $provider_order = ProviderOrder::where('id',$id)->first();
+        $provider_order = ProviderOrder::with('auction_details')->where('id',$id)->first();
+        dd($provider_order);
         //$auctions    = EnebaOrderAuction::with('auction_details')->where('eneba_order_id',$id)->paginate(10);
         return view('pages.provider-orders.show',compact('provider_order'));
     }
