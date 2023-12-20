@@ -12,8 +12,11 @@
                                 <p class="mb-4">
                                     قم بادارة سيستم ادارة بيع الاأكواد
                                     <br/>
-                                    <br/><br/>
+                                    <br/>
                                 </p>
+                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">
+                                    ابدأ الان
+                                </a>
                             </div>
                         </div>
                         <div class="col-sm-5 text-center text-sm-left">
