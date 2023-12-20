@@ -29,7 +29,7 @@
                                     <td>{{ $auction_item->auction_details->product_id }}</td>
                                     <td>{{ eneba_single_product($auction_item->auction_details->product_id)['S_product']['name'] }}</td>
                                     <td>{{ $auction_item->key_count_required }}</td>
-                                    <td>{{ FormatePrice($auction_item->unit_price / 100) }}</td>
+                                    <td>{{ FormatePrice($auction_item->unit_price) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
