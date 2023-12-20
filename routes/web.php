@@ -27,6 +27,17 @@ Route::redirect('/','/login');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
 Route::group(['prefix' => 'applications','as' => 'application.'],function(){
+    Route::controller(OrderController::class)->group(function(){
+        Route::post('eneba/callback-stock-provision','eneba_callback_stock_provision')->name('eneba.callback_stock_provision');
+        Route::post('eneba/callback-stock-reservation','eneba_callback_stock_reservation')->name('eneba.callback_stock_reservation');
+    });
+
+    Route::controller(DemoPurchasingController::class)->group(function(){
+        Route::get('eneba/test-order-purchasing','index');
+    });
+});
+
+Route::group(['middleware'=>'auth','prefix' => 'applications','as' => 'application.'],function(){
     Route::controller(ApplicationController::class)->group(function(){
         Route::get('/application/eneba','index_eneba')->name('eneba');
         Route::get('/application/like-card','index_likecard')->name('like_card');
@@ -69,15 +80,6 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
         Route::post('application/search-on-eneba-products','ajax_search_on_eneba_products')->name('search-on-eneba-products');
     });
 
-    Route::controller(OrderController::class)->group(function(){
-        Route::post('eneba/callback-stock-provision','eneba_callback_stock_provision')->name('eneba.callback_stock_provision');
-        Route::post('eneba/callback-stock-reservation','eneba_callback_stock_reservation')->name('eneba.callback_stock_reservation');
-    });
-
-    Route::controller(DemoPurchasingController::class)->group(function(){
-        Route::get('eneba/test-order-purchasing','index');
-    });
-
     Route::get('settings',[ApplicationController::class,'general_settings'])->name('settings');
     Route::post('save-settings',[ApplicationController::class,'save_settings'])->name('save_settings');
     Route::get('eneba-orders',[OrderController::class,'eneba_orders'])->name('eneba_orders');
@@ -86,6 +88,8 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
     Route::get('provider-orders',[OrderController::class,'provider_orders'])->name('provider_orders');
     Route::get('single-provider-order/{id}',[OrderController::class,'single_provider_order'])->name('single_provider_order');
 });
+
+
 
 
 Auth::routes();
