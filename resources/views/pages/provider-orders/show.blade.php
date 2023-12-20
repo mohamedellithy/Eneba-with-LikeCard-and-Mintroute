@@ -17,10 +17,10 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>رقم المزاد</th>
+                                <th>رقم الطلب</th>
+                                <th>اجمالى التكلفة</th>
                                 <th>اسم المنتج</th>
-                                <th>عدد الاكواد المطلوبة</th>
-                                <th>سعر الوحدة</th>
+                                <th>الكود</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0 alldata">
@@ -29,7 +29,7 @@
                                     <td>{{ $order["orderNumber"] }}</td>
                                     <td>{{ $order["orderFinalTotal"] }}</td>
                                     <td>{{ $order["productName"] }}</td>
-                                    <td>{{ $LikeCard->decryptSerial($order["serials"][0]['serialNumber']) }}</td>
+                                    <td>{{ $LikeCard->decryptSerial($order["serials"][0]['serialCode']) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
