@@ -51,7 +51,7 @@ class OrderController extends Controller
     }
 
     public function provider_orders(){
-        $provider_orders = ProviderOrder::with('auction_details')->orderBy('created_at','desc')->paginate(10);
+        $provider_orders = ProviderOrder::with('auction_details')->orderBy('created_at','asc')->paginate(10);
         return view('pages.provider-orders.index',compact('provider_orders'));
     }
 
