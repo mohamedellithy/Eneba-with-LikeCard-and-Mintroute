@@ -1,9 +1,11 @@
 <?php
 namespace App\Services\Eneba;
+use App\Jobs\RenewStockEneba;
 use App\Models\ApplicationSetting;
-use App\Services\Eneba\Operations as EnebaOperations;
-use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\ResponseSequence;
+use App\Services\Eneba\Operations as EnebaOperations;
+
 class Eneba {
     protected $sandbox       = true;
     public   $endpoint      = "";
@@ -381,9 +383,6 @@ class Eneba {
 
     public function eneba_callback_stock_provision(){
         $codes = EnebaOperations::update_orders_and_get_codes();
-        // Http::post('https://webhook.site/1d7c6d9b-98b4-4ed5-b818-1fc516119b15',[
-        //     $codes
-        // ]);
         if( ($codes != null) || (is_array($codes) && (count($codes) > 0)) ):
             return response()->json([
                 "action"   => "PROVIDE",

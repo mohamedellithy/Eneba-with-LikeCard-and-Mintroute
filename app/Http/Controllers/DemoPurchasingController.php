@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Jobs\RenewStockEneba;
 use App\Services\Eneba\Eneba;
 use App\Services\LikeCard\LikeCard;
 use Illuminate\Support\Facades\Http;
@@ -18,10 +19,13 @@ class DemoPurchasingController extends Controller
         // $this->eneba_service = new Eneba($sandbox = true);
     }
     public function index(Request $request){
-        $eneba  = new Eneba(false);
-        $result = $eneba->fetch_single_auction("f6060584-8f95-11ee-8741-2ef471adb63c");
+        $message = "hellow mohamed";
+        RenewStockEneba::dispatch($message);
+        echo "hi";
+        // $eneba  = new Eneba(false);
+        // $result = $eneba->fetch_single_auction("f6060584-8f95-11ee-8741-2ef471adb63c");
 
-        dd($result);
+        // dd($result);
         // $request->merge([
         //     'orderId'  => '347c4978-4f81-11ed-bdc3-0242ac120002'
         // ]);
