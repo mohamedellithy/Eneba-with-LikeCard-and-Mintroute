@@ -27,7 +27,7 @@
                                     <td>{{ $auction_item->auction_details->auction }}</td>
                                     <td>{{ $auction_item->auction_details->product_id }}</td>
                                     <td>{{ $auction_item->key_count_required }}</td>
-                                    <td>{{ $auction_item->unit_price }}</td>
+                                    <td>{{ $auction_item->unit_price / 100 }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
