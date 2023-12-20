@@ -17,7 +17,7 @@
                         <th>موفر الطلب</th>
                         <th>رقم المزاد</th>
                         <th>اسم منتج اينيبا</th>
-                        <th>عدد المنتجات</th>
+                        <th>عدد الأكواد</th>
                         <th>تاريخ الطلبية</th>
                         <th></th>
                     </tr>
@@ -34,7 +34,7 @@
                             <td>{{ $order->created_at }}</td>
                             <td>
                                 <a href="{{ route('application.single_provider_order',['id' => $order->id]) }}" class="btn btn-success btn-sm ">
-                                    عرض تفاصيل الطلبية
+                                     تفاصيل 
                                 </a>
                             </td>
                         </tr>
