@@ -91,7 +91,7 @@
                                     <img src="{{ asset('/assets/img/icons/unicons/chart-success.png') }}" alt="chart success" class="rounded" />
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">عدد الاكواد المسحوبة من لايك كارد</span>
+                            <span class="fw-semibold d-block mb-1">عدد الاكواد من لايك كارد</span>
                             <h3 class="card-title mb-2">
                                 {{ \App\Models\OfflineCode::where('product_type','likecard')->count()  }}
                             </h3>
@@ -108,7 +108,7 @@
                                     <img src="{{ asset('/assets/img/icons/unicons/chart-success.png') }}" alt="chart success" class="rounded" />
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">عدد الاكواد المسحوبة من اينيبا</span>
+                            <span class="fw-semibold d-block mb-1">عدد الاكواد من اينيبا</span>
                             <h3 class="card-title mb-2">
                                 {{ \App\Models\OfflineCode::where('product_type','eneba')->count()  }}
                             </h3>
