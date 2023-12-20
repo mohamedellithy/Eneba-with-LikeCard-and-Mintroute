@@ -1,6 +1,8 @@
 @extends('master')
 @php
     $name = request('name');
+    $response_order = json_decode($provider_order->response,true);
+    $LikeCard = new LikeCard();
 @endphp
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -22,12 +24,12 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0 alldata">
-                            @foreach($auctions as $auction_item)
+                            @foreach($response_order['orders'] as $order)
                                 <tr>
-                                    <td>{{ $auction_item->auction_details->auction }}</td>
-                                    <td>{{ eneba_single_product($auction_item->auction_details->product_id)['S_product']['name'] }}</td>
-                                    <td>{{ $auction_item->key_count_required }}</td>
-                                    <td>{{ FormatePrice($auction_item->unit_price) }}</td>
+                                    <td>{{ $order->orderNumber }}</td>
+                                    <td>{{ $order->orderFinalTotal }}</td>
+                                    <td>{{ $order->productName }}</td>
+                                    <td>{{ $LikeCard->decryptSerial($order->serials[0]['serialNumber']) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -57,6 +59,11 @@
                         <p style="margin-bottom: 0px;">تحديث الطلبية</p>
                         <strong>{{ $eneba_order->updated_at }}</strong>
                     </li>
+                    <li style="padding: 15px;">
+                        <p style="margin-bottom: 0px;">اسم منتج اينيبا</p>
+                        {{ eneba_single_product($auction_item->auction_details->product_id)['S_product']['name'] }}
+                    </li>
+
                 </ul>
             </div>
         </div>
