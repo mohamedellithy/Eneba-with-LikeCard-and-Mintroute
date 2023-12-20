@@ -85,6 +85,9 @@ Route::group(['prefix' => 'applications','as' => 'application.'],function(){
     Route::post('save-settings',[ApplicationController::class,'save_settings'])->name('save_settings');
     Route::get('eneba-orders',[OrderController::class,'eneba_orders'])->name('eneba_orders');
     Route::get('single-eneba-order/{id}',[OrderController::class,'single_eneba_order'])->name('single_eneba_order');
+
+    Route::get('provider-orders',[OrderController::class,'provider_orders'])->name('provider_orders');
+    Route::get('single-provider-order/{id}',[OrderController::class,'single_provider_order'])->name('single_provider_order');
 });
 
 

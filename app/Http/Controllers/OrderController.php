@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EnebaOrder;
 use Illuminate\Http\Request;
+use App\Models\ProviderOrder;
 use App\Services\Eneba\Eneba;
 use App\Models\EnebaOrderAuction;
 use Illuminate\Support\Facades\Http;
@@ -47,5 +48,17 @@ class OrderController extends Controller
         $eneba_order = EnebaOrder::where('id',$id)->first();
         $auctions    = EnebaOrderAuction::with('auction_details')->where('eneba_order_id',$id)->paginate(10);
         return view('pages.orders.show',compact('eneba_order','auctions'));
+    }
+
+    public function provider_orders(){
+        $provider_orders = ProviderOrder::with('auction_details')->paginate(10);
+        dd($provider_orders);
+        return view('pages.provider-orders.index',compact('provider_orders'));
+    }
+
+    public function single_provider_order($id){
+        $provider_order = ProviderOrder::where('id',$id)->first();
+        //$auctions    = EnebaOrderAuction::with('auction_details')->where('eneba_order_id',$id)->paginate(10);
+        return view('pages.provider-orders.show',compact('provider_order'));
     }
 }

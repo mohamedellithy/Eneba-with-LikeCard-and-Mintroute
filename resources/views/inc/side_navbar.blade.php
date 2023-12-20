@@ -120,7 +120,15 @@
         <li class="menu-item {{ IsActiveOnlyIf(['application.eneba_orders','application.single_eneba_order']) }}">
             <a href="{{ route('application.eneba_orders') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">الطلبات</div>
+                <div data-i18n="Basic">طلبات اينيبا</div>
+            </a>
+        </li>
+
+        <!-- Cards -->
+        <li class="menu-item {{ IsActiveOnlyIf(['application.provider_orders','application.single_provider_order']) }}">
+            <a href="{{ route('application.provider_orders') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">طلبات موفري الاكواد</div>
             </a>
         </li>
 

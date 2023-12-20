@@ -15,4 +15,8 @@ class ProviderOrder extends Model
         'provider_name',
         'response'
     ];
+
+    public function auction_details(){
+        return $this->belongsTo(Auction::class,'order_auction_id','id');
+    }
 }
