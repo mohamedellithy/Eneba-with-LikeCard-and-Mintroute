@@ -35,12 +35,12 @@ class RenewStockEneba implements ShouldQueue
     public function handle()
     {
         
-        Http::withOptions([
-            'verify' => false
-        ])->post("https://webhook-test.com/7d3ac940487cde0ea4db84417f0986b2",[
-            'test' => $this->auction
-        ]);
-        // $eneba = new Eneba($sandbox = false);
-        // $eneba->update_create_auction($this->auction);
+        // Http::withOptions([
+        //     'verify' => false
+        // ])->post("https://webhook-test.com/7d3ac940487cde0ea4db84417f0986b2",[
+        //     'test' => $this->auction
+        // ]);
+        $eneba = new Eneba($sandbox = false);
+        $eneba->update_create_auction($this->auction);
     }
 }

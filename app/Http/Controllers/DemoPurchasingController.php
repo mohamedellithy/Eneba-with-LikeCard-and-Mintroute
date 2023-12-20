@@ -19,9 +19,9 @@ class DemoPurchasingController extends Controller
         // $this->eneba_service = new Eneba($sandbox = true);
     }
     public function index(Request $request){
-        $message = "hellow mohamed";
-        RenewStockEneba::dispatch($message);
-        echo "hi";
+        // $message = "hellow mohamed";
+        // RenewStockEneba::dispatch($message);
+        // echo "hi";
         // $eneba  = new Eneba(false);
         // $result = $eneba->fetch_single_auction("f6060584-8f95-11ee-8741-2ef471adb63c");
 
