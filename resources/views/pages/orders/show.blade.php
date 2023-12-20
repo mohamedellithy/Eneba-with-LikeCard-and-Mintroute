@@ -22,12 +22,12 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0 alldata">
-                            @foreach($auctions as $auction)
+                            @foreach($auctions as $auction_item)
                                 <tr>
-                                    <td>{{ $auction->auction }}</td>
-                                    <td>{{ $auction->product_id }}</td>
-                                    <td>{{ $auction->pivot_key_count_required }}</td>
-                                    <td>{{ $auction->pivot_unit_price }}</td>
+                                    <td>{{ $auction_item->auction }}</td>
+                                    <td>{{ $auction_item->product_id }}</td>
+                                    <td>{{ $auction_item->pivot_key_count_required }}</td>
+                                    <td>{{ $auction_item->pivot_unit_price }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
