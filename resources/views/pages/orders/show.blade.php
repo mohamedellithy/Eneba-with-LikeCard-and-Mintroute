@@ -16,7 +16,6 @@
                         <thead>
                             <tr>
                                 <th>رقم المزاد</th>
-                                <th>رقم المنتج</th>
                                 <th>اسم المنتج</th>
                                 <th>عدد الاكواد المطلوبة</th>
                                 <th>سعر الوحدة</th>
@@ -26,7 +25,6 @@
                             @foreach($auctions as $auction_item)
                                 <tr>
                                     <td>{{ $auction_item->auction_details->auction }}</td>
-                                    <td>{{ $auction_item->auction_details->product_id }}</td>
                                     <td>{{ eneba_single_product($auction_item->auction_details->product_id)['S_product']['name'] }}</td>
                                     <td>{{ $auction_item->key_count_required }}</td>
                                     <td>{{ FormatePrice($auction_item->unit_price) }}</td>
