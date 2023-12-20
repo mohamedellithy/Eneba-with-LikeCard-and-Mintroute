@@ -23,10 +23,7 @@ use App\Http\Controllers\DemoPurchasingController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::to('/','/login');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
 Route::group(['prefix' => 'applications','as' => 'application.'],function(){
