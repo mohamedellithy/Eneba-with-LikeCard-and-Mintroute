@@ -74,8 +74,10 @@
                                     <img src="{{ asset('/assets/img/icons/unicons/chart-success.png') }}" alt="chart success" class="rounded" />
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Profit</span>
-                            <h3 class="card-title mb-2">$12,628</h3>
+                            <span class="fw-semibold d-block mb-1">عدد الأكواد الغير مستخدمة</span>
+                            <h3 class="card-title mb-2">
+                                {{ \App\Models\OfflineCode::where('status_used','unused')->count() }}
+                            </h3>
                             <small class="text-success fw-semibold"><i
                                     class="bx bx-up-arrow-alt"></i> </small>
                         </div>
