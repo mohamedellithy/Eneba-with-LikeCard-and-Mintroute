@@ -7,7 +7,7 @@
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">
-        رقم الطلبية #{{ $eneba_order->order_id  }}
+        رقم الطلبية #{{ $provider_order->provider_order_id  }}
     </h4>
     <!-- Basic Bootstrap Table -->
     <div class="row">
@@ -35,9 +35,6 @@
                         </tbody>
                     </table>
                 </div>
-                <div style="padding: 26px;">
-                    {{  $auctions->links()  }}
-                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -45,23 +42,23 @@
                 <ul class="u-lists">
                     <li style="padding: 15px;">
                         <p style="margin-bottom: 0px;">رقم الطلبية</p>
-                        <strong>{{ $eneba_order->order_id }}</strong>
+                        <strong>{{ $provider_order->provider_order_id }}</strong>
                     </li>
                     <li style="padding: 15px;">
-                        <p style="margin-bottom: 0px;">حالة الطلب</p>
-                        <strong>{{ $eneba_order->status_order }}</strong>
+                        <p style="margin-bottom: 0px;">رقم المزاد</p>
+                        <strong>{{ $provider_order->auction }}</strong>
                     </li>
                     <li style="padding: 15px;">
                         <p style="margin-bottom: 0px;">تاريخ الطلبية</p>
-                        <strong>{{ $eneba_order->created_at }}</strong>
+                        <strong>{{ $provider_order->created_at }}</strong>
                     </li>
                     <li style="padding: 15px;">
                         <p style="margin-bottom: 0px;">تحديث الطلبية</p>
-                        <strong>{{ $eneba_order->updated_at }}</strong>
+                        <strong>{{ $provider_order->updated_at }}</strong>
                     </li>
                     <li style="padding: 15px;">
                         <p style="margin-bottom: 0px;">اسم منتج اينيبا</p>
-                        {{ eneba_single_product($auction_item->auction_details->product_id)['S_product']['name'] }}
+                        {{ eneba_single_product($provider_order->auction_details->product_id)['S_product']['name'] }}
                     </li>
 
                 </ul>
