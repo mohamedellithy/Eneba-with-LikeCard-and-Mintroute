@@ -41,6 +41,10 @@
             <div class="card" style="padding-top: 3%;">
                 <ul class="u-lists">
                     <li style="padding: 15px;">
+                        <p style="margin-bottom: 0px;">موفر الطلبية</p>
+                        <strong>{{ $provider_order->provider_name }}</strong>
+                    </li>
+                    <li style="padding: 15px;">
                         <p style="margin-bottom: 0px;">رقم الطلبية</p>
                         <strong>{{ $provider_order->provider_order_id }}</strong>
                     </li>
