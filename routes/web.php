@@ -23,7 +23,7 @@ use App\Http\Controllers\DemoPurchasingController;
 |
 */
 
-Route::to('/','/login');
+Route::redirect('/','/login');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
 Route::group(['prefix' => 'applications','as' => 'application.'],function(){
