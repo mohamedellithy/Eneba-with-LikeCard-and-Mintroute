@@ -118,6 +118,7 @@
                             <a href="?page={{ $prev_page <= 1 ? 1 : $prev_page   }}" class="btn btn-info btn-sm">
                                 السابق
                             </a>
+                            <br/><br/>
                             <div style="height:350px;overflow-x:auto">
                                 <table class="table table-dark">
                                     <thead>
