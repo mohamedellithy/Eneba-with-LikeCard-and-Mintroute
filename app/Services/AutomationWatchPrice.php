@@ -17,21 +17,25 @@ class AutomationWatchPrice{
             'automation' => 1
         ])->get();
 
+        Http::post('https://webhook-test.com/069aa4df8eb8e8b3f9115a8f743f4b9c',[
+            'hh' => 'hi'
+        ]);
 
-        foreach($auctions as $auction):
-            $this->auction_settings  = $auction;
-            $command = $this->schedule->call(function(){
-                 $this->getAuctionPrices();
-            });
 
-            $command = $command->name("Auction no #".$this->auction_settings->id);
+        // foreach($auctions as $auction):
+        //     $this->auction_settings  = $auction;
+        //     $command = $this->schedule->call(function(){
+        //          $this->getAuctionPrices();
+        //     });
 
-            $command = $command->timezone("Africa/Cairo");
+        //     $command = $command->name("Auction no #".$this->auction_settings->id);
 
-            $command = $command->withoutOverlapping()->onOneServer();
+        //     $command = $command->timezone("Africa/Cairo");
 
-            // $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
-        endforeach;
+        //     $command = $command->withoutOverlapping()->onOneServer();
+
+        //     // $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
+        // endforeach;
     }
 
     public function getAuctionPrices(){
