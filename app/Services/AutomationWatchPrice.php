@@ -24,15 +24,15 @@ class AutomationWatchPrice{
         foreach($auctions as $auction):
             $this->schedule = $schedule;
             $this->auction_settings  = $auction;
-            $this->schedule->call(function(){
+            $command = $this->schedule->call(function(){
                  $this->getAuctionPrices();
             });
 
-            $this->schedule->name("Auction no #".$this->auction_settings->id);
+            $command->name("Auction no #".$this->auction_settings->id);
 
-            $this->schedule->timezone("Africa/Cairo");
+            $command->timezone("Africa/Cairo");
 
-            $this->schedule->withoutOverlapping()->onOneServer();
+            //$command->withoutOverlapping()->onOneServer();
 
             // $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
         endforeach;
