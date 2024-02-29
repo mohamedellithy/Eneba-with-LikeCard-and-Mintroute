@@ -10,7 +10,6 @@ class AutomationWatchPrice{
     protected $eneba_service;
     public    $schedule;
     public function __construct(Schedule $schedule){
-        $this->schedule = $schedule;
         $this->eneba_service = new Eneba($sandbox = false);
         $auctions = Auction::has('logs_auction_price','<',10)->where([
             'status' => 1,
@@ -22,20 +21,21 @@ class AutomationWatchPrice{
         ]);
 
 
-        // foreach($auctions as $auction):
-        //     $this->auction_settings  = $auction;
-        //     $command = $this->schedule->call(function(){
-        //          $this->getAuctionPrices();
-        //     });
+        foreach($auctions as $auction):
+            $this->schedule = $schedule;
+            $this->auction_settings  = $auction;
+            $this->schedule->call(function(){
+                 $this->getAuctionPrices();
+            });
 
-        //     $command = $command->name("Auction no #".$this->auction_settings->id);
+            $this->schedule->name("Auction no #".$this->auction_settings->id);
 
-        //     $command = $command->timezone("Africa/Cairo");
+            $this->schedule->timezone("Africa/Cairo");
 
-        //     $command = $command->withoutOverlapping()->onOneServer();
+            $this->schedule->withoutOverlapping()->onOneServer();
 
-        //     // $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
-        // endforeach;
+            // $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
+        endforeach;
     }
 
     public function getAuctionPrices(){
