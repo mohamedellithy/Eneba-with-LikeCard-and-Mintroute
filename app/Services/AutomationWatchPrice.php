@@ -24,11 +24,11 @@ class AutomationWatchPrice{
                  $this->getAuctionPrices();
             });
 
-            $command->name("Auction no #".$this->auction_settings->id);
+            $command = $command->name("Auction no #".$this->auction_settings->id);
 
-            $command->timezone("Africa/Cairo");
+            $command = $command->timezone("Africa/Cairo");
 
-            $command->withoutOverlapping()->onOneServer();
+            $command = $command->withoutOverlapping()->onOneServer();
 
             // $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
         endforeach;
