@@ -30,7 +30,7 @@ class AutomationWatchPrice{
 
             $command->withoutOverlapping()->onOneServer();
 
-            $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
+            // $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
         endforeach;
     }
 
