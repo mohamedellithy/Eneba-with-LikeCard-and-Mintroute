@@ -32,7 +32,7 @@ class AutomationWatchPrice{
 
             $command->timezone("Africa/Cairo");
 
-            $command->withoutOverlapping()->onOneServer();
+            // $command->withoutOverlapping()->onOneServer();
 
             //$command->cron('*/'.$this->auction_settings->change_time.' * * * *');
         endforeach;
