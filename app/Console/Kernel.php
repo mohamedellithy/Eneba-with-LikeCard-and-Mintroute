@@ -27,9 +27,9 @@ class Kernel extends ConsoleKernel
         $automation_change_price = new AutomationWatchPrice($schedule);
         $automation_change_price->schedule;
 
-        // $schedule->call(function(){
-        //     LogAuctionPrice::truncate();
-        // })->name("remove all price changes")->timezone("Africa/Cairo")->withoutOverlapping()->onOneServer()->between('00:00','00:30');
+        $schedule->call(function(){
+            LogAuctionPrice::truncate();
+        })->name("remove all price changes")->timezone("Africa/Cairo")->withoutOverlapping()->onOneServer()->between('00:00','00:30');
 
     }
 

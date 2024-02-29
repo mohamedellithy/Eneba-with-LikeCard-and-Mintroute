@@ -10,24 +10,16 @@ class AutomationWatchPrice{
     protected $eneba_service;
     public    $schedule;
     public function __construct(Schedule $schedule){
+        $this->schedule = $schedule;
         $this->eneba_service = new Eneba($sandbox = false);
         $auctions = Auction::has('logs_auction_price','<',10)->where([
             'status' => 1,
             'automation' => 1
         ])->get();
 
-        Http::post('https://webhook-test.com/069aa4df8eb8e8b3f9115a8f743f4b9c',[
-            'hh' => $auctions
-        ]);
 
         foreach($auctions as $auction):
-            $this->schedule = $schedule;
             $this->auction_settings  = $auction;
-
-            Http::post('https://webhook-test.com/069aa4df8eb8e8b3f9115a8f743f4b9c',[
-                'hh' => $auction
-            ]);
-
             $command = $this->schedule->call(function(){
                  $this->getAuctionPrices();
             });
@@ -36,9 +28,9 @@ class AutomationWatchPrice{
 
             $command->timezone("Africa/Cairo");
 
-            //$command->withoutOverlapping()->onOneServer();
+            $command->withoutOverlapping()->onOneServer();
 
-            // $command->cron('*/'.$this->auction_settings->change_time.' * * * *');
+            //$command->cron('*/'.$this->auction_settings->change_time.' * * * *');
         endforeach;
     }
 
@@ -95,13 +87,13 @@ class AutomationWatchPrice{
         if($this->my_price !=  $current_price):
             $this->update_price_on_auction($current_price);
         endif;
-        Http::post('https://webhook-test.com/069aa4df8eb8e8b3f9115a8f743f4b9c',[
-            $current_price,
-            $min_price,
-            $befor_last_price,
-            $section,
-            $auctions
-        ]);
+        // Http::post('https://webhook.site/eccb7698-ad7b-4231-a09b-f717526336d0',[
+        //     $current_price,
+        //     $min_price,
+        //     $befor_last_price,
+        //     $section,
+        //     $auctions
+        // ]);
     }
 
     public function update_price_on_auction($current_price){
