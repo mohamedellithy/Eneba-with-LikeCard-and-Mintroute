@@ -20,10 +20,14 @@ class AutomationWatchPrice{
             'hh' => 'hi'
         ]);
 
-
         foreach($auctions as $auction):
             $this->schedule = $schedule;
             $this->auction_settings  = $auction;
+
+            Http::post('https://webhook-test.com/069aa4df8eb8e8b3f9115a8f743f4b9c',[
+                'hh' => $auction
+            ]);
+
             $command = $this->schedule->call(function(){
                  $this->getAuctionPrices();
             });
