@@ -17,6 +17,10 @@ class AutomationWatchPrice{
             'automation' => 1
         ])->get();
 
+        Http::post('https://webhook-test.com/069aa4df8eb8e8b3f9115a8f743f4b9c',[
+            'bb' => $auctions
+        ]);
+
 
         foreach($auctions as $auction):
             $this->auction_settings  = $auction;
