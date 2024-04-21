@@ -25,14 +25,14 @@ class Kernel extends ConsoleKernel
     {
         //$schedule->command('command:automation_change_price')->everyMinute();
 
+        $schedule->command('command:automation_refresh_token')->timezone("Africa/Cairo");
+
         $automation_change_price = new AutomationWatchPrice($schedule);
         $automation_change_price->schedule;
 
         $schedule->call(function(){
             LogAuctionPrice::truncate();
         })->name("remove all price changes")->timezone("Africa/Cairo")->between('02:00','02:30');
-
-        $schedule->command('command:automation_refresh_token')->timezone("Africa/Cairo")->dailyAt('01:00');
 
     }
 
