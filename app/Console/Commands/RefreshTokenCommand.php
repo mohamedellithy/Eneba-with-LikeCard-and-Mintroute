@@ -30,11 +30,11 @@ class RefreshTokenCommand extends Command
      */
     public function handle()
     {
-        Http::post('https://webhook-test.com/624c9b969851424814cb3331155e9e75',[
-            'b' => 'hi'
-        ]);
         $eneba  = new Eneba(false);
         $result = $eneba->refresh_token();
+        Http::post('https://webhook-test.com/624c9b969851424814cb3331155e9e75',[
+            'b' => $result
+        ]);
         if(isset($result['status']) && ($result['status'] == 200)){
             if(isset($result['refresh_token'])):
                 ApplicationSetting::updateOrCreate([
