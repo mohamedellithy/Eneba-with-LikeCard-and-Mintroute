@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     {
         //$schedule->command('command:automation_change_price')->everyMinute();
 
-        $schedule->command('command:automation_refresh_token')->timezone("Africa/Cairo");
+        $schedule->command('command:automation_refresh_token')->timezone("Africa/Cairo")->dailyAt('01:00');
 
         $automation_change_price = new AutomationWatchPrice($schedule);
         $automation_change_price->schedule;
