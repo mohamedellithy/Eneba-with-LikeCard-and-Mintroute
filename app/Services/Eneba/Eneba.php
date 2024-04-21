@@ -114,7 +114,8 @@ class Eneba {
 
         return [
             'code'       => $response->status(),
-            'status'     => 'failed'
+            'status'     => 'failed',
+            'message'    => $response->body()
         ];
     }
 
