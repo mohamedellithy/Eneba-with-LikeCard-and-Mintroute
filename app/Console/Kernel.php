@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel
 {
     protected $commands = [
         //Commands\AutomationChangePrice::class
+        Commands\RefreshTokenCommand::class
     ];
 
     /**
@@ -29,7 +30,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function(){
             LogAuctionPrice::truncate();
-        })->name("remove all price changes")->timezone("Africa/Cairo")->withoutOverlapping()->onOneServer()->between('00:00','00:30');
+        })->name("remove all price changes")->timezone("Africa/Cairo")->between('02:00','02:30');
+
+        $schedule->command('command:automation_refresh_token')->timezone("Africa/Cairo")->dailyAt('01:00');
 
     }
 

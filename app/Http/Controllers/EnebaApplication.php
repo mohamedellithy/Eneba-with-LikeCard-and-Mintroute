@@ -55,12 +55,23 @@ class EnebaApplication extends Controller
 
     public function generate_token(){
         $eneba = $this->eneba_service->generate_token();
-        ApplicationSetting::updateOrCreate([
-            'application' => $this->application,
-            'name'        => 'access_token'
-        ],[
-            'value'       => $eneba['access_token']
-        ]);
+        if(isset($eneba['refresh_token'])):
+            ApplicationSetting::updateOrCreate([
+                'application' => $this->application,
+                'name'        => 'refresh_token'
+            ],[
+                'value'       => $eneba['refresh_token']
+            ]);
+        endif;
+
+        if(isset($eneba['access_token'])):
+            ApplicationSetting::updateOrCreate([
+                'application' => $this->application,
+                'name'        => 'access_token'
+            ],[
+                'value'       => $eneba['access_token']
+            ]);
+        endif;
 
         flash('Application is settings saved successfully','success');
 

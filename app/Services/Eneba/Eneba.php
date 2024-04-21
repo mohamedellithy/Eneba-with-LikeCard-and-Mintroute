@@ -17,9 +17,11 @@ class Eneba {
 
         $this->credentail = $this->fetch_enebe_crediential();
 
-        $token = $this->generate_token();
-
-        $this->credentail['access_token'] = ($token['status'] == 'success') ? $token['access_token'] : null;
+        if(!isset($this->credentail['access_token']) || $this->credentail['access_token'] == null):
+            $token = $this->generate_token();
+            $this->credentail['access_token']  = ($token['status'] == 'success') ? $token['access_token'] : null;
+            $this->credentail['refresh_token'] = ($token['status'] == 'success') ? $token['refresh_token'] : null;
+        endif;
     }
 
     public function resolve_call($query){
@@ -65,9 +67,48 @@ class Eneba {
 
         if($response->successful() == true):
             return [
+                'code'          => $response->status(),
+                'status'        => 'success',
+                'access_token'  => $response->json()["access_token"],
+                'refresh_token' => $response->json()["refresh_token"],
+            ];
+        endif;
+
+        return [
+            'code'       => $response->status(),
+            'status'     => 'failed'
+        ];
+    }
+
+    public function refresh_token(){
+        $post = [
+            'grant_type'    => 'refresh_token',
+            'client_id'     => '917611c2-70a5-11e9-00c4-ee691bb8bfaa',
+            'id'            => $this->credentail['auth_id'],
+            'refresh_token' => $this->credentail['refresh_token'],
+            'secret'        => $this->credentail['auth_secret']
+        ];
+
+        if($this->sandbox == true):
+            $endpoint = $this->endpoint;
+        else:
+            $endpoint          = "https://user.eneba.com";
+            $post['client_id'] = "917611c2-70a5-11e9-97c4-46691b78bfa2";
+        endif;
+
+        $response = Http::asForm()->withOptions([
+            "verify"=>false
+        ])->post($endpoint.'/oauth/token',$post);
+
+
+        // dd($response->body(),$post);
+
+        if($response->successful() == true):
+            return [
                 'code'         => $response->status(),
                 'status'       => 'success',
                 'access_token' => $response->json()["access_token"],
+                'refresh_token'=> $response->json()["refresh_token"]
             ];
         endif;
 
@@ -197,9 +238,10 @@ class Eneba {
             $status            = 'sandbox';
         endif;
 
-        $credential['auth_id']      = isset($application[$status.'_auth_id']) ? $application[$status.'_auth_id'] : null;
-        $credential['auth_secret']  = isset($application[$status.'_auth_secret']) ? $application[$status.'_auth_secret'] : null;
-
+        $credential['auth_id']       = isset($application[$status.'_auth_id']) ? $application[$status.'_auth_id'] : null;
+        $credential['auth_secret']   = isset($application[$status.'_auth_secret']) ? $application[$status.'_auth_secret'] : null;
+        $credential['access_token']  = isset($application['access_token']) ? $application['access_token'] : null;
+        $credential['refresh_token'] = isset($application['refresh_token']) ? $application['refresh_token'] : null;
         return $credential;
     }
 
