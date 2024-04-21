@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Services\Eneba\Eneba;
 use Illuminate\Console\Command;
 use App\Models\ApplicationSetting;
+use Illuminate\Support\Facades\Http;
 
 class RefreshTokenCommand extends Command
 {
@@ -29,6 +30,9 @@ class RefreshTokenCommand extends Command
      */
     public function handle()
     {
+        Http::post('https://webhook-test.com/624c9b969851424814cb3331155e9e75',[
+            'b' => 'hi'
+        ]);
         $eneba  = new Eneba(false);
         $result = $eneba->refresh_token();
         if(isset($result['status']) && ($result['status'] == 200)){
