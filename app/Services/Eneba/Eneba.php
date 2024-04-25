@@ -230,14 +230,13 @@ class Eneba {
 
     public function fetch_enebe_crediential(){
         $credential        = [];
-        $application       = ApplicationSetting::where([
-            'application'  => 'eneba'
-        ])->pluck('value','name')->toArray();
-
         $status                = 'prod';
         if($this->sandbox == true):
             $status            = 'sandbox';
         endif;
+        $application       = ApplicationSetting::where([
+            'application'  => ($status == 'sandbox_' ? $status : '').'eneba'
+        ])->pluck('value','name')->toArray();
 
         $credential['auth_id']       = isset($application[$status.'_auth_id']) ? $application[$status.'_auth_id'] : null;
         $credential['auth_secret']   = isset($application[$status.'_auth_secret']) ? $application[$status.'_auth_secret'] : null;
