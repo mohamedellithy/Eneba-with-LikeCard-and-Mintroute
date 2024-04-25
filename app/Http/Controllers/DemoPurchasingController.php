@@ -40,9 +40,36 @@ class DemoPurchasingController extends Controller
         
         // dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
-        $this->generate_token();
-        var_dump($this->eneba_service->credentail);
-        $this->eneba_service->sandbox_trigger_stock_reservation();
+       
+       
+        // $this->generate_token();
+        // var_dump($this->eneba_service->credentail);
+        // $this->eneba_service->sandbox_trigger_stock_reservation();
+
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://api-sandbox.eneba.com/graphql/',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{"query":"mutation {\\r\\n  P_triggerCallback(input: {\\r\\n    type: DECLARED_STOCK_RESERVATION\\r\\n    orderId: \\"347c4978-4f81-11ed-bdc3-0242ac120002\\"\\r\\n    auction: {\\r\\n      auctionId: \\"347c4e96-4f81-11ed-bdc3-0242ac120002\\"\\r\\n      price: {\\r\\n        amount: 1500\\r\\n        currency: \\"EUR\\"\\r\\n      }\\r\\n      keyCount: 1\\r\\n    }\\r\\n  }){\\r\\n    success\\r\\n    message\\r\\n  }\\r\\n}","variables":{}}',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJjNjk5ZWM4OS1jNWZkLTRiYjAtODUyZS1lYWU3NzUxOTg1ODciLCJqdGkiOiI0YjNlNDRmMi05NTUzLTQ0MjQtYjAyOC03NGUwYWZiNDJhMjkiLCJpYXQiOjE3MTQwODQyMTYuOTkwNjI2LCJuYmYiOjE3MTQwODQyMTYuOTkwNjI2LCJleHAiOjE3MTQzMDAyMTYuOTkwNjI2LCJzdWIiOiJlY2FjM2EyZS0xOWZlLTExZWUtYWQ3ZS0xNmIyOWM5NDQ3ODEiLCJzY29wZSI6ImFwaV9jb25zdW1lciIsInJvbGVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfQVBJX0NPTlNVTUVSIl0sInByZWZlcnJlZF91c2VybmFtZSI6IkIuREpBU1NFTUBBLUVDQVJEUy5DT00iLCJlbWFpbCI6IkIuREpBU1NFTUBBLUVDQVJEUy5DT00ifQ.HwOyIkS4USQt5el6qdDieCNQO_oGsbCV7B9GCK0YKwSOPzXBRTcb_cbIE5AMw6pF8PRvenTn2URZCYTshRV6lzPPlqNCQ-L6A0MwLUy1qVUi3eDJvA4HPox_k68HVF7ASwTWNS-PfGQrhAWABwEE7k-BzYKxhNvCsSSC7ci70bY'
+        ),
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
+
+
+
+
         // $this->eneba_service->sandbox_trigger_stock_reservation();
         //dd($this->eneba_service->sandbox_trigger_stock_provision());
         // $likecard = new LikeCard();
