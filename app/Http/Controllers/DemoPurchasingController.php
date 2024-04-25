@@ -37,12 +37,13 @@ class DemoPurchasingController extends Controller
         // $result = GetMyAuctions("7d0462a2-fdec-11ec-9ceb-b62153817ae7");
         // dd($result);
 
-        //dd($this->eneba_service->register_stock_reservation());
+        
         // dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
         $this->generate_token();
         var_dump($this->eneba_service->credentail);
-        $this->eneba_service->sandbox_trigger_stock_reservation();
+        $this->eneba_service->register_stock_reservation();
+        // $this->eneba_service->sandbox_trigger_stock_reservation();
         //dd($this->eneba_service->sandbox_trigger_stock_provision());
         // $likecard = new LikeCard();
         // $codes = [
