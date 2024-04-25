@@ -66,7 +66,7 @@ class Eneba {
         // dd($response->body(),$post);
 
         return [
-            'code'       => $response->body(),
+            'code'       => $response->json(),
             'status'     => 'failed'
         ];
 
