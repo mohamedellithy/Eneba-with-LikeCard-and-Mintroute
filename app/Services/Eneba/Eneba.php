@@ -65,6 +65,11 @@ class Eneba {
 
         // dd($response->body(),$post);
 
+        return [
+            'code'       => $response->body(),
+            'status'     => 'failed'
+        ];
+
         if($response->successful() == true):
             return [
                 'code'          => $response->status(),
