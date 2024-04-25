@@ -460,7 +460,7 @@ class Eneba {
             }
         GQL;
         $response = $this->resolve_call($query);
-        dd($response->json());
+        dd($response->body());
 
     }
 
