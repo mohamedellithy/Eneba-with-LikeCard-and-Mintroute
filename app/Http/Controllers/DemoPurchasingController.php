@@ -75,7 +75,7 @@ class DemoPurchasingController extends Controller
     }
 
     public function generate_token(){
-        $eneba = $this->eneba_service->generate_token();
+        return $eneba = $this->eneba_service->generate_token();
         if(isset($eneba['refresh_token'])):
             ApplicationSetting::updateOrCreate([
                 'application' => $this->application,
