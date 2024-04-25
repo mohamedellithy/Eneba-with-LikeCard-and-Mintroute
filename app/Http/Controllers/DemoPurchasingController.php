@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Jobs\RenewStockEneba;
 use App\Services\Eneba\Eneba;
+use App\Models\ApplicationSetting;
 use App\Services\LikeCard\LikeCard;
 use Illuminate\Support\Facades\Http;
 
@@ -15,7 +16,7 @@ class DemoPurchasingController extends Controller
     protected $eneba_service;
 
     public function __construct(){
-        $this->application   = 'eneba';
+        $this->application   = 'sandbox_eneba';
         $this->eneba_service = new Eneba($sandbox = true);
     }
     public function index(Request $request){
@@ -39,7 +40,8 @@ class DemoPurchasingController extends Controller
         //dd($this->eneba_service->register_stock_reservation());
         // dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
-        dd($this->eneba_service->credentail);
+        $this->generate_token();
+        var_dump($this->eneba_service->credentail);
         $this->eneba_service->sandbox_trigger_stock_reservation();
         //dd($this->eneba_service->sandbox_trigger_stock_provision());
         // $likecard = new LikeCard();
@@ -71,4 +73,26 @@ class DemoPurchasingController extends Controller
         // dd($response);
         // dd($this->eneba_service->eneba_callback_stock_provision());
     }
+
+    public function generate_token(){
+        $eneba = $this->eneba_service->generate_token();
+        if(isset($eneba['refresh_token'])):
+            ApplicationSetting::updateOrCreate([
+                'application' => $this->application,
+                'name'        => 'refresh_token'
+            ],[
+                'value'       => $eneba['refresh_token']
+            ]);
+        endif;
+
+        if(isset($eneba['access_token'])):
+            ApplicationSetting::updateOrCreate([
+                'application' => $this->application,
+                'name'        => 'access_token'
+            ],[
+                'value'       => $eneba['access_token']
+            ]);
+        endif;
+    }
+
 }
