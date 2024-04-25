@@ -40,7 +40,7 @@ class DemoPurchasingController extends Controller
         //dd($this->eneba_service->register_stock_reservation());
         // dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
-        dd($this->generate_token());
+        $this->generate_token();
         var_dump($this->eneba_service->credentail);
         $this->eneba_service->sandbox_trigger_stock_reservation();
         //dd($this->eneba_service->sandbox_trigger_stock_provision());
@@ -75,7 +75,7 @@ class DemoPurchasingController extends Controller
     }
 
     public function generate_token(){
-        return $eneba = $this->eneba_service->generate_token();
+        $eneba = $this->eneba_service->generate_token();
         if(isset($eneba['refresh_token'])):
             ApplicationSetting::updateOrCreate([
                 'application' => $this->application,

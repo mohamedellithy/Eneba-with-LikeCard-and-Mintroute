@@ -64,18 +64,13 @@ class Eneba {
 
 
         // dd($response->body(),$post);
-
-        return [
-            'code'       => $response->json(),
-            'status'     => 'failed'
-        ];
-
         if($response->successful() == true):
+            $result = $response->json();
             return [
                 'code'          => $response->status(),
                 'status'        => 'success',
-                'access_token'  => $response->json()["access_token"],
-                'refresh_token' => $response->json()["refresh_token"],
+                'access_token'  => isset($result["access_token"])  ? $result["access_token"] : null,
+                'refresh_token' => isset($result["refresh_token"]) ? $result["refresh_token"] : null
             ];
         endif;
 
