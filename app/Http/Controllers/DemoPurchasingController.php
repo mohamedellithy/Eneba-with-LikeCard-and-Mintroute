@@ -38,10 +38,10 @@ class DemoPurchasingController extends Controller
         // dd($result);
 
         
-        // dd($this->eneba_service->register_stock_provision());
+        dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
 
-       $this->eneba_service->enable_declared_stock();
+       //$this->eneba_service->enable_declared_stock();
        
        
        // $this->generate_token();
