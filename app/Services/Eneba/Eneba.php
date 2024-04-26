@@ -17,11 +17,11 @@ class Eneba {
 
         $this->credentail = $this->fetch_enebe_crediential();
 
-        //if(!isset($this->credentail['access_token']) || $this->credentail['access_token'] == null):
+        if(!isset($this->credentail['access_token']) || $this->credentail['access_token'] == null):
             $token = $this->generate_token();
             $this->credentail['access_token']  = ($token['status'] == 'success') ? $token['access_token'] : null;
             $this->credentail['refresh_token'] = ($token['status'] == 'success') ? $token['refresh_token'] : null;
-        //endif;
+        endif;
     }
 
     public function resolve_call($query){
