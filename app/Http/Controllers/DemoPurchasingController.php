@@ -39,7 +39,7 @@ class DemoPurchasingController extends Controller
 
         //dd($this->eneba_service->credentail);
        //  dd($this->eneba_service->register_stock_provision());
-       //- dd($this->eneba_service->get_callbacks_registered());
+       dd($this->eneba_service->get_callbacks_registered());
        
 
        // dd($this->eneba_service->register_stock_reservation());
@@ -56,30 +56,7 @@ class DemoPurchasingController extends Controller
         // var_dump($this->eneba_service->credentail);
         // $this->eneba_service->sandbox_trigger_stock_reservation();
 
-        $query = <<<GQL
-            query {
-                P_apiCallbacks {
-                id
-                type
-                url
-                authorization
-                }
-            }
-        GQL;
-
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0MThjNzJjOS1jOGQ2LTQ1OTktOTMyMS1kZTA3NWQ4NGQ3YmUiLCJqdGkiOiIxMDM4OTgyNi1hMmM0LTQ2NzctOTQ0OC0xYjQyOWFmMDAzMDciLCJpYXQiOjE3MTQwODYzMTkuNzAyNzk2LCJuYmYiOjE3MTQwODYzMTkuNzAyNzk2LCJleHAiOjE3MTQzMDIzMTkuNzAyNzk2LCJzdWIiOiJlY2FjM2EyZS0xOWZlLTExZWUtYWQ3ZS0xNmIyOWM5NDQ3ODEiLCJzY29wZSI6ImFwaV9jb25zdW1lciIsInJvbGVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfQVBJX0NPTlNVTUVSIl0sInByZWZlcnJlZF91c2VybmFtZSI6IkIuREpBU1NFTUBBLUVDQVJEUy5DT00iLCJlbWFpbCI6IkIuREpBU1NFTUBBLUVDQVJEUy5DT00ifQ.nwiNR93w-jSgSd2Ab2yGvhP-srVWRuweb__ivKc4Ei207m-bS-L_qNNm-Jj55Baso3kTxdJRzUIBgzjAnQCRYSfd9cxN3ovs9RJRqQmkqJ25vVctIKHXOATOVhwxdLeGS9oTtP9xVeKaPPaO3YcGb-RZfQCp6AN9Z3cO816b2IQ',
-            'Content-Type'  => 'application/json',
-        ])->withOptions([
-            "verify"=>false
-        ])->post('https://api-sandbox.eneba.com/graphql/',[
-            'query' => $query
-        ]);
-
-       dd($response->body());
-
-
-
+        
 
         // $this->eneba_service->sandbox_trigger_stock_reservation();
         //dd($this->eneba_service->sandbox_trigger_stock_provision());
