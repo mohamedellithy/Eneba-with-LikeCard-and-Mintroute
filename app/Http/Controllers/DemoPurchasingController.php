@@ -42,7 +42,7 @@ class DemoPurchasingController extends Controller
        //- dd($this->eneba_service->get_callbacks_registered());
        
 
-       dd($this->eneba_service->register_stock_reservation());
+       // dd($this->eneba_service->register_stock_reservation());
         //dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
         //dd($this->eneba_service->sandbox_trigger_stock_reservation());
@@ -56,36 +56,36 @@ class DemoPurchasingController extends Controller
         // var_dump($this->eneba_service->credentail);
         // $this->eneba_service->sandbox_trigger_stock_reservation();
 
-    //     $query = <<<GQL
-    //         mutation {
-    //             P_triggerCallback(input: {
-    //             type: DECLARED_STOCK_RESERVATION
-    //             orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
-    //             auction: {
-    //                 auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
-    //                 price: {
-    //                 amount: 50
-    //                 currency: "EUR"
-    //                 }
-    //                 keyCount: 1
-    //             }
-    //             }){
-    //             success
-    //             message
-    //             }
-    //         }
-    //     GQL;
+        $query = <<<GQL
+            mutation {
+                P_triggerCallback(input: {
+                type: DECLARED_STOCK_RESERVATION
+                orderId: "347c4978-4f81-11ed-bdc3-0242ac120002"
+                auction: {
+                    auctionId: "347c4e96-4f81-11ed-bdc3-0242ac120002"
+                    price: {
+                    amount: 50
+                    currency: "EUR"
+                    }
+                    keyCount: 1
+                }
+                }){
+                success
+                message
+                }
+            }
+        GQL;
 
-    //     $response = Http::withHeaders([
-    //         'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJjNjk5ZWM4OS1jNWZkLTRiYjAtODUyZS1lYWU3NzUxOTg1ODciLCJqdGkiOiI0YjNlNDRmMi05NTUzLTQ0MjQtYjAyOC03NGUwYWZiNDJhMjkiLCJpYXQiOjE3MTQwODQyMTYuOTkwNjI2LCJuYmYiOjE3MTQwODQyMTYuOTkwNjI2LCJleHAiOjE3MTQzMDAyMTYuOTkwNjI2LCJzdWIiOiJlY2FjM2EyZS0xOWZlLTExZWUtYWQ3ZS0xNmIyOWM5NDQ3ODEiLCJzY29wZSI6ImFwaV9jb25zdW1lciIsInJvbGVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfQVBJX0NPTlNVTUVSIl0sInByZWZlcnJlZF91c2VybmFtZSI6IkIuREpBU1NFTUBBLUVDQVJEUy5DT00iLCJlbWFpbCI6IkIuREpBU1NFTUBBLUVDQVJEUy5DT00ifQ.HwOyIkS4USQt5el6qdDieCNQO_oGsbCV7B9GCK0YKwSOPzXBRTcb_cbIE5AMw6pF8PRvenTn2URZCYTshRV6lzPPlqNCQ-L6A0MwLUy1qVUi3eDJvA4HPox_k68HVF7ASwTWNS-PfGQrhAWABwEE7k-BzYKxhNvCsSSC7ci70bY',
-    //         'Content-Type'  => 'application/json',
-    //     ])->withOptions([
-    //         "verify"=>false
-    //     ])->post('https://api-sandbox.eneba.com/graphql/',[
-    //         'query' => $query
-    //     ]);
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJjNjk5ZWM4OS1jNWZkLTRiYjAtODUyZS1lYWU3NzUxOTg1ODciLCJqdGkiOiI0YjNlNDRmMi05NTUzLTQ0MjQtYjAyOC03NGUwYWZiNDJhMjkiLCJpYXQiOjE3MTQwODQyMTYuOTkwNjI2LCJuYmYiOjE3MTQwODQyMTYuOTkwNjI2LCJleHAiOjE3MTQzMDAyMTYuOTkwNjI2LCJzdWIiOiJlY2FjM2EyZS0xOWZlLTExZWUtYWQ3ZS0xNmIyOWM5NDQ3ODEiLCJzY29wZSI6ImFwaV9jb25zdW1lciIsInJvbGVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfQVBJX0NPTlNVTUVSIl0sInByZWZlcnJlZF91c2VybmFtZSI6IkIuREpBU1NFTUBBLUVDQVJEUy5DT00iLCJlbWFpbCI6IkIuREpBU1NFTUBBLUVDQVJEUy5DT00ifQ.HwOyIkS4USQt5el6qdDieCNQO_oGsbCV7B9GCK0YKwSOPzXBRTcb_cbIE5AMw6pF8PRvenTn2URZCYTshRV6lzPPlqNCQ-L6A0MwLUy1qVUi3eDJvA4HPox_k68HVF7ASwTWNS-PfGQrhAWABwEE7k-BzYKxhNvCsSSC7ci70bY',
+            'Content-Type'  => 'application/json',
+        ])->withOptions([
+            "verify"=>false
+        ])->post('https://api-sandbox.eneba.com/graphql/',[
+            'query' => $query
+        ]);
 
-    //    dd($response->body());
+       dd($response->body());
 
 
 
