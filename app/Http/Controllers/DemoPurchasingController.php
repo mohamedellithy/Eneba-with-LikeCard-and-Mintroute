@@ -40,11 +40,13 @@ class DemoPurchasingController extends Controller
         
         // dd($this->eneba_service->register_stock_provision());
        //- dd($this->eneba_service->get_callbacks_registered());
+
+       $this->eneba_service->enable_declared_stock();
        
        
-        $this->generate_token();
-        var_dump($this->eneba_service->credentail);
-        $this->eneba_service->sandbox_trigger_stock_reservation();
+       // $this->generate_token();
+        // var_dump($this->eneba_service->credentail);
+        // $this->eneba_service->sandbox_trigger_stock_reservation();
 
     //     $query = <<<GQL
     //         mutation {
