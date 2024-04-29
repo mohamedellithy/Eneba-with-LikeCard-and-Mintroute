@@ -157,6 +157,9 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div style="padding: 26px;">
+                    {{  $auctions->links()  }}
+                </div>
             </div>
         </div>
     @endif
