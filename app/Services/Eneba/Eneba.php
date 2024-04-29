@@ -167,7 +167,7 @@ class Eneba {
     }
 
     public function update_create_auction($auction){
-        dd($auction->auction);
+        //dd($auction);
         $price = intval($auction->current_price * 100);
         $enable = ($auction->status == 1 ? 'true' : 'false');
         $autoRenewe = ($auction->autoRenew == 1 ? 'true' : 'false');
