@@ -50,14 +50,11 @@ class Operations {
             $key_count_required =  $auction['keyCount'];
 
             // for test only
-            //$auction['price']['amount'] = 50;
-            // end for test only
-
             if($offline_codes_count < $key_count_required):
                 $rest_count_needed = $key_count_required - $offline_codes_count;
-                $balance           = $balance - ($rest_count_needed * $auction['price']['amount']);
+                $balance           = $balance - ($rest_count_needed * ($auction['price']['amount'] / 100));
                 Http::post("https://webhook-test.com/cebc2699b01948617cfef06b55a9ff4b",[
-                    'bb' =>  $auction['price']['amount']
+                    'bb' =>  ($auction['price']['amount'] / 100)
                 ]);
                 if($balance < 0):
                     $status = false;
