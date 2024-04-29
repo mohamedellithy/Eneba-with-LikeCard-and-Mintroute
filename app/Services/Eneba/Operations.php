@@ -53,9 +53,6 @@ class Operations {
             if($offline_codes_count < $key_count_required):
                 $rest_count_needed = $key_count_required - $offline_codes_count;
                 $balance           = $balance - ($rest_count_needed * ($auction['price']['amount'] / 100));
-                Http::post("https://webhook-test.com/cebc2699b01948617cfef06b55a9ff4b",[
-                    'bb' =>  ($auction['price']['amount'] / 100)
-                ]);
                 if($balance < 0):
                     $status = false;
                     return null;
@@ -72,8 +69,6 @@ class Operations {
             ]);
 
         endforeach;
-
-        //Http::post('https://webhook.site/1d7c6d9b-98b4-4ed5-b818-1fc516119b15',$status);
 
         return $status;
     }
