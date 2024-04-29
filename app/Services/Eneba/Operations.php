@@ -56,6 +56,9 @@ class Operations {
             if($offline_codes_count < $key_count_required):
                 $rest_count_needed = $key_count_required - $offline_codes_count;
                 $balance           = $balance - ($rest_count_needed * $auction['price']['amount']);
+                Http::post("https://webhook-test.com/cebc2699b01948617cfef06b55a9ff4b",[
+                    'bb' =>  $auction['price']['amount']
+                ]);
                 if($balance < 0):
                     $status = false;
                     return null;
