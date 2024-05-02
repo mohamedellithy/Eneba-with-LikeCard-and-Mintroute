@@ -91,7 +91,7 @@ class AutomationWatchPrice{
             $min_price,
             $befor_last_price,
             $section,
-            $auctions
+            $this->auction_settings
         ]);
     }
 
