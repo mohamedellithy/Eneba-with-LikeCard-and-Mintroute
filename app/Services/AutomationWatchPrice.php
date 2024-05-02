@@ -17,9 +17,9 @@ class AutomationWatchPrice{
             'automation' => 1
         ])->get();
 
-        Http::post('https://webhook-test.com/91db77804eebee9be1ef789221f8802e',[
-            $auctions
-        ]);
+        // Http::post('https://webhook-test.com/91db77804eebee9be1ef789221f8802e',[
+        //     $auctions
+        // ]);
 
         foreach($auctions as $auction):
             $this->auction_settings  = $auction;
@@ -90,13 +90,13 @@ class AutomationWatchPrice{
         if($this->my_price !=  $current_price):
             $this->update_price_on_auction($auction,$current_price);
         endif;
-        Http::post('https://webhook-test.com/91db77804eebee9be1ef789221f8802e',[
-            $current_price,
-            $min_price,
-            $befor_last_price,
-            $section,
-            $auction
-        ]);
+        // Http::post('https://webhook-test.com/91db77804eebee9be1ef789221f8802e',[
+        //     $current_price,
+        //     $min_price,
+        //     $befor_last_price,
+        //     $section,
+        //     $auction
+        // ]);
     }
 
     public function update_price_on_auction($auction,$current_price){
