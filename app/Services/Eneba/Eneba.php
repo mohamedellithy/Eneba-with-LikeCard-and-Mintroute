@@ -333,7 +333,7 @@ class Eneba {
               id
               regions { code }
               type { value }
-              auctions(
+              competition(
                 first:50
                 after:"{$from}"
                 $belongsToMe

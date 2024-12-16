@@ -153,7 +153,7 @@ class Operations {
                         foreach($order['serials'] as $like_card_code):
                             $auction_details['keys'][] = [
                                 "type"  => "TEXT",
-                                "value" => $LikeCard->decryptSerial($like_card_code['serialCode'])
+                                "value" => $LikeCard->decryptSerial($like_card_code['serialCode']).'  Serial Number :'.$like_card_code['serialNumber']
                             ];
 
                             OfflineCode::create([
@@ -162,7 +162,7 @@ class Operations {
                                 'status'       => 'allow',
                                 'status_used'  => 'used',
                                 'product_name' => $order['productName'],
-                                'code'         => $LikeCard->decryptSerial($like_card_code['serialCode'])
+                                'code'         => $LikeCard->decryptSerial($like_card_code['serialCode']).'  Serial Number :'.$like_card_code['serialNumber']
                             ]);
                         endforeach;
                     endif;
