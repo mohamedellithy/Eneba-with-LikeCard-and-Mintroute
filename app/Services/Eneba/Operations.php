@@ -46,6 +46,14 @@ class Operations {
                     'status_used'  => 'unused'
                 ]);
             })->count();
+            
+
+            $likcard_product = $like_card_balancy->get_single_product($auction_details->product->likecard_prod_id);
+
+            if($likcard_product['data'][0]['available'] != true){
+                return null;
+                break;
+            }
 
             $key_count_required =  $auction['keyCount'];
 
