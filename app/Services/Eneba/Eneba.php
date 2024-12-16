@@ -417,10 +417,10 @@ class Eneba {
         endif;
     }
 
-    public function get_competitions($products_id = [],$from = null,$count = 50){
+    public function get_competitions($products_id,$from = null,$count = 50){
         $query = <<<GQL
             query {
-                S_competition(productIds: $products_id) {
+                S_competition(productIds: ["$products_id"]) {
                     productId
                     competition(
                         first: {$count}
