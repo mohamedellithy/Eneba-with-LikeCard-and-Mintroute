@@ -103,7 +103,10 @@
                                 </td>
                                 <td>
                                     @if($auction?->product?->likecard_prod_id)
-                                        {{ likecard_single_product($auction->product->likecard_prod_id)['data'][0]['productName'] }}
+                                        @php $likecard_single_product = likecard_single_product($auction->product->likecard_prod_id) @endphp
+                                        @if(isset($likecard_single_product['data']))
+                                            {{ likecard_single_product($auction->product->likecard_prod_id)['data'][0]['productName'] }}
+                                        @endif
                                     @endif
                                 </td>
                                 <td>

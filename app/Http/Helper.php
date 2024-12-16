@@ -122,7 +122,6 @@ if(!function_exists('likecard_single_product')) {
         $product_likecard =  Cache::rememberForever('likecard_product_'.$likecard_id, function() use($likecard_id,$likecard_service){
             return $likecard_service->get_single_product($likecard_id);
         });
-        dd($product_likecard);
         return $product_likecard;
     }
 }
