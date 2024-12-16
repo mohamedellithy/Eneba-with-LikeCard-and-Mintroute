@@ -133,7 +133,7 @@ $high_price = $prices->max('amount');
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($product_eneba['S_product']['auctions']['edges'] as $auction )
+                        @forelse($product_eneba['S_product']['auctions'][0]['competition']['edges'] as $auction )
                             <tr>
                                 <td> {{  $auction['node']['merchantName'] }}</td>
                                 <td> {{  FormatePrice($auction['node']['price']['amount']) }}</td>
