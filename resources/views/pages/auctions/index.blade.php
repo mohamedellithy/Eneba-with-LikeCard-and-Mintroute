@@ -102,7 +102,9 @@
                                     {{ eneba_single_product($auction->product_id)['S_product']['name'] }}
                                 </td>
                                 <td>
-                                    {{ likecard_single_product($auction->product->likecard_prod_id)['data'][0]['productName'] }}
+                                    @if($auction->product->likecard_prod_id)
+                                        {{ likecard_single_product($auction->product->likecard_prod_id)['data'][0]['productName'] }}
+                                    @endif
                                 </td>
                                 <td>
                                     {{ $auction->count_cards.' أكواد ' }}
