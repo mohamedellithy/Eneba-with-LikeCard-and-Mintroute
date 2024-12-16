@@ -372,6 +372,51 @@ class Eneba {
         endif;
     }
 
+    public function get_single_product_competitions($product_id,$from = null,$belongsToMe = false){
+        $belongsToMe = ($belongsToMe == true ? "belongsToMe:true" : "");
+        $query = <<<GQL
+        query {
+            S_competition(productId: "{$product_id}") {
+              $product_id
+              competition(
+                first:50
+                after:"{$from}"
+                $belongsToMe
+              ) {
+                totalCount
+                pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                    startCursor
+                    endCursor
+                }
+                edges {
+                  node {
+                    merchantName
+                    belongsToYou
+                    price { amount currency }
+                  }
+                }
+              }
+            }
+        }
+        GQL;
+        $response = $this->resolve_call($query);
+
+        if($response->successful()):
+            return [
+                'code' => $response->status(),
+                'status' => isset($response->json()['data']['S_competition']) ? true : false,
+                'result' => isset($response->json()['data']['S_competition']) ? $response->json()['data']['S_competition'] : $response->json()
+            ];
+        else:
+            return [
+                'code' => $response->status(),
+                'result' => $response->json()
+            ];
+        endif;
+    }
+
     public function get_competitions($products_id = [],$from = null,$count = 50){
         $query = <<<GQL
             query {
