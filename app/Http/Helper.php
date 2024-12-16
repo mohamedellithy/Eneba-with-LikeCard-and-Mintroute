@@ -57,7 +57,7 @@ if(!function_exists('GetAuctionPrices')) {
         global $collect_auctions;
         $auction_eneba      = new Eneba($sandbox = false);
         $auction_eneba      = $auction_eneba->get_single_product($eneba_id,$page_no);
-
+        dd($auction_eneba);
         if($auction_eneba['code'] == 200){
             $auction_eneba = $auction_eneba['result']['data'];
 
