@@ -427,6 +427,12 @@ class Eneba {
                         after:"{$from}"
                     ) {
                         totalCount
+                        pageInfo {
+                            hasNextPage
+                            hasPreviousPage
+                            startCursor
+                            endCursor
+                        }
                         edges {
                         node {
                             belongsToYou
