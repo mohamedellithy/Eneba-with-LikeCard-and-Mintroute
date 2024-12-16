@@ -106,9 +106,9 @@ if(!function_exists('eneba_single_product')) {
     function eneba_single_product($eneba_id){
         $eneba_service      = new Eneba($sandbox = false);
         $product_eneba      = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id,$eneba_service){
-            $product_eneba      = $eneba_service->get_single_product($eneba_id);
-            $product_eneba['result']['data']['S_product']['auctions'] = $eneba_service->get_competitions($eneba_id)['result'];
-            return $product_eneba['result']['data'];
+            $product_eneba_2      = $eneba_service->get_single_product($eneba_id);
+            $product_eneba_2['result']['data']['S_product']['auctions'] = $eneba_service->get_competitions($eneba_id)['result'];
+            return $product_eneba_2['result']['data'];
         });
 
         return $product_eneba;
