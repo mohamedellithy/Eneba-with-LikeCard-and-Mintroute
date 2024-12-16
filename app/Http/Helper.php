@@ -71,8 +71,8 @@ if(!function_exists('GetAuctionPrices')) {
                 $collect_auctions[] = $data;
             endforeach;
 
-            if($auction_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true){
-                GetAuctionPrices($eneba_id,$auction_eneba['S_product']['auctions']['pageInfo']['endCursor']);
+            if($auction_eneba['S_product']['auctions'][0]['competition']['pageInfo']['hasNextPage'] == true){
+                GetAuctionPrices($eneba_id,$auction_eneba['S_product']['auctions'][0]['competition']['pageInfo']['endCursor']);
             }
 
             $collect_prices = collect($collect_auctions);
