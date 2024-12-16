@@ -57,6 +57,7 @@ class AuctionApplication extends Controller
         $page_no = request('prev')  ? $request->query('prev') : ($request->has('next') ? $request->query('next') : null);
         $auction                 = Auction::where('id',$auction_id)->first();
         $product_eneba           =  $this->eneba_service->get_single_product($auction->product_id,$page_no)['result']['data'];
+        $product_eneba['result']['data']['S_product']['auctions'] = $this->eneba_service->get_competitions($auction->product_id)['result'];
         $eneba_likecard_relation = Product::where('eneba_prod_id',$auction->product_id)->first();
         $likecard_product        = [];
         if($eneba_likecard_relation):

@@ -144,8 +144,8 @@ $high_price = $prices->max('amount');
                     </tbody>
                 </table>
                 <div style="padding: 26px;">
-                    @if($product_eneba['S_product']['auctions']['pageInfo']['hasNextPage'] == true)
-                        <a class="btn btn-danger" href="{{ route('application.auctions.create',['eneba_id' =>$eneba_id,'next' => $product_eneba['S_product']['auctions']['pageInfo']['endCursor'] ]) }}">
+                    @if($product_eneba['S_product']['auctions'][0]['competition']['pageInfo']['hasNextPage'] == true)
+                        <a class="btn btn-danger" href="{{ route('application.auctions.create',['eneba_id' =>$eneba_id,'next' => $product_eneba['S_product']['auctions'][0]['competition']['pageInfo']['endCursor'] ]) }}">
                             التالي
                         </a>
                     @endif
