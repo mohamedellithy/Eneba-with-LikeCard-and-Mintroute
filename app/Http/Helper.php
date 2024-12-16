@@ -110,8 +110,7 @@ if(!function_exists('eneba_single_product')) {
         // $product_eneba      = Cache::rememberForever('eneba_single_product_'.$eneba_id, function() use($eneba_id,$eneba_service){
         //     return $eneba_service->get_single_product($eneba_id)['result']['data'];
         // });
-        dd($product_eneba);
-        return $product_eneba;
+        return $product_eneba['result']['data'];
     }
 }
 
