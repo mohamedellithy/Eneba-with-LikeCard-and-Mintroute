@@ -95,3 +95,11 @@ Route::group(['middleware'=>'auth','prefix' => 'applications','as' => 'applicati
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('clear-cache',function(){
+    \Artisan::call('optimize:clear');
+    \Artisan::call('cache:clear');
+    \Artisan::call('config:clear');
+    return back();
+})->name('clear-cache');
